@@ -6,7 +6,8 @@ export default function Home() {
 	const [ticker, setTicker] = useState([]);
 
 	const handleChange = (event) => {
-		setValue(event.target.value);
+		const stock = event.target.value.trim();
+		setValue(stock);
 	};
 
 	const handleSubmit = (event) => {
@@ -77,7 +78,7 @@ export default function Home() {
 						</article>
 					</div>
 				</section>
-
+				{/*----------------------- Stocks watchlist section ----------------------- */}
 				<section className='h-3/5 w-full md:w-72 flex flex-col mt-24 md:mt-0 '>
 					<header className='flex items-end md:items-end  md:mb-3 h-24 p-2 md:p-0 text-xl'>
 						Stocks

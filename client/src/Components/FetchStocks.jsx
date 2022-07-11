@@ -9,36 +9,40 @@ function FetchStocks(props) {
 	const [dayPercentage, setDayPercentage] = useState([]);
 
 	useEffect(() => {
-		const options = {
-			method: 'GET',
-			headers: {
-				'X-RapidAPI-Host': process.env.REACT_APP_RAPID_API_HOST,
-				'X-RapidAPI-Key': process.env.REACT_APP_RAPID_API_KEY,
-			},
-		};
-		fetch(
-			`https://alpha-vantage.p.rapidapi.com/query?function=GLOBAL_QUOTE&symbol=${props.name}&datatype=json`,
-			options
-		)
-			.then((response) => response.json())
+		function fetchData() {
+			const options = {
+				method: 'GET',
+				headers: {
+					'X-RapidAPI-Host': process.env.REACT_APP_RAPID_API_HOST,
+					'X-RapidAPI-Key': process.env.REACT_APP_RAPID_API_KEY,
+				},
+			};
+			fetch(
+				`https://alpha-vantage.p.rapidapi.com/query?function=GLOBAL_QUOTE&symbol=${props.name}&datatype=json`,
+				options
+			)
+				.then((response) => response.json())
 
-			.then((data) => {
-				const res = data['Global Quote'];
-				const myRes = Object.values(res);
-				setTicker(myRes[0]);
-				setOpenPrice((myRes[1] / 1).toFixed(2));
-				setTickerPrice((myRes[4] / 1).toFixed(2));
-				setClosingPrice((myRes[7] / 1).toFixed(2));
-				setVolume((myRes[5] / 1).toLocaleString('en', { useGrouping: true }));
-				setTradingDay(myRes[6]);
+				.then((data) => {
+					const res = data['Global Quote'];
+					const myRes = Object.values(res);
+					setTicker(myRes[0]);
+					setOpenPrice((myRes[1] / 1).toFixed(2));
+					setTickerPrice((myRes[4] / 1).toFixed(2));
+					setClosingPrice((myRes[7] / 1).toFixed(2));
+					setVolume((myRes[5] / 1).toLocaleString('en', { useGrouping: true }));
+					setTradingDay(myRes[6]);
 
-				// calculates the % difference between the previous days closing price and the current price
-				setDayPercentage((((myRes[4] - myRes[7]) / myRes[7]) * 100).toFixed(2));
-				console.log(`${myRes[0]}`);
-				console.log(myRes);
-			})
-			.catch((err) => console.error(err));
-		// console.log(response);
+					// calculates the % difference between the previous days closing price and the current price
+					setDayPercentage(
+						(((myRes[4] - myRes[7]) / myRes[7]) * 100).toFixed(2)
+					);
+					console.log(`${myRes[0]}`);
+					console.log(myRes);
+				})
+				.catch((err) => console.error(err));
+		}
+		fetchData();
 	}, [props.name]);
 
 	let info;
