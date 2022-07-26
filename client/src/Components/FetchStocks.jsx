@@ -52,13 +52,15 @@ function FetchStocks(props) {
 			<>
 				<nav className='h-full w-full hover:border-2 border-lightBlue hover:rounded-xl '>
 					<ul className='h-full flex items-center px-2'>
-						<li className='w-1/6 text-lightBlue'>${ticker}</li>
-						<li className='w-1/6'>${tickerPrice}</li>
-						<li className='w-1/6'>${openPrice}</li>
-						<li className='w-1/6'>${closingPrice}</li>
-						<li className='w-1/6'>{dayPercentage}%</li>
-						<li className='w-1/6'>{volume}</li>
-						<li className='w-1/6'>{tradingDay}</li>
+						<li className='text-xs md:text-lg w-1/6 text-lightBlue'>
+							${ticker}
+						</li>
+						<li className='text-xs md:text-lg w-1/6'>${tickerPrice}</li>
+						<li className='text-xs md:text-lg w-1/6'>${openPrice}</li>
+						<li className='text-xs md:text-lg w-1/6'>${closingPrice}</li>
+						<li className='text-xs md:text-lg w-1/6'>{dayPercentage}%</li>
+						<li className='text-xs md:text-lg w-1/6'>{volume}</li>
+						<li className='text-xs md:text-lg w-1/6'>{tradingDay}</li>
 					</ul>
 				</nav>
 			</>
@@ -80,7 +82,7 @@ function FetchStocks(props) {
 	}
 
 	return (
-		<div className='flex h-12 w-1/2 md:w-full my-4 text-sm md:text-base bg-primary rounded-xl'>
+		<div className='overflow-x-scroll flex h-12 md:w-full my-4 text-sm md:text-base bg-primary rounded-xl'>
 			{info}
 		</div>
 	);
