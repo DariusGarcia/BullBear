@@ -1,10 +1,19 @@
+require('dotenv').config();
 const express = require('express');
 const app = express();
 const cors = require('cors');
-require('dotenv').config({ path: './config.env' });
-const port = process.env.PORT || 5000;
-app.use(cors());
+// const userRoutes = require('./routes/users');
+// const authRoutes = require('./routes/auth');
+
+// middlewares
 app.use(express.json());
+app.use(cors());
+
+// routes
+// app.use('/api/user', userRoutes);
+// app.use('/api/auth', authRoutes);
+
+const port = process.env.PORT || 5000;
 app.use(require('./routes/record'));
 // get driver connection
 const dbo = require('./db/conn');

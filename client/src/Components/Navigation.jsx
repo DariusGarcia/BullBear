@@ -2,9 +2,9 @@ import React from 'react';
 
 export default function Navigation() {
 	return (
-		<nav className='flex justify-between px-12 h-24 items-center font-primary bg-primary text-white '>
+		<nav className='flex justify-evenly md:justify-between md:px-12 h-24 items-center font-primary bg-primary text-white '>
 			<div className=''>
-				<h1 className='text-2xl md:text-4xl font-bold tracking-wide cursor-pointer'>
+				<h1 className='mb-2 md:mb-0 text-2xl md:text-4xl font-bold tracking-wide cursor-pointer'>
 					BullBear
 				</h1>
 			</div>

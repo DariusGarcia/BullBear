@@ -55,12 +55,18 @@ function FetchStocks(props) {
 						<li className='text-xs md:text-lg w-1/6 text-lightBlue'>
 							${ticker}
 						</li>
-						<li className='text-xs md:text-lg w-1/6'>${tickerPrice}</li>
-						<li className='text-xs md:text-lg w-1/6'>${openPrice}</li>
-						<li className='text-xs md:text-lg w-1/6'>${closingPrice}</li>
-						<li className='text-xs md:text-lg w-1/6'>{dayPercentage}%</li>
-						<li className='text-xs md:text-lg w-1/6'>{volume}</li>
-						<li className='text-xs md:text-lg w-1/6'>{tradingDay}</li>
+						<li className='text-xs md:text-base w-28 md:w-1/6'>
+							${tickerPrice}
+						</li>
+						<li className='text-xs md:text-base w-28 md:w-1/6'>${openPrice}</li>
+						<li className='text-xs md:text-base w-28 md:w-1/6'>
+							${closingPrice}
+						</li>
+						<li className='text-xs md:text-base w-24 md:w-1/6'>
+							{dayPercentage}%
+						</li>
+						<li className='text-xs md:text-base w-28 md:w-1/6'>{volume}</li>
+						<li className='text-xs md:text-base w-28 md:w-1/6'>{tradingDay}</li>
 					</ul>
 				</nav>
 			</>
@@ -82,7 +88,7 @@ function FetchStocks(props) {
 	}
 
 	return (
-		<div className='overflow-x-scroll flex h-12 md:w-full my-4 text-sm md:text-base bg-primary rounded-xl'>
+		<div className='overflow-x-scroll md:overflow-x-hidden flex h-12 md:w-full my-4 text-sm md:text-base bg-primary rounded-xl'>
 			{info}
 		</div>
 	);
