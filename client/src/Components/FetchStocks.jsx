@@ -1,48 +1,62 @@
 import React, { useState, useEffect } from 'react';
+
+const apiKey = process.env.REACT_APP_POLYGON_API_KEY;
+
 function FetchStocks(props) {
+	const [stockInfo, setStockInfo] = useState([]);
+	const [stockData, setStockData] = useState([]);
+	const [price, setPrice] = useState([]);
+	const [logo, setLogo] = useState([]);
 	const [ticker, setTicker] = useState([]);
-	const [openPrice, setOpenPrice] = useState([]);
-	const [tickerPrice, setTickerPrice] = useState([]);
-	const [tradingDay, setTradingDay] = useState([]);
-	const [closingPrice, setClosingPrice] = useState([]);
-	const [volume, setVolume] = useState([]);
-	const [dayPercentage, setDayPercentage] = useState([]);
+
+	const stockInfoUrl = `https://api.polygon.io/v3/reference/tickers/${props.name}?apiKey=${apiKey}`;
+	const stockDataUrl = `https://api.polygon.io/v2/snapshot/locale/us/markets/stocks/tickers/${props.name}?apiKey=${apiKey}`;
+
+	const fetchStockInfo = () => {
+		fetch(stockInfoUrl)
+			.then((res) => res.json())
+			.then((data) => {
+				setStockInfo(data.results);
+			})
+			.catch((err) => console.error(err));
+	};
+
+	const fetchStockData = () => {
+		fetch(stockDataUrl)
+			.then((res) => res.json())
+			.then((data) => {
+				setStockData(data.ticker);
+				// console.log(stockData);
+			})
+			.catch((err) => console.error(err));
+	};
+
+	const fetchPrice = () => {
+		const options = {
+			method: 'GET',
+			headers: {
+				'X-RapidAPI-Key': '0d97302266msh6b2a73e1ff1a13dp1c8242jsn8cf1b0c3f629',
+				'X-RapidAPI-Host': 'alpha-vantage.p.rapidapi.com',
+			},
+		};
+
+		fetch(
+			`https://alpha-vantage.p.rapidapi.com/query?function=GLOBAL_QUOTE&symbol=${props.name}&datatype=json`,
+			options
+		)
+			.then((response) => response.json())
+			.then((response) => setPrice(response['Global Quote']['05. price']))
+			.catch((err) => console.error(err));
+	};
 
 	useEffect(() => {
-		function fetchData() {
-			const options = {
-				method: 'GET',
-				headers: {
-					'X-RapidAPI-Host': process.env.REACT_APP_RAPID_API_HOST,
-					'X-RapidAPI-Key': process.env.REACT_APP_RAPID_API_KEY,
-				},
-			};
-			fetch(
-				`https://alpha-vantage.p.rapidapi.com/query?function=GLOBAL_QUOTE&symbol=${props.name}&datatype=json`,
-				options
-			)
-				.then((response) => response.json())
-
-				.then((data) => {
-					const res = data['Global Quote'];
-					const myRes = Object.values(res);
-					setTicker(myRes[0]);
-					setOpenPrice((myRes[1] / 1).toFixed(2));
-					setTickerPrice((myRes[4] / 1).toFixed(2));
-					setClosingPrice((myRes[7] / 1).toFixed(2));
-					setVolume((myRes[5] / 1).toLocaleString('en', { useGrouping: true }));
-					setTradingDay(myRes[6]);
-
-					// calculates the % difference between the previous days closing price and the current price
-					setDayPercentage(
-						(((myRes[4] - myRes[7]) / myRes[7]) * 100).toFixed(2)
-					);
-					console.log(`${myRes[0]}`);
-					console.log(myRes);
-				})
-				.catch((err) => console.error(err));
-		}
-		fetchData();
+		fetchStockInfo();
+	}, [props.name]);
+	useEffect(() => {
+		fetchStockData();
+	}, [props.name]);
+	useEffect(() => {
+		fetchPrice();
 	}, [props.name]);
 
 	let info;
@@ -51,30 +65,34 @@ function FetchStocks(props) {
 		info = (
 			<>
 				<nav className='h-full w-full hover:border-2 border-lightBlue hover:rounded-xl '>
-					<ul className='h-full flex items-center px-2'>
-						<li className='text-xs md:text-lg w-1/6 text-lightBlue'>
-							${ticker}
+					{/* <ul className='h-full flex items-center px-2'>
+						<li className='text-xs  md:text-lg w-1/6 text-lightBlue'>
+							${stockInfo.ticker}
+						</li>
+						<li className='text-xs md:text-base w-28 md:w-1/6'>${price}</li>
+						<li className='text-xs md:text-base w-28 md:w-1/6'>
+							${stockData.day.o}
 						</li>
 						<li className='text-xs md:text-base w-28 md:w-1/6'>
-							${tickerPrice}
-						</li>
-						<li className='text-xs md:text-base w-28 md:w-1/6'>${openPrice}</li>
-						<li className='text-xs md:text-base w-28 md:w-1/6'>
-							${closingPrice}
+							${stockData.prevDay.c}
 						</li>
 						<li className='text-xs md:text-base w-24 md:w-1/6'>
-							{dayPercentage}%
+							{stockData.todaysChangePerc}%
 						</li>
-						<li className='text-xs md:text-base w-28 md:w-1/6'>{volume}</li>
-						<li className='text-xs md:text-base w-28 md:w-1/6'>{tradingDay}</li>
-					</ul>
+						<li className='text-xs md:text-base w-28 md:w-1/6'>
+							{stockData.day.v}
+						</li>
+						<li className='text-xs md:text-base w-28 md:w-1/6'>
+							{stockInfo.ticker}
+						</li>
+					</ul> */}
 				</nav>
 			</>
 		);
 	} else if (ticker == null) {
 		info = (
 			<span className='flex w-full h-full justify-center items-center hover:border-2 border-lightBlue hover:rounded-xl '>
-				<p id='class-nf' className='w-full pl-2 text-red font-bold   '>
+				<p id='class-nf' className='w-full pl-2 text-red font-bold'>
 					Invalid stock ticker...
 				</p>
 			</span>
@@ -88,7 +106,7 @@ function FetchStocks(props) {
 	}
 
 	return (
-		<div className='overflow-x-scroll md:overflow-x-hidden flex h-12 md:w-full my-4 text-sm md:text-base bg-primary rounded-xl'>
+		<div className='overflow-x-scroll md:overflow-x-hidden flex h-12 md:w-full my-4 text-sm md:text-base bg-primary mx-3 md:mx-0 rounded-xl'>
 			{info}
 		</div>
 	);

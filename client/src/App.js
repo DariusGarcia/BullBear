@@ -12,23 +12,23 @@ function App() {
 	const [loading, setLoading] = useState(true);
 	const [userSession, setUserSession] = useState(true);
 
-	useEffect(() => {
-		const fetchUserAuth = async () => {
-			try {
-				setLoading(true);
-				const res = await fetch('/api/isAuth');
-				if (!res.ok) return setLoading(false);
+	// useEffect(() => {
+	// 	const fetchUserAuth = async () => {
+	// 		try {
+	// 			setLoading(true);
+	// 			const res = await fetch('/api/isAuth');
+	// 			if (!res.ok) return setLoading(false);
 
-				setUserSession(await res.json());
-				setLoading(false);
-			} catch (error) {
-				setLoading(false);
-				console.error('There was an error fetch auth', error);
-				return;
-			}
-		};
-		fetchUserAuth();
-	}, []);
+	// 			setUserSession(await res.json());
+	// 			setLoading(false);
+	// 		} catch (error) {
+	// 			setLoading(false);
+	// 			console.error('There was an error fetch auth', error);
+	// 			return;
+	// 		}
+	// 	};
+	// 	fetchUserAuth();
+	// }, []);
 
 	return (
 		<>
