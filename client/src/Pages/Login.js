@@ -17,7 +17,7 @@ const Login = () => {
 			<div className='my-12 md:my-32  flex justify-center w-full  md:py-12 '>
 				{' '}
 				<form
-					className='flex flex-col justify-center w-full md:w-3/5 bg-neutral rounded-md p-2'
+					className='flex flex-col justify-center w-full md:w-3/5 bg-neutral rounded-xl px-2 md:px-24 py-4 md:py-8'
 					onSubmit={handleSubmit}>
 					<div className='flex justify-center'>
 						<h3 className='text-2xl font-bold my-4 border-b-2 border-black pb-2 w-max hover:text-darkBlue'>
@@ -25,16 +25,16 @@ const Login = () => {
 						</h3>
 					</div>
 
-					<label className=''>Email:</label>
+					<label className='font-bold text-lg pb-2'>Email:</label>
 					<input
-						className='outline-black outline-2 border-2 border-black rounded-md mb-4 h-10 pl-2'
+						className='outline-black outline-2 shadow-sm shadow-primary hover:shadow-md active:border-2 border-black rounded-md mb-4 h-10 pl-2'
 						type='email'
 						onChange={(e) => setEmail(e.target.value)}
 						value={email}
 					/>
-					<label className=''>Password:</label>
+					<label className='font-bold text-lg pb-2'>Password:</label>
 					<input
-						className='outline-black outline-2 border-2 border-black rounded-md h-10 pl-2'
+						className='outline-black outline-2 shadow-sm shadow-primary hover:shadow-md active:border-2 border-black rounded-md h-10 pl-2'
 						type='password'
 						onChange={(e) => setPassword(e.target.value)}
 						value={password}
