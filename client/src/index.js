@@ -11,7 +11,11 @@ root.render(
 	<React.StrictMode>
 		<AuthContextProvider>
 			<BrowserRouter>
-				<App />
+				<Routes>
+					<Route path='*' element={<App />}>
+						{' '}
+					</Route>
+				</Routes>
 			</BrowserRouter>
 		</AuthContextProvider>
 	</React.StrictMode>

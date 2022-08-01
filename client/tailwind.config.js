@@ -12,6 +12,7 @@ module.exports = {
 			white: '#ffffff',
 			black: '#000000',
 			grey: '#334155',
+			neutral: '#f5f5f5',
 		},
 		fontFamily: {
 			primary: ['Work Sans'],
@@ -23,4 +24,4 @@ module.exports = {
 		},
 	},
 	plugins: [],
-};
+}

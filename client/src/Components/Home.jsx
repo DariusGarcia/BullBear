@@ -1,28 +1,27 @@
-import React, { useState } from 'react';
-import FetchStocks from './FetchStocks';
-import Navigation from './Navigation';
+import React, { useState } from 'react'
+import FetchStocks from './FetchStocks'
+import Navigation from './Navigation'
 
 export default function Home() {
-	const [value, setValue] = useState('');
-	const [ticker, setTicker] = useState([]);
+	const [value, setValue] = useState('')
+	const [ticker, setTicker] = useState([])
 
 	const handleChange = (event) => {
-		const stock = event.target.value.trim();
-		setValue(stock);
-	};
+		const stock = event.target.value.trim()
+		setValue(stock)
+	}
 
 	const handleSubmit = (event) => {
-		event.preventDefault();
+		event.preventDefault()
 		if (!ticker.includes(value)) {
-			setTicker(ticker.concat(value));
-			setValue('');
+			setTicker(ticker.concat(value))
+			setValue('')
 		}
-		console.log(ticker);
-	};
+		console.log(ticker)
+	}
 
 	return (
 		<>
-			<Navigation />
 			<div className='flex justify-evenly h-auto overflow-x-scroll md:overflow-x-auto md:w-screen items-center mt-12 md:mt-48 md:mt-0 pb-48 bg-primary text-white'>
 				<div className='flex flex-col md:flex-row md:justify-evenly w-screen'>
 					{/*----------------------- nav-bar section ----------------------- */}
@@ -109,5 +108,5 @@ export default function Home() {
 				</div>
 			</div>
 		</>
-	);
+	)
 }
