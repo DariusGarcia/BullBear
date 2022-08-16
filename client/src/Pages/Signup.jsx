@@ -28,6 +28,7 @@ const Signup = () => {
 					</div>
 
 					<label className='font-bold text-lg pb-2'>Email:</label>
+					{error && <div className='text-red pb-2 font-semibold'>{error}</div>}
 					<input
 						className='outline-black outline-2 shadow-sm shadow-primary hover:shadow-md  active:border-2 border-black rounded-md mb-4 h-10 pl-2'
 						type='email'
@@ -50,7 +51,6 @@ const Signup = () => {
 							Register{' '}
 						</button>
 					</div>
-					{error && <div className=''>{error}</div>}
 				</form>
 			</div>
 		</div>

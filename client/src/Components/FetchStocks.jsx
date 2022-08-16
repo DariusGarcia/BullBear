@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
-
-const apiKey = process.env.REACT_APP_POLYGON_API_KEY
+import { fetchStockInfo } from '../Hooks/useGetStockInfo'
+import { fetchStockData } from '../Hooks/useGetStockData'
+import { fetchPrice } from '../Hooks/useGetStockPrice'
 
 function FetchStocks(props) {
 	const [stockInfo, setStockInfo] = useState([])
@@ -9,55 +10,11 @@ function FetchStocks(props) {
 	const [logo, setLogo] = useState([])
 	const [ticker, setTicker] = useState([])
 
-	const stockInfoUrl = `https://api.polygon.io/v3/reference/tickers/${props.name}?apiKey=${apiKey}`
-	const stockDataUrl = `https://api.polygon.io/v2/snapshot/locale/us/markets/stocks/tickers/${props.name}?apiKey=${apiKey}`
-
-	const fetchStockInfo = () => {
-		fetch(stockInfoUrl)
-			.then((res) => res.json())
-			.then((data) => {
-				setStockInfo(data.results)
-			})
-			.catch((err) => console.error(err))
-	}
-
-	const fetchStockData = () => {
-		fetch(stockDataUrl)
-			.then((res) => res.json())
-			.then((data) => {
-				setStockData(data.ticker)
-				// console.log(stockData);
-			})
-			.catch((err) => console.error(err))
-	}
-
-	const fetchPrice = () => {
-		const options = {
-			method: 'GET',
-			headers: {
-				'X-RapidAPI-Key': '0d97302266msh6b2a73e1ff1a13dp1c8242jsn8cf1b0c3f629',
-				'X-RapidAPI-Host': 'alpha-vantage.p.rapidapi.com',
-			},
-		}
-
-		fetch(
-			`https://alpha-vantage.p.rapidapi.com/query?function=GLOBAL_QUOTE&symbol=${props.name}&datatype=json`,
-			options
-		)
-			.then((response) => response.json())
-			.then((response) => setPrice(response['Global Quote']['05. price']))
-			.catch((err) => console.error(err))
-	}
-
 	useEffect(() => {
-		fetchStockInfo()
-	}, [props.name])
-	useEffect(() => {
-		fetchStockData()
-	}, [props.name])
-	useEffect(() => {
-		fetchPrice()
-	}, [props.name])
+		// fetchStockInfo(props).then((response) => setStockInfo(response))
+		// fetchStockData(props).then((response) => setStockData(response))
+		fetchPrice(props).then((response) => setPrice(response))
+	}, [])
 
 	let info
 
@@ -66,19 +23,25 @@ function FetchStocks(props) {
 			<>
 				<nav className='h-full w-full hover:border-2 border-lightBlue hover:rounded-xl '>
 					<ul className='h-full flex items-center px-2'>
+						{/* display stock ticker */}
 						<li className='text-xs  md:text-lg w-1/6 text-lightBlue'>
-							${stockInfo.ticker}
+							${props.name}
 						</li>
+						{/* display current price */}
 						<li className='text-xs md:text-base w-28 md:w-1/6'>${price}</li>
+						{/* display ticker opening price */}
 						<li className='text-xs md:text-base w-28 md:w-1/6'>
 							{/* ${stockData.day.o} */}
 						</li>
+						{/* display ticker prev day price */}
 						<li className='text-xs md:text-base w-28 md:w-1/6'>
 							{/* ${stockData.prevDay.c} */}
 						</li>
+						{/* display 24hr percentage change */}
 						<li className='text-xs md:text-base w-24 md:w-1/6'>
 							{stockData.todaysChangePerc}%
 						</li>
+						{/* display stock daily volume */}
 						<li className='text-xs md:text-base w-28 md:w-1/6'>
 							{/* {stockData.day.v} */}
 						</li>

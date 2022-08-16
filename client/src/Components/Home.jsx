@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import FetchStocks from './FetchStocks'
-import Navigation from './Navigation'
 
 export default function Home() {
 	const [value, setValue] = useState('')
@@ -17,7 +16,7 @@ export default function Home() {
 			setTicker(ticker.concat(value))
 			setValue('')
 		}
-		console.log(ticker)
+		console.log('Entered tickers:', ticker)
 	}
 
 	return (
