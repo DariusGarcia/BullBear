@@ -1,7 +1,10 @@
 const BASE_URL = ' https://alpha-vantage.p.rapidapi.com/'
 
-export const fetchPrice = (props) => {
+// module used to fetch stock current price
+export const fetchPrice = async (props) => {
 	const { name } = props
+
+	const stockPriceUrl = `${BASE_URL}query?function=GLOBAL_QUOTE&symbol=${name}&datatype=json`
 	const options = {
 		method: 'GET',
 		headers: {
@@ -9,14 +12,9 @@ export const fetchPrice = (props) => {
 			'X-RapidAPI-Host': 'alpha-vantage.p.rapidapi.com',
 		},
 	}
-	return (
-		fetch(
-			`${BASE_URL}query?function=GLOBAL_QUOTE&symbol=${name}&datatype=json`,
-			options
-		)
-			.then((response) => response.json())
-			.then((data) => data['Global Quote']['05. price'])
-			// .then((data) => console.log(data['Global Quote']['05. price']))
-			.catch((err) => console.error(err))
-	)
+	return await fetch(stockPriceUrl, options)
+		.then((res) => res.json())
+		.then((json) => json['Global Quote'])
+		.then((data) => data)
+		.catch((err) => console.error(err))
 }

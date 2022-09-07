@@ -1,11 +1,13 @@
-const BASE_URL = 'https://polygon.io/'
-const apiKey = process.env.REACT_APP_POLYGON_API_KEY
+const BASE_URL = 'https://api.polygon.io'
+const QUERY_URL = '/v2/snapshot/locale/us/markets/stocks/tickers/'
+const ENVapiKey = process.env.REACT_APP_POLYGON_API_KEY
+const apiKey = 'T8nMjxuiilD9ZklUs0OODmmpcIXN467H'
 
-export const fetchStockData = (props) => {
-	const stockDataUrl = `${BASE_URL}/v2/snapshot/locale/us/markets/stocks/tickers/${props.name}?apiKey=${apiKey}`
+export const fetchStockData = async (stock) => {
+	const stockDataUrl = `${BASE_URL}${QUERY_URL}${stock}?apiKey=${apiKey}`
 
-	return fetch(stockDataUrl)
+	return await fetch(stockDataUrl)
 		.then((res) => res.json())
-		.then((data) => data.ticker)
+
 		.catch((err) => console.error(err))
 }
