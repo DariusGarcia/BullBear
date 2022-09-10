@@ -1,5 +1,7 @@
 const express = require('express')
 
+const Watchlist = require('../models/watchlistModel')
+
 const router = express.Router()
 
 // GET all stocks in watchlist
@@ -13,8 +15,15 @@ router.get('/:id', (req, res) => {
 })
 
 // POST a single stock
-router.post('/', (req, res) => {
-	res.json({ mssg: 'POST a  new stock in watchlist' })
+router.post('/', async (req, res) => {
+	const { ticker } = req.body
+
+	try {
+		const watchlist = await Watchlist.create({ ticker })
+		res.status(200).json(watchlist)
+	} catch (error) {
+		res.status(400).json({ error: error.message })
+	}
 })
 
 // DELETE a single stock
