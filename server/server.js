@@ -5,10 +5,14 @@ const mongoose = require('mongoose')
 const cors = require('cors')
 const userRoutes = require('./routes/user')
 
+const watchlistRoutes = require('./routes/watchlists')
+
+// express app
 const app = express()
 
 // middleware
 app.use(express.json())
+
 app.use(cors())
 
 // routes
@@ -18,6 +22,8 @@ app.use((req, res, next) => {
 })
 
 app.use('/api/user', userRoutes)
+
+app.use('/api/watchlist', watchlistRoutes)
 
 // connect to db
 mongoose
