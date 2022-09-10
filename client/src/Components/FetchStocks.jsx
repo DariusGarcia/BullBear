@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react'
 import SingleStock from '../Components/singleStock'
 
 function FetchStocks(props) {
-	const { name } = props
+	const { name, toggle } = props
 	const [stockData, setStockData] = useState([{}])
 
 	// useEffect(() => {
@@ -18,7 +18,7 @@ function FetchStocks(props) {
 	let info
 
 	if (stockData) {
-		info = <SingleStock name={name} />
+		info = <SingleStock toggle={toggle} name={name} />
 	} else if (stockData === null) {
 		info = (
 			<span className='flex w-full h-full justify-center items-center hover:border-2 border-lightBlue hover:rounded-xl '>
@@ -36,7 +36,7 @@ function FetchStocks(props) {
 	}
 
 	return (
-		<div className='overflow-x-scroll md:overflow-x-hidden flex h-12 md:w-full my-4 text-sm md:text-base bg-primary mx-3 md:mx-0 rounded-xl'>
+		<div className='overflow-x-scroll md:overflow-x-hidden flex md:w-full my-4 text-sm md:text-base bg-primary mx-3 md:mx-0 rounded-xl'>
 			{info}
 		</div>
 	)
