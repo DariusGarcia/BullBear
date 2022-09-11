@@ -10,6 +10,8 @@ const watchlistRoutes = require('./routes/watchlists')
 // express app
 const app = express()
 
+const bodyParser = require('body-parser')
+
 // middleware
 app.use(express.json())
 
@@ -21,6 +23,7 @@ app.use((req, res, next) => {
 	next()
 })
 
+// app.use(bodyParser.urlencoded({ extended: true }))
 app.use('/api/user', userRoutes)
 
 app.use('/api/watchlist', watchlistRoutes)

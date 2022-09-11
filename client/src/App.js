@@ -3,10 +3,11 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import './App.css'
 
 // pages & components
-import Home from './Components/Home'
-import Navigation from './Components/Navigation'
-import Signup from './Pages/Signup'
-import Login from './Pages/Login'
+import Dashboard from './Components/dashboard'
+import Home from './Components/home'
+import Navigation from './Components/navigation'
+import Signup from './Pages/signup'
+import Login from './Pages/login'
 
 function App() {
 	return (
@@ -14,6 +15,7 @@ function App() {
 			<Navigation />
 			<div>
 				<Routes>
+					<Route path='/dashboard' element={<Dashboard />} />
 					<Route path='/' element={<Home />} />
 					<Route path='/login' element={<Login />} />
 					<Route path='/signup' element={<Signup />} />

@@ -24,6 +24,7 @@ const getSingleStock = async (req, res) => {
 
 	res.status(200).json({ stock })
 }
+
 // add a stock to the watchlist
 const createStock = async (req, res) => {
 	const { ticker } = req.body

@@ -1,24 +1,15 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 
-import SingleStock from '../Components/singleStock'
+import FetchSingleStock from './fetchSingleStock'
 
-function FetchStocks(props) {
-	const { name, toggle } = props
+export default function SingleStockContainer(props) {
+	const { name } = props
 	const [stockData, setStockData] = useState([{}])
-
-	// useEffect(() => {
-	// 	fetchDataInfo(name)
-	// 		.then((data) => {
-	// 			setStockData(data.quote)
-	// 			setLoading(false)
-	// 		})
-	// 		.catch((error) => console.log(error))
-	// }, [name])
 
 	let info
 
 	if (stockData) {
-		info = <SingleStock toggle={toggle} name={name} />
+		info = <FetchSingleStock name={name} />
 	} else if (stockData === null) {
 		info = (
 			<span className='flex w-full h-full justify-center items-center hover:border-2 border-lightBlue hover:rounded-xl '>
@@ -41,5 +32,3 @@ function FetchStocks(props) {
 		</div>
 	)
 }
-
-export default FetchStocks
