@@ -1,9 +1,7 @@
-import { useState, useEffect } from 'react'
-
 export const StockMoreInfo = (props) => {
 	const { openPrice, high, volume } = props
 	return (
-		<div className='grid grid-cols-2  w-1/3'>
+		<div className='grid grid-cols-2 w-1/3'>
 			<ul className='flex flex-col text-white pl-2 text-xs md:text-lg'>
 				{/* display stock ticker */}
 				<li className='h-full items-center flex '>Opening</li>

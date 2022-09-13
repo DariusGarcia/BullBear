@@ -5,18 +5,19 @@ import App from './App'
 import reportWebVitals from './reportWebVitals'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { AuthContextProvider } from './Context/AuthContext'
+import { WatchListContextProvider } from './Context/watchlistContext'
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
 	<React.StrictMode>
 		<AuthContextProvider>
-			<BrowserRouter>
-				<Routes>
-					<Route path='*' element={<App />}>
-						{' '}
-					</Route>
-				</Routes>
-			</BrowserRouter>
+			<WatchListContextProvider>
+				<BrowserRouter>
+					<Routes>
+						<Route path='*' element={<App />} />
+					</Routes>
+				</BrowserRouter>
+			</WatchListContextProvider>
 		</AuthContextProvider>
 	</React.StrictMode>
 )
