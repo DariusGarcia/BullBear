@@ -42,6 +42,21 @@ const FetchSingleStock = (props) => {
 	const handleOnClick = () => {
 		setToggle(!toggle)
 	}
+	if (!stockData) {
+		info = (
+			<span className='flex w-full h-full justify-center items-center hover:border-2 border-lightBlue hover:rounded-xl '>
+				<p id='class-nf' className='w-full pl-2 text-red font-bold'>
+					Invalid stock ticker...
+				</p>
+			</span>
+		)
+	} else {
+		info = (
+			<p className='hover:border-2 border-lightBlue hover:rounded-xl'>
+				Loading...
+			</p>
+		)
+	}
 
 	if (toggle) {
 		info = (
@@ -90,7 +105,7 @@ const FetchSingleStock = (props) => {
 		)
 	} else if (!toggle) {
 		info = (
-			<ul className='h-full grid p-2 py-4 grid-cols-5 content-center text-white'>
+			<ul className='h-full grid px-2 py-4 grid-cols-5 content-center text-white'>
 				{/* display stock ticker */}
 				<li className='flex h-full items-center text-xs md:text-sm text-lightBlue'>
 					{stockData[0]['name']?.split(' ')[0]?.split(',')?.join('')}

@@ -17,7 +17,7 @@ export const WatchlistDetails = (props) => {
 	return (
 		<>
 			{stockData[0] && stockData[0]['changesPercentage'] > 0 && (
-				<ul className='h-full grid grid-cols-3 gap justify-between  items-center p-2 text-white'>
+				<ul className='h-full grid grid-cols-3 gap justify-between   items-center p-2 text-white'>
 					{/* display stock ticker */}
 
 					<li className='md:text-lg justify-start flex items-center text-green rounded-lg '>
