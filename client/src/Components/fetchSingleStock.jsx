@@ -50,7 +50,7 @@ const FetchSingleStock = (props) => {
 
 	if (!watchlist && !companyLogo) {
 		info = (
-			<span className='flex w-full h-full justify-center items-center hover:border-2 border-lightBlue hover:rounded-xl '>
+			<span className='flex w-full h-full justify-center items-center hover:border-2 border-lightBlue transition delay-75 ease-in-out hover:rounded-lg'>
 				<p id='class-nf' className='w-full pl-2 text-red font-bold'>
 					Invalid stock ticker...
 				</p>
@@ -58,7 +58,7 @@ const FetchSingleStock = (props) => {
 		)
 	} else {
 		info = (
-			<span className='flex w-full h-full justify-center items-center hover:border-2 border-lightBlue hover:rounded-xl '>
+			<span className='flex w-full h-full justify-center items-center   border-2 border-primary  hover:border-2 hover:border-lightBlue transition delay-25 ease-in-out hover:rounded-lg '>
 				<p id='class-nf' className='w-full pl-2 py-4 text-red'>
 					Invalid stock...
 				</p>
@@ -68,7 +68,9 @@ const FetchSingleStock = (props) => {
 
 	if (toggle && companyLogo) {
 		info = (
-			<div className='flex flex-col'>
+			<div
+				onClick={handleOnClick}
+				className='flex flex-col border-2 border-primary hover:border-2 hover:border-lightBlue transition delay-25 ease-in-out rounded-lg cursor-pointer '>
 				<div className=' w-full py-4'>
 					<ul className='h-full grid grid-cols-5 content-center text-white px-2'>
 						{/* display stock ticker */}
@@ -81,7 +83,7 @@ const FetchSingleStock = (props) => {
 							</div>
 							{stockData[0]['name']?.split(' ')[0]?.split(',')?.join('')}
 						</li>
-						<li className='text-xs  md:text-base h-full items-center flex '>
+						<li className='text-xs md:text-base h-full items-center flex'>
 							${name}
 						</li>
 
@@ -98,7 +100,7 @@ const FetchSingleStock = (props) => {
 						)}
 
 						{/* display 24hr percentage change */}
-						<li className='text-xs md:text-base h-full items-center flex  '>
+						<li className='flex h-full items-center text-xs md:text-base'>
 							{stockData[0]['changesPercentage']?.toFixed(2)}%
 						</li>
 
@@ -113,7 +115,7 @@ const FetchSingleStock = (props) => {
 							</span>
 							<span>
 								<MdOutlineOpenInFull
-									className='cursor-pointer hover:scale-110 transition text-white ease-in-out delay-25'
+									className='hover:scale-110 transition text-white ease-in-out delay-25 cursor-pointer '
 									onClick={handleOnClick}
 									size={25}></MdOutlineOpenInFull>
 							</span>
@@ -132,7 +134,9 @@ const FetchSingleStock = (props) => {
 		)
 	} else if (!toggle && companyLogo) {
 		info = (
-			<ul className='h-full grid px-2 py-4 grid-cols-5 content-center text-white'>
+			<ul
+				onClick={handleOnClick}
+				className='h-full grid px-2 py-4 grid-cols-5 content-center text-white border-2 border-primary hover:border-2 hover:border-lightBlue transition delay-25 ease-in-out rounded-lg cursor-pointer'>
 				{/* display stock ticker */}
 				<li className='flex h-full items-center md:gap-1 text-xs md:text-sm text-lightBlue'>
 					<div className='w-1/3'>

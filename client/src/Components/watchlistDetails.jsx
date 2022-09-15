@@ -8,7 +8,6 @@ import { useWatchlistContext } from '../Hooks/useWatchlistContext'
 export const WatchlistDetails = ({ ticker, watchlistInfo }) => {
 	const [stockData, setStockData] = useState({})
 	const [companyLogo, setCompanyLogo] = useState()
-	const [error, setError] = useState(null)
 	const { dispatch } = useWatchlistContext()
 
 	const DeleteStock = async () => {
@@ -41,52 +40,60 @@ export const WatchlistDetails = ({ ticker, watchlistInfo }) => {
 
 	return (
 		<>
+			{/* display when change is positive*/}
 			{stockData[0] && stockData[0]['changesPercentage'] > 0 && (
-				<ul className='h-full grid grid-cols-3 justify-between w-full items-center p-2 text-white'>
+				<div className='h-full grid grid-cols-3 justify-between w-full items-center p-2 py-4 text-white'>
 					{/* display stock ticker */}
-					<li className='justify-start flex gap-2 items-center w-max  rounded-lg '>
+					<p className='justify-start flex gap-2 items-center w-max rounded-lg '>
 						<div className=''>
 							<img
-								className='w-max h-8 md:h- rounded-lg'
+								className='w-max h-8 rounded-lg'
 								src={companyLogo}
 								alt={companyLogo}></img>
 						</div>
-						${ticker}
-					</li>
+						<div className='ml-1 text-sm'>${ticker}</div>
+					</p>
 					{/* display current price */}
-					<li className='flex justify-center items-center w-full text-green'>
+					<p className='flex justify-center items-center w-full text-green'>
 						${stockData[0]['price']?.toFixed(2)}
-					</li>
+					</p>
 					<button
 						onClick={DeleteStock}
-						className='flex justify-start w-full md:px-4 text-white'>
+						className='flex justify-center text-white opacity-50 hover:opacity-100'>
 						<AiFillDelete
 							className='hover:text-red hover:scale-110 transition ease-in-out delay-25'
 							size={20}
 						/>
 					</button>
-				</ul>
+				</div>
 			)}
-			{stockData[0] && stockData[0]['changesPercentage'] < 0 && (
-				<ul className='h-full grid grid-cols-3 justify-between w-full items-center p-2 text-white '>
-					{/* display stock ticker */}
 
-					<li className='flex justify-start items-center rounded-lg'>
-						${ticker}
-					</li>
-					{/* display current price */}
-					<li className='flex justify-start text-red'>
-						${stockData[0]['price']?.toFixed(2)}
-					</li>
-					<button
-						onClick={DeleteStock}
-						className='flex justify-starts md:px-4 w-max text-white'>
-						<AiFillDelete
-							className='hover:text-red hover:scale-110 transition ease-in-out delay-25'
-							size={20}
-						/>
-					</button>
-				</ul>
+			{/* display when change is negative*/}
+			{stockData[0] && stockData[0]['changesPercentage'] < 0 && (
+				<div className=''>
+					<div className='h-full grid grid-cols-3 w-full justify-between items-center p-2 py-4 text-white '>
+						{/* display logo and ticker */}
+						<div className='flex justify-start items-center rounded-lg'>
+							<img
+								className='w-max h-8 rounded-lg'
+								src={companyLogo}
+								alt={companyLogo}></img>
+							<div className='ml-1 text-sm'>${ticker}</div>
+						</div>
+						{/* display current price */}
+						<p className='flex justify-center text-red'>
+							${stockData[0]['price']?.toFixed(2)}
+						</p>
+						<button
+							onClick={DeleteStock}
+							className='flex justify-center text-white opacity-50 hover:opacity-100'>
+							<AiFillDelete
+								className='hover:text-red flex justify-center hover:scale-110 transition ease-in-out delay-25'
+								size={20}
+							/>
+						</button>
+					</div>
+				</div>
 			)}
 		</>
 	)

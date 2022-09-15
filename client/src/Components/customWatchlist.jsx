@@ -21,10 +21,10 @@ export const CustomWatchlist = () => {
 
 	return (
 		<div className=' text-white w-full bg-grey rounded-lg '>
-			<div className='w-full bg-grey2 mt-7 h-12 items-center mb-4 rounded-lg z-50 sticky top-0 grid grid-cols-3 justify-between px-2'>
-				<h2 className=''>Ticker</h2>
-				<h2 className=''>Price</h2>
-				<h2 className=''>Delete </h2>
+			<div className='sticky top-0 grid grid-cols-3 justify-between md:px-2 w-full mt-2 md:mt-7 h-12 items-center mb-4 bg-grey2 rounded-lg z-50 '>
+				<h2 className='flex justify-center opacity-70'>Ticker</h2>
+				<h2 className='flex justify-center opacity-70'>Price</h2>
+				<h2 className='flex justify-center opacity-70'>Delete </h2>
 			</div>
 			<ul className='bg-primary bg-opacity-20 overflow-y-auto h-96 rounded-lg'>
 				{watchlist && watchlist.length >= 1 ? (

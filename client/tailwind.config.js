@@ -17,6 +17,11 @@ module.exports = {
 			gray100: '#f3f4f6',
 			green: '#16a34a',
 		},
+
+		screens: {
+			md: '1081px',
+		},
+
 		fontFamily: {
 			primary: ['Work Sans'],
 		},

@@ -22,21 +22,23 @@ export default function Home() {
 
 	return (
 		<div className='flex w-full h-full mt-4 md:mt-0 items-center justify-evenly overflow-x-scroll md:overflow-x-auto bg-grey'>
-			<div className='flex flex-col w-full lg:w-5/6 px-4 md:px-0 md:justify-evenly '>
-				<div className='flex flex-col w-full md:flex-row  md:px-0 md:justify-evenly '>
+			<div className='flex flex-col w-full lg:w-5/6 px-2 md:px-0 md:mx-12 md:justify-evenly '>
+				<div className='flex flex-col w-full md:flex-row md:px-0 md:justify-evenly '>
 					{/*----------------------- nav-bar section ----------------------- */}
 					<section className='flex flex-col md:h-full md:w-full md:mb-1'>
 						<form
 							className='flex flex-col md:flex-row w-full h-max md:h-16 text-white md:items-center md:mb-3 md:pl-0 md:gap-24 justify-start md:justify-start px-1 md:px-0'
 							onSubmit={handleSubmit}>
-							<header className='flex gap-2 md:gap-0 flex-row items-center md:items-start md:flex-col'>
-								<h2 className='mb-4 md:mb-0 md:text-2xl'>Stock Market</h2>
+							<header className='flex gap-2 md:gap-0 h-full flex-row md:flex-col items-center md:items-start '>
+								<h2 className='mb-4 md:mb-0 text-xl md:text-2xl'>
+									Stock Market
+								</h2>
 								<h3 className='mb-4 md:mb-0 md:text-xl text-sm opacity-50 '>
 									S&P500 index
 								</h3>
 							</header>
 							<input
-								className='h-12 w-max md:w-72 rounded-md pl-2 mb-4 md:mb-0 active:outline-2 bg-opacity-20 placeholder-gainsboro text-black outline-lightBlue'
+								className='h-12 w-max md:w-72  pl-2 mb-4 md:mb-0 active:outline-2 bg-opacity-20 placeholder-gainsboro text-black outline-lightBlue rounded-md'
 								value={value}
 								onChange={handleChange}
 								onInput={(e) =>
@@ -52,38 +54,47 @@ export default function Home() {
 							</button>
 						</form>
 						{/*----------------------- ticker info ----------------------- */}
-						<div className='relative h-full overflow-auto bg-opacity-20 md:overflow-hidden w-max sm:w-full mt-4 rounded-lg '>
-							<article className='w-full px-0 rounded-lg overflow-auto h-max '>
-								<nav className=' sticky top-0 bg-grey2 text-white z-50 h-12 rounded-lg w-full'>
-									<ul className='grid grid-cols-5 w-full self-center h-full md:px-0 px-2 '>
+						<div className='relative h-full overflow-auto bg-opacity-20 md:overflow-hidden w-max md:w-full mt-4 rounded-lg '>
+							<article className='h-max w-full px-0 rounded-lg overflow-auto'>
+								<nav className='sticky top-0 w-full h-12 bg-grey2 text-white z-50 rounded-lg '>
+									<ul className='grid grid-cols-5 w-full h-full self-center md:px-0 px-2 opacity-70'>
 										<span className='pl-2'>
-											<li className='flex text-xs md:text-base  h-full items-center '>
+											<li className='flex h-full items-center  text-xs md:text-base'>
 												Name
 											</li>
 										</span>
 										<span className='md:pl-2'>
-											<li className='text-xs md:text-base h-full items-center flex'>
+											<li className='h-full items-center flex text-xs md:text-base'>
 												Ticker
 											</li>
 										</span>
 
 										<span className=''>
-											<li className='text-xs md:text-base h-full items-center flex'>
+											<li className='h-full items-center flex text-xs md:text-base'>
 												Current Price
 											</li>
 										</span>
-
-										<span className=''>
-											<li className='text-xs md:text-base h-full items-center flex'>
-												Change
-											</li>
-										</span>
+										{ticker <= 0 ? (
+											<span className=''>
+												<li className='h-full items-center justify-end flex text-xs md:text-base'>
+													Change
+												</li>
+											</span>
+										) : (
+											<span className=''>
+												<li className='h-full items-center flex text-xs md:text-base'>
+													Change
+												</li>
+											</span>
+										)}
 									</ul>
 								</nav>
 								{!ticker ? (
-									<div></div>
+									<div className='flex flex-col bg-red h-max mt-4 bg-opacity-20 rounded-lg'>
+										Search
+									</div>
 								) : (
-									<div className='flex flex-col h-max bg-opacity-20 mt-4 rounded-lg'>
+									<div className='flex flex-col h-max mt-4 bg-opacity-20 rounded-lg'>
 										{ticker.map((enteredTicker) => (
 											<SingleStockContainer
 												name={enteredTicker}
@@ -95,11 +106,11 @@ export default function Home() {
 						</div>
 					</section>
 					{/*----------------------- Stocks watchlist section ----------------------- */}
-					<section className=' w-full md:w-96 flex flex-col md:mt-0 justify-center h-max md:ml-4 text-white '>
-						<header className='flex items-end md:items-end justify-start h-16  p-2 md:p-0 text-xl'>
+					<section className='flex flex-col h-max w-full justify-center md:w-96 min-w-[315px] md:mt-0 md:ml-4 text-white '>
+						<h3 className='flex h-16 items-end justify-start p-2 md:p-0 text-xl'>
 							Watchlist
-						</header>
-						<article className='flex flex-col  h-72 md:h-96 mb-36  m-2 md:m-0 md:p-0 bg-primary text-white rounded-xl '>
+						</h3>
+						<article className='flex flex-col h-72 md:h-96 mb-16 md:mb-36 md:p-0 text-white rounded-xl '>
 							{<CustomWatchlist></CustomWatchlist>}
 						</article>
 					</section>
@@ -114,7 +125,7 @@ export default function Home() {
 							<li className=''>Price</li>
 							<li className=''>Change</li>
 						</ul>
-						{/* <TopGainers /> */}
+						<TopGainers />
 					</div>
 				</section>
 			</div>
