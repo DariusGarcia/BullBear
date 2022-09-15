@@ -1,44 +1,44 @@
-import React, { useState } from 'react';
-import { Link as RouterLink } from 'react-router-dom';
-import validator from 'validator';
-import { regexPassword } from '../utils';
+import React, { useState } from 'react'
+import { Link as RouterLink } from 'react-router-dom'
+import validator from 'validator'
+import { regexPassword } from '../utils'
 
 export default function Login({}) {
 	const [values, setValues] = useState({
 		email: '',
 		password: '',
 		showPassword: false,
-	});
+	})
 	const [errors, setErrors] = useState({
 		email: false,
 		password: false,
 		fetchError: false,
 		fetchErrorMsg: '',
-	});
+	})
 
 	const handleChange = (fieldName) => (event) => {
-		const currValue = event.target.value;
+		const currValue = event.target.value
 		let isCorrectValue =
 			fieldName === 'email'
 				? validator.isEmail(currValue)
-				: regexPassword.test(currValue);
+				: regexPassword.test(currValue)
 
 		isCorrectValue
 			? setErrors({ ...errors, [fieldName]: false })
-			: setErrors({ ...errors, [fieldName]: true });
+			: setErrors({ ...errors, [fieldName]: true })
 
-		setValues({ ...values, [fieldName]: event.target.value });
-	};
+		setValues({ ...values, [fieldName]: event.target.value })
+	}
 
 	const handleShowPassword = () => {
 		setValues({
 			...values,
 			showPassword: !values.showPassword,
-		});
-	};
+		})
+	}
 
 	const handleSubmit = async (event) => {
-		event.preventDefault();
+		event.preventDefault()
 
 		try {
 			const res = await fetch('/api/login', {
@@ -50,19 +50,19 @@ export default function Login({}) {
 					email: values.email,
 					password: values.password,
 				}),
-			});
+			})
 
 			if (!res.ok) {
-				const error = await res.json();
+				const error = await res.json()
 				return setErrors({
 					...errors,
 					fetchError: true,
 					fetchErrorMsg: error.msg,
-				});
+				})
 			}
 
-			const data = await res.json();
-			console.log({ data });
+			const data = await res.json()
+			console.log({ data })
 
 			// this is just a visual feedback for user for this demo
 			// this will not be an error, rather we will show a different UI or redirect user to dashboard
@@ -70,22 +70,22 @@ export default function Login({}) {
 				...errors,
 				fetchError: true,
 				fetchErrorMsg: data.msg,
-			});
+			})
 			setValues({
 				email: '',
 				password: '',
 				showPassword: false,
-			});
-			return;
+			})
+			return
 		} catch (error) {
 			setErrors({
 				...errors,
 				fetchError: true,
 				fetchErrorMsg:
 					'There was a problem with our server, please try again later',
-			});
+			})
 		}
-	};
+	}
 
 	return (
 		<div className='absolute flex justify-center w-screen mt-8 h-screen'>
@@ -128,5 +128,5 @@ export default function Login({}) {
 			</form>
 			<div className='flex items-center justify-center mt-6'></div>
 		</div>
-	);
+	)
 }

@@ -9,9 +9,17 @@
 
 }
 
+html {
+  height: 100%;
+  background-color: #f3f4f6;
+  -webkit-tap-highlight-color: transparent;
+}
+
 body {
-  background-color: #212841;
+  background-color: #23272f;
+  color: black;
   margin: 0;
+  height: 100%;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;

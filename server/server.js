@@ -1,27 +1,41 @@
-require('dotenv').config();
-const express = require('express');
-const app = express();
-const cors = require('cors');
-// const userRoutes = require('./routes/users');
-// const authRoutes = require('./routes/auth');
+require('dotenv').config()
+const express = require('express')
+const mongoose = require('mongoose')
+const cors = require('cors')
 
-// middlewares
-app.use(express.json());
-app.use(cors());
+const userRoutes = require('./routes/user')
+const watchlistRoutes = require('./routes/watchlists')
+
+process.on('uncaughtException', function (err) {
+	console.error(err)
+	console.log('Node NOT Exiting...')
+})
+
+// express app
+const app = express()
+
+// middleware
+app.use(express.json())
+app.use(cors())
 
 // routes
-// app.use('/api/user', userRoutes);
-// app.use('/api/auth', authRoutes);
+app.use((req, res, next) => {
+	console.log(req.path, req.method)
+	next()
+})
 
-const port = process.env.PORT || 5000;
-app.use(require('./routes/record'));
-// get driver connection
-const dbo = require('./db/conn');
+app.use('/api/user', userRoutes)
+app.use('/api/watchlist', watchlistRoutes)
 
-app.listen(port, () => {
-	// perform a database connection when server starts
-	dbo.connectToServer(function (err) {
-		if (err) console.error(err);
-	});
-	console.log(`Server is running on port: ${port}`);
-});
+// connect to db
+mongoose
+	.connect(process.env.ATLAS_URI)
+	.then(() => {
+		console.log('Connected to Mongo DB')
+		app.listen(process.env.PORT, () => {
+			console.log(`Server started on port ${process.env.PORT}`)
+		})
+	})
+	.catch((error) => {
+		console.log(error)
+	})

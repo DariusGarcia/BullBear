@@ -1,40 +1,44 @@
-import React, { useState } from 'react';
-import FetchStocks from './FetchStocks';
-import Navigation from './Navigation';
+import { useState } from 'react'
+import { CustomWatchlist } from './customWatchlist'
+import SingleStockContainer from './singleStockContainer'
+import { TopGainers } from './topGainers'
 
 export default function Home() {
-	const [value, setValue] = useState('');
-	const [ticker, setTicker] = useState([]);
+	const [value, setValue] = useState('')
+	const [ticker, setTicker] = useState([])
 
 	const handleChange = (event) => {
-		const stock = event.target.value.trim();
-		setValue(stock);
-	};
+		const stock = event.target.value.trim()
+		setValue(stock)
+	}
 
 	const handleSubmit = (event) => {
-		event.preventDefault();
+		event.preventDefault()
 		if (!ticker.includes(value)) {
-			setTicker(ticker.concat(value));
-			setValue('');
+			setTicker(ticker.concat(value))
+			setValue('')
 		}
-		console.log(ticker);
-	};
+	}
 
 	return (
-		<>
-			<Navigation />
-			<div className='flex justify-evenly h-auto overflow-x-scroll md:overflow-x-auto md:w-screen items-center mt-12 md:mt-48 md:mt-0 pb-48 bg-primary text-white'>
-				<div className='flex flex-col md:flex-row md:justify-evenly w-screen'>
-					<section className='flex flex-col h-screen md:h-1/2 md:w-3/4 md:mb-1'>
+		<div className='flex w-full h-full mt-4 md:mt-0 items-center justify-evenly overflow-x-scroll md:overflow-x-auto bg-grey'>
+			<div className='flex flex-col w-full lg:w-5/6 px-2 md:px-0 md:mx-12 md:justify-evenly '>
+				<div className='flex flex-col w-full md:flex-row md:px-0 md:justify-evenly '>
+					{/*----------------------- nav-bar section ----------------------- */}
+					<section className='flex flex-col md:h-full md:w-full md:mb-1'>
 						<form
-							className='flex flex-col md:flex-row md:items-end md:mb-3 pl-4 md:pl-0 md:gap-8 justify-start md:justify-between w-full h-max md:h-24 px-1 md:px-0'
+							className='flex flex-col md:flex-row w-full h-max md:h-16 text-white md:items-center md:mb-3 md:pl-0 md:gap-24 justify-start md:justify-start px-1 md:px-0'
 							onSubmit={handleSubmit}>
-							<h2 className=' mb-4 md:mb-0 md:text-2xl'>Stock Market</h2>
-							<h3 className=' mb-4 md:mb-0 md:text-xl text-sm text-white'>
-								S&P500 index
-							</h3>
+							<header className='flex gap-2 md:gap-0 h-full flex-row md:flex-col items-center md:items-start '>
+								<h2 className='mb-4 md:mb-0 text-xl md:text-2xl'>
+									Stock Market
+								</h2>
+								<h3 className='mb-4 md:mb-0 md:text-xl text-sm opacity-50 '>
+									S&P500 index
+								</h3>
+							</header>
 							<input
-								className='h-10 w-max md:w-47 rounded-md pl-2 mb-4 md:mb-0 active:outline-2 bg-grey active:bg-white active:text-black hover:bg-white hover:placeholder-grey hover:text-black placeholder-white  outline-lightBlue'
+								className='h-12 w-max md:w-72  pl-2 mb-4 md:mb-0 active:outline-2 bg-opacity-20 placeholder-gainsboro text-black outline-lightBlue rounded-md'
 								value={value}
 								onChange={handleChange}
 								onInput={(e) =>
@@ -43,69 +47,88 @@ export default function Home() {
 								type='text'
 								placeholder='e.g. MSFT'
 								autoFocus
+								aria-label='search stock ticker input'
 							/>
-							<button className='w-3/5 md:w-auto md:h-12 text-sm p-4 flex text-center justify-center bg-lightBlue rounded-md mb-6 md:mb-0'>
+							<button className='w-3/5 md:w-auto md:h-12 text-sm p-4 flex text-center justify-center items-center hover:scale-105 transition ease-in-out delay-25 bg-lightBlue bg-opacity-20 border-2 hover:bg-opacity-100 border-lightBlue text-white hover:text-white rounded-lg mb-6 md:mb-0'>
 								Search Ticker
 							</button>
 						</form>
-						<div className='relative h-screen md:h-96 overflow-scroll md:overflow-hidden w-max md:w-full bg-secondary shadow-3xl rounded-xl '>
-							<article className='h-96 md:h-96 w-max md:w-full pb-2 py-4 px-0 md:px-4 md:p-4 bg-secondary rounded-xl shadow-3xl overflow-auto'>
-								<nav className='flex items-center h-12 bg-grey rounded-xl w-max md:w-full px-2 md:px-0 '>
-									<ul className='flex md:w-full w-max justify-between  '>
-										<span className='w-24 md:w-1/6 md:pl-2'>
-											<li className='text-xs md:text-base w-max border-b-2 pb-1'>
-												Stock
+						{/*----------------------- ticker info ----------------------- */}
+						<div className='relative h-full overflow-auto bg-opacity-20 md:overflow-hidden w-max md:w-full mt-4 rounded-lg '>
+							<article className='h-max w-full px-0 rounded-lg overflow-auto'>
+								<nav className='sticky top-0 w-full h-12 bg-grey2 text-white z-50 rounded-lg '>
+									<ul className='grid grid-cols-5 w-full h-full self-center md:px-0 px-2 opacity-70'>
+										<span className='pl-2'>
+											<li className='flex h-full items-center  text-xs md:text-base'>
+												Name
 											</li>
 										</span>
-										<span className='w-24 md:w-1/6 mr-4 md:mr-0'>
-											<li className='text-xs md:text-base w-max border-b-2 pb-1'>
+										<span className='md:pl-2'>
+											<li className='h-full items-center flex text-xs md:text-base'>
+												Ticker
+											</li>
+										</span>
+
+										<span className=''>
+											<li className='h-full items-center flex text-xs md:text-base'>
 												Current Price
 											</li>
 										</span>
-										<span className='w-24 md:w-1/6 '>
-											<li className='text-xs md:text-base w-max border-b-2 pb-1'>
-												Open
-											</li>
-										</span>
-										<span className='w-24 md:w-1/6'>
-											<li className='text-xs md:text-base w-max border-b-2 pb-1'>
-												Previous Close
-											</li>
-										</span>
-										<span className='w-24 md:w-1/6 mx-4 md:mx-0'>
-											<li className='text-xs md:text-base w-max border-b-2 pb-1'>
-												24hr Change
-											</li>
-										</span>
-										<span className='w-24 md:w-1/6'>
-											<li className='text-xs md:text-base w-max border-b-2 mr-2 md:mr-0 pb-1'>
-												Volume
-											</li>
-										</span>
-										<span className='w-24 md:w-1/6'>
-											<li className='text-xs md:text-base w-max border-b-2 pb-1 ml-2 md:ml-0'>
-												Last Open
-											</li>
-										</span>
+										{ticker <= 0 ? (
+											<span className=''>
+												<li className='h-full items-center justify-end flex text-xs md:text-base'>
+													Change
+												</li>
+											</span>
+										) : (
+											<span className=''>
+												<li className='h-full items-center flex text-xs md:text-base'>
+													Change
+												</li>
+											</span>
+										)}
 									</ul>
 								</nav>
-								<div className='overflow-auto md:overflow-hidden'>
-									{ticker.map((favTicker) => (
-										<FetchStocks name={favTicker} key={favTicker}></FetchStocks>
-									))}
-								</div>
+								{!ticker ? (
+									<div className='flex flex-col bg-red h-max mt-4 bg-opacity-20 rounded-lg'>
+										Search
+									</div>
+								) : (
+									<div className='flex flex-col h-max mt-4 bg-opacity-20 rounded-lg'>
+										{ticker.map((enteredTicker) => (
+											<SingleStockContainer
+												name={enteredTicker}
+												key={enteredTicker}></SingleStockContainer>
+										))}
+									</div>
+								)}
 							</article>
 						</div>
 					</section>
 					{/*----------------------- Stocks watchlist section ----------------------- */}
-					<section className='h-3/5 w-full md:w-72 flex flex-col mt-24 md:mt-0 '>
-						<header className='flex items-end md:items-end  md:mb-3 h-24 p-2 md:p-0 text-xl'>
-							Stocks
-						</header>
-						<article className='h-96 w-full md:w-full m-2 md:m-0 md:p-0 bg-secondary shadow-3xl rounded-xl '></article>
+					<section className='flex flex-col h-max w-full justify-center md:w-96 min-w-[315px] md:mt-0 md:ml-4 text-white '>
+						<h3 className='flex h-16 items-end justify-start p-2 md:p-0 text-xl'>
+							Watchlist
+						</h3>
+						<article className='flex flex-col h-72 md:h-96 mb-16 md:mb-36 md:p-0 text-white rounded-xl '>
+							{<CustomWatchlist></CustomWatchlist>}
+						</article>
 					</section>
 				</div>
+				<section className='relative h-full flex flex-col my-36 w-full rounded-lg px-2 py-4  text-white'>
+					<div className='text-xl mb-4'>Today's Top Gainers</div>
+					<div className='flex flex-col h-96 overflow-auto w-max md:w-full'>
+						<ul className='sticky top-0 h-12 grid grid-cols-5 mb-2 px-2 py-4 list-none items-center bg-grey2 rounded-lg z-50 '>
+							<li className=''>Name</li>
+							<li className=''>Ticker</li>
+							<li className=''>% Change</li>
+							<li className=''>Price</li>
+							<li className=''>Change</li>
+						</ul>
+						<TopGainers />
+					</div>
+				</section>
 			</div>
-		</>
-	);
+		</div>
+	)
 }

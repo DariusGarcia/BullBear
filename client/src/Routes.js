@@ -1,12 +1,12 @@
-import { useContext } from 'react';
-import { Routes, Route } from 'react-router-dom';
-import Login from './Components/Login';
-import Signup from './Components/Signup';
+import { useContext } from 'react'
+import { Routes, Route } from 'react-router-dom'
+import Login from './Components/Login'
+import Signup from './Pages/Signup2'
 
-import { UserContext } from './App';
+import { UserContext } from './App'
 
 function RoutesComp() {
-	const userContext = useContext(UserContext);
+	const userContext = useContext(UserContext)
 	return (
 		<>
 			<Routes>
@@ -26,7 +26,7 @@ function RoutesComp() {
 				)}
 			</Routes>
 		</>
-	);
+	)
 }
 
-export default RoutesComp;
+export default RoutesComp
