@@ -1,14 +1,17 @@
 import { useState } from 'react'
+import { useWatchlistContext } from '../Hooks/useWatchlistContext'
 
 export const DeleteStock = async (ticker) => {
+	const { dispatch } = useWatchlistContext()
+
 	const [error, setError] = useState(null)
 
-	const response = await fetch('http://localhost:4000/api/watchlist', {
-		method: 'POST',
-		// mode: 'cors',
-		body: JSON.stringify({ ticker: `${ticker}` }),
-		headers: { 'Content-Type': 'application/json' },
-	})
+	const response = await fetch(
+		`http://localhost:4000/api/watchlist/${ticker._id}`,
+		{
+			method: 'DELETE',
+		}
+	)
 
 	const json = await response.json()
 
@@ -18,6 +21,7 @@ export const DeleteStock = async (ticker) => {
 
 	if (response.ok) {
 		setError(null)
+		dispatch({ type: 'DELETE_STOCK', payload: json })
 		console.log('New stock added to watchlist')
 	}
 }

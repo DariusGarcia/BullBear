@@ -29,6 +29,12 @@ const getSingleStock = async (req, res) => {
 const createStock = async (req, res) => {
 	const { ticker } = req.body
 
+	// implemented this block of code to try to check for a duplicate stock in the database
+	// const query = Watchlist.findOne({ ticker: ticker })
+	// if (ticker == query) {
+	// 	res.redirect('/')
+	// }
+
 	// add doc to mongoDB
 	try {
 		const watchlist = await Watchlist.create({ ticker })

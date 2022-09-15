@@ -18,7 +18,7 @@ const FetchSingleStock = (props) => {
 		UseGetAPI(name)
 			.then((res) => setStockData(res))
 			.catch((error) => console.log(error))
-	}, [])
+	}, [name])
 
 	const handleAdd = async () => {
 		const ticker = `${name}`
@@ -58,9 +58,11 @@ const FetchSingleStock = (props) => {
 		)
 	} else {
 		info = (
-			<p className='hover:border-2 border-lightBlue hover:rounded-xl'>
-				Loading...
-			</p>
+			<span className='flex w-full h-full justify-center items-center hover:border-2 border-lightBlue hover:rounded-xl '>
+				<p id='class-nf' className='w-full pl-2 py-4 text-red'>
+					Invalid stock...
+				</p>
+			</span>
 		)
 	}
 
@@ -70,7 +72,7 @@ const FetchSingleStock = (props) => {
 				<div className=' w-full py-4'>
 					<ul className='h-full grid grid-cols-5 content-center text-white px-2'>
 						{/* display stock ticker */}
-						<li className='flex h-full items-center gap-4 md:gap-1 text-xs md:text-sm text-lightBlue'>
+						<li className='flex h-full items-center md:gap-1 text-xs md:text-sm text-lightBlue'>
 							<div className='w-1/3'>
 								<img
 									className='w-max h-8 md:h-12 rounded-lg'
@@ -132,7 +134,7 @@ const FetchSingleStock = (props) => {
 		info = (
 			<ul className='h-full grid px-2 py-4 grid-cols-5 content-center text-white'>
 				{/* display stock ticker */}
-				<li className='flex h-full items-center gap-4 md:gap-1 text-xs md:text-sm text-lightBlue'>
+				<li className='flex h-full items-center md:gap-1 text-xs md:text-sm text-lightBlue'>
 					<div className='w-1/3'>
 						<img
 							className='w-max h-8 md:h-12 rounded-lg '

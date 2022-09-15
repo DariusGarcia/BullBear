@@ -2,7 +2,6 @@ import { createContext, useReducer, useMemo } from 'react'
 
 export const WatchlistContext = createContext()
 
-console.log('starting')
 export const watchlistReducer = (state, action) => {
 	switch (action.type) {
 		case 'SET_WATCHLIST':
@@ -12,6 +11,10 @@ export const watchlistReducer = (state, action) => {
 		case 'ADD_STOCK':
 			return {
 				watchlist: [action.payload, ...state.watchlist],
+			}
+		case 'DELETE_STOCK':
+			return {
+				watchlist: state.watchlist.filter((w) => w._id !== action.payload._id),
 			}
 
 		default:
