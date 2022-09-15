@@ -9,7 +9,7 @@ export default function Home() {
 	const [ticker, setTicker] = useState([])
 	// const { watchlist, dispatch } = useWatchlistContext()
 
-	const [refresh, setRefresh] = useState(false)
+	const [addedStock, setAddedStock] = useState('')
 
 	const handleChange = (event) => {
 		const stock = event.target.value.trim()
@@ -57,7 +57,7 @@ export default function Home() {
 						</form>
 						{/*----------------------- ticker info ----------------------- */}
 						<div className='relative overflow-auto bg-opacity-20 md:overflow-hidden w-max sm:w-full mt-4 rounded-lg '>
-							<article className='w-full px-0 rounded-lg overflow-auto h-full '>
+							<article className='w-full px-0 rounded-lg overflow-auto h-96 '>
 								<nav className=' sticky top-0 bg-grey2 text-white z-50 h-12 rounded-lg w-full'>
 									<ul className='grid grid-cols-5 self-center h-full md:px-0 px-2 '>
 										<span className='pl-2'>
@@ -85,7 +85,7 @@ export default function Home() {
 									</ul>
 								</nav>
 
-								<div className='flex flex-col-reverse overflow-auto h-full bg-opacity-20 mt-4 rounded-lg'>
+								<div className='flex flex-col h-max bg-opacity-20 mt-4 rounded-lg'>
 									{ticker.map((enteredTicker) => (
 										<SingleStockContainer
 											name={enteredTicker}
@@ -101,23 +101,23 @@ export default function Home() {
 							Watchlist
 						</header>
 						<article className='flex flex-col  h-72 md:h-96 mb-12  m-2 md:m-0 md:p-0 bg-primary text-white rounded-xl '>
-							{<CustomWatchlist refresh={refresh}></CustomWatchlist>}
+							{<CustomWatchlist refresh={addedStock}></CustomWatchlist>}
 						</article>
 					</section>
 				</div>
-				<section className='relative flex flex-col my-12 w-full rounded-lg px-2 py-4  text-white'>
+				{/* <section className='relative flex flex-col my-12 w-full rounded-lg px-2 py-4  text-white'>
 					<div className='text-xl mb-4'>Today's Top Gainers</div>
 					<div className='flex flex-col h-96 overflow-auto '>
 						<ul className='sticky top-0 h-12 grid grid-cols-5 mb-2 px-2 py-4 list-none items-center bg-grey2 rounded-lg z-50 '>
 							<li className=''>Name</li>
 							<li className=''>Ticker</li>
-							<li className=''>% Change</li>
+						<li className=''>% Change</li>
 							<li className=''>Price</li>
 							<li className=''>Change</li>
 						</ul>
 						<TopGainers />
 					</div>
-				</section>
+				</section> */}
 			</div>
 		</div>
 	)

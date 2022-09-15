@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useMemo } from 'react'
 import { UseGetAPI } from '../Hooks/useGetAPI'
 import { AiFillDelete } from 'react-icons/ai'
 import { DeleteStock } from '../utils/deleteStock'
@@ -8,11 +8,22 @@ export const WatchlistDetails = (props) => {
 	const [stockData, setStockData] = useState({})
 	const [error, setError] = useState(null)
 
-	useEffect(() => {
-		UseGetAPI(ticker)
-			.then((res) => setStockData(res))
-			.catch((error) => console.log(error))
-	}, [])
+	// useEffect(() => {
+	// 	UseGetAPI(ticker)
+	// 		.then((res) => setStockData(res))
+	// 		.catch((error) => console.log(error))
+	// }, [ticker])
+
+	const MemoizedData = () =>
+		useMemo(
+			() =>
+				UseGetAPI(ticker)
+					.then((res) => setStockData(res))
+					.catch((error) => console.log(error)),
+			[]
+		)
+
+	MemoizedData()
 
 	return (
 		<>
@@ -24,7 +35,7 @@ export const WatchlistDetails = (props) => {
 						${ticker}
 					</li>
 					{/* display current price */}
-					<li className=' md:text-base h-full justify-start items-center flex text-white'>
+					<li className=' md:text-base justify-center items-center flex text-white'>
 						${stockData[0]['price']?.toFixed(2)}
 					</li>
 					<button
@@ -45,7 +56,7 @@ export const WatchlistDetails = (props) => {
 						${ticker}
 					</li>
 					{/* display current price */}
-					<li className=' md:text-base h-full justify-start  text-white flex'>
+					<li className=' md:text-base justify-start  text-white flex'>
 						${stockData[0]['price']?.toFixed(2)}
 					</li>
 					<button

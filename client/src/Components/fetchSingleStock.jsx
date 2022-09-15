@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-
+import { useWatchlistContext } from '../Hooks/useWatchlistContext'
 import { UseGetAPI } from '../Hooks/useGetAPI'
 import { StockMoreInfo } from './stockMoreInfo'
 import { MdOutlineOpenInFull } from 'react-icons/md'
@@ -8,13 +8,15 @@ const FetchSingleStock = (props) => {
 	const { name } = props
 	const [toggle, setToggle] = useState(false)
 	const [stockData, setStockData] = useState([{}])
+	const { watchlist, dispatch } = useWatchlistContext()
 	const [error, setError] = useState(null)
 
+	// trying out dispatch instead of setStockData for UseEffect
 	useEffect(() => {
 		UseGetAPI(name)
 			.then((res) => setStockData(res))
 			.catch((error) => console.log(error))
-	}, [name])
+	}, [])
 
 	const handleAdd = async () => {
 		const ticker = `${name}`
@@ -32,6 +34,7 @@ const FetchSingleStock = (props) => {
 		}
 
 		if (response.ok) {
+			dispatch({ type: 'ADD_STOCK', payload: json })
 			setError(null)
 			console.log('New stock added to watchlist')
 		}
@@ -42,7 +45,7 @@ const FetchSingleStock = (props) => {
 	const handleOnClick = () => {
 		setToggle(!toggle)
 	}
-	if (!stockData) {
+	if (!watchlist) {
 		info = (
 			<span className='flex w-full h-full justify-center items-center hover:border-2 border-lightBlue hover:rounded-xl '>
 				<p id='class-nf' className='w-full pl-2 text-red font-bold'>
@@ -82,15 +85,19 @@ const FetchSingleStock = (props) => {
 
 						{error && <li className=''>{error}</li>}
 						<span className='flex flex-row gap-12 items-center justify-around'>
-							<button
-								onClick={(event) => handleAdd(event)}
-								className='h-8 w-16 rounded-lg bg-primary border-2 opacity-50 hover:border-lightBlue hover:opacity-100 hover:scale-105 delay-25 ease-in-out transition text-white'>
-								Add
-							</button>
-							<MdOutlineOpenInFull
-								className='cursor-pointer hover:scale-110 transition text-white ease-in-out delay-25'
-								onClick={handleOnClick}
-								size={25}></MdOutlineOpenInFull>
+							<span>
+								<button
+									onClick={(event) => handleAdd(event)}
+									className='h-8 w-16 rounded-lg bg-primary border-2 opacity-50 hover:border-lightBlue hover:opacity-100 hover:scale-105 delay-25 ease-in-out transition text-white'>
+									Add
+								</button>
+							</span>
+							<span>
+								<MdOutlineOpenInFull
+									className='cursor-pointer hover:scale-110 transition text-white ease-in-out delay-25'
+									onClick={handleOnClick}
+									size={25}></MdOutlineOpenInFull>
+							</span>
 						</span>
 					</ul>
 				</div>
@@ -122,15 +129,19 @@ const FetchSingleStock = (props) => {
 					{stockData[0]['changesPercentage']?.toFixed(2)}%
 				</li>
 				<li className='text-xs md:text-base h-full gap-12 items-center justify-around flex'>
-					<button
-						onClick={(event) => handleAdd(event)}
-						className='h-8 w-16 rounded-lg bg-primary border-2 opacity-50 hover:border-lightBlue hover:opacity-100 hover:scale-105 delay-25 ease-in-out transition text-white'>
-						Add
-					</button>
-					<MdOutlineOpenInFull
-						className='cursor-pointer hover:scale-110 transition text-white ease-in-out delay-25'
-						onClick={handleOnClick}
-						size={25}></MdOutlineOpenInFull>
+					<span>
+						<button
+							onClick={(event) => handleAdd(event)}
+							className='h-8 w-16 rounded-lg bg-primary border-2 opacity-50 hover:border-lightBlue hover:opacity-100 hover:scale-105 delay-25 ease-in-out transition text-white'>
+							Add
+						</button>
+					</span>
+					<span>
+						<MdOutlineOpenInFull
+							className='cursor-pointer hover:scale-110 transition text-white ease-in-out delay-25'
+							onClick={handleOnClick}
+							size={25}></MdOutlineOpenInFull>
+					</span>
 				</li>
 			</ul>
 		)

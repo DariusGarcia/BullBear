@@ -1,10 +1,17 @@
-import { useState, useEffect } from 'react'
+import { useState, useMemo, useEffect } from 'react'
 import { useWatchlistContext } from '../Hooks/useWatchlistContext'
 import { WatchlistDetails } from './watchlistDetails'
 
 export const CustomWatchlist = () => {
 	const { watchlist, dispatch } = useWatchlistContext()
 	// const [watchlist, setWatchlist] = useState(null)
+
+	// trying out use memo to see if it will stop the rerender when calling useEffect.
+	// when watchlist is in useEffect's dependency array, it causes a nonstop rerender
+	// need to include watchlist as variable so that page automatically rerenders when new stock is added to the custom watch list.
+	// however, we need to make sure that the var in dep. array is a primitive type and nothing else. (Per Jack herrigntons youtube video)
+
+	const data = useMemo(() => watchlist, [])
 
 	useEffect(() => {
 		const fetchWatchlist = async () => {
@@ -16,7 +23,7 @@ export const CustomWatchlist = () => {
 			}
 		}
 		fetchWatchlist()
-	}, [watchlist])
+	}, [data])
 
 	return (
 		<div className=' text-white w-full  bg-grey rounded-lg '>

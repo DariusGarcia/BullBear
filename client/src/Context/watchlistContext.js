@@ -1,4 +1,4 @@
-import { createContext, useReducer } from 'react'
+import { createContext, useReducer, useMemo } from 'react'
 
 export const WatchlistContext = createContext()
 
@@ -21,11 +21,13 @@ export const watchlistReducer = (state, action) => {
 
 export const WatchListContextProvider = ({ children }) => {
 	const [state, dispatch] = useReducer(watchlistReducer, {
-		watchlist: null,
+		watchlist: {},
 	})
 
+	const data = useMemo(() => ({ ...state, dispatch }), [state])
+
 	return (
-		<WatchlistContext.Provider value={{ ...state, dispatch }}>
+		<WatchlistContext.Provider value={data}>
 			{children}
 		</WatchlistContext.Provider>
 	)

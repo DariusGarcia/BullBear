@@ -27,7 +27,7 @@ export default function SingleStockContainer(props) {
 	}
 
 	return (
-		<div className='overflow-auto flex md:w-full h-auto mb-4 text-sm md:text-base shadow-lg bg-primary md:mx-0 rounded-lg'>
+		<div className='overflow-auto flex md:w-full  mb-4 text-sm md:text-base shadow-lg bg-primary md:mx-0 rounded-lg'>
 			{info}
 		</div>
 	)
