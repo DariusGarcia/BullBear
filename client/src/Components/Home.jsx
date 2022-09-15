@@ -1,5 +1,4 @@
 import { useState } from 'react'
-// import { useWatchlistContext } from '../Hooks/useWatchlistContext'
 import { CustomWatchlist } from './customWatchlist'
 import SingleStockContainer from './singleStockContainer'
 import { TopGainers } from './topGainers'
@@ -7,9 +6,6 @@ import { TopGainers } from './topGainers'
 export default function Home() {
 	const [value, setValue] = useState('')
 	const [ticker, setTicker] = useState([])
-	// const { watchlist, dispatch } = useWatchlistContext()
-
-	const [addedStock, setAddedStock] = useState('')
 
 	const handleChange = (event) => {
 		const stock = event.target.value.trim()
@@ -27,13 +23,13 @@ export default function Home() {
 	return (
 		<div className='flex w-full h-full mt-4 md:mt-0 items-center justify-evenly overflow-x-scroll md:overflow-x-auto bg-grey'>
 			<div className='flex flex-col w-full lg:w-5/6 px-4 md:px-0 md:justify-evenly '>
-				<div className='flex flex-col w-full md:flex-row px-4 md:px-0 md:justify-evenly '>
+				<div className='flex flex-col w-full md:flex-row  md:px-0 md:justify-evenly '>
 					{/*----------------------- nav-bar section ----------------------- */}
 					<section className='flex flex-col md:h-full md:w-full md:mb-1'>
 						<form
-							className='flex flex-col md:flex-row w-full h-max md:h-16 text-white md:items-center md:mb-3 pl-4 md:pl-0 md:gap-24 justify-start md:justify-start px-1 md:px-0'
+							className='flex flex-col md:flex-row w-full h-max md:h-16 text-white md:items-center md:mb-3 md:pl-0 md:gap-24 justify-start md:justify-start px-1 md:px-0'
 							onSubmit={handleSubmit}>
-							<header className='flex gap-2 md:gap-0 flex-row  items-center md:items-start md:flex-col'>
+							<header className='flex gap-2 md:gap-0 flex-row items-center md:items-start md:flex-col'>
 								<h2 className='mb-4 md:mb-0 md:text-2xl'>Stock Market</h2>
 								<h3 className='mb-4 md:mb-0 md:text-xl text-sm text-grey2 '>
 									S&P500 index
@@ -56,8 +52,8 @@ export default function Home() {
 							</button>
 						</form>
 						{/*----------------------- ticker info ----------------------- */}
-						<div className='relative overflow-auto bg-opacity-20 md:overflow-hidden w-max sm:w-full mt-4 rounded-lg '>
-							<article className='w-full px-0 rounded-lg overflow-auto h-96 '>
+						<div className='relative h-screen overflow-auto bg-opacity-20 md:overflow-hidden w-max sm:w-full mt-4 rounded-lg '>
+							<article className='w-full px-0 rounded-lg overflow-auto h-max '>
 								<nav className=' sticky top-0 bg-grey2 text-white z-50 h-12 rounded-lg w-full'>
 									<ul className='grid grid-cols-5 self-center h-full md:px-0 px-2 '>
 										<span className='pl-2'>
@@ -100,24 +96,24 @@ export default function Home() {
 						<header className='flex items-end md:items-center justify-center h-16  p-2 md:p-0 text-xl'>
 							Watchlist
 						</header>
-						<article className='flex flex-col  h-72 md:h-96 mb-12  m-2 md:m-0 md:p-0 bg-primary text-white rounded-xl '>
-							{<CustomWatchlist refresh={addedStock}></CustomWatchlist>}
+						<article className='flex flex-col  h-72 md:h-96 mb-36  m-2 md:m-0 md:p-0 bg-primary text-white rounded-xl '>
+							{<CustomWatchlist></CustomWatchlist>}
 						</article>
 					</section>
 				</div>
-				{/* <section className='relative flex flex-col my-12 w-full rounded-lg px-2 py-4  text-white'>
+				<section className='relative h-full flex flex-col my-12 w-full rounded-lg px-2 py-4  text-white'>
 					<div className='text-xl mb-4'>Today's Top Gainers</div>
-					<div className='flex flex-col h-96 overflow-auto '>
+					<div className='flex flex-col h-96 overflow-auto w-max md:w-full'>
 						<ul className='sticky top-0 h-12 grid grid-cols-5 mb-2 px-2 py-4 list-none items-center bg-grey2 rounded-lg z-50 '>
 							<li className=''>Name</li>
 							<li className=''>Ticker</li>
-						<li className=''>% Change</li>
+							<li className=''>% Change</li>
 							<li className=''>Price</li>
 							<li className=''>Change</li>
 						</ul>
 						<TopGainers />
 					</div>
-				</section> */}
+				</section>
 			</div>
 		</div>
 	)

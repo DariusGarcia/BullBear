@@ -31,16 +31,16 @@ export const WatchlistDetails = (props) => {
 				<ul className='h-full grid grid-cols-3 gap justify-between   items-center p-2 text-white'>
 					{/* display stock ticker */}
 
-					<li className='md:text-lg justify-start flex items-center text-green rounded-lg '>
+					<li className='justify-start flex items-center rounded-lg '>
 						${ticker}
 					</li>
 					{/* display current price */}
-					<li className=' md:text-base justify-center items-center flex text-white'>
+					<li className='flex justify-center items-center text-green'>
 						${stockData[0]['price']?.toFixed(2)}
 					</li>
 					<button
 						// onClick={() => DeleteStock(ticker)}
-						className='text-white  flex justify-start md:px-4 '>
+						className='flex justify-start md:px-4 text-white'>
 						<AiFillDelete
 							className='hover:text-red hover:scale-110 transition ease-in-out delay-25'
 							size={20}
@@ -49,19 +49,19 @@ export const WatchlistDetails = (props) => {
 				</ul>
 			)}
 			{stockData[0] && stockData[0]['changesPercentage'] < 0 && (
-				<ul className='h-full grid grid-cols-3 gap justify-between  items-center p-2 text-white '>
+				<ul className='h-full grid grid-cols-3 gap justify-between items-center p-2 text-white '>
 					{/* display stock ticker */}
 
-					<li className=' md:text-lg justify-start flex items-center  text-red rounded-lg  '>
+					<li className='flex justify-start items-center rounded-lg'>
 						${ticker}
 					</li>
 					{/* display current price */}
-					<li className=' md:text-base justify-start  text-white flex'>
+					<li className='flex justify-start text-text-red'>
 						${stockData[0]['price']?.toFixed(2)}
 					</li>
 					<button
 						// onClick={() => DeleteStock(ticker)}
-						className='text-white  flex justify-starts md:px-4'>
+						className='flex justify-starts md:px-4 text-white'>
 						<AiFillDelete
 							className='hover:text-red hover:scale-110 transition ease-in-out delay-25'
 							size={20}
