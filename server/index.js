@@ -21,7 +21,11 @@ app.options('*', cors())
 
 // middleware
 app.use(express.json())
-app.use(cors())
+app.use(
+	cors({
+		origin: 'https://bull-bear.vercel.app/',
+	})
+)
 
 // routes
 app.use((req, res, next) => {
