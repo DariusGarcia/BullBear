@@ -12,13 +12,13 @@ export const useLogin = () => {
 		const response = await fetch(
 			'https://bull-bear-pi.vercel.app/api/user/login',
 			{
-				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json',
 					'Access-Control-Allow-Headers': 'Origin, Content-Type, X-Auth-Token',
 					'Access-Control-Allow-Origin': '*',
 					'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
 				},
+				method: 'POST',
 				body: JSON.stringify({ email, password }),
 			}
 		)
