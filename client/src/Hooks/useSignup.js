@@ -10,7 +10,7 @@ export const useSignup = () => {
 		setIsLoading(true)
 		setError(null)
 		const response = await fetch(
-			'https://bull-bear-pi.vercel.app/api/user/signup',
+			'https://bullbear-server.herokuapp.com/api/user/signup',
 			{
 				method: 'POST',
 				headers: {
