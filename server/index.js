@@ -16,16 +16,27 @@ process.on('uncaughtException', function (err) {
 
 // express app
 const app = express()
+app.use(function (req, res, next) {
+	res.setHeader('Access-Control-Allow-Origin', 'https://bull-bear.vercel.app/')
+	res.setHeader(
+		'Access-Control-Allow-Methods',
+		'GET, POST, OPTIONS, PUT, PATCH, DELETE'
+	)
+	res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type')
+	res.setHeader('Access-Control-Allow-Credentials', true)
+	next()
+})
 
-app.options('*', cors())
-
-// middleware
-app.use(express.json())
 app.use(
 	cors({
-		origin: 'https://bull-bear.vercel.app/',
+		origin: '*',
+		methods: ['GET', 'POST', 'DELETE', 'UPDATE', 'PUT', 'PATCH'],
 	})
 )
+
+app.options('*', cors()),
+	// middleware
+	app.use(express.json())
 
 // routes
 app.use((req, res, next) => {
