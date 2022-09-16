@@ -11,14 +11,18 @@ export const Watchlist = () => {
 
 	useEffect(() => {
 		const fetchWatchlist = async () => {
-			const response = await fetch('https://bullbear-server.herokuapp.com/', {
-				headers: {
-					Authorization: `Bearer ${user.token}`,
-					'Access-Control-Allow-Headers': 'Origin, Content-Type, X-Auth-Token',
-					'Access-Control-Allow-Origin': '*',
-					'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
-				},
-			})
+			const response = await fetch(
+				'https://bullbear-server.herokuapp.com/api/watchlist',
+				{
+					headers: {
+						Authorization: `Bearer ${user.token}`,
+						'Access-Control-Allow-Headers':
+							'Origin, Content-Type, X-Auth-Token',
+						'Access-Control-Allow-Origin': '*',
+						'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
+					},
+				}
+			)
 			const json = await response.json()
 			if (response.ok) {
 				// setWatchlist(json.allStocks)
