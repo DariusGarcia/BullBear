@@ -1,10 +1,21 @@
 require('dotenv').config()
-const express = require('express')
 const mongoose = require('mongoose')
 const cors = require('cors')
+const express = require('express')
 
 // const userRoutes = require('./routes/user')
 // const watchlistRoutes = require('./routes/watchlists')
+// express app
+const app = express()
+app.use(cors())
+app.all('*', function (req, res) {
+	res.header('Access-Control-Allow-Origin', '*')
+	res.header(
+		'Access-Control-Allow-Headers',
+		'Content-Type,Content-Length, Authorization, Accept,X-Requested-With'
+	)
+	res.header('Access-Control-Allow-Methods', 'PUT,POST,GET,DELETE,OPTIONS')
+})
 
 const userRoutes = require('./api/user')
 const watchlistRoutes = require('./api/watchlists')
@@ -14,8 +25,6 @@ process.on('uncaughtException', function (err) {
 	console.log('Node NOT Exiting...')
 })
 
-// express app
-const app = express()
 app.use(function (req, res, next) {
 	res.setHeader('Access-Control-Allow-Origin', 'https://bull-bear.vercel.app/')
 	res.setHeader(
@@ -26,13 +35,6 @@ app.use(function (req, res, next) {
 	res.setHeader('Access-Control-Allow-Credentials', true)
 	next()
 })
-
-app.use(
-	cors({
-		origin: '*',
-		methods: ['GET', 'POST', 'DELETE', 'UPDATE', 'PUT', 'PATCH'],
-	})
-)
 
 app.options('*', cors()),
 	// middleware
