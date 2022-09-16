@@ -31,7 +31,7 @@ const FetchSingleStock = (props) => {
 		const ticker = `${name}`
 		console.log('handleAdd called')
 		const response = await fetch(
-			'https://bullbearserver.vercel.app/api/watchlist',
+			'https://bull-bear-pi.vercel.app/api/watchlist',
 			{
 				method: 'POST',
 				body: JSON.stringify({ ticker: `${ticker}` }),

@@ -17,7 +17,7 @@ export const WatchlistDetails = ({ ticker, watchlistInfo }) => {
 		}
 
 		const response = await fetch(
-			'http://localhost:4000/api/watchlist/' + watchlistInfo,
+			'https://bull-bear-pi.vercel.app/api/watchlist/' + watchlistInfo,
 			{
 				headers: {
 					Authorization: `Bearer ${user.token}`,
