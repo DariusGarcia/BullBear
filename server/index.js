@@ -3,8 +3,11 @@ const express = require('express')
 const mongoose = require('mongoose')
 const cors = require('cors')
 
-const userRoutes = require('./routes/user')
-const watchlistRoutes = require('./routes/watchlists')
+// const userRoutes = require('./routes/user')
+// const watchlistRoutes = require('./routes/watchlists')
+
+const userRoutes = require('./api/user')
+const watchlistRoutes = require('./api/watchlists')
 
 process.on('uncaughtException', function (err) {
 	console.error(err)
