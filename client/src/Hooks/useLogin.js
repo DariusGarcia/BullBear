@@ -10,7 +10,7 @@ export const useLogin = () => {
 		setIsLoading(true)
 		setError(null)
 		const response = await fetch(
-			'https://vercel.com/dariusg/bullbear-server/api/user/login',
+			'https://bull-bear-pi.vercel.app/api/user/login',
 			{
 				method: 'POST',
 				headers: {
