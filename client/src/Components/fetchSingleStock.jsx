@@ -30,14 +30,17 @@ const FetchSingleStock = (props) => {
 
 		const ticker = `${name}`
 		console.log('handleAdd called')
-		const response = await fetch('http://localhost:4000/api/watchlist', {
-			method: 'POST',
-			body: JSON.stringify({ ticker: `${ticker}` }),
-			headers: {
-				Authorization: `Bearer ${user.token}`,
-				'Content-Type': 'application/json',
-			},
-		})
+		const response = await fetch(
+			'https://bullbearserver.vercel.app/api/watchlist',
+			{
+				method: 'POST',
+				body: JSON.stringify({ ticker: `${ticker}` }),
+				headers: {
+					Authorization: `Bearer ${user.token}`,
+					'Content-Type': 'application/json',
+				},
+			}
+		)
 
 		const json = await response.json()
 
