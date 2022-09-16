@@ -6,7 +6,12 @@ const {
 	deleteStock,
 } = require('../controllers/watchlistController')
 
+const requireAuth = require('../middleware/requireAuth')
+
 const router = express.Router()
+
+// require auth for all watchlist routes
+router.use(requireAuth)
 
 // GET all stocks in watchlist
 router.get('/', getAllStocks)

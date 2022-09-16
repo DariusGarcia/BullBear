@@ -4,6 +4,7 @@ import { FetchCompanyProfile } from '../utils/fetchCompanyProfile'
 import { UseGetAPI } from '../Hooks/useGetAPI'
 import { StockMoreInfo } from './stockMoreInfo'
 import { MdOutlineOpenInFull } from 'react-icons/md'
+import { useAuthContext } from '../Hooks/useAuthContext'
 
 const FetchSingleStock = (props) => {
 	const { name } = props
@@ -12,6 +13,7 @@ const FetchSingleStock = (props) => {
 	const { watchlist, dispatch } = useWatchlistContext()
 	const [companyLogo, setCompanyLogo] = useState()
 	const [error, setError] = useState(null)
+	const { user } = useAuthContext()
 
 	useEffect(() => {
 		FetchCompanyProfile(name).then((image) => setCompanyLogo(image[0]['image']))
@@ -21,12 +23,20 @@ const FetchSingleStock = (props) => {
 	}, [name])
 
 	const handleAdd = async () => {
+		if (!user) {
+			setError('You must be logged in')
+			return
+		}
+
 		const ticker = `${name}`
 		console.log('handleAdd called')
 		const response = await fetch('http://localhost:4000/api/watchlist', {
 			method: 'POST',
 			body: JSON.stringify({ ticker: `${ticker}` }),
-			headers: { 'Content-Type': 'application/json' },
+			headers: {
+				Authorization: `Bearer ${user.token}`,
+				'Content-Type': 'application/json',
+			},
 		})
 
 		const json = await response.json()
