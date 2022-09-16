@@ -19,15 +19,9 @@ app.all('*', function (req, res) {
 	res.setHeader('Access-Control-Allow-Methods', 'PUT,POST,GET,DELETE,OPTIONS')
 })
 
-app.use(function (req, res, next) {
-	res.setHeader('Access-Control-Allow-Origin', 'https://bull-bear.vercel.app/')
-	res.setHeader(
-		'Access-Control-Allow-Methods',
-		'GET, POST, OPTIONS, PUT, PATCH, DELETE'
-	)
-	res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type')
-	res.setHeader('Access-Control-Allow-Credentials', true)
-	next()
+process.on('uncaughtException', function (err) {
+	console.error(err)
+	console.log('Node NOT Exiting...')
 })
 
 const userRoutes = require('./api/user')
@@ -51,8 +45,8 @@ app.use((req, res, next) => {
 	next()
 })
 
-app.use('/api/user', cors(), userRoutes)
-app.use('/api/watchlist', cors(), watchlistRoutes)
+app.use('/api/user', userRoutes)
+app.use('/api/watchlist', watchlistRoutes)
 
 // connect to db
 mongoose
@@ -66,10 +60,5 @@ mongoose
 	.catch((error) => {
 		console.log(error)
 	})
-
-process.on('uncaughtException', function (err) {
-	console.error(err)
-	console.log('Node NOT Exiting...')
-})
 
 module.exports = app
