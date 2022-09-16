@@ -93,7 +93,7 @@ const FetchSingleStock = (props) => {
 						<li className='flex h-full items-center md:gap-1 text-xs md:text-sm text-lightBlue'>
 							<div className='w-1/3'>
 								<img
-									className='w-max h-8 md:h-12 rounded-lg'
+									className='w-8 h-8 md:h-12 rounded-lg'
 									src={companyLogo}
 									alt={companyLogo}></img>
 							</div>
@@ -157,7 +157,7 @@ const FetchSingleStock = (props) => {
 				<li className='flex h-full items-center md:gap-1 text-xs md:text-sm text-lightBlue'>
 					<div className='w-1/3'>
 						<img
-							className='w-max h-8 md:h-12 rounded-lg '
+							className='w-8 h-8 md:h-12 rounded-lg '
 							src={companyLogo}
 							alt={companyLogo}></img>
 					</div>
