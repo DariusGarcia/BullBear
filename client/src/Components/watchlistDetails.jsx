@@ -17,7 +17,7 @@ export const WatchlistDetails = ({ ticker, watchlistInfo }) => {
 		}
 
 		const response = await fetch(
-			'https://bull-bear-pi.vercel.app/api/watchlist/' + watchlistInfo,
+			'https://bullbear-server.herokuapp.com/api/watchlist/' + watchlistInfo,
 			{
 				headers: {
 					Authorization: `Bearer ${user.token}`,

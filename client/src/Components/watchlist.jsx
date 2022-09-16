@@ -11,7 +11,7 @@ export const Watchlist = () => {
 
 	useEffect(() => {
 		const fetchWatchlist = async () => {
-			const response = await fetch('/api/watchlist', {
+			const response = await fetch('https://bullbear-server.herokuapp.com/', {
 				headers: {
 					Authorization: `Bearer ${user.token}`,
 					'Access-Control-Allow-Headers': 'Origin, Content-Type, X-Auth-Token',
