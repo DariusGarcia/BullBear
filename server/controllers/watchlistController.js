@@ -4,7 +4,9 @@ const mongoose = require('mongoose')
 
 // get all stocks in watchlist
 const getAllStocks = async (req, res) => {
-	const allStocks = await Watchlist.find({}).sort({ createdAt: -1 })
+	const user_id = req.user._id
+
+	const allStocks = await Watchlist.find({ user_id }).sort({ createdAt: -1 })
 
 	res.status(200).json({ allStocks })
 }
@@ -31,7 +33,8 @@ const createStock = async (req, res) => {
 
 	// add doc to mongoDB
 	try {
-		const watchlist = await Watchlist.create({ ticker })
+		const user_id = req.user._id
+		const watchlist = await Watchlist.create({ ticker, user_id })
 		res.status(200).json(watchlist)
 	} catch (error) {
 		res.status(400).json({ error: error.message })

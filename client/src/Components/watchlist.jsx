@@ -1,23 +1,31 @@
 import { useMemo, useEffect } from 'react'
 import { useWatchlistContext } from '../Hooks/useWatchlistContext'
 import { WatchlistDetails } from './watchlistDetails'
+import { useAuthContext } from '../Hooks/useAuthContext'
 
-export const CustomWatchlist = () => {
+export const Watchlist = () => {
 	const { watchlist, dispatch } = useWatchlistContext()
+	const { user } = useAuthContext()
 
 	const data = useMemo(() => watchlist, [])
 
 	useEffect(() => {
 		const fetchWatchlist = async () => {
-			const response = await fetch('/api/watchlist')
+			const response = await fetch('/api/watchlist', {
+				headers: {
+					Authorization: `Bearer ${user.token}`,
+				},
+			})
 			const json = await response.json()
 			if (response.ok) {
 				// setWatchlist(json.allStocks)
 				dispatch({ type: 'SET_WATCHLIST', payload: json.allStocks })
 			}
 		}
-		fetchWatchlist()
-	}, [data, dispatch])
+		if (user) {
+			fetchWatchlist()
+		}
+	}, [data, dispatch, user])
 
 	return (
 		<div className=' text-white w-full bg-grey rounded-lg '>

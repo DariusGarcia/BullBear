@@ -1,19 +1,27 @@
 import { useState, useEffect, useMemo } from 'react'
 import { UseGetAPI } from '../Hooks/useGetAPI'
 import { AiFillDelete } from 'react-icons/ai'
-// import { DeleteStock } from '../utils/deleteStock'
 import { FetchCompanyProfile } from '../utils/fetchCompanyProfile'
 import { useWatchlistContext } from '../Hooks/useWatchlistContext'
+import { useAuthContext } from '../Hooks/useAuthContext'
 
 export const WatchlistDetails = ({ ticker, watchlistInfo }) => {
 	const [stockData, setStockData] = useState({})
 	const [companyLogo, setCompanyLogo] = useState()
 	const { dispatch } = useWatchlistContext()
+	const { user } = useAuthContext()
 
 	const DeleteStock = async () => {
+		if (!user) {
+			return
+		}
+
 		const response = await fetch(
 			'http://localhost:4000/api/watchlist/' + watchlistInfo,
 			{
+				headers: {
+					Authorization: `Bearer ${user.token}`,
+				},
 				method: 'DELETE',
 			}
 		)

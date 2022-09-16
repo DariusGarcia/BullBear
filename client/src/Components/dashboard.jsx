@@ -1,5 +1,5 @@
 import { Fragment, useState } from 'react'
-import Home from './home'
+import Home from './Home'
 import { Dialog, Menu, Transition } from '@headlessui/react'
 
 // import { MagnifyingGlassIcon } from '@heroicons/react/20/solid'
