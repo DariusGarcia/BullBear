@@ -13,6 +13,7 @@ process.on('uncaughtException', function (err) {
 
 // express app
 const app = express()
+
 app.options('*', cors())
 
 // middleware

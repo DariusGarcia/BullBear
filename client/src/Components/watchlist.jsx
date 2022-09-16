@@ -14,6 +14,8 @@ export const Watchlist = () => {
 			const response = await fetch('/api/watchlist', {
 				headers: {
 					Authorization: `Bearer ${user.token}`,
+					'Access-Control-Allow-Origin': '*',
+					'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
 				},
 			})
 			const json = await response.json()
