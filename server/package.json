@@ -19,7 +19,6 @@
   "name": "server",
   "version": "1.0.0",
   "main": "index.js",
-  "type": "module",
   "engines": {
     "node": "14.x"
   },
@@ -29,7 +28,7 @@
     "dev": "nodemon server.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Darius Garcia",
   "license": "ISC",
-  "description": ""
+  "description": "Express.js backend for BullBear client"
 }
