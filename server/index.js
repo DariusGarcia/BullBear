@@ -8,6 +8,8 @@ const express = require('express')
 // express app
 const app = express()
 app.use(cors())
+app.options('*', cors())
+
 app.all('*', function (req, res) {
 	res.header('Access-Control-Allow-Origin', '*')
 	res.header(
@@ -20,11 +22,6 @@ app.all('*', function (req, res) {
 const userRoutes = require('./api/user')
 const watchlistRoutes = require('./api/watchlists')
 
-process.on('uncaughtException', function (err) {
-	console.error(err)
-	console.log('Node NOT Exiting...')
-})
-
 app.use(function (req, res, next) {
 	res.setHeader('Access-Control-Allow-Origin', 'https://bull-bear.vercel.app/')
 	res.setHeader(
@@ -36,9 +33,8 @@ app.use(function (req, res, next) {
 	next()
 })
 
-app.options('*', cors()),
-	// middleware
-	app.use(express.json())
+// middleware
+app.use(express.json())
 
 // routes
 app.use((req, res, next) => {
@@ -55,8 +51,8 @@ app.use((req, res, next) => {
 	next()
 })
 
-app.use('/api/user', userRoutes)
-app.use('/api/watchlist', watchlistRoutes)
+app.use('/api/user', cors(), userRoutes)
+app.use('/api/watchlist', cors(), watchlistRoutes)
 
 // connect to db
 mongoose
@@ -70,5 +66,10 @@ mongoose
 	.catch((error) => {
 		console.log(error)
 	})
+
+process.on('uncaughtException', function (err) {
+	console.error(err)
+	console.log('Node NOT Exiting...')
+})
 
 module.exports = app
