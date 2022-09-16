@@ -1,10 +1,19 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { useLogout } from '../Hooks/useLogout'
+import { useAuthContext } from '../Hooks/useAuthContext'
 
 export default function Navigation() {
+	const { logout } = useLogout()
+	const { user } = useAuthContext()
+
+	const handleClick = () => {
+		logout()
+	}
+
 	return (
 		<div className='flex justify-center'>
-			<nav className='flex justify-evenly md:justify-between h-16 md:mb-12 w-full md:mx-12 items-center font-primary bg-grey text-white '>
+			<nav className='flex h-16 w-full md:mb-12 md:mx-12 justify-evenly md:justify-between items-center font-primary bg-grey text-white '>
 				<div className=''>
 					<Link to='/'>
 						<h1 className='mb-2 md:mb-0 text-2xl md:text-4xl font-bold tracking-wide cursor-pointer'>
@@ -13,15 +22,29 @@ export default function Navigation() {
 					</Link>
 				</div>
 				<div className=''>
-					<ul className='flex flex-row gap-4 text-sm md:text-lg md:gap-8'>
-						<li className='cursor-pointer'>Market</li>
-						<li className='cursor-pointer'>Portfolio</li>
-						<Link to='/login'>
-							<li className='cursor-pointer'>Login</li>
+					<ul className='flex flex-row gap-4 md:gap-8 text-sm md:text-lg cursor-pointer'>
+						<Link to='/'>
+							<li className=''>Market</li>
 						</Link>
-						<Link to='/signup'>
-							<li className='cursor-pointer'>Signup</li>
-						</Link>
+						{/* <li className=''>Portfolio</li> */}
+						{!user && (
+							<div className='flex flex-row gap-4'>
+								<Link to='/login'>
+									<li className=''>Login</li>
+								</Link>
+								<Link to='/signup'>
+									<li className=''>Signup</li>
+								</Link>
+							</div>
+						)}
+						{user && (
+							<div className='flex flex-row gap-4'>
+								<span className=''>{user.email}</span>
+								<button onClick={handleClick} className=''>
+									Logout
+								</button>
+							</div>
+						)}
 					</ul>
 				</div>
 			</nav>

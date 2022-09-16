@@ -50,6 +50,9 @@ const Signup = () => {
 							{' '}
 							Register{' '}
 						</button>
+						{error && (
+							<div className='text-red pb-2 font-semibold'>{error}</div>
+						)}
 					</div>
 				</form>
 			</div>

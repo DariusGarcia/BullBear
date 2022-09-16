@@ -2,7 +2,7 @@ import { useMemo, useEffect } from 'react'
 import { useWatchlistContext } from '../Hooks/useWatchlistContext'
 import { WatchlistDetails } from './watchlistDetails'
 
-export const CustomWatchlist = () => {
+export const Watchlist = () => {
 	const { watchlist, dispatch } = useWatchlistContext()
 
 	const data = useMemo(() => watchlist, [])

@@ -2,15 +2,17 @@ import React, { useState } from 'react'
 import { Link as RouterLink } from 'react-router-dom'
 import validator from 'validator'
 import { regexPassword } from '../utils'
+import { useLogin } from '../Hooks/useLogin'
 
 const Login = () => {
 	const [email, setEmail] = useState('')
 	const [password, setPassword] = useState('')
+	const { login, isLoading, error } = useLogin()
 
 	const handleSubmit = async (e) => {
 		e.preventDefault()
 
-		console.log(email, password)
+		await login(email, password)
 	}
 	return (
 		<div className='w-full '>
@@ -41,11 +43,12 @@ const Login = () => {
 					/>
 					<div className='flex justify-center my-8 w-full'>
 						<button
+							disabled={isLoading}
 							className='flex justify-center w-32 p-5  text-white rounded-md   bg-darkBlue hover:bg-lightBlue'
 							type='submit'>
-							{' '}
-							Login{' '}
+							Login
 						</button>
+						{error && <div className=''>{error}</div>}
 					</div>
 				</form>
 			</div>

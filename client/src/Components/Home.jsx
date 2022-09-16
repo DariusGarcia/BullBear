@@ -1,7 +1,10 @@
 import { useState } from 'react'
-import { CustomWatchlist } from './customWatchlist'
-import SingleStockContainer from './singleStockContainer'
+import { Watchlist } from './watchlist'
 import { TopGainers } from './topGainers'
+import { IoMdListBox } from 'react-icons/io'
+import { BiTrendingUp } from 'react-icons/bi'
+import { BsGlobe } from 'react-icons/bs'
+import FetchSingleStock from './fetchSingleStock'
 
 export default function Home() {
 	const [value, setValue] = useState('')
@@ -27,11 +30,11 @@ export default function Home() {
 					{/*----------------------- nav-bar section ----------------------- */}
 					<section className='flex flex-col md:h-full md:w-full md:mb-1'>
 						<form
-							className='flex flex-col md:flex-row w-full h-max md:h-16 text-white md:items-center md:mb-3 md:pl-0 md:gap-24 justify-start md:justify-start px-1 md:px-0'
+							className='flex flex-col md:flex-row w-full h-max md:h-16 text-white md:items-center md:mb-3 md:pl-0 md:gap-24 md:justify-start px-1 md:px-0'
 							onSubmit={handleSubmit}>
-							<header className='flex gap-2 md:gap-0 h-full flex-row md:flex-col items-center md:items-start '>
-								<h2 className='mb-4 md:mb-0 text-xl md:text-2xl'>
-									Stock Market
+							<header className='flex md:gap-0 h-full flex-col items-start '>
+								<h2 className='flex flex-row items-center gap-2 mb-4 md:mb-0 text-2xl '>
+									Stock Market <BsGlobe size={25} />
 								</h2>
 								<h3 className='mb-4 md:mb-0 md:text-xl text-sm opacity-50 '>
 									S&P500 index
@@ -54,7 +57,7 @@ export default function Home() {
 							</button>
 						</form>
 						{/*----------------------- ticker info ----------------------- */}
-						<div className='relative h-full overflow-auto bg-opacity-20 md:overflow-hidden w-max md:w-full mt-4 rounded-lg '>
+						<div className='relative h-full overflow-auto bg-opacity-20 md:overflow-hidden w-max min-w-full md:w-full mt-4 rounded-lg '>
 							<article className='h-max w-full px-0 rounded-lg overflow-auto'>
 								<nav className='sticky top-0 w-full h-12 bg-grey2 text-white z-50 rounded-lg '>
 									<ul className='grid grid-cols-5 w-full h-full self-center md:px-0 px-2 opacity-70'>
@@ -96,9 +99,12 @@ export default function Home() {
 								) : (
 									<div className='flex flex-col h-max mt-4 bg-opacity-20 rounded-lg'>
 										{ticker.map((enteredTicker) => (
-											<SingleStockContainer
-												name={enteredTicker}
-												key={enteredTicker}></SingleStockContainer>
+											<div className='overflow-auto flex md:w-full  mb-4 text-sm md:text-base shadow-lg bg-primary md:mx-0 rounded-lg'>
+												<FetchSingleStock
+													name={enteredTicker}
+													key={enteredTicker}
+												/>
+											</div>
 										))}
 									</div>
 								)}
@@ -107,18 +113,20 @@ export default function Home() {
 					</section>
 					{/*----------------------- Stocks watchlist section ----------------------- */}
 					<section className='flex flex-col h-max w-full justify-center md:w-96 min-w-[315px] md:mt-0 md:ml-4 text-white '>
-						<h3 className='flex h-16 items-end justify-start p-2 md:p-0 text-xl'>
-							Watchlist
+						<h3 className='flex h-16 justify-start p-2 md:p-0 gap-2 items-center md:items-end text-xl'>
+							Watchlist <IoMdListBox size={25} />
 						</h3>
 						<article className='flex flex-col h-72 md:h-96 mb-16 md:mb-36 md:p-0 text-white rounded-xl '>
-							{<CustomWatchlist></CustomWatchlist>}
+							{<Watchlist></Watchlist>}
 						</article>
 					</section>
 				</div>
 				<section className='relative h-full flex flex-col my-36 w-full rounded-lg px-2 py-4  text-white'>
-					<div className='text-xl mb-4'>Today's Top Gainers</div>
+					<div className='text-xl mb-4 flex flex-row gap-2 items-center'>
+						Today's Top Gainers <BiTrendingUp size={25} />
+					</div>
 					<div className='flex flex-col h-96 overflow-auto w-max md:w-full'>
-						<ul className='sticky top-0 h-12 grid grid-cols-5 mb-2 px-2 py-4 list-none items-center bg-grey2 rounded-lg z-50 '>
+						<ul className='sticky top-0 h-12 grid grid-cols-5 mb-2 px-2 py-4 items-center content-center bg-grey2 rounded-lg z-50 list-none'>
 							<li className=''>Name</li>
 							<li className=''>Ticker</li>
 							<li className=''>% Change</li>
