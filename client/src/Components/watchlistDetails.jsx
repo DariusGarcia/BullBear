@@ -58,7 +58,7 @@ export const WatchlistDetails = ({ ticker, watchlistInfo }) => {
 					<p className='justify-start flex gap-2 items-center w-max rounded-lg '>
 						<div className=''>
 							<img
-								className='w-max h-8 rounded-lg'
+								className='w-8 h-8 rounded-lg'
 								src={companyLogo}
 								alt={companyLogo}></img>
 						</div>
@@ -86,7 +86,7 @@ export const WatchlistDetails = ({ ticker, watchlistInfo }) => {
 						{/* display logo and ticker */}
 						<div className='flex justify-start items-center rounded-lg'>
 							<img
-								className='w-max h-8 rounded-lg'
+								className='w-8 h-8 rounded-lg'
 								src={companyLogo}
 								alt={companyLogo}></img>
 							<div className='ml-1 text-sm'>${ticker}</div>
