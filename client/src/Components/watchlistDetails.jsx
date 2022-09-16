@@ -21,6 +21,7 @@ export const WatchlistDetails = ({ ticker, watchlistInfo }) => {
 			{
 				headers: {
 					Authorization: `Bearer ${user.token}`,
+					'Access-Control-Allow-Headers': 'Origin, Content-Type, X-Auth-Token',
 					'Access-Control-Allow-Origin': '*',
 					'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
 				},

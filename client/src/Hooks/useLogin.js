@@ -13,7 +13,12 @@ export const useLogin = () => {
 			'https://vercel.com/dariusg/bullbear-server/api/user/login',
 			{
 				method: 'POST',
-				headers: { 'Content-Type': 'application/json' },
+				headers: {
+					'Content-Type': 'application/json',
+					'Access-Control-Allow-Headers': 'Origin, Content-Type, X-Auth-Token',
+					'Access-Control-Allow-Origin': '*',
+					'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
+				},
 				body: JSON.stringify({ email, password }),
 			}
 		)
