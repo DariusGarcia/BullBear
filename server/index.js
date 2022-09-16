@@ -11,16 +11,13 @@ app.use(cors())
 app.options('*', cors())
 
 app.all('*', function (req, res) {
-	res.header('Access-Control-Allow-Origin', '*')
-	res.header(
+	res.setHeader('Access-Control-Allow-Origin', '*')
+	res.setHeader(
 		'Access-Control-Allow-Headers',
 		'Content-Type,Content-Length, Authorization, Accept,X-Requested-With'
 	)
-	res.header('Access-Control-Allow-Methods', 'PUT,POST,GET,DELETE,OPTIONS')
+	res.setHeader('Access-Control-Allow-Methods', 'PUT,POST,GET,DELETE,OPTIONS')
 })
-
-const userRoutes = require('./api/user')
-const watchlistRoutes = require('./api/watchlists')
 
 app.use(function (req, res, next) {
 	res.setHeader('Access-Control-Allow-Origin', 'https://bull-bear.vercel.app/')
@@ -32,6 +29,9 @@ app.use(function (req, res, next) {
 	res.setHeader('Access-Control-Allow-Credentials', true)
 	next()
 })
+
+const userRoutes = require('./api/user')
+const watchlistRoutes = require('./api/watchlists')
 
 // middleware
 app.use(express.json())
