@@ -1,56 +1,41 @@
-// require('dotenv').config()
-// const session = require('express-session')
-// const express = require('express')
-// const mongoose = require('mongoose')
-// const cors = require('cors')
-// const MongoDBStore = require('connect-mongodb-session')(session) // add this package to store the user session id automatically on mongodb
-// // check on your db, you will have another collection (next to people) which is 'mySessions'
-// const loginRouter = require('./routes/loginRoutes')
+require('dotenv').config()
+const express = require('express')
+const mongoose = require('mongoose')
+const cors = require('cors')
 
-// const app = express()
-// const MAX_AGE = 1000 * 60 * 60 * 3 // 3hrs
-// const port = process.env.PORT || 5001
+const userRoutes = require('./routes/user')
+const watchlistRoutes = require('./routes/watchlists')
 
-// const corsOptions = {
-// 	origin: 'http://localhost:3000',
-// 	optionsSuccessStatus: 200,
-// }
-// // This is where the API is making its initial connection to the database
-// mongoose.Promise = global.Promise
-// mongoose.connect(process.env.REACT_APP_ATLAS_URI, {
-// 	useNewUrlParser: true,
-// })
+process.on('uncaughtException', function (err) {
+	console.error(err)
+	console.log('Node NOT Exiting...')
+})
 
-// // setting up connect-mongodb-session store
-// const mongoDBstore = new MongoDBStore({
-// 	uri: process.env.REACT_APP_ATLAS_URI,
-// 	collection: 'mySessions',
-// })
+// express app
+const app = express()
 
-// app.use(
-// 	session({
-// 		secret: 'a1s2d3f4g5h6',
-// 		name: 'session-id', // cookies name to be put in "key" field in postman
-// 		store: mongoDBstore,
-// 		cookie: {
-// 			maxAge: MAX_AGE, // this is when our cookies will expired and the session will not be valid anymore (user will be log out)
-// 			sameSite: false,
-// 			secure: false, // to turn on just in production
-// 		},
-// 		resave: true,
-// 		saveUninitialized: false,
-// 	})
-// )
+// middleware
+app.use(express.json())
+app.use(cors())
 
-// app.use(cors(corsOptions))
-// app.use(express.json())
+// routes
+app.use((req, res, next) => {
+	console.log(req.path, req.method)
+	next()
+})
 
-// // ROUTERS
-// app.use('/api', loginRouter)
+app.use('/api/user', userRoutes)
+app.use('/api/watchlist', watchlistRoutes)
 
-// // START SERVER
-// app.listen(port, () => {
-// 	console.log(`Server listening on port ${port}`)
-// })
-
-// module.exports = app
+// connect to db
+mongoose
+	.connect(process.env.ATLAS_URI)
+	.then(() => {
+		console.log('Connected to Mongo DB')
+		app.listen(process.env.PORT, () => {
+			console.log(`Server started on port ${process.env.PORT}`)
+		})
+	})
+	.catch((error) => {
+		console.log(error)
+	})
