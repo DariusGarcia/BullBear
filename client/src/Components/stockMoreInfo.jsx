@@ -1,45 +1,109 @@
-import { useState, useEffect } from 'react'
-import { FetchCompanyProfile } from '../utils/fetchCompanyProfile'
+import { useState } from 'react'
 
 export const StockMoreInfo = (props) => {
-	const { ticker, openPrice, high, volume } = props
-	const [companyDetails, setCompanyDetails] = useState([])
-
-	useEffect(() => {
-		FetchCompanyProfile(ticker)
-			.then((data) => setCompanyDetails(data))
-			.catch((err) => console.log(err))
-	}, [ticker])
+	const { stockData, companyDetails } = props
+	const [toggle, setToggle] = useState(false)
 
 	return (
 		<>
 			{companyDetails && companyDetails.length > 0 && (
-				<div className='grid grid-cols-5'>
-					<ul className='flex flex-col text-white pl-2 md:text-base opacity-70'>
-						<li className=' h-full items-center flex '>Sector</li>
-						<li className=' h-full items-center flex '>Market Cap</li>
-
-						<li className='h-full items-center flex '>Opening</li>
-						<li className=' h-full items-center flex '>High</li>
-						<li className=' h-full items-center flex '>Volume</li>
-						{/* <li className=' h-full items-center flex '>Description</li> */}
-					</ul>
-					<ul className='flex flex-col w-max h-full  items-start justify-center text-white px-2'>
-						<li className='h-full items-center md:flex '>
-							{companyDetails[0]['sector']}
-						</li>
-						<li className='h-full items-center flex '>
-							${companyDetails[0]['mktCap']?.toLocaleString()}
-						</li>
-						<li className='h-full items-center flex '>
-							${openPrice?.toFixed(2)}
-						</li>
-						<li className=' h-full items-center flex '>${high?.toFixed(2)}</li>
-						<li className=' h-full items-center flex '>{volume}</li>
-						{/* <li className=' h-full flex-wrap items-center md:flex '>
-						{companyDetails[0]['description']}
-					</li> */}
-					</ul>
+				<div className='px-2 text-white w-full'>
+					<section className='grid grid-cols-2 my-4 mb-8 gap-y-4'>
+						<article className=''>
+							<p className='opacity-70'>CEO</p>
+							<p className=''>{companyDetails[0].ceo}</p>
+						</article>
+						<article className=''>
+							<p className='opacity-70'>Employees</p>
+							<p className=''>
+								{companyDetails[0].fullTimeEmployees.toLocaleString()}
+							</p>
+						</article>
+						<article className=''>
+							<p className='opacity-70'>Founded</p>
+							<p className=''>{companyDetails[0].ceo}</p>
+						</article>
+						<article className=''>
+							<p className='opacity-70'>Headquarters</p>
+							<p className=''>{companyDetails[0].city}</p>
+						</article>
+					</section>
+					<h4 className='text-xl mb-2'>Stats</h4>
+					<div className='grid grid-cols-2'>
+						<div className='flex flex-row gap-4'>
+							<ul className='flex flex-col text-white  md:text-base opacity-70'>
+								<li className='h-full  items-center flex '>Open</li>
+								<li className=' h-full  items-center flex '>High</li>
+								<li className=' h-full  items-center flex '>Low</li>
+								<li className=' h-full  items-center flex '>52 Wk high</li>
+								<li className=' h-full  items-center flex '>52 Wk low</li>
+							</ul>
+							<ul className='flex flex-col w-max h-full  items-start justify-center text-white px-2'>
+								<li className='h-full items-center flex '>
+									${stockData[0].open.toFixed(2)}
+								</li>
+								<li className=' h-full items-center flex '>
+									${stockData[0].dayHigh.toFixed(2)}
+								</li>
+								<li className=' h-full items-center flex '>
+									${stockData[0].dayLow.toFixed(2)}
+								</li>
+								<li className='h-full items-center md:flex '>
+									${stockData[0].yearHigh.toFixed(2)}
+								</li>
+								<li className='h-full items-center md:flex '>
+									${stockData[0].yearLow.toFixed(2)}
+								</li>
+							</ul>
+						</div>
+						<div className='flex flex-row gap-4'>
+							<ul className='flex flex-col text-white  md:text-base opacity-70'>
+								<li className='h-full  items-center flex '>Volume</li>
+								<li className='h-full  items-center flex '>Avg volume</li>
+								<li className='h-full  items-center flex '>P/E ratio</li>
+								<li className='h-full  items-center flex '>Mkt cap</li>
+								<li className='h-full  items-center flex '>Sector</li>
+							</ul>
+							<ul className='flex flex-col w-max h-full  items-start justify-center text-white px-2'>
+								<li className=' h-full items-center flex '>
+									{stockData[0].volume.toLocaleString()}
+								</li>
+								<li className='h-full items-center flex '>
+									{stockData[0].avgVolume.toLocaleString()}
+								</li>
+								<li className=' h-full items-center flex '>
+									{Number(stockData[0]['pe']).toFixed(2)}
+								</li>
+								<li className='h-full  items-center flex '>
+									${companyDetails[0]['mktCap']?.toLocaleString()}
+								</li>
+								<li className='h-full items-center md:flex w-max text-sm flex flex-wrap '>
+									{companyDetails[0]['sector']}
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div className='mt-8'>
+						<span className='flex flex-row justify-between'>
+							<h3 className='text-xl'>
+								About {companyDetails[0]['companyName']}
+							</h3>
+						</span>
+						{!toggle ? (
+							<p className=''>
+								{companyDetails[0]['description']
+									.substring(0, 350)
+									.concat('...')}
+							</p>
+						) : (
+							<p className=''>{companyDetails[0]['description']}</p>
+						)}
+						<button
+							className='border-b-2 border-lightBlue text-lightBlue text-sm p-2 '
+							onClick={() => setToggle(!toggle)}>
+							Show more
+						</button>
+					</div>
 				</div>
 			)}
 		</>

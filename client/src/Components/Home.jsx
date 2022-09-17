@@ -25,10 +25,10 @@ export default function Home() {
 
 	return (
 		<div className='flex w-full h-full mt-4 md:mt-0 items-center justify-evenly overflow-x-scroll md:overflow-x-auto bg-grey'>
-			<div className='flex flex-col w-full lg:w-5/6 px-2 md:px-0 md:mx-12 md:justify-evenly '>
-				<div className='flex flex-col w-full md:flex-row md:px-0 md:justify-evenly '>
+			<div className='flex flex-col w-full md:w-3/5 px-2 md:px-0 md:mx-12 md:justify-evenly '>
+				<div className='flex flex-col w-full md:flex-row md:px-0 md:justify-evenly  '>
 					{/*----------------------- nav-bar section ----------------------- */}
-					<section className='flex flex-col md:h-full md:w-full md:mb-1'>
+					<section className='flex flex-col md:h-full md:w-full md:mb-1 '>
 						<form
 							className='flex flex-col md:flex-row w-full h-max md:h-16 text-white md:items-center md:mb-3 md:pl-0 md:gap-24 md:justify-start px-1 md:px-0'
 							onSubmit={handleSubmit}>
@@ -57,7 +57,7 @@ export default function Home() {
 							</button>
 						</form>
 						{/*----------------------- ticker info ----------------------- */}
-						<div className='relative h-full overflow-auto bg-opacity-20 md:overflow-hidden w-max min-w-full md:w-full mt-4 rounded-lg '>
+						<div className='relative h-full overflow-auto bg-opacity-20 md:overflow-hidden w-full mt-4 rounded-lg '>
 							<article className='h-max w-full px-0 rounded-lg overflow-auto'>
 								<nav className='sticky top-0 w-full h-12 bg-grey2 text-white z-50 rounded-lg '>
 									<ul className='grid grid-cols-5 w-full h-full self-center md:px-0 px-2 opacity-70'>
