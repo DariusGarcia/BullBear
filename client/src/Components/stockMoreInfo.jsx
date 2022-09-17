@@ -94,7 +94,7 @@ export const StockMoreInfo = (props) => {
 						{!toggle ? (
 							<p className=''>
 								{companyDetails[0]['description']
-									.substring(0, 350)
+									.substring(0, 170)
 									.concat('...')}
 							</p>
 						) : (

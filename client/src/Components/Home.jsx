@@ -74,7 +74,7 @@ export default function Home() {
 
 										<span className=''>
 											<li className='h-full items-center flex text-xs md:text-base'>
-												Current Price
+												Price
 											</li>
 										</span>
 										{ticker <= 0 ? (
