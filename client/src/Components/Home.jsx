@@ -65,25 +65,25 @@ export default function Home() {
 											<li className='flex h-full items-center  text-xs md:text-base'></li>
 										</span>
 										<span className='md:pl-2'>
-											<li className='h-full items-center flex text-xs md:text-base'>
+											<li className='h-full items-center flex  md:text-base'>
 												Stock
 											</li>
 										</span>
 
 										<span className=''>
-											<li className='h-full items-center flex text-xs md:text-base'>
+											<li className='h-full items-center flex  md:text-base'>
 												Price
 											</li>
 										</span>
 										{ticker <= 0 ? (
 											<span className=''>
-												<li className='h-full items-center justify-end flex text-xs md:text-base'>
+												<li className='h-full items-center justify-end flex  md:text-base'>
 													Change
 												</li>
 											</span>
 										) : (
 											<span className=''>
-												<li className='h-full items-center flex text-xs md:text-base'>
+												<li className='h-full items-center flex md:text-base'>
 													Change
 												</li>
 											</span>
