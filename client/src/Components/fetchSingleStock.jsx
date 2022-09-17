@@ -121,7 +121,7 @@ const FetchSingleStock = (props) => {
 						</li>
 
 						{error && <li className=''>{error}</li>}
-						<span className='flex flex-row md:gap-12 gap-2 items-center justify-around'>
+						<span className='flex flex-row md:gap-12 gap-4 items-center justify-around'>
 							<span>
 								<button
 									onClick={(event) => handleAdd(event)}
