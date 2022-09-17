@@ -91,15 +91,17 @@ const FetchSingleStock = (props) => {
 						<li className='flex h-full items-center md:gap-1 text-xs md:text-sm text-lightBlue'>
 							<div className='w-1/3'>
 								<img
-									className='w-24 md:w-max h-8 md:h-12 rounded-lg'
+									className='w-24 md:w-max h-8 md:h-max rounded-lg'
 									src={companyDetails[0].image}
 									alt={companyDetails}></img>
 							</div>
+						</li>
+						<div className='flex flex-col text-xs md:text-base'>
 							{stockData[0]['name']?.split(' ')[0]?.split(',')?.join('')}
-						</li>
-						<li className='text-xs md:text-base h-full items-center flex'>
-							${name}
-						</li>
+							<li className='text-xs md:text-base h-full items-center flex'>
+								${name}
+							</li>
+						</div>
 
 						{/* display current price */}
 						{stockData[0] && stockData[0]['changesPercentage'] > 0 && (
@@ -119,11 +121,11 @@ const FetchSingleStock = (props) => {
 						</li>
 
 						{error && <li className=''>{error}</li>}
-						<span className='flex flex-row md:gap-12 items-center justify-around'>
+						<span className='flex flex-row md:gap-12 gap-2 items-center justify-around'>
 							<span>
 								<button
 									onClick={(event) => handleAdd(event)}
-									className='h-8 w-16 rounded-lg bg-primary border-2 opacity-50 hover:border-lightBlue hover:opacity-100 hover:scale-105 delay-25 ease-in transition text-white'>
+									className='h-8 w-12 rounded-lg bg-primary border-2 opacity-50 hover:border-lightBlue hover:opacity-100 hover:scale-105 delay-25 ease-in transition text-white'>
 									Add
 								</button>
 							</span>
@@ -155,15 +157,17 @@ const FetchSingleStock = (props) => {
 				<li className='flex h-full items-center md:gap-1 text-xs md:text-sm text-lightBlue'>
 					<div className='w-1/3'>
 						<img
-							className='w-8 md:w-max h-8 md:h-12 rounded-lg '
+							className='w-24 md:w-max h-8 md:h-max rounded-lg '
 							src={companyDetails[0].image}
 							alt={companyDetails}></img>
 					</div>
+				</li>
+				<div className='flex flex-col text-xs md:text-base'>
 					{stockData[0]['name']?.split(' ')[0]?.split(',')?.join('')}
-				</li>
-				<li className='text-xs md:text-base h-full items-center flex '>
-					${name}
-				</li>
+					<li className='text-xs md:text-base h-full items-center flex'>
+						${name}
+					</li>
+				</div>
 				{/* display current price */}
 				{stockData[0] && stockData[0]['changesPercentage'] > 0 && (
 					<li className='text-xs md:text-base text-green h-full items-center flex  '>
@@ -179,15 +183,15 @@ const FetchSingleStock = (props) => {
 				<li className='text-xs md:text-base h-full items-center flex'>
 					{stockData[0]['changesPercentage']?.toFixed(2)}%
 				</li>
-				<li className='text-xs md:text-base h-full md:gap-12 items-center justify-around flex'>
+				<li className='text-xs md:text-base h-full md:gap-12 gap-4 items-center justify-around flex'>
 					<span>
 						<button
 							onClick={(event) => handleAdd(event)}
-							className='h-8 w-16 rounded-lg bg-primary border-2 opacity-50 hover:border-lightBlue hover:opacity-100 hover:scale-105 delay-25 ease-out transition text-white'>
+							className='h-8 w-12 rounded-lg bg-primary border-2 opacity-50 hover:border-lightBlue hover:opacity-100 hover:scale-105 delay-25 ease-out transition text-white'>
 							Add
 						</button>
 					</span>
-					<span>
+					<span className=''>
 						<MdOutlineOpenInFull
 							className='cursor-pointer hover:scale-110 transition text-white ease-in-out delay-25'
 							onClick={handleOnClick}

@@ -62,13 +62,11 @@ export default function Home() {
 								<nav className='sticky top-0 w-full h-12 bg-grey2 text-white z-50 rounded-lg '>
 									<ul className='grid grid-cols-5 w-full h-full self-center md:px-0 px-2 opacity-70'>
 										<span className='pl-2'>
-											<li className='flex h-full items-center  text-xs md:text-base'>
-												Name
-											</li>
+											<li className='flex h-full items-center  text-xs md:text-base'></li>
 										</span>
 										<span className='md:pl-2'>
 											<li className='h-full items-center flex text-xs md:text-base'>
-												Ticker
+												Stock
 											</li>
 										</span>
 

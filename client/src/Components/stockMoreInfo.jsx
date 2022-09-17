@@ -87,7 +87,7 @@ export const StockMoreInfo = (props) => {
 					</div>
 					<div className='mt-8'>
 						<span className='flex flex-row justify-between'>
-							<h3 className='text-xl'>
+							<h3 className='text-xl border-b-2 border-lightBlue mb-4'>
 								About {companyDetails[0]['companyName']}
 							</h3>
 						</span>
