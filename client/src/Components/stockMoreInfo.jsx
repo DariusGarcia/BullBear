@@ -7,7 +7,7 @@ export const StockMoreInfo = (props) => {
 	return (
 		<>
 			{companyDetails && companyDetails.length > 0 && (
-				<div className='px-2 text-white w-full'>
+				<div className='px-2 text-white w-full overflow-hidden'>
 					<section className='grid grid-cols-2 my-4 mb-8 gap-y-4'>
 						<article className=''>
 							<p className='opacity-70'>CEO</p>
@@ -29,8 +29,8 @@ export const StockMoreInfo = (props) => {
 						</article>
 					</section>
 					<h4 className='text-xl mb-2'>Stats</h4>
-					<div className='grid grid-cols-2'>
-						<div className='flex flex-row gap-4'>
+					<div className='grid grid-cols-2 overflow-x-auto'>
+						<div className='flex flex-row gap-x-2 md:gap-x-4'>
 							<ul className='flex flex-col text-white  md:text-base opacity-70'>
 								<li className='h-full  items-center flex '>Open</li>
 								<li className=' h-full  items-center flex '>High</li>
@@ -56,15 +56,17 @@ export const StockMoreInfo = (props) => {
 								</li>
 							</ul>
 						</div>
-						<div className='flex flex-row gap-4'>
+						<div className='flex flex-row gap-x-2 md:gap-x-4'>
 							<ul className='flex flex-col text-white  md:text-base opacity-70'>
 								<li className='h-full  items-center flex '>Volume</li>
-								<li className='h-full  items-center flex '>Avg volume</li>
-								<li className='h-full  items-center flex '>P/E ratio</li>
+								<li className='h-full  w-max items-center flex text-sm md:text-base'>
+									Avg volume
+								</li>
+								<li className='h-full  w-max items-center flex '>P/E ratio</li>
 								<li className='h-full  items-center flex '>Mkt cap</li>
 								<li className='h-full  items-center flex '>Sector</li>
 							</ul>
-							<ul className='flex flex-col w-max h-full  items-start justify-center text-white px-2'>
+							<ul className='flex flex-col w-max h-full items-start justify-center text-white px-2'>
 								<li className=' h-full items-center flex '>
 									{stockData[0].volume.toLocaleString()}
 								</li>
@@ -74,10 +76,10 @@ export const StockMoreInfo = (props) => {
 								<li className=' h-full items-center flex '>
 									{Number(stockData[0]['pe']).toFixed(2)}
 								</li>
-								<li className='flex h-full items-center text-sm '>
+								<li className='flex h-full items-center text-sm'>
 									${companyDetails[0]['mktCap']?.toLocaleString()}
 								</li>
-								<li className='h-full items-center md:flex w-max text-sm flex flex-wrap '>
+								<li className='flex flex-wrap h-full  w-max items-center text-sm'>
 									{companyDetails[0]['sector']}
 								</li>
 							</ul>
