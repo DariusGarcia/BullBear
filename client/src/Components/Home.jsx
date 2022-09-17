@@ -97,7 +97,7 @@ export default function Home() {
 										Search
 									</div>
 								) : (
-									<div className='flex flex-col h-max mt-4 bg-opacity-20 rounded-lg'>
+									<div className='flex h-max mt-4 bg-opacity-20 rounded-lg flex-col-reverse'>
 										{ticker.map((enteredTicker) => (
 											<div className='overflow-auto flex md:w-full  mb-4 text-sm md:text-base shadow-lg bg-primary md:mx-0 rounded-lg'>
 												<FetchSingleStock
