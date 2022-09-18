@@ -25,7 +25,6 @@ export const Watchlist = () => {
 			)
 			const json = await response.json()
 			if (response.ok) {
-				// setWatchlist(json.allStocks)
 				dispatch({ type: 'SET_WATCHLIST', payload: json.allStocks })
 			}
 		}
@@ -36,7 +35,7 @@ export const Watchlist = () => {
 
 	return (
 		<div className=' text-white w-full bg-grey rounded-lg '>
-			<div className='sticky top-0 grid grid-cols-3 justify-between md:px-2 w-full mt-2 md:mt-7 h-12 items-center mb-4 bg-grey2 rounded-lg z-50 '>
+			<div className='sticky top-0 grid grid-cols-3 justify-between md:px-2 w-full mt-2 md:mt-7 h-12 items-center mb-4 bg-grey2 rounded-lg z-20 '>
 				<h2 className='flex justify-center opacity-70'>Ticker</h2>
 				<h2 className='flex justify-center opacity-70'>Price</h2>
 				<h2 className='flex justify-center opacity-70'>Delete </h2>

@@ -5,6 +5,7 @@ import { UseGetAPI } from '../Hooks/useGetAPI'
 import { StockMoreInfo } from './stockMoreInfo'
 import { MdOutlineOpenInFull } from 'react-icons/md'
 import { useAuthContext } from '../Hooks/useAuthContext'
+import { GoTriangleUp, GoTriangleDown } from 'react-icons/go'
 
 const FetchSingleStock = (props) => {
 	const { name } = props
@@ -66,7 +67,7 @@ const FetchSingleStock = (props) => {
 
 	if (!watchlist && !companyDetails) {
 		info = (
-			<span className='flex w-full h-full justify-center items-center hover:border-2 border-lightBlue transition delay-75 ease-in-out hover:rounded-lg'>
+			<span className='flex w-full h-full justify-center items-center border-2 border-transparent hover:border-2 hover:border-lightBlue transition delay-75 ease-in-out hover:rounded-lg'>
 				<p id='class-nf' className='w-full pl-2 text-red font-bold'>
 					Invalid stock ticker...
 				</p>
@@ -84,34 +85,33 @@ const FetchSingleStock = (props) => {
 
 	if (toggle && companyDetails) {
 		info = (
-			<div className='flex flex-col border-2 border-primary hover:border-2 hover:border-lightBlue transition delay-25 ease-in-out rounded-lg cursor-pointer '>
+			<div className='flex flex-col  transition delay-25 ease-in-out rounded-lg cursor-pointer '>
 				<div className=' w-full py-4'>
-					<ul className='h-full grid grid-cols-5 content-center text-white px-2'>
+					<ul className='h-full grid grid-cols-4 content-center text-white px-2'>
 						{/* display stock ticker */}
-						<li className='flex h-full items-center md:gap-1 text-xs md:text-sm text-lightBlue'>
-							<div className='w-1/3'>
+						<li className='flex flex-col h-full  gap-2 md:gap-1 text-xs md:text-sm '>
+							<div className='w-1/3 h-full flex flex-row gap-4'>
 								<img
-									className='w-24 md:w-max h-8 md:h-max rounded-lg'
+									className='w-12 md:w-12 h-8 md:h-max rounded-lg'
 									src={companyDetails[0].image}
 									alt={companyDetails}></img>
+								<li className='text-xs md:text-lg h-full items-start flex'>
+									${name}
+								</li>
 							</div>
 						</li>
-						<div className='flex flex-col text-xs md:text-base'>
-							{stockData[0]['name']?.split(' ')[0]?.split(',')?.join('')}
-							<li className='text-xs md:text-base h-full items-center flex'>
-								${name}
-							</li>
-						</div>
 
 						{/* display current price */}
 						{stockData[0] && stockData[0]['changesPercentage'] > 0 && (
-							<li className='text-xs md:text-base text-green h-full items-center flex  '>
+							<li className='flex items-center h-full gap-1 text-xs md:text-base text-green '>
 								${stockData[0]['price']?.toFixed(2)}
+								<GoTriangleUp size={25}></GoTriangleUp>
 							</li>
 						)}
 						{stockData[0] && stockData[0]['changesPercentage'] < 0 && (
-							<li className='text-xs md:text-base text-red h-full items-center flex  '>
+							<li className='flex items-center h-full gap-1 text-xs md:text-base text-red'>
 								${stockData[0]['price']?.toFixed(2)}
+								<GoTriangleDown size={25}></GoTriangleDown>
 							</li>
 						)}
 
@@ -137,6 +137,7 @@ const FetchSingleStock = (props) => {
 							</span>
 						</span>
 					</ul>
+					<div className='mt-4 ml-2 text-lightBlue'>{stockData[0]['name']}</div>
 				</div>
 				<div className='w-full mb-4'>
 					<StockMoreInfo
@@ -152,31 +153,36 @@ const FetchSingleStock = (props) => {
 		)
 	} else if (!toggle && companyDetails) {
 		info = (
-			<ul className='h-full grid px-2 py-4 grid-cols-5 content-center text-white border-2 border-primary hover:border-2 hover:border-lightBlue transition delay-25 ease-in-out rounded-lg cursor-pointer'>
+			<ul className='h-full grid px-2 py-4 grid-cols-4 content-center text-white border-2transition delay-25 ease-in-out rounded-lg cursor-pointer'>
 				{/* display stock ticker */}
-				<li className='flex h-full items-center md:gap-1 text-xs md:text-sm text-lightBlue'>
+				<li className='flex h-full items-center gap-x-2 md:gap-1 text-xs md:text-sm '>
 					<div className='w-1/3'>
 						<img
-							className='w-24 md:w-max h-8 md:h-max rounded-lg '
+							className='w-12 md:w-12 h-8 md:h-max rounded-lg '
 							src={companyDetails[0].image}
 							alt={companyDetails}></img>
 					</div>
+					<div className='flex flex-col text-xs md:text-base'>
+						<li className='text-xs md:text-base h-full items-center flex '>
+							${name}
+						</li>
+						<span className='text-lightBlue'>
+							{stockData[0]['name']?.split(' ')[0]?.split(',')?.join('')}
+						</span>
+					</div>
 				</li>
-				<div className='flex flex-col text-xs md:text-base'>
-					{stockData[0]['name']?.split(' ')[0]?.split(',')?.join('')}
-					<li className='text-xs md:text-base h-full items-center flex'>
-						${name}
-					</li>
-				</div>
+
 				{/* display current price */}
 				{stockData[0] && stockData[0]['changesPercentage'] > 0 && (
-					<li className='text-xs md:text-base text-green h-full items-center flex  '>
-						${stockData[0]['price']?.toFixed(2)}
+					<li className='text-xs md:text-base text-green h-full items-center flex gap-1  '>
+						${stockData[0]['price']?.toFixed(2)}{' '}
+						<GoTriangleUp size={25}></GoTriangleUp>
 					</li>
 				)}
 				{stockData[0] && stockData[0]['changesPercentage'] < 0 && (
-					<li className='text-xs md:text-base text-red h-full items-center flex  '>
+					<li className='text-xs md:text-base text-red h-full items-center flex gap-1'>
 						${stockData[0]['price']?.toFixed(2)}
+						<GoTriangleDown size={25}></GoTriangleDown>
 					</li>
 				)}
 				{/* display 24hr percentage change */}

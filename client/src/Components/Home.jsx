@@ -1,19 +1,29 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Watchlist } from './watchlist'
 import { TopGainers } from './topGainers'
 import { IoMdListBox } from 'react-icons/io'
 import { BiTrendingUp } from 'react-icons/bi'
 import { BsGlobe } from 'react-icons/bs'
 import FetchSingleStock from './fetchSingleStock'
+import { FetchBatchStocks } from '../utils/fetchBatchStocks'
+
+import { WatchlistDetails } from './watchlistDetails'
+import { useWatchlistContext } from '../Hooks/useWatchlistContext'
 
 export default function Home() {
 	const [value, setValue] = useState('')
 	const [ticker, setTicker] = useState([])
+	const [stockBatch, setStockBatch] = useState([])
+	const { watchlist, dispatch } = useWatchlistContext()
 
 	const handleChange = (event) => {
 		const stock = event.target.value.trim()
 		setValue(stock)
 	}
+
+	useEffect(() => {
+		FetchBatchStocks().then((stocks) => console.log(stocks))
+	}, [])
 
 	const handleSubmit = (event) => {
 		event.preventDefault()
@@ -59,13 +69,10 @@ export default function Home() {
 						{/*----------------------- ticker info ----------------------- */}
 						<div className='relative h-full overflow-auto bg-opacity-20 md:overflow-hidden w-full mt-4 rounded-lg '>
 							<article className='h-max w-full px-0 rounded-lg overflow-auto'>
-								<nav className='sticky top-0 w-full h-12 bg-grey2 text-white z-50 rounded-lg '>
-									<ul className='grid grid-cols-5 w-full h-full self-center md:px-0 px-2 opacity-70'>
-										<span className='pl-2'>
-											<li className='flex h-full items-center  text-xs md:text-base'></li>
-										</span>
+								<nav className='sticky top-0 w-full h-12 bg-grey2 text-white z-20 rounded-lg '>
+									<ul className='grid grid-cols-4 w-full h-full self-center md:px-0 px-2 opacity-70'>
 										<span className='md:pl-2'>
-											<li className='h-full items-center flex  md:text-base'>
+											<li className='h-full items-center flex ml-2  md:text-base'>
 												Stock
 											</li>
 										</span>
@@ -115,7 +122,7 @@ export default function Home() {
 							Watchlist <IoMdListBox size={25} />
 						</h3>
 						<article className='flex flex-col h-72 md:h-96 mb-16 md:mb-36 md:p-0 text-white rounded-xl '>
-							{<Watchlist></Watchlist>}
+							{<Watchlist stockBatch={stockBatch}></Watchlist>}
 						</article>
 					</section>
 				</div>

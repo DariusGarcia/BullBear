@@ -1,4 +1,6 @@
 /** @type {import('tailwindcss').Config} */
+const colors = require('tailwindcss/colors')
+
 module.exports = {
 	content: ['./src/**/*.{js,jsx,ts,tsx}'],
 	theme: {
@@ -31,5 +33,8 @@ module.exports = {
 			},
 		},
 	},
-	plugins: [require('@tailwindcss/forms')],
+	plugins: [
+		require('@tailwindcss/forms'),
+		require('@tailwindcss/aspect-ratio'),
+	],
 }

@@ -1,0 +1,185 @@
+import { useAuthContext } from '../Hooks/useAuthContext'
+import screenshot from '../assets/bullbear-screenshot.png'
+import { Link } from 'react-router-dom'
+
+export default function Landing() {
+	const { user } = useAuthContext()
+	return (
+		<div className='bg-white'>
+			<div className='relative overflow-hidden'>
+				<main className=''>
+					<div className='bg-grey pt-10 sm:pt-16 lg:overflow-hidden lg:pt-8 lg:pb-14'>
+						<div className='mx-auto max-w-7xl lg:px-8'>
+							<div className='md:grid md:grid-cols-2 lg:gap-8 pb-48 md:h-full'>
+								<div className='mx-auto max-w-md px-4 sm:max-w-2xl sm:px-6 sm:text-center lg:flex lg:items-center lg:px-0 lg:text-left'>
+									<div className='lg:py-24'>
+										<Link to={user ? '/dashboard' : '/login'}>
+											<h1
+												className='inline-flex items-center rounded-full bg-grey2
+											p-6 text-white hover:text-gray-200 sm:text-base lg:text-xl
+											'>
+												BullBear Market
+											</h1>
+										</Link>
+										<h1 className='mt-4 text-2xl font-bold tracking-tight text-white sm:mt-5 sm:text-6xl md:text-3xl lg:mt-6 xl:text-6xl'>
+											<span className='block'>A quick way to</span>
+											<span className='block bg-clip-text pb-3 text-transparent sm:pb-5'>
+												keep track of your favorite stocks
+											</span>
+										</h1>
+										<p className='text-base text-white opacity-40 sm:text-xl lg:text-lg xl:text-xl'>
+											View details about all stocks in the S&P500 Index and add
+											them to your watchlist.
+										</p>
+										<div className='mt-10 sm:mt-12'>
+											<form
+												action='#'
+												className='sm:mx-auto sm:max-w-xl lg:mx-0'>
+												<div className='grid grid-cols-2 gap-x-4 '>
+													<button
+														type='submit'
+														className='block w-full rounded-md border-2 border-lightBlue  py-2 px-4 font-medium hover:text-white text-lightBlue focus:outline-none hover:scale-105 transition ease-in-out delay-55 focus:ring-2 focus:ring-lightBlue focus:ring-offset-2 focus:ring-offset-grey'>
+														Sign up
+													</button>
+													<div className='sm:mt-0 sm:ml-3'>
+														<button
+															type='submit'
+															className='block w-full rounded-md bg-lightBlue  py-3 px-4 font-medium text-white focus:outline-none hover:bg-opacity-80 hover:scale-105 transition ease-in-out delay-55 focus:ring-2 focus:ring-lightBlue focus:ring-offset-2 focus:ring-offset-grey'>
+															Login
+														</button>
+													</div>
+												</div>
+											</form>
+										</div>
+									</div>
+								</div>
+								<div className='mt-12 -mb-16 sm:-mb-48 lg:relative lg:m-0'>
+									<div className='mx-auto max-w-md px-4 sm:max-w-2xl sm:px-6 lg:max-w-none lg:px-0'>
+										{/* Illustration taken from Lucid Illustrations: https://lucid.pixsellz.io/ */}
+										<img
+											className='w-full lg:absolute lg:inset-y-0 lg:left-0 lg:h-full lg:w-auto lg:max-w-none'
+											src='https://tailwindui.com/img/component-images/cloud-illustration-teal-cyan.svg'
+											alt=''
+										/>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div className='relative overflow-hidden flex md:flex-col justify-center w-full items-end text-white bg-grey2 md:pt-16 pb-32'>
+						<div className='relative md:w-5/6'>
+							<div className='lg:mx-auto flex flex-col md:flex-row lg:px-8'>
+								<div className='mx-auto max-w-xl px-4 sm:px-6 lg:mx-0 lg:max-w-none lg:py-16 lg:px-0'>
+									<div>
+										<div>
+											<span className='flex h-12 w-12 items-center justify-center rounded-md bg-indigo-600'>
+												{/* <InboxIcon
+													className='h-6 w-6 text-white'
+													aria-hidden='true'
+												/> */}
+											</span>
+										</div>
+										<div className='mt-6'>
+											<h2 className='text-3xl font-bold tracking-tight text-gray-900'>
+												Stay on top of your favorite stocks.
+											</h2>
+											<p className='mt-4 text-lg text-gray-500'>
+												Semper curabitur ullamcorper posuere nunc sed. Ornare
+												iaculis bibendum malesuada faucibus lacinia porttitor.
+												Pulvinar laoreet sagittis viverra duis. In venenatis sem
+												arcu pretium pharetra at. Lectus viverra dui tellus
+												ornare pharetra.
+											</p>
+											<div className='mt-6'>
+												<Link to={user ? '/dashboard' : '/login'}>
+													<h3 className='inline-flex rounded-md bg-lightBlue px-16 py-2 text-base font-medium text-white shadow-sm  hover:scale-105 transition ease-in-out delay-55'>
+														Get started
+													</h3>
+												</Link>
+											</div>
+										</div>
+									</div>
+									<div className='mt-8 border-t border-gray-200 pt-6'>
+										<blockquote className='opacity-80'>
+											<div>
+												<p className='text-base text-gray-500'>
+													&ldquo;Thank you for checking out my project!&rdquo;
+												</p>
+											</div>
+											<footer className='mt-3'>
+												<div className='flex items-center space-x-3'>
+													<div className='flex-shrink-0'>
+														{/* <img
+															className='h-6 w-6 rounded-full'
+															src='https://images.unsplash.com/photo-1509783236416-c9ad59bae472?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80'
+															alt=''
+														/> */}
+													</div>
+													<div className='text-base font-medium text-gray-700'>
+														Built by Darius Garcia
+													</div>
+												</div>
+											</footer>
+										</blockquote>
+									</div>
+								</div>
+								<div className='mt-12 sm:mt-16 lg:mt-0'>
+									<div className='-mr-48 pl-4 sm:pl-6 md:-mr-16 lg:relative lg:m-0 lg:h-full lg:px-0'>
+										<img
+											className='w-full rounded-xl shadow-xl ring-1 ring-black ring-opacity-5 lg:absolute lg:left-0 lg:h-full lg:w-auto lg:max-w-none'
+											// src='https://tailwindui.com/img/component-images/inbox-app-screenshot-1.jpg'
+											src={screenshot}
+											alt='Inbox user interface'
+										/>
+									</div>
+								</div>
+							</div>
+						</div>
+						{/* <div className='mt-24'>
+							<div className='lg:mx-auto flex flex-row-reverse  lg:gap-24 lg:px-8'>
+								<div className='mx-auto max-w-xl px-4 sm:px-6 flex flex-row lg:mx-0 lg:max-w-none lg:py-32 lg:px-0'>
+									<div>
+										<div>
+											<span className='flex h-12 w-12 items-center justify-center rounded-md bg-indigo-600'>
+											
+											</span>
+										</div>
+										<div className='mt-6'>
+											<h2 className='text-3xl font-bold tracking-tight text-gray-900'>
+												Better understand your customers
+											</h2>
+											<p className='mt-4 text-lg text-gray-500'>
+												Semper curabitur ullamcorper posuere nunc sed. Ornare
+												iaculis bibendum malesuada faucibus lacinia porttitor.
+												Pulvinar laoreet sagittis viverra duis. In venenatis sem
+												arcu pretium pharetra at. Lectus viverra dui tellus
+												ornare pharetra.
+											</p>
+											<div className='mt-6'>
+												<a
+													href='#'
+													className='inline-flex rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-indigo-700'>
+													Get started
+												</a>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div className='mt-12 sm:mt-16 lg:col-start-1 lg:mt-0'>
+									<div className='-ml-48 pr-4 sm:pr-6 md:-ml-16 lg:relative lg:m-0 lg:h-full lg:px-0'>
+										<img
+											className='w-full rounded-xl shadow-xl ring-1 ring-black ring-opacity-5 lg:absolute lg:right-0 lg:h-full lg:w-auto lg:max-w-none'
+											src='https://tailwindui.com/img/component-images/inbox-app-screenshot-2.jpg'
+											alt='Customer profile user interface'
+										/>
+									</div>
+								</div>
+							</div>
+						</div> */}
+					</div>
+				</main>
+			</div>
+		</div>
+	)
+}
