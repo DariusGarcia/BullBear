@@ -8,15 +8,15 @@ export default function Landing() {
 		<div className='bg-white'>
 			<div className='relative overflow-hidden'>
 				<main className=''>
-					<div className='bg-grey pt-10 sm:pt-16 lg:overflow-hidden lg:pt-8 lg:pb-14'>
-						<div className='mx-auto max-w-7xl lg:px-8'>
+					<div className='flex justify-center bg-grey pt-10 sm:pt-16 lg:overflow-hidden lg:pt-8 lg:pb-14'>
+						<div className='mx-auto w-5/6 max-w-7xl lg:px-8'>
 							<div className='md:grid md:grid-cols-2 lg:gap-8 pb-48 md:h-full'>
-								<div className='mx-auto max-w-md px-4 sm:max-w-2xl sm:px-6 sm:text-center lg:flex lg:items-center lg:px-0 lg:text-left'>
+								<div className='mx-auto max-w-md px-4 md:px-0 sm:max-w-2xl sm:text-center lg:flex lg:items-center lg:text-left'>
 									<div className='lg:py-24'>
 										<Link to={user ? '/dashboard' : '/login'}>
 											<h1
 												className='inline-flex items-center rounded-full bg-grey2
-											p-6 text-white hover:text-gray-200 sm:text-base lg:text-xl
+											p-6 text-white sm:text-base lg:text-xl hover:bg-opacity-40 transition ease-in-out delay-55
 											'>
 												BullBear Market
 											</h1>
@@ -24,7 +24,7 @@ export default function Landing() {
 										<h1 className='mt-4 text-2xl font-bold tracking-tight text-white sm:mt-5 sm:text-6xl md:text-3xl lg:mt-6 xl:text-6xl'>
 											<span className='block'>A quick way to</span>
 											<span className='block bg-clip-text pb-3 text-transparent sm:pb-5'>
-												keep track of your favorite stocks
+												keep track of your favorite stocks for free.
 											</span>
 										</h1>
 										<p className='text-base text-white opacity-40 sm:text-xl lg:text-lg xl:text-xl'>
@@ -36,17 +36,21 @@ export default function Landing() {
 												action='#'
 												className='sm:mx-auto sm:max-w-xl lg:mx-0'>
 												<div className='grid grid-cols-2 gap-x-4 '>
-													<button
-														type='submit'
-														className='block w-full rounded-md border-2 border-lightBlue  py-2 px-4 font-medium hover:text-white text-lightBlue focus:outline-none hover:scale-105 transition ease-in-out delay-55 focus:ring-2 focus:ring-lightBlue focus:ring-offset-2 focus:ring-offset-grey'>
-														Sign up
-													</button>
-													<div className='sm:mt-0 sm:ml-3'>
-														<button
-															type='submit'
-															className='block w-full rounded-md bg-lightBlue  py-3 px-4 font-medium text-white focus:outline-none hover:bg-opacity-80 hover:scale-105 transition ease-in-out delay-55 focus:ring-2 focus:ring-lightBlue focus:ring-offset-2 focus:ring-offset-grey'>
-															Login
+													<Link to='/signup'>
+														{' '}
+														<button className='block w-full rounded-md border-2 border-lightBlue  h-12 font-medium hover:text-white text-lightBlue focus:outline-none hover:scale-105 transition ease-in-out delay-55 focus:ring-2 focus:ring-lightBlue focus:ring-offset-2 focus:ring-offset-grey'>
+															Sign up
 														</button>
+													</Link>
+													<div className='sm:mt-0 sm:ml-3'>
+														<Link to='/signup'>
+															{' '}
+															<button
+																type='submit'
+																className='block w-full rounded-md bg-lightBlue h-12  font-medium text-white focus:outline-none hover:bg-opacity-80 hover:scale-105 transition ease-in-out delay-55 focus:ring-2 focus:ring-lightBlue focus:ring-offset-2 focus:ring-offset-grey'>
+																Login
+															</button>
+														</Link>
 													</div>
 												</div>
 											</form>
@@ -109,13 +113,6 @@ export default function Landing() {
 											</div>
 											<footer className='mt-3'>
 												<div className='flex items-center space-x-3'>
-													<div className='flex-shrink-0'>
-														{/* <img
-															className='h-6 w-6 rounded-full'
-															src='https://images.unsplash.com/photo-1509783236416-c9ad59bae472?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80'
-															alt=''
-														/> */}
-													</div>
 													<div className='text-base font-medium text-gray-700'>
 														Built by Darius Garcia
 													</div>
@@ -128,7 +125,6 @@ export default function Landing() {
 									<div className='-mr-48 pl-4 sm:pl-6 md:-mr-16 lg:relative lg:m-0 lg:h-full lg:px-0'>
 										<img
 											className='w-full rounded-xl shadow-xl ring-1 ring-black ring-opacity-5 lg:absolute lg:left-0 lg:h-full lg:w-auto lg:max-w-none'
-											// src='https://tailwindui.com/img/component-images/inbox-app-screenshot-1.jpg'
 											src={screenshot}
 											alt='Inbox user interface'
 										/>
