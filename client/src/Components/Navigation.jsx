@@ -39,7 +39,7 @@ export default function Navigation() {
 						)}
 						{user && (
 							<div className='flex flex-row gap-4'>
-								<span className=''>{user.email.split('@')[0]}</span>
+								<span className=''>{user.email?.split('@')[0]}</span>
 								<button onClick={handleClick} className=''>
 									Logout
 								</button>

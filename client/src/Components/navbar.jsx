@@ -1,11 +1,10 @@
 import { Fragment } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
-import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
-import { PlusIcon } from '@heroicons/react/20/solid'
 import { useAuthContext } from '../Hooks/useAuthContext'
-import { FaSignOutAlt } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
 import { useLogout } from '../Hooks/useLogout'
+import { AiOutlineMenu } from 'react-icons/ai'
+import { VscChromeClose } from 'react-icons/vsc'
 
 const users = {
 	name: 'Tom Cook',
@@ -44,12 +43,20 @@ export default function Navbar() {
 							<div className='flex'>
 								<div className='-ml-2 mr-2 flex items-center md:hidden'>
 									{/* Mobile menu button */}
-									<Disclosure.Button className='inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white'>
+									<Disclosure.Button className='inline-flex items-center justify-center rounded-md p-2 text-white hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-opacity-30 focus:ring-white'>
 										<span className='sr-only'>Open main menu</span>
 										{open ? (
-											<XMarkIcon className='block h-6 w-6' aria-hidden='true' />
+											<VscChromeClose
+												size={25}
+												className='block h-6 w-6'
+												aria-hidden='true'
+											/>
 										) : (
-											<Bars3Icon className='block h-6 w-6' aria-hidden='true' />
+											<AiOutlineMenu
+												size={25}
+												className='block h-6 w-6'
+												aria-hidden='true'
+											/>
 										)}
 									</Disclosure.Button>
 								</div>
@@ -83,9 +90,6 @@ export default function Navbar() {
 
 									{!user && (
 										<div className='flex flex-row gap-4 list-none text-white text-sm font-medium'>
-											{/* <Link to='/login'>
-												<li className=''>Login</li>
-											</Link> */}
 											<Link to='/signup'>
 												<li className=''>Signup</li>
 											</Link>
@@ -153,19 +157,35 @@ export default function Navbar() {
 						</div>
 					</div>
 
-					<Disclosure.Panel className='md:hidden text-white'>
-						<div className='space-y-1 px-2 pt-2 pb-3 sm:px-3'>
+					<Disclosure.Panel className='md:hidden text-white bg-primary'>
+						<div className='space-y-1 px-2 pt-4 pb-3 sm:px-3 '>
 							<Disclosure.Button
 								key={user?.email}
 								as='a'
-								className='bg-grey2 text-white'>
-								<ul className='flex flex-col gap-4 text-sm md:text-lg cursor-pointer'>
-									<Link to='/dashboard'>
-										<li className=''>Market</li>
-									</Link>
-									{/* <li className=''>Portfolio</li> */}
+								className=' text-white'>
+								<ul className='flex flex-col  gap-4 text-sm md:text-lg cursor-pointer'>
+									{user && (
+										<div className='flex flex-col gap-4'>
+											<Link to='/'>
+												<li className=''>Home</li>
+											</Link>
+											<Link to='/dashboard'>
+												<li className=''>Market</li>
+											</Link>
+
+											<Link to='/signup'>
+												<li className=''>Sign Out</li>
+											</Link>
+										</div>
+									)}
 									{!user && (
 										<div className='flex flex-col gap-4'>
+											<Link to='/'>
+												<li className=''>Home</li>
+											</Link>
+											<Link to='/dashboard'>
+												<li className=''>Market</li>
+											</Link>
 											<Link to='/login'>
 												<li className=''>Login</li>
 											</Link>
@@ -177,29 +197,15 @@ export default function Navbar() {
 								</ul>
 							</Disclosure.Button>
 						</div>
-						<div className='border-t border-lightBlue pt-4 pb-3 bg-primary'>
-							<div className='flex items-center px-5 sm:px-6 '>
-								<div className='ml-3'>
-									<div className='text-base font-medium text-white'>
-										{user?.email}
-									</div>
-									<div className='text-sm font-medium text-gray-400'>
-										{users?.email}
-									</div>
-								</div>
-								<button
-									type='button'
-									className='ml-auto flex-shrink-0 rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800'>
-									<span className='sr-only'>View notifications</span>
-									<BellIcon className='h-6 w-6' aria-hidden='true' />
-								</button>
-							</div>
-							<div className='mt-3 space-y-1 px-2 sm:px-3'>
+						<div className='border-t border-white pt-4 pb-3 bg-primary'>
+							<div className='mt-3 space-y-1  sm:px-3'>
 								<Disclosure.Button
 									key={user?.email}
 									as='a'
-									className='block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white'>
-									{user?.email}
+									className='block  px-2 py-2 text-base font-medium'>
+									{user
+										? `Welcome ${user?.email.split('@')[0].toUpperCase()}!`
+										: 'Welcome! Please sign up to add to a watchlist.'}
 								</Disclosure.Button>
 							</div>
 						</div>
