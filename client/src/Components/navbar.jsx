@@ -54,12 +54,16 @@ export default function Navbar() {
 									</Disclosure.Button>
 								</div>
 								<div className='flex flex-shrink-0 items-center'>
-									<h1 className='flex flex-shrink-0 items-center text-white text-2xl font-semibold md:text-4xl'>
+									<a
+										href='/'
+										className='flex flex-shrink-0 items-center text-white text-2xl font-semibold md:text-4xl'>
 										BullBear
-									</h1>
-									<h1 className='hidden h-8 w-auto lg:block text-white text-2xl font-semibold md:text-4xl'>
+									</a>
+									<a
+										href='/'
+										className='hidden h-8 w-auto lg:block text-white text-2xl font-semibold md:text-4xl'>
 										BullBear
-									</h1>
+									</a>
 								</div>
 								<div className='hidden md:ml-6 md:flex md:items-center md:space-x-4'>
 									{navigation.map((item) => (
