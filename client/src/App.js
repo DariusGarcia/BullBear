@@ -19,11 +19,7 @@ function App() {
 			<Navigation />
 			<div>
 				<Routes>
-					<Route
-						path='/'
-						// element={user ? <Home /> : <Navigate to='/login' />}
-						element={user ? <Landing /> : <Navigate to='/login' />}
-					/>
+					<Route path='/' element={<Landing />} />
 					<Route
 						path='/login'
 						element={!user ? <Login /> : <Navigate to='/' />}

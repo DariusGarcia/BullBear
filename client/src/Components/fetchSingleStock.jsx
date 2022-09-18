@@ -120,7 +120,6 @@ const FetchSingleStock = (props) => {
 							{stockData[0]['changesPercentage']?.toFixed(2)}%
 						</li>
 
-						{error && <li className=''>{error}</li>}
 						<span className='flex flex-row md:gap-12 gap-4 items-center justify-around'>
 							<span>
 								<button
@@ -137,6 +136,7 @@ const FetchSingleStock = (props) => {
 							</span>
 						</span>
 					</ul>
+					{error && <p className='p-4 text-xs text-red font-bold '>{error}</p>}
 					<div className='mt-4 ml-2 text-lightBlue'>{stockData[0]['name']}</div>
 				</div>
 				<div className='w-full mb-4'>
@@ -189,6 +189,7 @@ const FetchSingleStock = (props) => {
 				<li className='text-xs md:text-base h-full items-center flex'>
 					{stockData[0]['changesPercentage']?.toFixed(2)}%
 				</li>
+
 				<li className='text-xs md:text-base h-full md:gap-12 gap-4 items-center justify-around flex'>
 					<span>
 						<button
@@ -210,6 +211,7 @@ const FetchSingleStock = (props) => {
 	return (
 		<nav className='w-full h-full border-lightBlue hover:rounded-xl '>
 			{info}
+			{error && <p className='p-4 text-xs text-red font-bold '>{error}</p>}
 		</nav>
 	)
 }
