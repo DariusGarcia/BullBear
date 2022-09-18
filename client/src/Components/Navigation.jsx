@@ -13,7 +13,7 @@ export default function Navigation() {
 
 	return (
 		<div className='sticky top-0 flex justify-center z-50 bg-grey'>
-			<nav className='flex h-16 w-full md:w-5/6 md:mb-12 md:mx-12 justify-evenly md:justify-between items-center font-primary bg-grey text-white '>
+			<nav className='flex h-16 w-full md:w-5/6 md:mb-12 md:mx-12 mx-4 justify-between items-center font-primary bg-grey text-white '>
 				<div className=''>
 					<Link to='/'>
 						<h1 className='mb-2 md:mb-0 text-2xl md:text-4xl font-bold tracking-wide cursor-pointer'>

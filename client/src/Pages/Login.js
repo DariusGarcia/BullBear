@@ -38,13 +38,18 @@ const Login = () => {
 						onChange={(e) => setPassword(e.target.value)}
 						value={password}
 					/>
-					<div className='flex justify-center my-8 w-full'>
+					<div className='flex flex-col items-center gap-y-10 justify-center my-8 w-full'>
 						<button
 							disabled={isLoading}
 							className='flex justify-center w-32 p-5  text-white rounded-md   bg-darkBlue hover:bg-lightBlue'
 							type='submit'>
 							Login
 						</button>
+						<a
+							href='/signup'
+							className='flex justify-center w-32 p-5  text-white rounded-md   bg-darkBlue hover:bg-lightBlue'>
+							Signup
+						</a>
 						{error && <div className=''>{error}</div>}
 					</div>
 				</form>

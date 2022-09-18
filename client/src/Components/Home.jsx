@@ -34,7 +34,7 @@ export default function Home() {
 	}
 
 	return (
-		<div className='flex w-full h-full mt-4 md:mt-0 items-center justify-evenly overflow-x-scroll md:overflow-x-auto bg-grey'>
+		<div className='flex w-full h-full mt-4 md:mt-12 items-center justify-evenly overflow-x-scroll md:overflow-x-auto bg-grey'>
 			<div className='flex flex-col w-full md:w-3/5 px-2 md:px-0 md:mx-12 md:justify-evenly '>
 				<div className='flex flex-col w-full md:flex-row md:px-0 md:justify-evenly  '>
 					{/*----------------------- nav-bar section ----------------------- */}

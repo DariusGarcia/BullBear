@@ -6,6 +6,7 @@ import './App.css'
 // pages & components
 import Home from './Components/Home'
 import Navigation from './Components/Navigation'
+import Navbar from './Components/navbar'
 import Signup from './Pages/Signup'
 import Login from './Pages/Login'
 import Landing from './Pages/Landing'
@@ -15,7 +16,8 @@ function App() {
 
 	return (
 		<>
-			<Navigation />
+			{/* <Navigation /> */}
+			<Navbar />
 			<div>
 				<Routes>
 					<Route path='/' element={<Landing />} />
