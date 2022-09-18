@@ -10,6 +10,7 @@ import Navbar from './Components/navbar'
 import Signup from './Pages/Signup'
 import Login from './Pages/Login'
 import Landing from './Pages/Landing'
+import Footer from './Components/footer'
 
 function App() {
 	const { user } = useAuthContext()
@@ -32,6 +33,7 @@ function App() {
 					/>
 				</Routes>
 			</div>
+			<Footer />
 		</>
 	)
 }

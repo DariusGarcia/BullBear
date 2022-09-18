@@ -7,23 +7,22 @@ import { BsGlobe } from 'react-icons/bs'
 import FetchSingleStock from './fetchSingleStock'
 import { FetchBatchStocks } from '../utils/fetchBatchStocks'
 
-import { WatchlistDetails } from './watchlistDetails'
 import { useWatchlistContext } from '../Hooks/useWatchlistContext'
 
 export default function Home() {
 	const [value, setValue] = useState('')
 	const [ticker, setTicker] = useState([])
 	const [stockBatch, setStockBatch] = useState([])
-	const { watchlist, dispatch } = useWatchlistContext()
+	// const { watchlist, dispatch } = useWatchlistContext()
 
 	const handleChange = (event) => {
 		const stock = event.target.value.trim()
 		setValue(stock)
 	}
 
-	useEffect(() => {
-		FetchBatchStocks().then((stocks) => console.log(stocks))
-	}, [])
+	// useEffect(() => {
+	// 	FetchBatchStocks().then((stocks) => console.log(stocks))
+	// }, [])
 
 	const handleSubmit = (event) => {
 		event.preventDefault()
@@ -62,7 +61,7 @@ export default function Home() {
 								autoFocus
 								aria-label='search stock ticker input'
 							/>
-							<button className='w-3/5 md:w-auto md:h-12 text-sm p-4 flex text-center justify-center items-center hover:scale-105 transition ease-in-out delay-25 bg-lightBlue bg-opacity-20 border-2 hover:bg-opacity-100 border-lightBlue text-white hover:text-white rounded-lg mb-6 md:mb-0'>
+							<button className='w-3/5 max-w-[216px] md:w-auto md:h-12 text-sm p-4 flex text-center justify-center items-center hover:scale-105 transition ease-in-out delay-25 bg-lightBlue bg-opacity-20 border-2 hover:bg-opacity-100 border-lightBlue text-white hover:text-white rounded-lg mb-6 md:mb-0'>
 								Search Ticker
 							</button>
 						</form>

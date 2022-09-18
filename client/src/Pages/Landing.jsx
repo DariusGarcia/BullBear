@@ -108,7 +108,7 @@ export default function Landing() {
 										<blockquote className='opacity-80'>
 											<div>
 												<p className='text-base text-gray-500'>
-													&ldquo;Thank you for checking out my project!&rdquo;
+													Thank you for checking out my project!
 												</p>
 											</div>
 											<footer className='mt-3'>
