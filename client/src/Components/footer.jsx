@@ -5,8 +5,8 @@ import { useAuthContext } from '../Hooks/useAuthContext'
 const navigation = {
 	main: [
 		{ name: 'Home', href: '/' },
-		{ name: 'Market', href: '/dashboard' },
-		{ name: 'Profile', href: '/' },
+		{ name: 'Dashboard', href: '/dashboard' },
+		// { name: 'Profile', href: '/' },
 	],
 	social: [
 		{

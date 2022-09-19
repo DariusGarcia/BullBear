@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useLogin } from '../Hooks/useLogin'
-import { LockClosedIcon } from '@heroicons/react/20/solid'
+import { HiLockClosed } from 'react-icons/hi'
 import { Link } from 'react-router-dom'
 
 export default function Login() {
@@ -83,10 +83,7 @@ export default function Login() {
 							type='submit'
 							className='group relative flex w-full justify-center rounded-md border border-transparent bg-lightBlue py-2 px-4  font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2'>
 							<span className='absolute inset-y-0 left-0 flex items-center pl-3'>
-								<LockClosedIcon
-									className='h-5 w-5 text-white group-hover:text-indigo-400'
-									aria-hidden='true'
-								/>
+								<HiLockClosed size={25}></HiLockClosed>
 							</span>
 							Login
 						</button>
