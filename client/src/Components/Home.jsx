@@ -1,29 +1,20 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { Watchlist } from './watchlist'
 import { TopGainers } from './topGainers'
-import { IoMdListBox } from 'react-icons/io'
 import { BiTrendingUp, BiTrendingDown } from 'react-icons/bi'
 import { BsGlobe } from 'react-icons/bs'
 import FetchSingleStock from './fetchSingleStock'
-import { FetchBatchStocks } from '../utils/fetchBatchStocks'
 
-import { useWatchlistContext } from '../Hooks/useWatchlistContext'
 import { TopLosers } from './topLosers'
 
 export default function Home() {
 	const [value, setValue] = useState('')
 	const [ticker, setTicker] = useState([])
-	const [stockBatch, setStockBatch] = useState([])
-	// const { watchlist, dispatch } = useWatchlistContext()
 
 	const handleChange = (event) => {
 		const stock = event.target.value.trim()
 		setValue(stock)
 	}
-
-	// useEffect(() => {
-	// 	FetchBatchStocks().then((stocks) => console.log(stocks))
-	// }, [])
 
 	const handleSubmit = (event) => {
 		event.preventDefault()

@@ -1,9 +1,8 @@
 import { useAuthContext } from '../Hooks/useAuthContext'
-// import screenshot from '../assets/bullbear-screenshot.png'
-import screenshot from '../assets/screenshot1.png'
 import { Link } from 'react-router-dom'
+
+import screenshot from '../assets/screenshot1.png'
 import { BsArrowRightSquare, BsArrowReturnRight } from 'react-icons/bs'
-import { FcTodoList } from 'react-icons/fc'
 
 export default function Landing() {
 	const { user } = useAuthContext()
