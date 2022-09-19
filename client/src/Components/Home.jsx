@@ -113,7 +113,7 @@ export default function Home() {
 							{/* Watchlist <IoMdListBox size={25} /> */}
 						</h3>
 						<article className='flex flex-col h-72 md:h-96 mb-16 md:mb-36 md:p-0  text-white rounded-xl '>
-							{<Watchlist stockBatch={stockBatch}></Watchlist>}
+							{<Watchlist></Watchlist>}
 						</article>
 					</section>
 				</div>

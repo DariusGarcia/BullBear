@@ -10,6 +10,7 @@ export const Watchlist = () => {
 
 	const data = useMemo(() => watchlist, [])
 
+	// fetch user's watchlist that containers their added stocks from the backend server API.
 	useEffect(() => {
 		const fetchWatchlist = async () => {
 			const response = await fetch(
@@ -40,9 +41,6 @@ export const Watchlist = () => {
 				<h2 className='flex justify-start md:p-0 pl-2 md:pl-0 gap-2 items-center md:items-end text-xl'>
 					Watchlist <IoMdListBox size={25} className='text-white' />
 				</h2>
-				{/* <h2 className='flex justify-center opacity-70'>Ticker</h2>
-				<h2 className='flex justify-center opacity-70'>Price</h2>
-				<h2 className='flex justify-center opacity-70'>Delete </h2> */}
 			</div>
 			<ul className='bg-primary bg-opacity-20 overflow-y-auto h-96 rounded-lg'>
 				{watchlist && watchlist.length >= 1 ? (
