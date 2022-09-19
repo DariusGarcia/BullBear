@@ -73,7 +73,7 @@ export default function Landing() {
 					</div>
 
 					<div className='relative overflow-hidden flex md:flex-col justify-center w-full items-center text-white bg-grey2 md:pt-16 pb-32'>
-						<div className='relative mx-16 sm:mx-0 lg:w-3/5'>
+						<div className='relative md:mx-16 sm:mx-0 lg:w-3/5'>
 							<div className='lg:mx-auto flex flex-col md:flex-row lg:px-8'>
 								<div className='mx-auto max-w-xl px-4 sm:px-6 lg:mx-0 lg:max-w-none lg:py-16 lg:px-0'>
 									<div>
