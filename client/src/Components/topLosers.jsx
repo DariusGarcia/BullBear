@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react'
 import { UseFetchBroadMarketData } from '../Hooks/useFetchBroadMarketData'
-import { GoTriangleUp } from 'react-icons/go'
+import { GoTriangleDown } from 'react-icons/go'
 
-export const TopGainers = () => {
+export const TopLosers = () => {
 	const [stocks, setStocks] = useState([])
 
 	useEffect(() => {
-		UseFetchBroadMarketData('gainers')
+		UseFetchBroadMarketData('losers')
 			.then((res) => setStocks(res))
 			.then((res) => console.log(res))
 			.catch((error) => console.log(error))
@@ -26,9 +26,9 @@ export const TopGainers = () => {
 							</li>
 						</span>
 						<span className='flex flex-col'>
-							<li className='flex flex-row gap-1 items-center text-green'>
+							<li className='flex flex-row gap-1 items-center text-red'>
 								${Number(stock.price)?.toFixed(2)}{' '}
-								<GoTriangleUp size={25}></GoTriangleUp>
+								<GoTriangleDown size={25}></GoTriangleDown>
 							</li>
 							<li>{Number(stock.changesPercentage).toFixed(2)}%</li>
 						</span>

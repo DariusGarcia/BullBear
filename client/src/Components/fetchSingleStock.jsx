@@ -4,6 +4,7 @@ import { FetchCompanyProfile } from '../utils/fetchCompanyProfile'
 import { UseGetAPI } from '../Hooks/useGetAPI'
 import { StockMoreInfo } from './stockMoreInfo'
 import { MdOutlineOpenInFull } from 'react-icons/md'
+import { AiOutlineArrowsAlt } from 'react-icons/ai'
 import { useAuthContext } from '../Hooks/useAuthContext'
 import { GoTriangleUp, GoTriangleDown } from 'react-icons/go'
 
@@ -90,12 +91,12 @@ const FetchSingleStock = (props) => {
 					<ul className='h-full grid grid-cols-4 content-center text-white px-2'>
 						{/* display stock ticker */}
 						<li className='flex flex-col h-full  gap-2 md:gap-1 text-xs md:text-sm '>
-							<div className='w-1/3 h-full flex flex-row gap-4'>
+							<div className='w-1/3 h-full flex flex-row gap-1'>
 								<img
 									className='w-12 md:w-12 h-8 md:h-max rounded-lg'
-									src={companyDetails[0].image}
+									src={companyDetails[0]?.image}
 									alt={companyDetails}></img>
-								<li className='text-xs md:text-lg h-full items-start flex'>
+								<li className='text-xs md:text-lg h-full items-center flex'>
 									${name}
 								</li>
 							</div>
@@ -120,19 +121,19 @@ const FetchSingleStock = (props) => {
 							{stockData[0]['changesPercentage']?.toFixed(2)}%
 						</li>
 
-						<span className='flex flex-row md:gap-12 gap-4 items-center justify-around'>
+						<span className='flex flex-row md:gap-6 gap-4 items-center justify-around'>
 							<span>
 								<button
 									onClick={(event) => handleAdd(event)}
-									className='h-8 w-12 rounded-lg bg-primary border-2 opacity-50 hover:border-lightBlue hover:opacity-100 hover:scale-105 delay-25 ease-in transition text-white'>
+									className='h-8 w-16 rounded-lg bg-primary border-2 opacity-50 hover:border-lightBlue hover:opacity-100 hover:scale-105 delay-25 ease-in transition text-white'>
 									Add
 								</button>
 							</span>
 							<span>
-								<MdOutlineOpenInFull
+								<AiOutlineArrowsAlt
 									className='hover:scale-110 transition text-white ease-in-out delay-25 cursor-pointer '
 									onClick={handleOnClick}
-									size={25}></MdOutlineOpenInFull>
+									size={25}></AiOutlineArrowsAlt>
 							</span>
 						</span>
 					</ul>
@@ -153,22 +154,22 @@ const FetchSingleStock = (props) => {
 		)
 	} else if (!toggle && companyDetails) {
 		info = (
-			<ul className='h-full grid px-2 py-4 grid-cols-4 content-center text-white border-2transition delay-25 ease-in-out rounded-lg cursor-pointer'>
+			<ul className='h-full grid px-2 py-3 grid-cols-4 content-center text-white border-2transition delay-25 ease-in-out rounded-lg cursor-pointer'>
 				{/* display stock ticker */}
 				<li className='flex h-full items-center gap-x-2 md:gap-1 text-xs md:text-sm '>
 					<div className='w-1/3'>
 						<img
 							className='w-12 md:w-12 h-8 md:h-max rounded-lg '
-							src={companyDetails[0].image}
+							src={companyDetails[0]?.image}
 							alt={companyDetails}></img>
 					</div>
 					<div className='flex flex-col text-xs md:text-base'>
-						<li className='text-xs md:text-base h-full items-center flex '>
-							${name}
-						</li>
 						<span className='text-lightBlue'>
 							{stockData[0]['name']?.split(' ')[0]?.split(',')?.join('')}
 						</span>
+						<li className='text-xs md:text-base h-full items-center flex '>
+							${name}
+						</li>
 					</div>
 				</li>
 
@@ -190,19 +191,19 @@ const FetchSingleStock = (props) => {
 					{stockData[0]['changesPercentage']?.toFixed(2)}%
 				</li>
 
-				<li className='text-xs md:text-base h-full md:gap-12 gap-4 items-center justify-around flex'>
+				<li className='text-xs md:text-base h-full md:gap-6 gap-4 items-center justify-around flex'>
 					<span>
 						<button
 							onClick={(event) => handleAdd(event)}
-							className='h-8 w-12 rounded-lg bg-primary border-2 opacity-50 hover:border-lightBlue hover:opacity-100 hover:scale-105 delay-25 ease-out transition text-white'>
+							className='h-8 w-16 rounded-lg bg-primary border-2 opacity-50 hover:border-lightBlue hover:opacity-100 hover:scale-105 delay-25 ease-out transition text-white'>
 							Add
 						</button>
 					</span>
 					<span className=''>
-						<MdOutlineOpenInFull
+						<AiOutlineArrowsAlt
 							className='cursor-pointer hover:scale-110 transition text-white ease-in-out delay-25'
 							onClick={handleOnClick}
-							size={25}></MdOutlineOpenInFull>
+							size={25}></AiOutlineArrowsAlt>
 					</span>
 				</li>
 			</ul>

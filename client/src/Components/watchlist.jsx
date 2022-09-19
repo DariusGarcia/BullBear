@@ -2,6 +2,7 @@ import { useMemo, useEffect } from 'react'
 import { useWatchlistContext } from '../Hooks/useWatchlistContext'
 import { WatchlistDetails } from './watchlistDetails'
 import { useAuthContext } from '../Hooks/useAuthContext'
+import { IoMdListBox } from 'react-icons/io'
 
 export const Watchlist = () => {
 	const { watchlist, dispatch } = useWatchlistContext()
@@ -35,10 +36,13 @@ export const Watchlist = () => {
 
 	return (
 		<div className=' text-white w-full bg-grey rounded-lg '>
-			<div className='sticky top-0 grid grid-cols-3 justify-between md:px-2 w-full mt-2 md:mt-7 h-12 items-center mb-4 bg-grey2 rounded-lg z-20 '>
-				<h2 className='flex justify-center opacity-70'>Ticker</h2>
+			<div className='sticky top-0 grid grid-cols-3 justify-between md:px-2 w-full mt-2 md:mt-3 h-12 items-center mb-4 bg-grey2 rounded-lg z-20 '>
+				<h2 className='flex justify-start md:p-0 pl-2 md:pl-0 gap-2 items-center md:items-end text-xl'>
+					Watchlist <IoMdListBox size={25} className='text-white' />
+				</h2>
+				{/* <h2 className='flex justify-center opacity-70'>Ticker</h2>
 				<h2 className='flex justify-center opacity-70'>Price</h2>
-				<h2 className='flex justify-center opacity-70'>Delete </h2>
+				<h2 className='flex justify-center opacity-70'>Delete </h2> */}
 			</div>
 			<ul className='bg-primary bg-opacity-20 overflow-y-auto h-96 rounded-lg'>
 				{watchlist && watchlist.length >= 1 ? (
@@ -54,7 +58,9 @@ export const Watchlist = () => {
 						</li>
 					))
 				) : (
-					<p className='p-4'>Add stocks...</p>
+					<p className='p-4'>
+						{user ? 'Add stocks...' : 'Login to add to watchlist...'}
+					</p>
 				)}
 			</ul>
 		</div>

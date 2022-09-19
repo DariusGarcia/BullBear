@@ -81,7 +81,7 @@ export default function Login() {
 						<button
 							disabled={isLoading}
 							type='submit'
-							className='group relative flex w-full justify-center rounded-md border border-transparent bg-lightBlue py-2 px-4  font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2'>
+							className='group relative flex w-full justify-center rounded-md  hover:scale-95 transition ease-in-out hover:bg-opacity-60 bg-lightBlue py-2 px-4  font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2'>
 							<span className='absolute inset-y-0 left-0 flex items-center pl-3'>
 								<HiLockClosed size={25}></HiLockClosed>
 							</span>
@@ -89,7 +89,7 @@ export default function Login() {
 						</button>
 					</div>
 				</form>
-				<section className='flex flex-row gap-8 items-center mt-12'>
+				<section className='flex flex-row gap-8 items-center pt-12'>
 					<p className=''>Don't have an account yet?</p>
 					<Link to='/signup'>
 						<p className='border-2 border-lightBlue rounded-lg hover:scale-105 transition ease-in-out delay-55 px-6 py-2'>
