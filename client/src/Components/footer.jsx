@@ -1,4 +1,3 @@
-import { Logout } from 'heroicons-react'
 import { BsGithub } from 'react-icons/bs'
 import { Link } from 'react-router-dom'
 import { useAuthContext } from '../Hooks/useAuthContext'

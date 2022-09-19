@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { Link as RouterLink } from 'react-router-dom'
 import validator from 'validator'
 import { regexPassword } from '../utils'
 

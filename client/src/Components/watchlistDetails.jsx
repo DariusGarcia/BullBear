@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from 'react'
+import { useState, useMemo } from 'react'
 import { UseGetAPI } from '../Hooks/useGetAPI'
 import { AiFillDelete } from 'react-icons/ai'
 import { FetchCompanyProfile } from '../utils/fetchCompanyProfile'
