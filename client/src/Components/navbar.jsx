@@ -156,54 +156,69 @@ export default function Navbar() {
 					</div>
 
 					<Disclosure.Panel className='md:hidden text-white bg-primary'>
-						<div className='space-y-1 px-2 pt-4 pb-3 sm:px-3 '>
+						<div className='space-y-1 px-2 pt-2  pb-3 sm:px-3  '>
 							<Disclosure.Button
 								key={user?.email}
 								as='a'
 								className=' text-white'>
-								<ul className='flex flex-col  gap-4 text-sm md:text-lg cursor-pointer'>
+								<header className='flex justify-end w-max ml-2 mb-4 border-b-[1px] border-opacity-60 '>
+									{user
+										? `Welcome ${user?.email.split('@')[0].toUpperCase()}`
+										: 'Welcome! Please login to add to a watchlist.'}
+								</header>
+								<ul className='flex flex-col items-start gap-4 text-sm md:text-lg cursor-pointer'>
 									{user && (
 										<div className='flex flex-col gap-4'>
 											<Link to='/'>
-												<li className=''>Home</li>
+												<li className='hover:bg-grey rounded-md p-2'>Home</li>
 											</Link>
 											<Link to='/dashboard'>
-												<li className=''>Market</li>
+												<li className='hover:bg-grey rounded-md p-2'>
+													Market Dashboard
+												</li>
 											</Link>
 
 											<Link to='/signup'>
-												<li className=''>Sign Out</li>
+												<li className='hover:bg-grey rounded-md p-2'>
+													Sign Out
+												</li>
 											</Link>
 										</div>
 									)}
 									{!user && (
 										<div className='flex flex-col gap-4'>
 											<Link to='/'>
-												<li className=''>Home</li>
+												<li className='hover:bg-grey rounded-md p-2'>Home</li>
 											</Link>
 											<Link to='/dashboard'>
-												<li className=''>Market</li>
+												<li className='hover:bg-grey rounded-md p-2'>
+													Market Dashboard
+												</li>
 											</Link>
 											<Link to='/login'>
-												<li className=''>Login</li>
+												<li className='hover:bg-grey rounded-md p-2'>Login</li>
 											</Link>
 											<Link to='/signup'>
-												<li className=''>Signup</li>
+												<li className='hover:bg-grey rounded-md p-2'>
+													Signup{' '}
+												</li>
 											</Link>
 										</div>
 									)}
 								</ul>
 							</Disclosure.Button>
 						</div>
-						<div className='border-t border-white pt-4 pb-3 bg-primary'>
-							<div className='mt-3 space-y-1  sm:px-3'>
+						<div className='border-t border-white  pb-3 bg-primary'>
+							<div className='sm:px-3 '>
 								<Disclosure.Button
 									key={user?.email}
 									as='a'
-									className='block  px-2 py-2 text-base font-medium'>
-									{user
-										? `Welcome ${user?.email.split('@')[0].toUpperCase()}!`
-										: 'Welcome! Please sign up to add to a watchlist.'}
+									className='block  px-2 text-base font-medium'>
+									{' '}
+									<div className='flex flex-row cursor-pointer items-center gap-2 justify-start mt-3 text-white opacity-60 hover:text-red hover:opacity-100 px-2'>
+										{' '}
+										CLOSE <VscChromeClose />
+									</div>
 								</Disclosure.Button>
 							</div>
 						</div>

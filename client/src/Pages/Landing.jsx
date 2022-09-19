@@ -10,7 +10,7 @@ export default function Landing() {
 		<div className='bg-white'>
 			<div className='relative overflow-hidden'>
 				<main className=''>
-					<div className='flex justify-center bg-grey pt-10 sm:pt-16 lg:overflow-hidden lg:pt-8 lg:pb-14'>
+					<div className='flex justify-center bg-grey pt-6 sm:pt-16 lg:overflow-hidden lg:pt-8 lg:pb-14'>
 						<div className='mx-auto md:w-5/6 max-w-7xl lg:px-8'>
 							<div className='md:grid md:grid-cols-2 lg:gap-8 pb-48 md:h-full'>
 								<div className='mx-auto max-w-md px-4 md:px-0 sm:max-w-2xl sm:text-center lg:flex lg:items-center lg:text-left'>
@@ -18,7 +18,7 @@ export default function Landing() {
 										<Link to='/dashboard'>
 											<h1
 												className='inline-flex gap-4 items-center rounded-full bg-primary
-											p-6 text-white sm:text-base lg:text-xl hover:bg-opacity-40 transition ease-in-out delay-55
+											p-4 md:p-6 text-white sm:text-base lg:text-xl hover:bg-opacity-40 transition ease-in-out delay-55
 											'>
 												<BsArrowReturnRight size={20}></BsArrowReturnRight>
 												BullBear Market{' '}
@@ -30,11 +30,11 @@ export default function Landing() {
 												free.
 											</span>
 										</h1>
-										<p className='text-base text-white opacity-40 sm:text-xl lg:text-lg xl:text-xl'>
+										<p className='text-base text-white opacity-70 sm:text-xl lg:text-lg xl:text-xl'>
 											View details about all stocks in the S&P500 Index and add
 											them to your watchlist.
 										</p>
-										<div className='mt-10 sm:mt-12'>
+										<div className='mt-6 sm:mt-12'>
 											<form
 												action='#'
 												className='sm:mx-auto sm:max-w-xl lg:mx-0'>
@@ -101,7 +101,7 @@ export default function Landing() {
 										<div>
 											<span className='flex h-12 w-12 items-center justify-center rounded-md bg-indigo-600'></span>
 										</div>
-										<div className='mt-6'>
+										<div className=''>
 											<h2 className='text-3xl font-bold tracking-tight'>
 												Stay on top of your favorite stocks
 											</h2>

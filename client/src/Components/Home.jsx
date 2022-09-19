@@ -50,7 +50,6 @@ export default function Home() {
 								}
 								type='text'
 								placeholder='e.g. MSFT'
-								autoFocus
 								aria-label='search stock ticker input'
 							/>
 							<button className='w-2/5 max-w-[216px] md:w-auto md:h-12 text-sm p-4 flex text-center justify-center items-center hover:scale-105 transition ease-in-out delay-25 bg-lightBlue bg-opacity-20 border-2 hover:bg-opacity-100 border-lightBlue text-white hover:text-white rounded-lg mb-6 md:mb-0'>
@@ -112,13 +111,13 @@ export default function Home() {
 						<h3 className='flex h-16 justify-start p-2 md:p-0 gap-2 items-center md:items-end text-xl'>
 							{/* Watchlist <IoMdListBox size={25} /> */}
 						</h3>
-						<article className='flex flex-col h-72 md:h-96 mb-16 md:mb-36 md:p-0  text-white rounded-xl '>
+						<article className='flex flex-col h-72 md:h-96 mb-36 md:mb-36 md:p-0  text-white rounded-xl '>
 							{<Watchlist></Watchlist>}
 						</article>
 					</section>
 				</div>
 			</div>
-			<section className='grid md:grid-cols-2 md:w-3/5 my-24 gap-8 md:gap-0'>
+			<section className='grid md:grid-cols-2 md:w-3/5  my-24 gap-8 md:gap-0'>
 				{/* Display today's top GAINERS in the market */}
 				<article className='relative h-full flex flex-col  rounded-lg px-2 py-4 w-full  text-white'>
 					<div className='text-lg md:text-xl mb-4 flex flex-row gap-2 items-center'>
