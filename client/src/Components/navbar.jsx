@@ -79,7 +79,7 @@ export default function Navbar() {
 											href={item.href}
 											className={classNames(
 												item.current
-													? 'bg-gray-900 text-white'
+													? 'bg-gray-900 text-white hover:bg-grey2 hover:scale-95 transition ease-in-out delay-45 rounded-lg'
 													: 'text-gray-300 hover:bg-gray-700 hover:text-white',
 												'px-3 py-2 rounded-md text-sm font-medium'
 											)}
@@ -91,7 +91,9 @@ export default function Navbar() {
 									{!user && (
 										<div className='flex flex-row gap-4 list-none text-white text-sm font-medium'>
 											<Link to='/signup'>
-												<li className=''>Signup</li>
+												<li className='hover:bg-grey2 hover:scale-95 transition ease-in-out delay-45 rounded-lg px-3 py-2'>
+													Signup
+												</li>
 											</Link>
 										</div>
 									)}
@@ -103,14 +105,14 @@ export default function Navbar() {
 										<button
 											onClick={handleClick}
 											type='button'
-											className='relative inline-flex gap-2 items-center rounded-md border border-transparent bg-indigo-500 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-800'>
+											className='relative inline-flex gap-2 items-center rounded-md border border-transparent bg-indigo-500 px-4 py-2 text-sm font-medium hover:border-grey2 hover:bg-grey2 hover:scale-105 transition ease-in-out delay-45 text-white shadow-sm hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-800'>
 											<span>Sign Out</span>
 										</button>
 									)}
 									{!user && (
 										<a
 											href='/login'
-											className='relative inline-flex gap-2 items-center rounded-md border border-transparent bg-indigo-500 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-800'>
+											className='relative inline-flex gap-2 items-center rounded-md border border-transparent bg-indigo-500 px-4 py-2 text-sm font-medium hover:border-grey2 hover:bg-grey2 hover:scale-105 transition ease-in-out delay-45 text-white shadow-sm hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-800'>
 											Login
 										</a>
 									)}

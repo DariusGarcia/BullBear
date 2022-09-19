@@ -5,7 +5,6 @@ import './App.css'
 
 // pages & components
 import Home from './Components/Home'
-import Navigation from './Components/Navigation'
 import Navbar from './Components/navbar'
 import Signup from './Pages/Signup'
 import Login from './Pages/Login'

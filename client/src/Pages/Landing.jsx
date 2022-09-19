@@ -1,5 +1,6 @@
 import { useAuthContext } from '../Hooks/useAuthContext'
-import screenshot from '../assets/bullbear-screenshot.png'
+// import screenshot from '../assets/bullbear-screenshot.png'
+import screenshot from '../assets/screenshot1.png'
 import { Link } from 'react-router-dom'
 
 export default function Landing() {
@@ -21,10 +22,10 @@ export default function Landing() {
 												BullBear Market
 											</h1>
 										</Link>
-										<h1 className='mt-4 text-2xl font-bold tracking-tight text-white sm:mt-5 sm:text-6xl md:text-3xl lg:mt-6 xl:text-6xl'>
-											<span className='block'>A quick way to</span>
-											<span className='block bg-clip-text pb-3 text-transparent sm:pb-5'>
-												keep track of your favorite stocks for free.
+										<h1 className='my-4 text-2xl font-bold tracking-tight text-white  sm:text-6xl md:text-3xl lg:mt-6 xl:text-6xl'>
+											<span className='block'>
+												A quick way to keep track of your favorite stocks for
+												free.
 											</span>
 										</h1>
 										<p className='text-base text-white opacity-40 sm:text-xl lg:text-lg xl:text-xl'>
@@ -71,8 +72,8 @@ export default function Landing() {
 						</div>
 					</div>
 
-					<div className='relative overflow-hidden flex md:flex-col justify-center w-full items-end text-white bg-grey2 md:pt-16 pb-32'>
-						<div className='relative md:w-5/6'>
+					<div className='relative overflow-hidden flex md:flex-col justify-center w-full items-center text-white bg-grey2 md:pt-16 pb-32'>
+						<div className='relative mx-16 sm:mx-0 lg:w-3/5'>
 							<div className='lg:mx-auto flex flex-col md:flex-row lg:px-8'>
 								<div className='mx-auto max-w-xl px-4 sm:px-6 lg:mx-0 lg:max-w-none lg:py-16 lg:px-0'>
 									<div>
@@ -122,9 +123,9 @@ export default function Landing() {
 									</div>
 								</div>
 								<div className='mt-12 sm:mt-16 lg:mt-0'>
-									<div className='-mr-48 pl-4 sm:pl-6 md:-mr-16 lg:relative lg:m-0 lg:h-full lg:px-0'>
+									<div className='md:-mr-48 pl-4 sm:pl-6 md:-mr-16 lg:relative lg:m-0 lg:h-full lg:px-0'>
 										<img
-											className='w-full rounded-xl shadow-xl ring-1 ring-black ring-opacity-5 lg:absolute lg:left-0 lg:h-full lg:w-auto lg:max-w-none'
+											className='w-full md:min-w-[500px] lg:absolute lg:left-0 lg:h-full lg:w-auto lg:max-w-none'
 											src={screenshot}
 											alt='Inbox user interface'
 										/>
