@@ -38,6 +38,9 @@ export default function Home() {
 				<div className='flex flex-col w-full md:flex-row md:px-0 md:justify-evenly  '>
 					<section className='flex flex-col md:h-full md:w-full s '>
 						{/*----------------------- nav-bar section ----------------------- */}
+						<p className='text-white mb-2'>
+							Enter the ticker of your favorite stock:
+						</p>
 						<form
 							className='flex flex-col md:flex-row w-full h-max md:h-16 text-white items-start md:mb-3 md:pl-0 md:gap-8 md:justify-start px-1 md:px-0'
 							onSubmit={handleSubmit}>
