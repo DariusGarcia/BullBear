@@ -86,11 +86,11 @@ const FetchSingleStock = (props) => {
 
 	if (toggle && companyDetails) {
 		info = (
-			<div className='flex flex-col  transition delay-25 ease-in-out rounded-lg cursor-pointer '>
+			<div className='flex flex-col  transition delay-25 ease-in-out rounded-lg  '>
 				<div className=' w-full py-4'>
 					<ul className='h-full grid grid-cols-4 content-center text-white px-2'>
 						{/* display stock ticker */}
-						<li className='flex flex-col h-full  gap-2 md:gap-1 text-xs md:text-sm '>
+						<li className='flex flex-col h-full md:pl-2 gap-2 md:gap-1 text-xs md:text-sm '>
 							<div className='w-1/3 h-full flex flex-row gap-1'>
 								<img
 									className='w-12 md:w-12 h-8 md:h-max rounded-lg'
@@ -138,7 +138,9 @@ const FetchSingleStock = (props) => {
 						</span>
 					</ul>
 					{error && <p className='p-4 text-xs text-red font-bold '>{error}</p>}
-					<div className='mt-4 ml-2 text-lightBlue'>{stockData[0]['name']}</div>
+					<div className='mt-4 ml-4 text-lg text-lightBlue'>
+						{stockData[0]['name']}
+					</div>
 				</div>
 				<div className='w-full mb-4'>
 					<StockMoreInfo

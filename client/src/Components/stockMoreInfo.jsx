@@ -7,8 +7,8 @@ export const StockMoreInfo = (props) => {
 	return (
 		<>
 			{companyDetails && companyDetails.length > 0 && (
-				<div className='px-2 text-white w-full overflow-hidden'>
-					<section className='grid grid-cols-2 my-4 mb-8 gap-y-4'>
+				<div className='px-4 text-white w-full overflow-hidden'>
+					<section className='grid grid-cols-2 mb-4 md:mb-8 gap-y-4'>
 						<article className=''>
 							<p className='opacity-70'>CEO</p>
 							<p className=''>{companyDetails[0].ceo}</p>
@@ -101,9 +101,9 @@ export const StockMoreInfo = (props) => {
 							<p className=''>{companyDetails[0]['description']}</p>
 						)}
 						<button
-							className='border-b-2 border-lightBlue text-lightBlue text-sm p-2 '
+							className='border-b-2 border-lightBlue text-lightBlue text-sm mt-2 pb-1 '
 							onClick={() => setToggle(!toggle)}>
-							Show more
+							{!toggle ? 'Show more' : 'Show less'}
 						</button>
 					</div>
 				</div>
