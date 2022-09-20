@@ -18,6 +18,7 @@ module.exports = {
 			neutral: '#f5f5f5',
 			gray100: '#f3f4f6',
 			green: '#16a34a',
+			grey3: '#6b7280',
 		},
 
 		screens: {

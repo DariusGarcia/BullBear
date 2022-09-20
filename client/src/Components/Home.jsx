@@ -36,9 +36,9 @@ export default function Home() {
 					</h3>
 				</header>
 				<div className='flex flex-col w-full md:flex-row md:px-0 md:justify-evenly  '>
-					<section className='flex flex-col md:h-full md:w-full s '>
+					<section className='flex flex-col md:h-full md:w-full  '>
 						{/*----------------------- nav-bar section ----------------------- */}
-						<p className='text-white mb-2'>
+						<p className='text-white mb-2 ml-1'>
 							Enter the ticker of your favorite stock:
 						</p>
 						<form
@@ -114,7 +114,7 @@ export default function Home() {
 						<h3 className='flex h-16 justify-start p-2 md:p-0 gap-2 items-center md:items-end text-xl'>
 							{/* Watchlist <IoMdListBox size={25} /> */}
 						</h3>
-						<article className='flex flex-col h-72 md:h-96 mb-36 md:mb-36 md:p-0  text-white rounded-xl '>
+						<article className='flex flex-col h-72 md:h-96 mb-36 md:mb-36 md:p-0 mt-8 text-white rounded-xl '>
 							{<Watchlist></Watchlist>}
 						</article>
 					</section>

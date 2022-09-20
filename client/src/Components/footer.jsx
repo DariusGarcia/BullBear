@@ -53,7 +53,7 @@ export default function Footer() {
 						<div className='flex flex-row list-none'>
 							<Link to='/login '>
 								<li className='px-5 py-2 hover:bg-primary hover:scale-95 transition ease-in-out delay-45 rounded-lg'>
-									Login
+									Log in
 								</li>
 							</Link>
 							<Link to='/signup'>

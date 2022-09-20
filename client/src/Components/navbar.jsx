@@ -109,7 +109,7 @@ export default function Navbar() {
 										<a
 											href='/login'
 											className='relative inline-flex gap-2 items-center rounded-md border border-transparent bg-indigo-500 px-4 py-2 text-sm font-medium hover:border-grey2 hover:bg-primary hover:scale-105 transition ease-in-out delay-45 text-white shadow-sm hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-800'>
-											Login
+											Log in
 										</a>
 									)}
 								</div>
@@ -164,7 +164,7 @@ export default function Navbar() {
 								<header className='flex justify-end w-max ml-2 mb-4 border-b-[1px] border-opacity-60 '>
 									{user
 										? `Welcome ${user?.email.split('@')[0].toUpperCase()}`
-										: 'Welcome! Please login to add to a watchlist.'}
+										: 'Welcome! Please log in to add to a watchlist.'}
 								</header>
 								<ul className='flex flex-col items-start gap-4 text-sm md:text-lg cursor-pointer'>
 									{user && (
@@ -196,7 +196,7 @@ export default function Navbar() {
 												</li>
 											</Link>
 											<Link to='/login'>
-												<li className='hover:bg-grey rounded-md p-2'>Login</li>
+												<li className='hover:bg-grey rounded-md p-2'>Log in</li>
 											</Link>
 											<Link to='/signup'>
 												<li className='hover:bg-grey rounded-md p-2'>
