@@ -89,8 +89,8 @@ const FetchSingleStock = (props) => {
 
 	if (toggle && companyDetails) {
 		info = (
-			<div className='flex flex-col  transition delay-25 ease-in-out rounded-lg  '>
-				<div className=' w-full py-4'>
+			<div className='flex flex-col pt-2 md:pt-0 transition delay-25 ease-in-out rounded-lg  '>
+				<div className=' w-full py-2'>
 					<ul className='h-full grid grid-cols-4  mr-2 md:mr-0 content-center text-white px-2'>
 						{/* display stock ticker */}
 						<li className='flex flex-col h-full md:pl-2 gap-2 md:gap-1 text-xs md:text-sm '>
@@ -99,7 +99,7 @@ const FetchSingleStock = (props) => {
 									className='w-12 md:w-12 h-8 md:h-max rounded-lg'
 									src={companyDetails[0]?.image}
 									alt={companyDetails}></img>
-								<li className='text-xs md:text-lg md:ml-14 h-full items-center flex'>
+								<li className='text-xs md:text-base md:ml-14 h-full pl-1 md:pl-0 items-center flex'>
 									${name}
 								</li>
 							</div>
@@ -161,19 +161,19 @@ const FetchSingleStock = (props) => {
 		)
 	} else if (!toggle && companyDetails) {
 		info = (
-			<ul className='h-full grid px-2 py-4 grid-cols-4 mr-2 md:mr-0 content-center text-white border-2transition delay-25 ease-in-out rounded-lg cursor-pointer'>
+			<ul className='h-16 grid px-2 py-4 grid-cols-4 mr-2 md:mr-0 content-center text-white border-2transition delay-25 ease-in-out rounded-lg cursor-pointer'>
 				{/* display stock ticker */}
 				<li className='flex h-full items-center gap-x-2 md:gap-1 text-xs md:text-sm '>
 					<div className='w-1/3'>
 						<img
-							className='w-12 md:w-12 h-8 md:h-max md:mx-2 rounded-lg '
+							className='w-max md:w-12 h-8 md:h-max md:mx-2 rounded-lg '
 							src={companyDetails[0]?.image}
 							alt={companyDetails}></img>
 					</div>
 					<div className='flex flex-col text-xs md:text-base'>
-						<span className='text-lightBlue'>
+						{/* <span className='text-lightBlue'>
 							{stockData[0]['name']?.split(' ')[0]?.split(',')?.join('')}
-						</span>
+						</span> */}
 						<li className='text-xs md:text-base h-full items-center flex '>
 							${name}
 						</li>
@@ -183,7 +183,7 @@ const FetchSingleStock = (props) => {
 				{/* display current price */}
 				{stockData[0] && stockData[0]['changesPercentage'] > 0 && (
 					<li className='text-xs md:text-base text-green h-full items-center flex gap-1  '>
-						${stockData[0]['price']?.toFixed(2)}{' '}
+						${stockData[0]['price']?.toFixed(2)}
 						<GoTriangleUp size={25}></GoTriangleUp>
 					</li>
 				)}
@@ -198,7 +198,7 @@ const FetchSingleStock = (props) => {
 					{stockData[0]['changesPercentage']?.toFixed(2)}%
 				</li>
 
-				<li className='text-xs md:text-base h-full md:gap-6 gap-4 items-center justify-around flex'>
+				<li className='text-md h-full md:gap-6 gap-4 items-center justify-around flex'>
 					<span>
 						<button
 							onClick={(event) => handleAdd(event)}

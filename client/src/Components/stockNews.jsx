@@ -26,7 +26,7 @@ export default function StockNews() {
 					rel='noreferrer'
 					className='hover:opacity-60'>
 					<article className=''>
-						<ul className='flex flex-col   my-2 bg-grey p-2 gap-y-2 rounded-md '>
+						<ul className='flex flex-col  bg-grey my-2 border-b p-2 gap-y-2  '>
 							<li className=''>${newsArticle.symbol}</li>
 							<li className=''>{newsArticle.title}</li>
 							<li className=''>
@@ -35,12 +35,11 @@ export default function StockNews() {
 									src={newsArticle.image}
 									alt={newsArticle.title}></img>
 							</li>
-							<li className='italic'>
+							<li className='italic text-sm'>
 								{newsArticle.text?.substring(0, 100)}...
 							</li>
-							<li className='text-sm opacity-50'>
-								{newsArticle.site} Published:{' '}
-								{newsArticle.publishedDate.substring(0, 10)}
+							<li className='text-sm opacity-50 flex flex-row'>
+								{newsArticle.site} {newsArticle.publishedDate.substring(0, 10)}
 							</li>
 						</ul>
 					</article>

@@ -27,8 +27,8 @@ const sidebarNavigation = [
 		current: true,
 	},
 	{ name: 'Market', href: '/market', icon: PhotoIcon, current: false },
-	{ name: 'Portfolio', href: '#', icon: UserGroupIcon, current: false },
-	{ name: 'Profile', href: '#', icon: RectangleStackIcon, current: false },
+	// { name: 'Portfolio', href: '#', icon: UserGroupIcon, current: false },
+	// { name: 'Profile', href: '#', icon: RectangleStackIcon, current: false },
 	// { name: 'Settings', href: '#', icon: CogIcon, current: false },
 ]
 const userNavigation = [
@@ -266,13 +266,13 @@ export default function Dashboard() {
 												name='search-field'
 												id='search-field'
 												className='h-full w-full rounded-r-lg md:rounded-lg focus-text-white focus-bg-white bg-grey  py-2 pl-10 pr-3 text-base text-white placeholder-grey3 focus:border-transparent focus:grey3 focus:outline-none focus:ring-0'
-												placeholder='Search stock ticker e.g. AAPL'
+												placeholder='Search stock e.g. AAPL'
 												aria-label='search stock ticker input'
 											/>
 
 											<button
 												onSubmit={handleSubmit}
-												className=' mx-4 md:mx-0s md:w-1/4 md:h-16 text-sm p-4 flex text-center justify-center items-center hover:scale-105 transition ease-in-out delay-25 bg-lightBlue bg-opacity-20 border-2 hover:bg-opacity-100 border-lightBlue text-white hover:text-white rounded-lg'>
+												className=' mx-4 md:mx-0s mb-2 md:w-1/4 md:h-16 text-sm p-4 flex text-center justify-center items-center hover:scale-105 transition ease-in-out delay-25 bg-lightBlue bg-opacity-20 border-2 hover:bg-opacity-100 border-lightBlue text-white hover:text-white rounded-lg'>
 												Search
 											</button>
 										</div>
@@ -288,7 +288,7 @@ export default function Dashboard() {
 							{/* Primary column */}
 							<section
 								aria-labelledby='primary-heading'
-								className='flex h-full min-w-0 md:w-full overflow-hidden mt-4  flex-1 flex-col lg:order-last'>
+								className='flex h-full min-w-0 md:w-full overflow-hidden flex-1 flex-col lg:order-last'>
 								<h1 id='primary-heading' className='sr-only'>
 									Photos
 								</h1>
@@ -301,7 +301,7 @@ export default function Dashboard() {
 						</main>
 
 						{/* Secondary column (hidden on smaller screens) */}
-						<aside className='hidden md:block w-96 mx-4 lg:mx-40 mt-20 overflow-x-hidden   '>
+						<aside className='hidden md:block w-96 px-4 lg:mx-40 pt-2 overflow-x-hidden  bg-grey3 '>
 							{/* Your content */}
 							<Watchlist />
 						</aside>
