@@ -104,16 +104,25 @@ export default function Market() {
 										 text-grey3 hover:bg-lightBlue transition ease-in-out delay-35 hover:text-white
 										group w-full p-3 rounded-md flex flex-col items-center text-xs font-medium'
 								aria-current='page'>
-								<CogIcon
-									className='hover:text-white text-grey3 group-hover:text-white
-									h-6 w-6'
-									aria-hidden='true'></CogIcon>
 								{user ? (
-									<button onClick={logout} className='mt-2'>
+									<button
+										onClick={logout}
+										className='mt-2 gap-2 flex flex-row md:flex-col items-center'>
+										<CogIcon
+											className='hover:text-white text-grey3 group-hover:text-white
+									h-6 w-6'
+											aria-hidden='true'></CogIcon>
 										{user ? 'Sign out' : 'Log in'}
 									</button>
 								) : (
-									<a href='/login' key='login' className='mt-2'>
+									<a
+										href='/login'
+										key='login'
+										className='gap-2 flex flex-row md:flex-col items-center mt-2'>
+										<CogIcon
+											className='hover:text-white text-grey3 group-hover:text-white
+									h-6 w-6'
+											aria-hidden='true'></CogIcon>
 										{user ? 'Log in' : 'Log in'}
 									</a>
 								)}
@@ -206,16 +215,25 @@ export default function Market() {
 														  hover:bg-grey h-max transition ease-in-out delay-35 text-white
 														group w-full rounded-md flex flex-row px-3 gap-3 py-2 items-center  text-sm font-medium'
 													aria-current='page'>
-													<CogIcon
-														className='text-white group-hover:text-white
-													h-6 w-6'
-														aria-hidden='true'></CogIcon>
 													{user ? (
-														<button onClick={logout} className=''>
+														<button
+															onClick={logout}
+															className='mt-2 gap-2 flex flex-row md:flex-col items-center'>
+															<CogIcon
+																className='text-white group-hover:text-white
+									h-6 w-6'
+																aria-hidden='true'></CogIcon>
 															{user ? 'Sign out' : 'Log in'}
 														</button>
 													) : (
-														<a href='/login' key='login' className=''>
+														<a
+															href='/login'
+															key='login'
+															className='gap-2 flex flex-row md:flex-col items-center mt-2'>
+															<CogIcon
+																className='text-white group-hover:text-white
+									h-6 w-6'
+																aria-hidden='true'></CogIcon>
 															{user ? 'Log in' : 'Log in'}
 														</a>
 													)}
