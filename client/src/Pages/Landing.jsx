@@ -1,7 +1,9 @@
 import { useAuthContext } from '../Hooks/useAuthContext'
 import { Link } from 'react-router-dom'
 
-import screenshot from '../assets/screenshot1.png'
+import screenshot from '../assets/laptop.png'
+import gif from '../assets/bullbearphonegif.gif'
+import market from '../assets/market.png'
 import { BsArrowRightSquare, BsArrowReturnRight } from 'react-icons/bs'
 import Navbar from '../Components/navbar'
 
@@ -96,7 +98,7 @@ export default function Landing() {
 							</div>
 						</div>
 
-						<div className='relative overflow-hidden flex md:flex-col justify-center w-full items-center text-white bg-primary md:pt-16 pb-32'>
+						<div className='relative overflow-hidden flex flex-col md:flex-col justify-center w-full items-center text-white bg-primary md:pt-16 pb-32'>
 							<div className='relative md:mx-16 sm:mx-0 lg:w-3/5'>
 								<div className='lg:mx-auto flex flex-col md:flex-row lg:px-8'>
 									<div className='mx-auto max-w-xl px-4 sm:px-6 lg:mx-0 lg:max-w-none lg:py-16 lg:px-0'>
@@ -146,47 +148,48 @@ export default function Landing() {
 									</div>
 								</div>
 							</div>
-							{/* <div className='mt-24'>
-							<div className='lg:mx-auto flex flex-row-reverse  lg:gap-24 lg:px-8'>
-								<div className='mx-auto max-w-xl px-4 sm:px-6 flex flex-row lg:mx-0 lg:max-w-none lg:py-32 lg:px-0'>
-									<div>
+							<div className='md:mt-24'>
+								<div className='lg:mx-auto flex  items-center flex-col md:flex-row-reverse  lg:gap-24 lg:px-8'>
+									<div className='mx-auto max-w-xl px-4 sm:px-6 flex flex-row lg:mx-0 lg:max-w-none lg:py-32 lg:px-0'>
 										<div>
-											<span className='flex h-12 w-12 items-center justify-center rounded-md bg-indigo-600'>
-											
-											</span>
-										</div>
-										<div className='mt-6'>
-											<h2 className='text-3xl font-bold tracking-tight'>
-												Better understand 
-											</h2>
-											<p className='mt-4 text-lg text-gray-500'>
-												Semper curabitur ullamcorper posuere nunc sed. Ornare
-												iaculis bibendum malesuada faucibus lacinia porttitor.
-												Pulvinar laoreet sagittis viverra duis. In venenatis sem
-												arcu pretium pharetra at. Lectus viverra dui tellus
-												ornare pharetra.
-											</p>
-											<div className='mt-6'>
-												<a
-													href='#'
-													className='inline-flex rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-indigo-700'>
-													Get started
-												</a>
+											<div>
+												<span className='flex h-12 w-12 items-center justify-center rounded-md bg-indigo-600'></span>
+											</div>
+											<div className='md:mt-6'>
+												<h2 className='text-3xl font-bold tracking-tight'>
+													Gain a Better Understanding
+												</h2>
+												<p className='mt-4 text-lg opacity-60'>
+													Read up to date news articles about your favorite
+													stocks. Browse broad market data on different market
+													indexes.
+												</p>
+												<div className='mt-6'>
+													<a
+														href='/market'
+														className='inline-flex rounded-md border border-transparent bg-grey3 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-lightBlue'>
+														View Stock News
+													</a>
+													<img
+														className='hidden md:flex mt-12 lg:absolute lg:right-0 lg:h-full lg:w-auto lg:max-w-none'
+														src={market}
+														alt='Customer profile user interface'
+													/>
+												</div>
 											</div>
 										</div>
 									</div>
-								</div>
-								<div className='mt-12 sm:mt-16 lg:col-start-1 lg:mt-0'>
-									<div className='-ml-48 pr-4 sm:pr-6 md:-ml-16 lg:relative lg:m-0 lg:h-full lg:px-0'>
-										<img
-											className='w-full rounded-xl shadow-xl ring-1 ring-black ring-opacity-5 lg:absolute lg:right-0 lg:h-full lg:w-auto lg:max-w-none'
-											src='https://tailwindui.com/img/component-images/inbox-app-screenshot-2.jpg'
-											alt='Customer profile user interface'
-										/>
+									<div className='sm:mt-16 lg:col-start-1 lg:mt-0'>
+										<div className=' md:pr-4 sm:pr-6 md:-ml-16 lg:relative lg:m-0 lg:h-full lg:px-0'>
+											<img
+												className=' mt-12 rounded-xl md:h-[800px]  md:w-full lg:absolute lg:right-0 lg:max-w-none'
+												src={gif}
+												alt='Customer profile user interface'
+											/>
+										</div>
 									</div>
 								</div>
 							</div>
-						</div> */}
 						</div>
 					</main>
 				</div>

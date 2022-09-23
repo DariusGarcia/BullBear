@@ -64,7 +64,7 @@ export default function Market() {
 	const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 	return (
 		<>
-			<div className='w-full flex h-full md:pt-2 md:min-h-screen bg-grey'>
+			<div className='w-full flex h-full  md:min-h-screen bg-grey'>
 				{/* Narrow sidebar */}
 				<div className='  hidden w-28 overflow-y-auto md:block'>
 					<div className='flex w-full flex-col items-center py-6'>
