@@ -83,6 +83,11 @@ export default function Navbar() {
 											{item.name}
 										</a>
 									))}
+									<a
+										className='bg-gray-900 text-white hover:bg-primary hover:scale-95 transition ease-in-out delay-45 rounded-lg p-2 text-sm'
+										href='/market'>
+										Market
+									</a>
 
 									{!user && (
 										<div className='flex flex-row gap-4 list-none text-white text-sm font-medium'>
@@ -174,15 +179,16 @@ export default function Navbar() {
 											</Link>
 											<Link to='/dashboard'>
 												<li className='hover:bg-grey rounded-md p-2'>
-													Market Dashboard
+													Dashboard
 												</li>
+											</Link>
+											<Link to='/market'>
+												<li className='hover:bg-grey rounded-md p-2'>Market</li>
 											</Link>
 
-											<Link to='/signup'>
-												<li className='hover:bg-grey rounded-md p-2'>
-													Sign Out
-												</li>
-											</Link>
+											<li className='hover:bg-grey rounded-md p-2'>
+												<button onClick={handleClick()}>Sign Out</button>
+											</li>
 										</div>
 									)}
 									{!user && (
@@ -192,8 +198,11 @@ export default function Navbar() {
 											</Link>
 											<Link to='/dashboard'>
 												<li className='hover:bg-grey rounded-md p-2'>
-													Market Dashboard
+													Dashboard
 												</li>
+											</Link>
+											<Link to='/market'>
+												<li className='hover:bg-grey rounded-md p-2'>Market</li>
 											</Link>
 											<Link to='/login'>
 												<li className='hover:bg-grey rounded-md p-2'>Log in</li>

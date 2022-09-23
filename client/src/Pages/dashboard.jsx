@@ -79,7 +79,7 @@ export default function Dashboard() {
 									href={item.href}
 									className={classNames(
 										item.current
-											? 'bg-primary text-white'
+											? 'bg-primary text-white hover:bg-lightBlue transition ease-in-out delay-35'
 											: 'text-grey3 hover:bg-lightBlue transition ease-in-out delay-35 hover:text-white',
 										'group w-full p-3 rounded-md flex flex-col items-center text-xs font-medium'
 									)}
