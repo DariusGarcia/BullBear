@@ -62,7 +62,7 @@ export default function Landing() {
 																</button>
 															</Link>
 															<div className='sm:mt-0 sm:ml-3'>
-																<Link to='/signup'>
+																<Link to='/login'>
 																	{' '}
 																	<button
 																		type='submit'
