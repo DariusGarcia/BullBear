@@ -171,9 +171,9 @@ const FetchSingleStock = (props) => {
 							alt={companyDetails}></img>
 					</div>
 					<div className='flex flex-col text-xs md:text-base'>
-						{/* <span className='text-lightBlue'>
+						<span className='hidden md:inline text-lightBlue'>
 							{stockData[0]['name']?.split(' ')[0]?.split(',')?.join('')}
-						</span> */}
+						</span>
 						<li className='text-xs md:text-base h-full items-center flex '>
 							${name}
 						</li>

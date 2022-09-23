@@ -272,7 +272,7 @@ export default function Dashboard() {
 
 											<button
 												onSubmit={handleSubmit}
-												className=' mx-4 md:mx-0s mb-2 md:w-1/4 md:h-16 text-sm p-4 flex text-center justify-center items-center hover:scale-105 transition ease-in-out delay-25 bg-lightBlue bg-opacity-20 border-2 hover:bg-opacity-100 border-lightBlue text-white hover:text-white rounded-lg'>
+												className=' mx-4 md:mx-0s md:mb-2 md:w-1/4 md:h-16 text-sm p-4 flex text-center justify-center items-center hover:scale-105 transition ease-in-out delay-25 bg-lightBlue bg-opacity-20 border-2 hover:bg-opacity-100 border-lightBlue text-white hover:text-white rounded-lg'>
 												Search
 											</button>
 										</div>
