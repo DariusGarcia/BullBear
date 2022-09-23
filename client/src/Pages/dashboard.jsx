@@ -252,13 +252,16 @@ export default function Dashboard() {
 				{/* Content area */}
 				<div className='flex  flex-1 h-full flex-col '>
 					<header className='w-full'>
-						<div className='relative z-10 flex h-16 flex-shrink-0  bg-white shadow-sm'>
+						<div className='relative z-10 flex h-16 flex-shrink-0  bg-grey  shadow-sm'>
 							<button
 								type='button'
 								className=' px-4 text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500 md:hidden'
 								onClick={() => setMobileMenuOpen(true)}>
 								<span className='sr-only'>Open sidebar</span>
-								<Bars3BottomLeftIcon className='h-6 w-6' aria-hidden='true' />
+								<Bars3BottomLeftIcon
+									className='h-6 w-6 text-white'
+									aria-hidden='true'
+								/>
 							</button>
 							<div className='flex flex-1 justify-between  bg-grey sm:px-6'>
 								<div className='flex flex-1'>

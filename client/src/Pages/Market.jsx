@@ -251,16 +251,22 @@ export default function Market() {
 				{/* Content area */}
 				<div className='flex  flex-1 h-full flex-col '>
 					<header className='w-full'>
-						<div className='relative z-10 flex h-16 flex-shrink-0  bg-white shadow-sm'>
+						<div className='relative z-10 flex h-16 flex-shrink-0  bg-grey shadow-sm'>
 							<button
 								type='button'
 								className=' px-4 text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500 md:hidden'
 								onClick={() => setMobileMenuOpen(true)}>
 								<span className='sr-only'>Open sidebar</span>
-								<Bars3BottomLeftIcon className='h-6 w-6' aria-hidden='true' />
+								<Bars3BottomLeftIcon
+									className='h-6 w-6 text-white'
+									aria-hidden='true'
+								/>
 							</button>
-							<div className='flex flex-1 justify-between  bg-grey sm:px-6'>
-								<div className='flex flex-1'>
+							<div className='flex flex-1 justify-between  bg-grey sm:px-6 w-full'>
+								<h1 className='text-white flex items-center text-2xl justify-end w-full mr-4'>
+									BullBear
+								</h1>
+								{/* <div className='flex flex-1'>
 									<form
 										onSubmit={handleSubmit}
 										className='flex w-full md:ml-0 '>
@@ -294,7 +300,7 @@ export default function Market() {
 											</button>
 										</div>
 									</form>
-								</div>
+								</div> */}
 							</div>
 						</div>
 					</header>
