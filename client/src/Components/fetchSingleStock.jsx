@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useWatchlistContext } from '../Hooks/useWatchlistContext'
 import { FetchCompanyProfile } from '../utils/fetchCompanyProfile'
+import { FetchCompanyDetails } from '../utils/fetchCompanyDetails'
 import { UseGetAPI } from '../Hooks/useGetAPI'
 import { StockMoreInfo } from './stockMoreInfo'
 import { MdOutlineOpenInFull } from 'react-icons/md'
@@ -14,10 +15,12 @@ const FetchSingleStock = (props) => {
 	const { watchlist, dispatch } = useWatchlistContext()
 	const [stockData, setStockData] = useState([{}])
 	const [companyDetails, setCompanyDetails] = useState()
+	const [companyProfile, setCompanyProfile] = useState()
 	const [toggle, setToggle] = useState(false)
 	const [error, setError] = useState(null)
 
 	useEffect(() => {
+		FetchCompanyDetails(name).then((name) => setCompanyProfile(name))
 		FetchCompanyProfile(name).then((name) => setCompanyDetails(name))
 		UseGetAPI(name)
 			.then((res) => setStockData(res))
@@ -77,8 +80,8 @@ const FetchSingleStock = (props) => {
 	} else {
 		info = (
 			<span className='flex w-full h-full justify-center items-center   border-2 border-primary  hover:border-2 hover:border-lightBlue transition delay-25 ease-in-out hover:rounded-lg '>
-				<p id='class-nf' className='w-full pl-2 py-4 text-red'>
-					Invalid stock...
+				<p id='class-nf' className='w-full pl-2 py-4 text-grey3'>
+					Loading...
 				</p>
 			</span>
 		)
@@ -88,7 +91,7 @@ const FetchSingleStock = (props) => {
 		info = (
 			<div className='flex flex-col  transition delay-25 ease-in-out rounded-lg  '>
 				<div className=' w-full py-4'>
-					<ul className='h-full grid grid-cols-4 content-center text-white px-2'>
+					<ul className='h-full grid grid-cols-4  mr-2 md:mr-0 content-center text-white px-2'>
 						{/* display stock ticker */}
 						<li className='flex flex-col h-full md:pl-2 gap-2 md:gap-1 text-xs md:text-sm '>
 							<div className='w-1/3 h-full flex flex-row gap-1'>
@@ -96,7 +99,7 @@ const FetchSingleStock = (props) => {
 									className='w-12 md:w-12 h-8 md:h-max rounded-lg'
 									src={companyDetails[0]?.image}
 									alt={companyDetails}></img>
-								<li className='text-xs md:text-lg h-full items-center flex'>
+								<li className='text-xs md:text-lg md:ml-14 h-full items-center flex'>
 									${name}
 								</li>
 							</div>
@@ -125,7 +128,7 @@ const FetchSingleStock = (props) => {
 							<span>
 								<button
 									onClick={(event) => handleAdd(event)}
-									className='h-8 w-16 rounded-lg bg-primary border-2 opacity-50 hover:border-lightBlue hover:opacity-100 hover:scale-105 delay-25 ease-in transition text-white'>
+									className='h-8 w-16 rounded-lg  bg-primary border-2 opacity-50 hover:border-lightBlue hover:opacity-100 hover:scale-105 delay-25 ease-in transition text-white'>
 									Add
 								</button>
 							</span>
@@ -143,7 +146,9 @@ const FetchSingleStock = (props) => {
 					</div>
 				</div>
 				<div className='w-full mb-4'>
+					{/* SHOW MORE INFO ABOUT STOCK SEARCHED*/}
 					<StockMoreInfo
+						companyProfile={companyProfile}
 						stockData={stockData}
 						companyDetails={companyDetails}
 						ticker={name}
@@ -156,12 +161,12 @@ const FetchSingleStock = (props) => {
 		)
 	} else if (!toggle && companyDetails) {
 		info = (
-			<ul className='h-full grid px-2 py-3 grid-cols-4 content-center text-white border-2transition delay-25 ease-in-out rounded-lg cursor-pointer'>
+			<ul className='h-full grid px-2 py-4 grid-cols-4 mr-2 md:mr-0 content-center text-white border-2transition delay-25 ease-in-out rounded-lg cursor-pointer'>
 				{/* display stock ticker */}
 				<li className='flex h-full items-center gap-x-2 md:gap-1 text-xs md:text-sm '>
 					<div className='w-1/3'>
 						<img
-							className='w-12 md:w-12 h-8 md:h-max rounded-lg '
+							className='w-12 md:w-12 h-8 md:h-max md:mx-2 rounded-lg '
 							src={companyDetails[0]?.image}
 							alt={companyDetails}></img>
 					</div>

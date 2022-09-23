@@ -28,6 +28,13 @@ body {
   overflow-x: hidden;
 }
 
+textarea {
+  border: none;
+  resize: none;
+
+
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;

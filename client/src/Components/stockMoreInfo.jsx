@@ -1,16 +1,25 @@
 import { useState } from 'react'
 
 export const StockMoreInfo = (props) => {
-	const { stockData, companyDetails } = props
+	const { stockData, companyDetails, companyProfile, ticker } = props
 	const [toggle, setToggle] = useState(false)
+
+	// function to find the index of the stock that is being searched and fetched from API.
+	// index used for companyProfile to find the sector, subsector, and founded.
+	function findId(ticker) {
+		const ID = companyProfile.map((el) => el.symbol).indexOf(ticker)
+
+		return ID
+	}
 
 	return (
 		<>
-			{companyDetails && companyDetails.length > 0 && (
+			{findId && companyDetails && companyDetails.length > 0 && (
 				<div className='px-4 text-white w-full overflow-hidden'>
 					<section className='grid grid-cols-2 mb-4 md:mb-8 gap-y-4'>
 						<article className=''>
 							<p className='opacity-70'>CEO</p>
+
 							<p className=''>{companyDetails[0].ceo}</p>
 						</article>
 						<article className=''>
@@ -21,11 +30,24 @@ export const StockMoreInfo = (props) => {
 						</article>
 						<article className=''>
 							<p className='opacity-70'>Founded</p>
-							<p className=''>{companyDetails[0].ceo}</p>
+							<p className=''>{companyProfile[0].founded}</p>
 						</article>
 						<article className=''>
 							<p className='opacity-70'>Headquarters</p>
-							<p className=''>{companyDetails[0].city}</p>
+							<p className=''>{companyProfile[0].headQuarter}</p>
+						</article>
+						<article className=''>
+							<p className='opacity-70'>Industry</p>
+							<p className=''>
+								{companyProfile[findId(ticker)]?.sector ||
+									companyDetails[0]['sector']}
+							</p>
+						</article>{' '}
+						<article className=''>
+							<p className='opacity-70'>Sector</p>
+							<p className=''>
+								{companyProfile[findId(ticker)]?.subSector || '-'}{' '}
+							</p>
 						</article>
 					</section>
 					<h4 className='text-xl mb-2'>Stats</h4>
@@ -64,7 +86,9 @@ export const StockMoreInfo = (props) => {
 								</li>
 								<li className='h-full  w-max items-center flex '>P/E ratio</li>
 								<li className='h-full  items-center flex '>Mkt cap</li>
-								<li className='h-full  items-center flex '>Sector</li>
+								<li className='h-full  items-center flex text-xs md:text-base '>
+									Date added
+								</li>
 							</ul>
 							<ul className='flex flex-col w-max h-full items-start justify-center text-white px-2'>
 								<li className=' h-full items-center flex '>
@@ -76,11 +100,11 @@ export const StockMoreInfo = (props) => {
 								<li className=' h-full items-center flex '>
 									{Number(stockData[0]['pe']).toFixed(2)}
 								</li>
-								<li className='flex h-full items-center text-sm'>
+								<li className='flex h-full items-center text-base'>
 									${companyDetails[0]['mktCap']?.toLocaleString()}
 								</li>
-								<li className='flex flex-wrap h-full  w-max items-center text-sm'>
-									{companyDetails[0]['sector']}
+								<li className='flex flex-wrap h-full  w-max items-center text-sm md:text-base'>
+									{companyProfile[findId(ticker)]?.dateFirstAdded || '-'}
 								</li>
 							</ul>
 						</div>

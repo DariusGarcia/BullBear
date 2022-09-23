@@ -55,15 +55,15 @@ export const WatchlistDetails = ({ ticker, watchlistInfo }) => {
 			{stockData[0] && stockData[0]['changesPercentage'] > 0 && (
 				<div className='h-full grid grid-cols-3 justify-between w-full items-center p-2 py-4 text-white'>
 					{/* display stock ticker */}
-					<p className='justify-start flex gap-2 items-center w-max rounded-lg '>
-						<div className=''>
+					<div className='justify-start flex gap-2 items-center w-max rounded-lg '>
+						<span className=''>
 							<img
 								className='w-8 md:w-max h-8 rounded-lg'
 								src={companyLogo}
 								alt={companyLogo}></img>
-						</div>
+						</span>
 						<div className='ml-1 text-sm'>${ticker}</div>
-					</p>
+					</div>
 					{/* display current price */}
 					<p className='flex justify-center items-center w-full text-green'>
 						${stockData[0]['price']?.toFixed(2)}

@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import { Watchlist } from './watchlist'
 import { BsGlobe } from 'react-icons/bs'
 import FetchSingleStock from './fetchSingleStock'
 
@@ -21,7 +20,9 @@ export default function SearchStockContainer(props) {
 	// }
 
 	return (
-		<div className='flex flex-col w-full md:w-3/5 px-2 md:px-0  md:justify-evenly'>
+		<div
+			key='stock-container'
+			className='flex flex-col w-full  px-2 md:px-0  md:justify-evenly'>
 			<div className='flex flex-col w-full md:flex-row md:px-0 md:justify-evenly  '>
 				<section className='flex flex-col md:h-full md:w-full mt-4 '>
 					<header className='flex mb-4 md:mb-8 gap-8 h-max flex-row items-center text-white  '>
@@ -39,25 +40,33 @@ export default function SearchStockContainer(props) {
 							<nav className='sticky top-0 w-full h-12 bg-grey text-white z-20 rounded-lg '>
 								<ul className='grid grid-cols-4 w-full h-full self-center md:px-0 px-2 opacity-70'>
 									<span className='md:pl-2'>
-										<li className='h-full items-center flex ml-2  md:text-base'>
+										<li
+											key='stockLabel'
+											className='h-full items-center flex ml-2  md:text-base'>
 											Stock
 										</li>
 									</span>
 
-									<span className=''>
-										<li className='h-full items-center flex  md:text-base'>
+									<span className='priceLabel'>
+										<li
+											key=''
+											className='h-full items-center flex  md:text-base'>
 											Price
 										</li>
 									</span>
 									{ticker <= 0 ? (
 										<span className=''>
-											<li className='h-full items-center justify-end flex  md:text-base'>
+											<li
+												key='changeLabel'
+												className='h-full items-center justify-end flex  md:text-base'>
 												Change
 											</li>
 										</span>
 									) : (
 										<span className=''>
-											<li className='h-full items-center flex md:text-base'>
+											<li
+												key='changeLabel'
+												className='h-full items-center flex md:text-base'>
 												Change
 											</li>
 										</span>
