@@ -220,8 +220,7 @@ export default function Market() {
 															onClick={logout}
 															className='mt-2 gap-2 flex flex-row md:flex-col items-center'>
 															<CogIcon
-																className='text-white group-hover:text-white
-									h-6 w-6'
+																className='text-white group-hover:text-white h-6 w-6'
 																aria-hidden='true'></CogIcon>
 															{user ? 'Sign out' : 'Log in'}
 														</button>
@@ -231,8 +230,7 @@ export default function Market() {
 															key='login'
 															className='gap-2 flex flex-row md:flex-col items-center mt-2'>
 															<CogIcon
-																className='text-white group-hover:text-white
-									h-6 w-6'
+																className='text-white group-hover:text-white h-6 w-6'
 																aria-hidden='true'></CogIcon>
 															{user ? 'Log in' : 'Log in'}
 														</a>
