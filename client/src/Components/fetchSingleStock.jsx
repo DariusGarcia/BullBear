@@ -135,7 +135,7 @@ const FetchSingleStock = (props) => {
 							<span>
 								<button
 									onClick={(event) => handleAdd(event)}
-									className='h-8 w-16 rounded-lg  bg-primary border-2 opacity-50 hover:border-lightBlue hover:opacity-100 hover:scale-105 delay-25 ease-in transition text-white'>
+									className='h-8 w-16 rounded-lg  bg-primary border-2 opacity-50 hover:border-lightBlue hover:opacity-100  delay-25 ease-in transition text-white'>
 									Add
 								</button>
 							</span>
@@ -211,7 +211,7 @@ const FetchSingleStock = (props) => {
 					<span>
 						<button
 							onClick={(event) => handleAdd(event)}
-							className='h-8 w-16 rounded-lg bg-primary border-2 opacity-50 hover:border-lightBlue hover:opacity-100 hover:scale-105 delay-25 ease-out transition text-white'>
+							className='h-8 w-16 rounded-lg bg-primary border-2 opacity-50 hover:border-lightBlue hover:opacity-100  delay-25 ease-out transition text-white'>
 							Add
 						</button>
 					</span>
