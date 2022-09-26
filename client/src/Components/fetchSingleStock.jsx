@@ -8,6 +8,8 @@ import { MdOutlineOpenInFull } from 'react-icons/md'
 import { AiOutlineArrowsAlt } from 'react-icons/ai'
 import { useAuthContext } from '../Hooks/useAuthContext'
 import { GoTriangleUp, GoTriangleDown } from 'react-icons/go'
+import { FetchStockPeers } from '../utils/fetchStockPeers'
+import { FetchStockRatings } from '../utils/fetchStockRatings'
 
 const FetchSingleStock = (props) => {
 	const { name } = props
@@ -16,10 +18,15 @@ const FetchSingleStock = (props) => {
 	const [stockData, setStockData] = useState([{}])
 	const [companyDetails, setCompanyDetails] = useState()
 	const [companyProfile, setCompanyProfile] = useState()
+	const [stockPeers, setStockPeers] = useState()
+	const [stockRatings, setStockRatings] = useState()
+
 	const [toggle, setToggle] = useState(false)
 	const [error, setError] = useState(null)
 
 	useEffect(() => {
+		FetchStockRatings(name).then((name) => setStockRatings(name))
+		FetchStockPeers(name).then((name) => setStockPeers(name))
 		FetchCompanyDetails(name).then((name) => setCompanyProfile(name))
 		FetchCompanyProfile(name).then((name) => setCompanyDetails(name))
 		UseGetAPI(name)
@@ -148,6 +155,8 @@ const FetchSingleStock = (props) => {
 				<div className='w-full mb-4'>
 					{/* SHOW MORE INFO ABOUT STOCK SEARCHED*/}
 					<StockMoreInfo
+						stockRatings={stockRatings}
+						stockPeers={stockPeers}
 						companyProfile={companyProfile}
 						stockData={stockData}
 						companyDetails={companyDetails}

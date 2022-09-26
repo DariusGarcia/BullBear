@@ -19,7 +19,7 @@ export default function Landing() {
 							<div className='mx-auto md:w-5/6 max-w-7xl lg:px-8'>
 								<div className='md:grid md:grid-cols-2 lg:gap-8 pb-48 md:h-full'>
 									<div className='mx-auto max-w-md px-4 md:px-0 sm:max-w-2xl sm:text-center lg:flex lg:items-center lg:text-left'>
-										<div className='lg:py-24'>
+										<div className='lg:py-24 '>
 											<Link to='/dashboard'>
 												<h1
 													className='inline-flex gap-4 items-center rounded-full bg-primary

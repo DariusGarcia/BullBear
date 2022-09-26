@@ -22,6 +22,7 @@ root.render(
 				</BrowserRouter>
 			</WatchListContextProvider>
 		</AuthContextProvider>
+		//{' '}
 	</React.StrictMode>
 )
 

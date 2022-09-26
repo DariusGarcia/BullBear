@@ -1,9 +1,9 @@
-import { Fragment, useState, useEffect } from 'react'
+import { Fragment, useState } from 'react'
 import { Dialog, Menu, Transition } from '@headlessui/react'
 import { useAuthContext } from '../Hooks/useAuthContext'
-import { MagnifyingGlassIcon } from '@heroicons/react/20/solid'
-import SearchStockContainer from '../Components/searchStockContainer'
 import { Watchlist } from '../Components/watchlist'
+import { BiNews } from 'react-icons/bi'
+import { BsFileEarmarkBarGraph } from 'react-icons/bs'
 import { useLogout } from '../Hooks/useLogout'
 import { useWatchlistContext } from '../Hooks/useWatchlistContext'
 import {
@@ -47,21 +47,9 @@ export default function Market() {
 	const { logout } = useLogout()
 	const [value, setValue] = useState('')
 	const [ticker, setTicker] = useState([])
-
-	const handleChange = (event) => {
-		const stock = event.target.value.trim()
-		setValue(stock)
-	}
-	const handleSubmit = (event) => {
-		event.preventDefault()
-		if (!ticker.includes(value)) {
-			setTicker(ticker.concat(value))
-			setValue('')
-		}
-	}
-
 	const { user } = useAuthContext()
 	const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+
 	return (
 		<>
 			<div className='w-full flex h-full  md:min-h-screen bg-grey'>
@@ -263,44 +251,11 @@ export default function Market() {
 								/>
 							</button>
 							<div className='flex flex-1 justify-between  bg-grey sm:px-6 w-full'>
-								<h1 className='text-white flex items-center text-2xl justify-end w-full mr-4'>
+								<a
+									href='/dashboard'
+									className='text-white flex items-center text-2xl justify-end w-full mr-4'>
 									BullBear
-								</h1>
-								{/* <div className='flex flex-1'>
-									<form
-										onSubmit={handleSubmit}
-										className='flex w-full md:ml-0 '>
-										<label htmlFor='search-field' className='sr-only'>
-											Search for stocks in the S&P500 Index
-										</label>
-										<div className='relative flex flex-row items-center w-full focus-within:text-grey3'>
-											<div className='pointer-events-none ml-4 absolute inset-y-0 left-0 flex items-center'>
-												<MagnifyingGlassIcon
-													className='h-5 w-5 flex-shrink-0  hover:text-black text-white'
-													aria-hidden='true'
-												/>
-											</div>
-											<input
-												value={value}
-												onChange={handleChange}
-												onInput={(e) =>
-													(e.target.value = ('' + e.target.value).toUpperCase())
-												}
-												name='search-field'
-												id='search-field'
-												className='h-full w-full rounded-r-lg md:rounded-lg focus-text-white focus-bg-white bg-grey  py-2 pl-10 pr-3 text-base text-white placeholder-grey3 focus:border-transparent focus:grey3 focus:outline-none focus:ring-0'
-												placeholder='Search ticker e.g. AAPL'
-												aria-label='search stock ticker input'
-											/>
-
-											<button
-												onSubmit={handleSubmit}
-												className=' mx-4 md:mx-0s md:mb-2 md:w-1/4 md:h-16 text-sm p-4 flex text-center justify-center items-center hover:scale-105 transition ease-in-out delay-25 bg-lightBlue bg-opacity-20 border-2 hover:bg-opacity-100 border-lightBlue text-white hover:text-white rounded-lg'>
-												Search
-											</button>
-										</div>
-									</form>
-								</div> */}
+								</a>
 							</div>
 						</div>
 					</header>
@@ -317,13 +272,15 @@ export default function Market() {
 									Broad Market Performance
 								</h1>
 								<article>
-									<h1 className='text-xl md:text-3xl mb-4 mt-2'>
-										Stock Market Performance
+									<h1 className='text-xl md:text-3xl mb-4 mt-2 flex flex-row gap-2 items-center'>
+										Stock Market Performance <BsFileEarmarkBarGraph />
 									</h1>
 									<IndexPerformances />
 								</article>
 								<article className=''>
-									<h1 className='text-xl md:text-2xl mt-8 mb-4'>Stock News</h1>
+									<h1 className='text-xl md:text-2xl mt-8 mb-4 flex flex-row gap-2 items-center'>
+										Stock News <BiNews />{' '}
+									</h1>
 									<StockNews />
 								</article>
 								<article className='bg-grey md:hidden block mb-12'>

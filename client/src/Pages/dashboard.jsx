@@ -1,4 +1,4 @@
-import { Fragment, useState } from 'react'
+import { Fragment, useEffect, useState } from 'react'
 import { Dialog, Menu, Transition } from '@headlessui/react'
 import { useAuthContext } from '../Hooks/useAuthContext'
 import { MagnifyingGlassIcon } from '@heroicons/react/20/solid'
@@ -17,6 +17,9 @@ import {
 	UserGroupIcon,
 	XMarkIcon,
 } from '@heroicons/react/24/outline'
+import { FetchCompanyDetails } from '../utils/fetchCompanyDetails'
+import { FetchCompanyProfile } from '../utils/fetchCompanyProfile'
+import { UseGetAPI } from '../Hooks/useGetAPI'
 
 const sidebarNavigation = [
 	{ name: 'Home', href: '/', icon: HomeIcon, current: false },
