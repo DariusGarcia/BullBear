@@ -2,6 +2,7 @@ import { useState } from 'react'
 
 export const StockMoreInfo = (props) => {
 	const {
+		stockNews,
 		stockData,
 		companyDetails,
 		companyProfile,
@@ -123,7 +124,7 @@ export const StockMoreInfo = (props) => {
 							</div>
 						</div>
 						{/* Displays similar stocks */}
-						<div className='my-8 flex flex-col items-start md:w-full overflow-auto '>
+						<section className='my-8 flex flex-col items-start md:w-full overflow-auto '>
 							<h4 className='text-xl mb-2 '>Similar Stocks</h4>
 							<ul className='grid grid-cols-4 md:flex md:flex-row gap-4 w-full overflow-auto md:w-full text-white md:text-base justify-center items-center'>
 								{stockPeers[0].peersList.map((stock) => (
@@ -134,26 +135,74 @@ export const StockMoreInfo = (props) => {
 									</li>
 								))}
 							</ul>
-						</div>
-						{/* Displays stock ratings */}
-						<div className='my-8 flex flex-col  items-start  '>
-							<h4 className='text-xl mb-2 '>Analyst Ratings</h4>
-							<ul className='flex flex-col w-full md:w-max gap-4 text-white md:text-base  bg-primary p-4 rounded-lg'>
-								<li key='stockRating' className='rounded-md '>
-									<span className='opacity-70'>Recommendation:</span>{' '}
-									{stockRatings[0]?.ratingRecommendation}
-								</li>
-								<li key='stockRating' className='rounded-md '>
-									<span className='opacity-70'>Rating score:</span>{' '}
-									{stockRatings[0]?.ratingScore}
-								</li>
-								<li key='stockRating' className='flex '>
-									{stockRatings[0]?.date}
-								</li>
-							</ul>
-						</div>
+						</section>
+						<section className='md:flex md:flex-row justify-between'>
+							{/* Displays stock ratings */}
+							<section className='my-8 flex flex-col  items-start  '>
+								<h4 className='text-xl mb-2 '>Analyst Ratings</h4>
+								<ul className='flex flex-col w-full md:w-max gap-4 text-white md:text-base  bg-primary p-4 rounded-lg'>
+									<li
+										key='stockRating'
+										className={
+											stockRatings[0]?.ratingScore >= 4
+												? 'rounded-md text-green'
+												: 'rounded-md text-red'
+										}>
+										<span className='opacity-70 text-white'>
+											Recommendation:
+										</span>{' '}
+										{stockRatings[0]?.ratingRecommendation}
+									</li>
+									<li
+										key='stockRating'
+										className={
+											stockRatings[0]?.ratingScore >= 4
+												? 'rounded-md text-green'
+												: 'rounded-md text-red'
+										}>
+										<span className='opacity-70 text-white'>Rating score:</span>{' '}
+										{stockRatings[0]?.ratingScore}
+									</li>
+									<li key='stockRating' className='flex '>
+										{stockRatings[0]?.date}
+									</li>
+								</ul>
+							</section>
+							{/* Displays stock news articles */}
+							<section className='my-8 flex flex-col  items-start  h-[400px] md:h-[550px]  '>
+								<h4 className='text-xl mb-2 '>Recent News</h4>
+								<div className='flex flex-col w-full md:w-max gap-4 text-white md:text-base rounded-lg overflow-auto'>
+									{stockNews.map((newsArticle) => (
+										<a
+											target='_blank'
+											href={newsArticle.url}
+											rel='noreferrer'
+											className='hover:opacity-60'>
+											<article key={newsArticle.id} className='rounded-lg'>
+												<ul className='flex flex-col  bg-grey my-2 border-b p-2 gap-y-2  '>
+													<li className=''>{newsArticle.title}</li>
+													<li className=''>
+														<img
+															className='w-24 h-16'
+															src={newsArticle.image}
+															alt={newsArticle.title}></img>
+													</li>
+													<li className='italic text-sm'>
+														{newsArticle.text?.substring(0, 100)}...
+													</li>
+													<li className='text-sm opacity-50 flex flex-row'>
+														{newsArticle.site}{' '}
+														{newsArticle.publishedDate.substring(0, 10)}
+													</li>
+												</ul>
+											</article>
+										</a>
+									))}
+								</div>
+							</section>
+						</section>
 						{/* About the stock section*/}
-						<div className='mt-8'>
+						<section className='mt-8'>
 							<span className='flex flex-row justify-between'>
 								<h3 className='text-xl border-b-2 border-lightBlue mb-4'>
 									About {companyDetails[0]['companyName']}
@@ -173,7 +222,7 @@ export const StockMoreInfo = (props) => {
 								onClick={() => setToggle(!toggle)}>
 								{!toggle ? 'Show more' : 'Show less'}
 							</button>
-						</div>
+						</section>
 					</div>
 				)}
 		</>

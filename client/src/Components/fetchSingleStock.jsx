@@ -10,6 +10,7 @@ import { useAuthContext } from '../Hooks/useAuthContext'
 import { GoTriangleUp, GoTriangleDown } from 'react-icons/go'
 import { FetchStockPeers } from '../utils/fetchStockPeers'
 import { FetchStockRatings } from '../utils/fetchStockRatings'
+import { FetchSingleStockNews } from '../utils/fetchStockNews'
 
 const FetchSingleStock = (props) => {
 	const { name } = props
@@ -20,11 +21,13 @@ const FetchSingleStock = (props) => {
 	const [companyProfile, setCompanyProfile] = useState()
 	const [stockPeers, setStockPeers] = useState()
 	const [stockRatings, setStockRatings] = useState()
+	const [stockNews, setStockNews] = useState()
 
 	const [toggle, setToggle] = useState(false)
 	const [error, setError] = useState(null)
 
 	useEffect(() => {
+		FetchSingleStockNews(name).then((name) => setStockNews(name))
 		FetchStockRatings(name).then((name) => setStockRatings(name))
 		FetchStockPeers(name).then((name) => setStockPeers(name))
 		FetchCompanyDetails(name).then((name) => setCompanyProfile(name))
@@ -155,6 +158,7 @@ const FetchSingleStock = (props) => {
 				<div className='w-full mb-4'>
 					{/* SHOW MORE INFO ABOUT STOCK SEARCHED*/}
 					<StockMoreInfo
+						stockNews={stockNews}
 						stockRatings={stockRatings}
 						stockPeers={stockPeers}
 						companyProfile={companyProfile}

@@ -271,6 +271,7 @@ export default function Dashboard() {
 									<form
 										onSubmit={handleSubmit}
 										className='flex w-full md:ml-0 '>
+										1
 										<label htmlFor='search-field' className='sr-only'>
 											Search for stocks in the S&P500 Index
 										</label>
