@@ -19,6 +19,7 @@ import {
 } from '@heroicons/react/24/outline'
 import IndexPerformances from '../Components/IndexPerformances'
 import StockNews from '../Components/stockNews'
+import SectorPerformances from '../Components/sectorPerformances'
 
 const sidebarNavigation = [
 	{ name: 'Home', href: '/', icon: HomeIcon, current: false },
@@ -271,16 +272,25 @@ export default function Market() {
 								<h1 id='primary-heading' className='sr-only'>
 									Broad Market Performance
 								</h1>
-								<article>
-									<h1 className='text-xl md:text-3xl mb-4 mt-2 flex flex-row gap-2 items-center'>
-										Stock Market Performance <BsFileEarmarkBarGraph />
-									</h1>
+								<h1 className='text-xl md:text-3xl mb-4 mt-2 flex flex-row gap-2 items-center'>
+									Stock Market Performance <BsFileEarmarkBarGraph />
+								</h1>
+								<article className='mb-4'>
+									<h2 className='text-xl md:text-2xl mb-4 mt-2 flex flex-row gap-2 items-center opacity-70'>
+										Indexes
+									</h2>
 									<IndexPerformances />
 								</article>
+								<article>
+									<h2 className='text-xl md:text-2xl mb-4 mt-2 flex flex-row gap-2 items-center opacity-70'>
+										Sectors
+									</h2>
+									<SectorPerformances />
+								</article>
 								<article className=''>
-									<h1 className='text-xl md:text-2xl mt-8 mb-4 flex flex-row gap-2 items-center'>
+									<h2 className='text-xl md:text-2xl mt-8 mb-4 flex flex-row gap-2 items-center '>
 										Stock News <BiNews />{' '}
-									</h1>
+									</h2>
 									<StockNews />
 								</article>
 								<article className='bg-grey md:hidden block mb-12'>

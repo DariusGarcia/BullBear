@@ -1,8 +1,8 @@
 // fetches news articles about the stock
 // limited to 5
 
-export const FetchSingleStockNews = async (stock) => {
-	const BASE_URL = `https://fmpcloud.io/api/v3/stock_news?tickers=${stock}&limit=15&apikey=`
+export const FetchSectorPerformance = async () => {
+	const BASE_URL = 'https://fmpcloud.io/api/v3/sectors-performance?apikey='
 	const api = `${BASE_URL}${process.env.REACT_APP_API_KEY}`
 
 	return await fetch(api)
