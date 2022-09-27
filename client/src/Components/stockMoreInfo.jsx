@@ -1,5 +1,5 @@
 import { useState } from 'react'
-
+import time_ago from '../utils/timeAgo'
 export const StockMoreInfo = (props) => {
 	const {
 		stockNews,
@@ -66,58 +66,90 @@ export const StockMoreInfo = (props) => {
 						<div className='grid grid-cols-2 overflow-x-auto'>
 							<div className='flex flex-row gap-x-2 md:gap-x-4'>
 								<ul className='flex flex-col text-white  md:text-base opacity-70'>
-									<li className='h-full  items-center flex '>Open</li>
-									<li className=' h-full  items-center flex '>High</li>
-									<li className=' h-full  items-center flex '>Low</li>
-									<li className=' h-full  items-center flex '>52 Wk high</li>
-									<li className=' h-full  items-center flex '>52 Wk low</li>
+									<li key='stats - open' className='h-full  items-center flex '>
+										Open
+									</li>
+									<li
+										key='stats - high'
+										className=' h-full  items-center flex '>
+										High
+									</li>
+									<li key='stats - low' className=' h-full  items-center flex '>
+										Low
+									</li>
+									<li
+										key='stats - 52wkhigh'
+										className=' h-full  items-center flex '>
+										52 Wk high
+									</li>
+									<li
+										key='stats - 52wklow'
+										className=' h-full  items-center flex '>
+										52 Wk low
+									</li>
 								</ul>
 								<ul className='flex flex-col w-max h-full  items-start justify-center text-white px-2'>
-									<li className='h-full items-center flex '>
+									<li key='stats 1' className='h-full items-center flex '>
 										${stockData[0].open.toFixed(2)}
 									</li>
-									<li className=' h-full items-center flex '>
+									<li key='stats 2' className=' h-full items-center flex '>
 										${stockData[0].dayHigh.toFixed(2)}
 									</li>
-									<li className=' h-full items-center flex '>
+									<li key='stats 3' className=' h-full items-center flex '>
 										${stockData[0].dayLow.toFixed(2)}
 									</li>
-									<li className='h-full items-center md:flex '>
+									<li key='stats 4' className='h-full items-center md:flex '>
 										${stockData[0].yearHigh.toFixed(2)}
 									</li>
-									<li className='h-full items-center md:flex '>
+									<li key='stats 5' className='h-full items-center md:flex '>
 										${stockData[0].yearLow.toFixed(2)}
 									</li>
 								</ul>
 							</div>
 							<div className='flex flex-row gap-x-2 md:gap-x-4'>
 								<ul className='flex flex-col text-white  md:text-base opacity-70'>
-									<li className='h-full  items-center flex '>Volume</li>
-									<li className='h-full  w-max items-center flex text-sm md:text-base'>
+									<li key='stats volume' className='h-full  items-center flex '>
+										Volume
+									</li>
+									<li
+										key='stats avg vol'
+										className='h-full  w-max items-center flex text-sm md:text-base'>
 										Avg volume
 									</li>
-									<li className='h-full  w-max items-center flex '>
+									<li
+										key='p/e/ ratio'
+										className='h-full  w-max items-center flex '>
 										P/E ratio
 									</li>
-									<li className='h-full  items-center flex '>Mkt cap</li>
-									<li className='h-full  items-center flex text-xs md:text-base '>
+									<li key='mkt cap' className='h-full  items-center flex '>
+										Mkt cap
+									</li>
+									<li
+										key='date Added'
+										className='h-full  items-center flex text-xs md:text-base '>
 										Date added
 									</li>
 								</ul>
 								<ul className='flex flex-col w-max h-full items-start justify-center text-white px-2'>
-									<li className=' h-full items-center flex '>
+									<li key='vol data ' className=' h-full items-center flex '>
 										{stockData[0].volume.toLocaleString()}
 									</li>
-									<li className='h-full items-center flex '>
+									<li key='avg vol data' className='h-full items-center flex '>
 										{stockData[0].avgVolume.toLocaleString()}
 									</li>
-									<li className=' h-full items-center flex '>
+									<li
+										key='date added data'
+										className=' h-full items-center flex '>
 										{Number(stockData[0]['pe']).toFixed(2)}
 									</li>
-									<li className='flex h-full items-center text-base'>
+									<li
+										key='mkt cap data '
+										className='flex h-full items-center text-base'>
 										${companyDetails[0]['mktCap']?.toLocaleString()}
 									</li>
-									<li className='flex flex-wrap h-full  w-max items-center text-sm md:text-base'>
+									<li
+										key='date first added data '
+										className='flex flex-wrap h-full  w-max items-center text-sm md:text-base'>
 										{companyProfile[findId(ticker)]?.dateFirstAdded || '-'}
 									</li>
 								</ul>
@@ -136,13 +168,13 @@ export const StockMoreInfo = (props) => {
 								))}
 							</ul>
 						</section>
-						<section className='md:flex md:flex-row justify-between'>
+						<section className='md:flex md:flex-row justify-between gap-8'>
 							{/* Displays stock ratings */}
-							<section className='my-8 flex flex-col  items-start  '>
+							<article className='my-8 flex flex-col  items-start  '>
 								<h4 className='text-xl mb-2 '>Analyst Ratings</h4>
 								<ul className='flex flex-col w-full md:w-max gap-4 text-white md:text-base  bg-primary p-4 rounded-lg'>
 									<li
-										key='stockRating'
+										key='stock recommendation'
 										className={
 											stockRatings[0]?.ratingScore >= 4
 												? 'rounded-md text-green'
@@ -154,7 +186,7 @@ export const StockMoreInfo = (props) => {
 										{stockRatings[0]?.ratingRecommendation}
 									</li>
 									<li
-										key='stockRating'
+										key='stockRating score'
 										className={
 											stockRatings[0]?.ratingScore >= 4
 												? 'rounded-md text-green'
@@ -167,39 +199,59 @@ export const StockMoreInfo = (props) => {
 										{stockRatings[0]?.date}
 									</li>
 								</ul>
-							</section>
+							</article>
 							{/* Displays stock news articles */}
-							<section className='my-8 flex flex-col  items-start  h-[400px] md:h-[550px]  '>
-								<h4 className='text-xl mb-2 '>Recent News</h4>
-								<div className='flex flex-col w-full md:w-max gap-4 text-white md:text-base rounded-lg overflow-auto'>
+							<article className='my-8 flex w-full flex-col items-start h-[400px] md:h-[550px]  '>
+								<h4 className='text-xl mb-0 '>Recent News</h4>
+								<div className='flex flex-col  gap-4 text-white md:text-base rounded-lg overflow-auto'>
 									{stockNews.map((newsArticle) => (
 										<a
 											target='_blank'
 											href={newsArticle.url}
 											rel='noreferrer'
-											className='hover:opacity-60'>
-											<article key={newsArticle.id} className='rounded-lg'>
-												<ul className='flex flex-col  bg-grey my-2 border-b p-2 gap-y-2  '>
-													<li className=''>{newsArticle.title}</li>
-													<li className=''>
-														<img
-															className='w-24 h-16'
-															src={newsArticle.image}
-															alt={newsArticle.title}></img>
-													</li>
-													<li className='italic text-sm'>
-														{newsArticle.text?.substring(0, 100)}...
-													</li>
-													<li className='text-sm opacity-50 flex flex-row'>
-														{newsArticle.site}{' '}
-														{newsArticle.publishedDate.substring(0, 10)}
-													</li>
+											className='hover:opacity-60  '>
+											<article
+												key={newsArticle.id}
+												className='rounded-lg shadow-lg '>
+												<ul className='grid grid-cols-2  bg-primary my-2  p-2 gap-y-2 gap-4 rounded-md md:mr-4  '>
+													<div className='flex flex-col '>
+														<li key='article title' className=''>
+															{newsArticle.site}
+														</li>
+														<li
+															key='article title'
+															className='text-sm md:text-base'>
+															{newsArticle.title}
+														</li>
+
+														<li
+															key='article text'
+															className='hidden md:block italic text-sm opacity-70'>
+															{newsArticle.text?.substring(0, 100)}...
+														</li>
+														<li
+															key='article site'
+															className='text-sm opacity-50 flex flex-row'>
+															{time_ago(newsArticle.publishedDate)}
+														</li>
+													</div>
+													<div className=''>
+														{' '}
+														<li
+															key='article image'
+															className='flex justify-center h-full items-center'>
+															<img
+																className='w-32 h-32 md:w-56 md:h-40 rounded-md object-cover'
+																src={newsArticle.image}
+																alt={newsArticle.title}></img>
+														</li>
+													</div>
 												</ul>
 											</article>
 										</a>
 									))}
 								</div>
-							</section>
+							</article>
 						</section>
 						{/* About the stock section*/}
 						<section className='mt-8'>

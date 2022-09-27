@@ -5,7 +5,6 @@ import { MagnifyingGlassIcon } from '@heroicons/react/20/solid'
 import SearchStockContainer from '../Components/searchStockContainer'
 import { Watchlist } from '../Components/watchlist'
 import { useLogout } from '../Hooks/useLogout'
-import { useWatchlistContext } from '../Hooks/useWatchlistContext'
 import {
 	Bars3BottomLeftIcon,
 	CogIcon,
@@ -17,9 +16,6 @@ import {
 	UserGroupIcon,
 	XMarkIcon,
 } from '@heroicons/react/24/outline'
-import { FetchCompanyDetails } from '../utils/fetchCompanyDetails'
-import { FetchCompanyProfile } from '../utils/fetchCompanyProfile'
-import { UseGetAPI } from '../Hooks/useGetAPI'
 
 const sidebarNavigation = [
 	{ name: 'Home', href: '/', icon: HomeIcon, current: false },
@@ -44,7 +40,6 @@ function classNames(...classes) {
 }
 
 export default function Dashboard() {
-	const { watchlist, dispatch } = useWatchlistContext()
 	const { logout } = useLogout()
 	const [value, setValue] = useState('')
 	const [ticker, setTicker] = useState([])
@@ -133,7 +128,7 @@ export default function Dashboard() {
 					</div>
 				</div>
 
-				{/* Mobile menu */}
+				{/* Mobile menu side menu */}
 				<Transition.Root show={mobileMenuOpen} as={Fragment}>
 					<Dialog
 						as='div'
@@ -271,7 +266,6 @@ export default function Dashboard() {
 									<form
 										onSubmit={handleSubmit}
 										className='flex w-full md:ml-0 '>
-										1
 										<label htmlFor='search-field' className='sr-only'>
 											Search for stocks in the S&P500 Index
 										</label>

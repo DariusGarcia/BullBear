@@ -27,18 +27,24 @@ export default function StockNews() {
 					className='hover:opacity-60'>
 					<article className=''>
 						<ul className='flex flex-col  bg-grey my-2 border-b p-2 gap-y-2  '>
-							<li className=''>${newsArticle.symbol}</li>
-							<li className=''>{newsArticle.title}</li>
-							<li className=''>
+							<li key={newsArticle.symbol} className=''>
+								${newsArticle.symbol}
+							</li>
+							<li key={newsArticle.title} className=''>
+								{newsArticle.title}
+							</li>
+							<li key='newsArticleImage' className=''>
 								<img
 									className='w-24 h-16'
 									src={newsArticle.image}
 									alt={newsArticle.title}></img>
 							</li>
-							<li className='italic text-sm'>
+							<li key='articleText' className='italic text-sm'>
 								{newsArticle.text?.substring(0, 100)}...
 							</li>
-							<li className='text-sm opacity-50 flex flex-row'>
+							<li
+								key={newsArticle.date}
+								className='text-sm opacity-50 flex flex-row'>
 								{newsArticle.site} {newsArticle.publishedDate.substring(0, 10)}
 							</li>
 						</ul>

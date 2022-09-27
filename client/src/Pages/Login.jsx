@@ -86,7 +86,7 @@ export default function Login() {
 							<button
 								disabled={isLoading}
 								type='submit'
-								className='group relative flex w-full justify-center rounded-md  hover:scale-95 transition ease-in-out hover:bg-opacity-60 bg-lightBlue py-2 px-4  font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2'>
+								className='group relative flex w-full justify-center rounded-md cursor-pointer  hover:scale-95 transition ease-in-out hover:bg-opacity-60 bg-lightBlue py-2 px-4  font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2'>
 								<span className='absolute inset-y-0 left-0 flex items-center pl-3'>
 									<HiLockClosed size={25}></HiLockClosed>
 								</span>
