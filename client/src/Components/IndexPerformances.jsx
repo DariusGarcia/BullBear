@@ -39,15 +39,15 @@ export default function IndexPerformances() {
 			<li className='flex md:w-full justify-center w-max text-xs md:text-base '>
 				{indexes[key]?.name}
 			</li>
+			<li className='flex md:justify-center'>
+				{indexes[key]?.price?.toFixed(2)}
+			</li>
 			<li
 				className={
 					indexes[key]?.change >= 0
 						? 'flex md:justify-center text-green'
 						: 'flex md:justify-center text-red'
 				}>
-				${indexes[key]?.price?.toFixed(2)}
-			</li>
-			<li className='flex md:justify-center '>
 				{indexes[key]?.changesPercentage?.toFixed(2)}%
 			</li>
 		</ul>

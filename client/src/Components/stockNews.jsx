@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-
+import time_ago from '../utils/timeAgo'
 export default function StockNews() {
 	const [news, setNews] = useState([])
 
@@ -18,39 +18,57 @@ export default function StockNews() {
 		fetchNews()
 	}, [])
 	return (
-		<section className='h-[550px] overflow-y-auto mb-12'>
-			{news.map((newsArticle) => (
-				<a
-					target='_blank'
-					href={newsArticle.url}
-					rel='noreferrer'
-					className='hover:opacity-60'>
-					<article className=''>
-						<ul className='flex flex-col  bg-grey my-2 border-b p-2 gap-y-2  '>
-							<li key={newsArticle.symbol} className=''>
-								${newsArticle.symbol}
-							</li>
-							<li key={newsArticle.title} className=''>
-								{newsArticle.title}
-							</li>
-							<li key='newsArticleImage' className=''>
-								<img
-									className='w-24 h-16'
-									src={newsArticle.image}
-									alt={newsArticle.title}></img>
-							</li>
-							<li key='articleText' className='italic text-sm'>
-								{newsArticle.text?.substring(0, 100)}...
-							</li>
-							<li
-								key={newsArticle.date}
-								className='text-sm opacity-50 flex flex-row'>
-								{newsArticle.site} {newsArticle.publishedDate.substring(0, 10)}
-							</li>
-						</ul>
-					</article>
-				</a>
-			))}
-		</section>
+		<>
+			{news && (
+				<section className='h-[550px] overflow-y-auto mb-12'>
+					{news.map((newsArticle) => (
+						<a
+							target='_blank'
+							href={newsArticle.url}
+							rel='noreferrer'
+							className='hover:opacity-60'>
+							<article
+								key={newsArticle.id}
+								className='rounded-lg shadow-lg my-4 '>
+								<ul className='grid grid-cols-2  bg-grey my-2  p-2 gap-y-  rounded-md md:mr-4  '>
+									<div className='flex flex-col justify-evenly'>
+										<li key='article title' className='text-lightBlue '>
+											{newsArticle.site}
+										</li>
+										<li key='article title' className=' md:text-base '>
+											${newsArticle.symbol}
+										</li>
+										<li key='article title' className='text-xs md:text-base '>
+											{newsArticle.title}
+										</li>
+
+										<li
+											key='article text'
+											className='hidden md:block italic text-sm opacity-70'>
+											{newsArticle.text?.substring(0, 150)}...
+										</li>
+										<li
+											key='article site'
+											className='text-xs md:text-sm opacity-50 flex flex-row'>
+											{time_ago(newsArticle.publishedDate)}
+										</li>
+									</div>
+									<div className=''>
+										<li
+											key='article image'
+											className='flex justify-end  h-full items-center'>
+											<img
+												className='w-32 h-32 md:w-60 md:h-48 p-4  rounded-md object-cover'
+												src={newsArticle.image}
+												alt={newsArticle.title}></img>
+										</li>
+									</div>
+								</ul>
+							</article>
+						</a>
+					))}
+				</section>
+			)}
+		</>
 	)
 }

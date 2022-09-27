@@ -1,5 +1,6 @@
 import { Fragment, useState } from 'react'
 import { Dialog, Menu, Transition } from '@headlessui/react'
+
 import { useAuthContext } from '../Hooks/useAuthContext'
 import { Watchlist } from '../Components/watchlist'
 import { BiNews } from 'react-icons/bi'

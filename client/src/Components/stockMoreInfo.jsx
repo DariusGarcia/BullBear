@@ -168,9 +168,9 @@ export const StockMoreInfo = (props) => {
 								))}
 							</ul>
 						</section>
-						<section className='md:flex md:flex-row justify-between gap-8'>
+						<section className='md:flex md:flex-row my-4 justify-between gap-8'>
 							{/* Displays stock ratings */}
-							<article className='my-8 flex flex-col  items-start  '>
+							<article className='flex flex-col  items-start  '>
 								<h4 className='text-xl mb-2 '>Analyst Ratings</h4>
 								<ul className='flex flex-col w-full md:w-max gap-4 text-white md:text-base  bg-primary p-4 rounded-lg'>
 									<li
@@ -201,7 +201,7 @@ export const StockMoreInfo = (props) => {
 								</ul>
 							</article>
 							{/* Displays stock news articles */}
-							<article className='my-8 flex w-full flex-col items-start h-[400px] md:h-[550px]  '>
+							<article className='flex w-full flex-col items-start h-[400px] md:h-[550px]  '>
 								<h4 className='text-xl mb-0 '>Recent News</h4>
 								<div className='flex flex-col  gap-4 text-white md:text-base rounded-lg overflow-auto'>
 									{stockNews.map((newsArticle) => (
@@ -213,14 +213,14 @@ export const StockMoreInfo = (props) => {
 											<article
 												key={newsArticle.id}
 												className='rounded-lg shadow-lg '>
-												<ul className='grid grid-cols-2  bg-primary my-2  p-2 gap-y-2 gap-4 rounded-md md:mr-4  '>
-													<div className='flex flex-col '>
-														<li key='article title' className=''>
+												<ul className='grid grid-cols-2  bg-primary my-0  p-2 gap-y-2 gap-4 rounded-md md:mr-4  '>
+													<div className='flex flex-col justify-evenly'>
+														<li key='article title' className='text-lightBlue '>
 															{newsArticle.site}
 														</li>
 														<li
 															key='article title'
-															className='text-sm md:text-base'>
+															className='text-xs md:text-base '>
 															{newsArticle.title}
 														</li>
 
@@ -239,9 +239,9 @@ export const StockMoreInfo = (props) => {
 														{' '}
 														<li
 															key='article image'
-															className='flex justify-center h-full items-center'>
+															className='flex justify-end h-full items-center'>
 															<img
-																className='w-32 h-32 md:w-56 md:h-40 rounded-md object-cover'
+																className='w-32 h-32 md:w-56 md:h-40 p-4 rounded-md object-cover'
 																src={newsArticle.image}
 																alt={newsArticle.title}></img>
 														</li>
