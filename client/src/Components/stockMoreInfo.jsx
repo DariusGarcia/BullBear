@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import time_ago from '../utils/timeAgo'
+import time_ago from '../utils/timeSincePublished'
 export const StockMoreInfo = (props) => {
 	const {
 		stockNews,
@@ -170,7 +170,7 @@ export const StockMoreInfo = (props) => {
 						</section>
 						<section className='md:flex md:flex-row my-4 justify-between gap-8'>
 							{/* Displays stock ratings */}
-							<article className='flex flex-col  items-start  '>
+							<article className='flex flex-col  items-start mb-8 md:mb-0 '>
 								<h4 className='text-xl mb-2 '>Analyst Ratings</h4>
 								<ul className='flex flex-col w-full md:w-max gap-4 text-white md:text-base  bg-primary p-4 rounded-lg'>
 									<li
@@ -202,7 +202,7 @@ export const StockMoreInfo = (props) => {
 							</article>
 							{/* Displays stock news articles */}
 							<article className='flex w-full flex-col items-start h-[400px] md:h-[550px]  '>
-								<h4 className='text-xl mb-0 '>Recent News</h4>
+								<h4 className='text-xl mb-2 '>Recent News</h4>
 								<div className='flex flex-col  gap-4 text-white md:text-base rounded-lg overflow-auto'>
 									{stockNews.map((newsArticle) => (
 										<a
@@ -213,7 +213,7 @@ export const StockMoreInfo = (props) => {
 											<article
 												key={newsArticle.id}
 												className='rounded-lg shadow-lg '>
-												<ul className='grid grid-cols-2  bg-primary my-0  p-2 gap-y-2 gap-4 rounded-md md:mr-4  '>
+												<ul className='grid grid-cols-2  bg-primary my-0  p-2 gap-y-2 gap-4 rounded-lg md:mr-4  '>
 													<div className='flex flex-col justify-evenly'>
 														<li key='article title' className='text-lightBlue '>
 															{newsArticle.site}
@@ -263,7 +263,7 @@ export const StockMoreInfo = (props) => {
 							{!toggle ? (
 								<p className=''>
 									{companyDetails[0]['description']
-										.substring(0, 170)
+										.substring(0, 350)
 										.concat('...')}
 								</p>
 							) : (

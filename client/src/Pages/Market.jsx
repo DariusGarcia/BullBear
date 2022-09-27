@@ -54,9 +54,9 @@ export default function Market() {
 
 	return (
 		<>
-			<div className='w-full flex h-full  md:min-h-screen bg-grey'>
+			<div className='w-full flex h-full md:min-h-screen bg-grey'>
 				{/* Narrow sidebar */}
-				<div className='  hidden w-28 overflow-y-auto md:block'>
+				<div className=' hidden w-28 overflow-y-auto md:block'>
 					<div className='flex w-full flex-col items-center py-6'>
 						<div className='flex flex-shrink-0 items-center '>
 							<h2 className='h-full w-full capitalize text-white'>
@@ -135,7 +135,7 @@ export default function Market() {
 							leave='transition-opacity ease-linear duration-300'
 							leaveFrom='opacity-100'
 							leaveTo='opacity-0'>
-							<div className='fixed inset-0  bg-grey bg-opacity-75' />
+							<div className='fixed inset-0 bg-grey bg-opacity-75' />
 						</Transition.Child>
 
 						<div className='fixed inset-0 z-40 flex'>
@@ -159,7 +159,7 @@ export default function Market() {
 										<div className='absolute top-1 right-0 -mr-14 p-1'>
 											<button
 												type='button'
-												className='flex h-12 w-12 items-center justify-center rounded-full focus:outline-none focus:ring-2 bg-lightBlue  focus:ring-white'
+												className='flex h-12 w-12 items-center justify-center rounded-full focus:outline-none focus:ring-2 bg-lightBlue focus:ring-white'
 												onClick={() => setMobileMenuOpen(false)}>
 												<XMarkIcon
 													className='h-6 w-6 text-white '
@@ -294,14 +294,14 @@ export default function Market() {
 									</h2>
 									<StockNews />
 								</article>
-								<article className='bg-grey md:hidden block mb-12'>
+								<article className='bg-grey md:hidden block mb-12 rounded-lg'>
 									<Watchlist />
 								</article>
 							</section>
 						</main>
 
 						{/* Secondary column (hidden on smaller screens) */}
-						<aside className='hidden md:block w-96 px-4 lg:mx-40 pt-2 overflow-x-hidden bg-grey3  '>
+						<aside className='hidden md:block w-96 px-4 lg:mx-40 pt-2 overflow-x-hidden rounded-md  bg-grey3 '>
 							{/* Your content */}
 							<Watchlist />
 						</aside>

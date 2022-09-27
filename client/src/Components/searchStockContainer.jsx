@@ -12,7 +12,7 @@ export default function SearchStockContainer(props) {
 				<section className='flex flex-col md:h-full md:w-full mt-4 '>
 					<header className='flex mb-4 md:mb-8 gap-8 h-max flex-row items-center text-white  '>
 						<h2 className='flex flex-row items-center gap-4 md:mb-0 text-2xl md:text-4xl '>
-							Stock Screener <VscGraphLine size={30} />
+							Stock Screener
 						</h2>
 						<h3 className='flex md:mb-0 items-center md:text-xl text-sm opacity-50 '>
 							S&P500 index

@@ -188,7 +188,7 @@ const FetchSingleStock = (props) => {
 							{stockData[0]['name']?.split(' ')[0]?.split(',')?.join('')}
 						</span>
 						<li className='text-xs md:text-base h-full items-center flex '>
-							${name}
+							{name}
 						</li>
 					</div>
 				</div>
