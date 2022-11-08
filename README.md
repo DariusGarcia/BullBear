@@ -7,8 +7,11 @@
 ## Description
 I decided to build this web app since I enjoy investing and reading up on stocks, and what better way to keep track of my stocks than to build out my own stock tracking application. I got the inspiration for the name 'BullBear' because I realized that stocks go up and down; It's never a straight line. I think this applies to life, such that the best way to progress is to push through your failures and to ride the ups and downs of life.
 
+- Create an account and view market data about your favorite stocks.
+- Add stock tickers to your own watchlist.
+- See details such as latest price, volume, market cap, recent news, and broad market index quotes.
 
-<img src='https://media.giphy.com/media/0vN0CA9LjAIcD10ji7/giphy.gif' title='BullBear Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='https://media.giphy.com/media/0vN0CA9LjAIcD10ji7/giphy.gif' title='BullBear Video Walkthrough' width='800' height='auto' alt='Video Walkthrough' />
 
 ## Technologies used:
 - [x] React
@@ -31,12 +34,22 @@ The following functionality is completed:
 - [x] User can view the stats and metrics about different stock tickers.
 
 
-## Usage 
+# Usage 
 
-#### Setting up and starting the Client:
+## Setting up and starting the Client:
 cd into the Client/ directory and run:
 
-##### npm install 
+#### npm install 
+#### npm start 
+
+## Setting up and starting the Server:
+
+## To start the server, you can cd into the Server/ directory and run:
+
+#### npm install 
+
+#### nodemon server.js
+
 
 ## Getting Started with Create React App
 ### This project was bootstrapped with Create React App.
@@ -44,10 +57,9 @@ cd into the Client/ directory and run:
 Available Scripts
 In the project directory, you can run:
 
-#### To start the client run: 
+### To start the client run: 
 
-##### npm start
-
+#### npm start
 
 (Runs the app in the development mode.)
 
@@ -73,40 +85,8 @@ See the section about deployment for more information.
 npm run eject
 Note: this is a one-way operation. Once you eject, you can't go back!
 
-### Starting up the Server 
+### To start the server, you can cd into the Server/ directory and run:
 
-#### To start the server, you can cd into the Server/ directory and run:
+#### npm install 
 
-##### npm i 
-
-##### nodemon server.js
-
-
-If you aren't satisfied with the build tool and configuration choices, you can eject at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except eject will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use eject. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-Learn More
-You can learn more in the Create React App documentation.
-
-To learn React, check out the React documentation.
-
-Code Splitting
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-Analyzing the Bundle Size
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-Making a Progressive Web App
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-Advanced Configuration
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-Deployment
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-npm run build fails to minify
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+#### nodemon server.js
