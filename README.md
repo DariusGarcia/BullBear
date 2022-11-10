@@ -24,6 +24,7 @@ I decided to build this web app since I enjoy investing and reading up on stocks
 - [x] Tailwind CSS
 - [x] MongoDB
 - [x] User Authentication 
+- [x] Context API
 
 ## User Stories
 
