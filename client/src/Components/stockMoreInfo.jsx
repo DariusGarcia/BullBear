@@ -28,7 +28,7 @@ export const StockMoreInfo = (props) => {
         companyDetails.length > 0 &&
         stockPeers &&
         stockRatings && (
-          <div className='px-4 text-white w-full h-full overflow-hidden'>
+          <div className='px-4 text-white w-full  h-full overflow-hidden'>
             <article className='w-full h-full mb-4' id='stock-chart'>
               <StockChart stock={ticker} />
             </article>
@@ -61,7 +61,10 @@ export const StockMoreInfo = (props) => {
               </article>{' '}
               <article className=''>
                 <p className='opacity-70'>Website</p>
-                <a href={companyDetails[0]['website'] || '-'} className=''>
+                <a
+                  href={companyDetails[0]['website'] || '-'}
+                  className='hover:opacity-70 text-blue hover:underline'
+                >
                   {companyDetails[0]['website'] || '-'}{' '}
                 </a>
               </article>
@@ -71,52 +74,49 @@ export const StockMoreInfo = (props) => {
             <div className='grid grid-cols-2 overflow-x-auto'>
               <div className='flex flex-row gap-x-2 md:gap-x-4'>
                 <ul className='flex flex-col text-white  md:text-base opacity-70'>
-                  <li key='stats - open' className='h-full  items-center flex '>
+                  <li key='stats-open' className='h-full  items-center flex '>
                     Open
                   </li>
-                  <li
-                    key='stats - high'
-                    className=' h-full  items-center flex '
-                  >
+                  <li key='stats-high' className=' h-full  items-center flex '>
                     High
                   </li>
-                  <li key='stats - low' className=' h-full  items-center flex '>
+                  <li key='stats-low' className=' h-full  items-center flex '>
                     Low
                   </li>
                   <li
-                    key='stats - 52wkhigh'
+                    key='stats-52wkhigh'
                     className=' h-full  items-center flex '
                   >
                     52 Wk high
                   </li>
                   <li
-                    key='stats - 52wklow'
+                    key='stats-52wklow'
                     className=' h-full  items-center flex '
                   >
                     52 Wk low
                   </li>
                 </ul>
                 <ul className='flex flex-col w-max h-full  items-start justify-center text-white px-2'>
-                  <li key='stats 1' className='h-full items-center flex '>
+                  <li key='stats-1' className='h-full items-center flex '>
                     ${stockData[0].open.toFixed(2)}
                   </li>
-                  <li key='stats 2' className=' h-full items-center flex '>
+                  <li key='stats-2' className=' h-full items-center flex '>
                     ${stockData[0].dayHigh.toFixed(2)}
                   </li>
-                  <li key='stats 3' className=' h-full items-center flex '>
+                  <li key='stats-3' className=' h-full items-center flex '>
                     ${stockData[0].dayLow.toFixed(2)}
                   </li>
-                  <li key='stats 4' className='h-full items-center md:flex '>
+                  <li key='stats-4' className='h-full items-center md:flex '>
                     ${stockData[0].yearHigh.toFixed(2)}
                   </li>
-                  <li key='stats 5' className='h-full items-center md:flex '>
+                  <li key='stats-5' className='h-full items-center md:flex '>
                     ${stockData[0].yearLow.toFixed(2)}
                   </li>
                 </ul>
               </div>
               <div className='flex flex-row gap-x-2 md:gap-x-4'>
                 <ul className='flex flex-col text-white  md:text-base opacity-70'>
-                  <li key='stats volume' className='h-full  items-center flex '>
+                  <li key='stats-volume' className='h-full  items-center flex '>
                     Volume
                   </li>
                   <li
@@ -234,24 +234,24 @@ export const StockMoreInfo = (props) => {
                       >
                         <ul className='grid grid-cols-2  bg-primary my-0  p-2 gap-y-2 gap-4 rounded-lg md:mr-4  '>
                           <div className='flex flex-col justify-evenly'>
-                            <li key='article title' className='text-lightBlue '>
+                            <li key='article-site' className='text-lightBlue '>
                               {newsArticle.site}
                             </li>
                             <li
-                              key='article title'
+                              key='article-title'
                               className='text-xs md:text-base '
                             >
                               {newsArticle.title}
                             </li>
 
                             <li
-                              key='article text'
+                              key='news-text'
                               className='hidden md:block italic text-sm opacity-70'
                             >
                               {newsArticle.text?.substring(0, 100)}...
                             </li>
                             <li
-                              key='article site'
+                              key='article-publishedDate'
                               className='text-sm opacity-50 flex flex-row'
                             >
                               {time_ago(newsArticle.publishedDate)}
@@ -260,7 +260,7 @@ export const StockMoreInfo = (props) => {
                           <div className=''>
                             {' '}
                             <li
-                              key='article image'
+                              key='article-image'
                               className='flex justify-end h-full items-center'
                             >
                               <img

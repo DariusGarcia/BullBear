@@ -72,12 +72,10 @@ export default function SearchStockContainer(props) {
                   {ticker.map((searchedTicker) => (
                     <div
                       id='searched-ticker'
+                      key={searchedTicker}
                       className='overflow-auto flex md:w-full  mb-4 text-sm md:text-base shadow-lg bg-grey md:mx-0 rounded-lg'
                     >
-                      <FetchSingleStock
-                        name={searchedTicker}
-                        key={searchedTicker}
-                      />
+                      <FetchSingleStock name={searchedTicker} />
                     </div>
                   ))}
                 </div>

@@ -12,7 +12,7 @@ import { FetchStockRatings } from '../utils/fetchStockRatings'
 import { FetchSingleStockNews } from '../utils/fetchStockNews'
 
 const FetchSingleStock = (props) => {
-  const { name } = props
+  let { name } = props
   const { user } = useAuthContext()
   const { watchlist, dispatch } = useWatchlistContext()
   const [stockData, setStockData] = useState([{}])
@@ -62,8 +62,8 @@ const FetchSingleStock = (props) => {
     const json = await response.json()
 
     if (!response.ok) {
+      name = ''
       setError(json.error)
-      name = {}
     }
 
     if (response.ok) {
@@ -100,8 +100,8 @@ const FetchSingleStock = (props) => {
   if (toggle && companyDetails) {
     info = (
       <div className='flex flex-col pt-2 md:pt-0 transition delay-25 ease-in-out rounded-lg  '>
-        <div className=' w-full py-2'>
-          <ul className='h-full grid grid-cols-4  mr-2 md:mr-0 content-center text-white px-2'>
+        <div className=' w-full py-2 h-full'>
+          <ul className='h-full grid grid-cols-4  md:mr-0 content-center text-white px-2'>
             {/* display stock ticker */}
             <div className='flex flex-col h-full md:pl-2 gap-2 md:gap-1 text-xs md:text-sm '>
               <article className='w-1/3 h-full flex flex-row gap-1'>
@@ -177,7 +177,7 @@ const FetchSingleStock = (props) => {
     )
   } else if (!toggle && companyDetails) {
     info = (
-      <ul className='h-16 grid px-2 py-4 grid-cols-4 mr-2 md:mr-0 content-center text-white border-2transition delay-25 ease-in-out rounded-lg cursor-pointer'>
+      <ul className='h-16 grid w-full px-2 py-4 grid-cols-4 mr-2 md:mr-0 content-center text-white border-2transition delay-25 ease-in-out rounded-lg cursor-pointer'>
         {/* display stock ticker */}
         <div className='flex h-full items-center gap-x-2 md:gap-1 text-xs md:text-sm '>
           <li className='w-1/3'>

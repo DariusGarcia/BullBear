@@ -22,20 +22,24 @@ ChartJS.register(
   Legend
 )
 
-export const options = {
-  responsive: true,
-  plugins: {
-    title: {
-      display: true,
-      text: 'Daily Chart',
-    },
-  },
+function formatTime(timeDate) {
+  let date = new Date(timeDate)
+  let options = { year: 'numeric', month: 'short', day: 'numeric' }
+  return date.toLocaleDateString('en-US', options) //outputs "January 23, 2023"
 }
 
 const StockLineChart = ({ stock }) => {
   const [prices, setPrices] = useState({})
   const [times, setTimes] = useState([])
-
+  const options = {
+    responsive: true,
+    plugins: {
+      title: {
+        display: true,
+        text: `Daily Chart ${formatTime(prices[0]?.date.slice(0, 11))}`,
+      },
+    },
+  }
   useEffect(() => {
     const handleGetTimeData = async () => {
       setPrices(await UseFetchChartData(stock))
@@ -45,29 +49,15 @@ const StockLineChart = ({ stock }) => {
     setTimes(displayMonthlyDates(prices))
   }, [stock])
 
+  // reverse the time series array to display the current day last
   if (prices.length > 0) {
-    var timeSlotdata = prices?.map(
+    var timeSlotData = prices?.map(
       (val, index, array) => array[array.length - 1 - index]
     )
   }
 
-  function formatTime(date) {
-    date.map(() => {
-      let newDate = new Date(date.date)
-
-      let options = { hour: '2-digit', minute: '2-digit', hour12: true }
-      return newDate
-        .toLocaleTimeString('en-US', options)
-        .setHours(date.getHours() - 3)
-    })
-  }
   const dataChart = {
-    // labels: timeSlotdata?.map((data) => {
-    //   let newDate = new Date(data.date)
-    //   let options = { month: 'short', day: 'numeric' }
-    //   return newDate.toLocaleDateString('en-US', options)
-    // }),
-    labels: timeSlotdata?.map((data) => {
+    labels: timeSlotData?.map((data) => {
       let newDate = new Date(data.date)
 
       let options = { hour: '2-digit', minute: '2-digit', hour12: true }
@@ -77,7 +67,7 @@ const StockLineChart = ({ stock }) => {
     datasets: [
       {
         label: 'Stock Price',
-        data: timeSlotdata?.map((data) => data?.close?.toString()),
+        data: timeSlotData?.map((data) => data?.close?.toString()),
         backgroundColor: ['rgba(255, 99, 132, 0.2)'],
         borderColor: ['rgba(255, 99, 132, 1)'],
         borderWidth: 1,
