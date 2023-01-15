@@ -36,34 +36,34 @@ export const StockMoreInfo = (props) => {
               <article className=''>
                 <p className='opacity-70'>CEO</p>
 
-                <p className=''>{companyDetails[0].ceo}</p>
+                <p className=''>{companyDetails[0]?.ceo}</p>
               </article>
               <article className=''>
                 <p className='opacity-70'>Employees</p>
                 <p className=''>
-                  {companyDetails[0].fullTimeEmployees.toLocaleString()}
+                  {companyDetails[0]?.fullTimeEmployees.toLocaleString()}
                 </p>
               </article>
               <article className=''>
-                <p className='opacity-70'>Founded</p>
-                <p className=''>{companyProfile[0].founded}</p>
+                <p className='opacity-70'>IPO Date</p>
+                <p className=''>{companyDetails[0]?.ipoDate}</p>
               </article>
               <article className=''>
                 <p className='opacity-70'>Headquarters</p>
-                <p className=''>{companyProfile[0].headQuarter}</p>
+                <p className=''>{companyDetails[0]?.city}</p>
               </article>
               <article className=''>
                 <p className='opacity-70'>Industry</p>
                 <p className=''>
-                  {companyProfile[findId(ticker)]?.sector ||
-                    companyDetails[0]['sector']}
+                  {companyDetails[0]['industry'] ||
+                    companyProfile[findId(ticker)]?.sector}
                 </p>
               </article>{' '}
               <article className=''>
-                <p className='opacity-70'>Sector</p>
-                <p className=''>
-                  {companyProfile[findId(ticker)]?.subSector || '-'}{' '}
-                </p>
+                <p className='opacity-70'>Website</p>
+                <a href={companyDetails[0]['website'] || '-'} className=''>
+                  {companyDetails[0]['website'] || '-'}{' '}
+                </a>
               </article>
             </section>
             <h4 className='text-xl mb-2'>Stats</h4>
