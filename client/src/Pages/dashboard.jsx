@@ -50,6 +50,7 @@ export default function Dashboard() {
 	}
 	const handleSubmit = (event) => {
 		event.preventDefault()
+
 		if (!ticker.includes(value)) {
 			setTicker(ticker.concat(value))
 			setValue('')
@@ -320,7 +321,7 @@ export default function Dashboard() {
 						</main>
 
 						{/* Secondary column (hidden on smaller screens) */}
-						<aside className='hidden md:block w-96 px-4 lg:mx-40 pt-2 overflow-x-hidden  bg-grey3 '>
+						<aside className='hidden md:block w-96 px-4 lg:mx-40 pt-2 overflow-x-hidden rounded-md  bg-grey3 '>
 							{/* Your content */}
 							<Watchlist />
 						</aside>

@@ -4,7 +4,6 @@ import { FetchCompanyProfile } from '../utils/fetchCompanyProfile'
 import { FetchCompanyDetails } from '../utils/fetchCompanyDetails'
 import { UseGetAPI } from '../Hooks/useGetAPI'
 import { StockMoreInfo } from './stockMoreInfo'
-import { MdOutlineOpenInFull } from 'react-icons/md'
 import { AiOutlineArrowsAlt } from 'react-icons/ai'
 import { useAuthContext } from '../Hooks/useAuthContext'
 import { GoTriangleUp, GoTriangleDown } from 'react-icons/go'
@@ -46,7 +45,7 @@ const FetchSingleStock = (props) => {
 		const ticker = `${name}`
 		console.log('handleAdd called')
 		const response = await fetch(
-			'https://bullbear-server.herokuapp.com/api/watchlist',
+			'https://4tarxsi5i3.execute-api.us-east-1.amazonaws.com/dev/api/watchlist',
 			{
 				method: 'POST',
 				body: JSON.stringify({ ticker: `${ticker}` }),
@@ -64,6 +63,7 @@ const FetchSingleStock = (props) => {
 
 		if (!response.ok) {
 			setError(json.error)
+			name = {}
 		}
 
 		if (response.ok) {
@@ -108,7 +108,8 @@ const FetchSingleStock = (props) => {
 								<img
 									className='w-12 md:w-12 h-8 md:h-max rounded-lg'
 									src={companyDetails[0]?.image}
-									alt={companyDetails}></img>
+									alt={companyDetails}
+								></img>
 								<li className='text-xs md:text-base md:ml-14 h-full pl-1 md:pl-0 items-center flex'>
 									${name}
 								</li>
@@ -138,7 +139,8 @@ const FetchSingleStock = (props) => {
 							<span>
 								<button
 									onClick={(event) => handleAdd(event)}
-									className='h-8 w-16 rounded-lg  bg-primary border-2 opacity-50 hover:border-lightBlue hover:opacity-100  delay-25 ease-in transition text-white'>
+									className='h-8 w-16 rounded-lg  bg-primary border-2 opacity-50 hover:border-lightBlue hover:opacity-100  delay-25 ease-in transition text-white'
+								>
 									Add
 								</button>
 							</span>
@@ -146,7 +148,8 @@ const FetchSingleStock = (props) => {
 								<AiOutlineArrowsAlt
 									className='hover:scale-110 transition text-white ease-in-out delay-25 cursor-pointer '
 									onClick={handleOnClick}
-									size={25}></AiOutlineArrowsAlt>
+									size={25}
+								></AiOutlineArrowsAlt>
 							</span>
 						</span>
 					</ul>
@@ -181,7 +184,8 @@ const FetchSingleStock = (props) => {
 						<img
 							className='w-max md:w-12 h-8 md:h-max md:mx-2 rounded-lg '
 							src={companyDetails[0]?.image}
-							alt={companyDetails}></img>
+							alt={companyDetails}
+						></img>
 					</li>
 					<div className='flex flex-col text-xs md:text-base'>
 						<span className='hidden md:inline text-lightBlue'>
@@ -215,7 +219,8 @@ const FetchSingleStock = (props) => {
 					<span>
 						<button
 							onClick={(event) => handleAdd(event)}
-							className='h-8 w-16 rounded-lg bg-primary border-2 opacity-50 hover:border-lightBlue hover:opacity-100  delay-25 ease-out transition text-white'>
+							className='h-8 w-16 rounded-lg bg-primary border-2 opacity-50 hover:border-lightBlue hover:opacity-100  delay-25 ease-out transition text-white'
+						>
 							Add
 						</button>
 					</span>
@@ -223,7 +228,8 @@ const FetchSingleStock = (props) => {
 						<AiOutlineArrowsAlt
 							className='cursor-pointer hover:scale-110 transition text-white ease-in-out delay-25'
 							onClick={handleOnClick}
-							size={25}></AiOutlineArrowsAlt>
+							size={25}
+						></AiOutlineArrowsAlt>
 					</span>
 				</li>
 			</ul>

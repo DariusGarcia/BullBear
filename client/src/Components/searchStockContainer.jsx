@@ -58,7 +58,7 @@ export default function SearchStockContainer(props) {
 									)}
 								</ul>
 							</nav>
-							{!ticker ? (
+							{!ticker || null ? (
 								<div className='flex flex-col bg-red h-max mt-4 bg-opacity-20 rounded-lg'>
 									Search
 								</div>

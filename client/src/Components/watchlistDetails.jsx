@@ -6,106 +6,120 @@ import { useWatchlistContext } from '../Hooks/useWatchlistContext'
 import { useAuthContext } from '../Hooks/useAuthContext'
 
 export const WatchlistDetails = ({ ticker, watchlistInfo }) => {
-	const [stockData, setStockData] = useState({})
-	const [companyLogo, setCompanyLogo] = useState()
-	const { dispatch } = useWatchlistContext()
-	const { user } = useAuthContext()
+  const [stockData, setStockData] = useState({})
+  const [companyLogo, setCompanyLogo] = useState()
+  const { dispatch } = useWatchlistContext()
+  const { user } = useAuthContext()
 
-	const DeleteStock = async () => {
-		if (!user) {
-			return
-		}
+  const DeleteStock = async () => {
+    if (!user) {
+      return
+    }
 
-		const response = await fetch(
-			'https://bullbear-server.herokuapp.com/api/watchlist/' + watchlistInfo,
-			{
-				headers: {
-					Authorization: `Bearer ${user.token}`,
-					'Access-Control-Allow-Headers': 'Origin, Content-Type, X-Auth-Token',
-					'Access-Control-Allow-Origin': '*',
-					'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
-				},
-				method: 'DELETE',
-			}
-		)
+    const response = await fetch(
+      'https://bullbear-backend.herokuapp.com/api/watchlist/' + watchlistInfo,
+      {
+        headers: {
+          Authorization: `Bearer ${user.token}`,
+          'Access-Control-Allow-Headers': 'Origin, Content-Type, X-Auth-Token',
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
+        },
+        method: 'DELETE',
+      }
+    )
 
-		const json = await response.json()
+    const json = await response.json()
 
-		if (response.ok) {
-			dispatch({ type: 'DELETE_STOCK', payload: json })
-			console.log('Stock removed from watchlist')
-		}
-	}
+    if (response.ok) {
+      dispatch({ type: 'DELETE_STOCK', payload: json })
+      console.log('Stock removed from watchlist')
+    }
+  }
 
-	const MemoizedData = () =>
-		useMemo(() => {
-			FetchCompanyProfile(ticker).then((image) =>
-				setCompanyLogo(image[0]['image'])
-			)
-			UseGetAPI(ticker)
-				.then((res) => setStockData(res))
-				.catch((error) => console.log(error))
-		}, [])
+  const MemoizedData = () =>
+    useMemo(() => {
+      FetchCompanyProfile(ticker).then((image) =>
+        setCompanyLogo(image[0]['image'])
+      )
+      UseGetAPI(ticker)
+        .then((res) => setStockData(res))
+        .catch((error) => console.log(error))
+    }, [])
 
-	MemoizedData()
+  MemoizedData()
 
-	return (
-		<>
-			{/* display when change is positive*/}
-			{stockData[0] && stockData[0]['changesPercentage'] > 0 && (
-				<div className='h-full grid grid-cols-3 justify-between w-full items-center p-2 py-4 text-white'>
-					{/* display stock ticker */}
-					<div className='justify-start flex gap-2 items-center w-max rounded-lg '>
-						<span className=''>
-							<img
-								className='w-8 md:w-max h-8 rounded-lg'
-								src={companyLogo}
-								alt={companyLogo}></img>
-						</span>
-						<div className='ml-1 text-sm'>${ticker}</div>
-					</div>
-					{/* display current price */}
-					<p className='flex justify-center items-center w-full text-green'>
-						${stockData[0]['price']?.toFixed(2)}
-					</p>
-					<button
-						onClick={DeleteStock}
-						className='flex justify-center text-white opacity-50 hover:opacity-100'>
-						<AiFillDelete
-							className='hover:text-red hover:scale-110 transition ease-in-out delay-25'
-							size={20}
-						/>
-					</button>
-				</div>
-			)}
+  return (
+    <>
+      {/* display when change is positive*/}
+      {stockData[0] && stockData[0]['changesPercentage'] > 0 && (
+        <div className='h-full grid grid-cols-3 justify-between w-full items-center p-2 py-4 text-white'>
+          {/* display stock ticker */}
+          <div className='justify-start flex gap-2 items-center w-max rounded-lg '>
+            <span className=''>
+              <img
+                className='w-8 md:w-max h-8 rounded-lg'
+                src={companyLogo}
+                alt={companyLogo}
+              ></img>
+            </span>
+            <div className='ml-1 text-sm'>${ticker}</div>
+          </div>
+          {/* display current price */}
+          <span className='flex flex-row gap-2'>
+            <p className='flex h-full justify-center items-center w-full text-white'>
+              ${stockData[0]['price']?.toFixed(2)}
+            </p>
+            <p className='flex h-full justify-center items-center w-full text-green'>
+              ({stockData[0]['changesPercentage']?.toFixed(2)}%)
+            </p>
+          </span>
+          <button
+            onClick={DeleteStock}
+            className='flex justify-center text-white opacity-50 hover:opacity-100'
+          >
+            <AiFillDelete
+              className='hover:text-red hover:scale-110 transition ease-in-out delay-25'
+              size={20}
+            />
+          </button>
+        </div>
+      )}
 
-			{/* display when change is negative*/}
-			{stockData[0] && stockData[0]['changesPercentage'] < 0 && (
-				<div className=''>
-					<div className='h-full grid grid-cols-3 w-full justify-between items-center p-2 py-4 text-white '>
-						{/* display logo and ticker */}
-						<div className='flex justify-start items-center rounded-lg'>
-							<img
-								className='w-8 md:w-max h-8 rounded-lg'
-								src={companyLogo}
-								alt={companyLogo}></img>
-							<div className='ml-1 text-sm'>${ticker}</div>
-						</div>
-						{/* display current price */}
-						<p className='flex justify-center text-red'>
-							${stockData[0]['price']?.toFixed(2)}
-						</p>
-						<button
-							onClick={DeleteStock}
-							className='flex justify-center text-white opacity-50 hover:opacity-100'>
-							<AiFillDelete
-								className='hover:text-red flex justify-center hover:scale-110 transition ease-in-out delay-25'
-								size={20}
-							/>
-						</button>
-					</div>
-				</div>
-			)}
-		</>
-	)
+      {/* display when change is negative*/}
+      {stockData[0] && stockData[0]['changesPercentage'] < 0 && (
+        <div className=''>
+          <div className='h-full grid grid-cols-3 w-full justify-between items-center p-2 py-4 text-white '>
+            {/* display logo and ticker */}
+            <div className='flex justify-start items-center rounded-lg'>
+              <img
+                className='w-8 md:w-max h-8 rounded-lg'
+                src={companyLogo}
+                alt={companyLogo}
+              ></img>
+              <div className='ml-1 text-sm'>${ticker}</div>
+            </div>
+            {/* display current price */}
+            <span className='flex flex-row gap-2'>
+              <p className='flex h-full justify-center items-center w-full text-white'>
+                ${stockData[0]['price']?.toFixed(2)}
+              </p>
+              <p className='flex h-full justify-center items-center w-full text-red'>
+                ({stockData[0]['changesPercentage']?.toFixed(2)}%)
+              </p>
+            </span>
+            <button
+              onClick={DeleteStock}
+              className='flex justify-center text-white opacity-50 hover:opacity-100'
+            >
+              <AiFillDelete
+                className='hover:text-red flex justify-center hover:scale-110 transition ease-in-out delay-25'
+                size={20}
+              />
+            </button>
+          </div>
+        </div>
+      )}
+    </>
+  )
 }
