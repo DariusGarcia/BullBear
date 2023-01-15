@@ -7,6 +7,6 @@ export const UseFetchChartData = async (stock) => {
 
   return await fetch(api)
     .then((results) => results.json())
-    .then((data) => data)
+    .then((data) => data.splice(0, 14))
     .catch((err) => console.log(err))
 }

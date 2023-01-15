@@ -28,8 +28,8 @@ export const StockMoreInfo = (props) => {
         companyDetails.length > 0 &&
         stockPeers &&
         stockRatings && (
-          <div className='px-4 text-white w-full overflow-hidden'>
-            <article className='w-5/6  mb-4' id='stock-chart'>
+          <div className='px-4 text-white w-full h-full overflow-hidden'>
+            <article className='w-full h-full mb-4' id='stock-chart'>
               <StockChart stock={ticker} />
             </article>
             <section className='grid grid-cols-2 mb-4 md:mb-8 gap-y-4'>

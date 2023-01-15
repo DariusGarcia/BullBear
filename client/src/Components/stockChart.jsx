@@ -45,26 +45,39 @@ const StockLineChart = ({ stock }) => {
     setTimes(displayMonthlyDates(prices))
   }, [stock])
 
-  //   if (prices) {
-  //     console.log(
-  //       'times: ',
-  //       prices.historical.map((data) => data.close.toString())
-  //     )
-  //   }
-
   if (prices.length > 0) {
     var timeSlotdata = prices?.map(
       (val, index, array) => array[array.length - 1 - index]
     )
   }
 
+  function formatTime(date) {
+    date.map(() => {
+      let newDate = new Date(date.date)
+
+      let options = { hour: '2-digit', minute: '2-digit', hour12: true }
+      return newDate
+        .toLocaleTimeString('en-US', options)
+        .setHours(date.getHours() - 3)
+    })
+  }
   const dataChart = {
-    labels: timeSlotdata?.map((data) => data?.date),
+    // labels: timeSlotdata?.map((data) => {
+    //   let newDate = new Date(data.date)
+    //   let options = { month: 'short', day: 'numeric' }
+    //   return newDate.toLocaleDateString('en-US', options)
+    // }),
+    labels: timeSlotdata?.map((data) => {
+      let newDate = new Date(data.date)
+
+      let options = { hour: '2-digit', minute: '2-digit', hour12: true }
+      return newDate.toLocaleTimeString('en-US', options)
+    }),
+
     datasets: [
       {
         label: 'Stock Price',
         data: timeSlotdata?.map((data) => data?.close?.toString()),
-        // data: ['100'],
         backgroundColor: ['rgba(255, 99, 132, 0.2)'],
         borderColor: ['rgba(255, 99, 132, 1)'],
         borderWidth: 1,
