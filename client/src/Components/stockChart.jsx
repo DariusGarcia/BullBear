@@ -32,46 +32,64 @@ export const options = {
   },
 }
 
-const data = {
-  labels: ['', '', '', '', '', '', ''],
-  datasets: [
-    {
-      label: 'Stock Price',
-      data: [
-        134.76, 133.41, 133.49, 130.73, 130.15, 129.62, 125.02, 126.36, 125.07,
-      ],
-      backgroundColor: ['rgba(255, 99, 132, 0.2)'],
-      borderColor: ['rgba(255, 99, 132, 1)'],
-      borderWidth: 1,
-    },
-  ],
-}
-
 const StockLineChart = ({ stock }) => {
-  const [prices, setPrices] = useState()
-
-  function displayMonthlyDates(times) {
-    const monthlyArr = []
-    for (let i = 0; i < times.length; i += 3) {
-      monthlyArr.push(times[i])
-    }
-    console.log(`monthly array: ${monthlyArr[0].date}`)
-    return monthlyArr
-  }
+  const [prices, setPrices] = useState({})
+  const [times, setTimes] = useState([])
 
   useEffect(() => {
-    async function fetchData() {
-      await UseFetchChartData(stock).then((data) => setPrices(data))
+    const handleGetTimeData = async () => {
+      setPrices(await UseFetchChartData(stock))
     }
-    setPrices(fetchData)
-    displayMonthlyDates(prices['historical'])
+    handleGetTimeData()
+    console.log(prices)
+    setTimes(displayMonthlyDates(prices))
   }, [stock])
+
+  //   if (prices) {
+  //     console.log(
+  //       'times: ',
+  //       prices.historical.map((data) => data.close.toString())
+  //     )
+  //   }
+
+  if (prices.length > 0) {
+    var timeSlotdata = prices?.map(
+      (val, index, array) => array[array.length - 1 - index]
+    )
+  }
+
+  const dataChart = {
+    labels: timeSlotdata?.map((data) => data?.date),
+    datasets: [
+      {
+        label: 'Stock Price',
+        data: timeSlotdata?.map((data) => data?.close?.toString()),
+        // data: ['100'],
+        backgroundColor: ['rgba(255, 99, 132, 0.2)'],
+        borderColor: ['rgba(255, 99, 132, 1)'],
+        borderWidth: 1,
+      },
+    ],
+  }
 
   return (
     <section className=''>
-      <Line options={options} data={data} />
+      <Line options={options} data={dataChart} />
     </section>
   )
+}
+
+function displayMonthlyDates(times) {
+  const monthlyArr = []
+  for (let i = 0; i < times?.historical?.length; i += 21) {
+    monthlyArr.push(times?.historical[i])
+  }
+  console.log(`monthly array: ${monthlyArr}`)
+  return monthlyArr
+}
+
+function setTimeData(timeData) {
+  return timeData.map((data) => console.log('time: ', data))
 }
 
 export default StockLineChart
