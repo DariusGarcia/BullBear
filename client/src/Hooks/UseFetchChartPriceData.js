@@ -1,4 +1,4 @@
-export const UseFetchChartData = async (stock) => {
+export const UseFetchChartPriceData = async (stock) => {
   const api =
     process.env.REACT_APP_BROADMARKET_URL +
     'historical-chart/30min/' +
