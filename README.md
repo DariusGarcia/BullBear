@@ -28,6 +28,10 @@ I decided to build this web app since I enjoy investing and reading up on stocks
 - [x] Tailwind CSS
 - [x] MongoDB
 - [x] User Authentication
+- [x] Chart.js
+- [x] Client hosted on Vercel
+- [x] Server deployed on Heroku
+- [x] [Fmp Cloud stock data API endpoints](https://fmpcloud.io/)
 - [x] Context API
 
 ## User Stories
@@ -43,7 +47,7 @@ The following functionality is completed:
 
 # Installation
 
-## Setting up and starting the Client:
+## Setting up the Client
 
 cd into the Client/ directory and run:
 
@@ -55,7 +59,7 @@ npm install
 npm start
 ```
 
-## Setting up and starting the Server:
+## Setting up the Express Server
 
 #### To start the server, you can cd into the Server/ directory and run:
 
@@ -64,60 +68,5 @@ npm install
 ```
 
 ```
-nodemon server.js
-```
-
-## Getting Started with Create React App
-
-### This project was bootstrapped with Create React App.
-
-Available Scripts
-In the project directory, you can run:
-
-### To start the client run:
-
-```
-npm start
-```
-
-(Runs the app in the development mode.)
-
-Open http://localhost:3000 to view it in your browser.
-
-The page will reload when you make changes.
-You may also see any lint errors in the console.
-
-```
-npm test
-```
-
-Launches the test runner in the interactive watch mode.
-See the section about running tests for more information.
-
-```
-npm run build
-```
-
-Builds the app for production to the build folder.
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.
-Your app is ready to be deployed!
-
-See the section about deployment for more information.
-
-```
-npm run eject
-```
-
-Note: this is a one-way operation. Once you eject, you can't go back!
-
-### To start the server, you can cd into the Server/ directory and run:
-
-```
-npm install
-```
-
-```
-nodemon server.js
+node server.js
 ```
