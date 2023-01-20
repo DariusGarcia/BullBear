@@ -50,6 +50,7 @@ const StockLineChart = ({ stock }) => {
 
   const chartData = {
     labels: timeSlotData?.map((data) => {
+      // change format of chart time label
       let newDate = new Date(data.date)
       let options = { hour: '2-digit', minute: '2-digit', hour12: true }
       return newDate.toLocaleTimeString('en-US', options)
@@ -67,7 +68,7 @@ const StockLineChart = ({ stock }) => {
   }
 
   return (
-    <section className=''>
+    <section id='stock-price-chart'>
       <Line options={options} data={chartData} />
     </section>
   )

@@ -67,8 +67,8 @@ export default function Dashboard() {
         <div className='  hidden w-28 overflow-y-auto md:block'>
           <div className='flex w-full flex-col items-center py-6'>
             <div className='flex flex-shrink-0 items-center '>
-              <h2 className='h-full w-full capitalize text-white'>
-                {user ? user.email?.split('@')[0] : 'Welcome!'}
+              <h2 className='h-full w-full capitalize text-sm text-white'>
+                {user ? user.username : 'Welcome!'}
               </h2>
             </div>
             <div className='mt-6 w-full flex-1 space-y-1 px-2 text-white'>
@@ -185,8 +185,8 @@ export default function Dashboard() {
                       </button>
                     </div>
                   </Transition.Child>
-                  <div className='flex flex-shrink-0 capitalize text-white items-center px-4'>
-                    {user && user.email?.split('@')[0]}
+                  <div className='flex flex-shrink-0 capitalize text-sm text-red items-center px-4'>
+                    {user && user.username}
                   </div>
                   <div className='mt-5 h-0 flex-1 overflow-y-auto bg-primary text-white px-2'>
                     <nav className='flex h-full flex-col'>

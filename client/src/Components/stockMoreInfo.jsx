@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import formatTime from '../utils/formatTime'
 import time_ago from '../utils/timeSincePublished'
 import StockChart from './stockChart'
 export const StockMoreInfo = (props) => {
@@ -32,10 +33,10 @@ export const StockMoreInfo = (props) => {
             <article className='w-full h-full mb-4' id='stock-chart'>
               <StockChart stock={ticker} />
             </article>
-            <section className='grid grid-cols-2 mb-4 md:mb-8 gap-y-4'>
+            <h2 className='my-2 text-lg'>Company Info</h2>
+            <section className='grid grid-cols-2 mb-0 md:mb-4 gap-y-4 bg-primary p-2 rounded-lg'>
               <article className=''>
                 <p className='opacity-70'>CEO</p>
-
                 <p className=''>{companyDetails[0]?.ceo}</p>
               </article>
               <article className=''>
@@ -46,7 +47,7 @@ export const StockMoreInfo = (props) => {
               </article>
               <article className=''>
                 <p className='opacity-70'>IPO Date</p>
-                <p className=''>{companyDetails[0]?.ipoDate}</p>
+                <p className=''>{formatTime(companyDetails[0]?.ipoDate)}</p>
               </article>
               <article className=''>
                 <p className='opacity-70'>Headquarters</p>
@@ -70,8 +71,7 @@ export const StockMoreInfo = (props) => {
               </article>
             </section>
             <h4 className='text-xl mb-2'>Stats</h4>
-
-            <div className='grid grid-cols-2 overflow-x-auto'>
+            <div className='grid grid-cols-2 overflow-x-auto bg-primary p-2 rounded-lg'>
               <div className='flex flex-row gap-x-2 md:gap-x-4'>
                 <ul className='flex flex-col text-white  md:text-base opacity-70'>
                   <li key='stats-open' className='h-full  items-center flex '>
@@ -152,7 +152,7 @@ export const StockMoreInfo = (props) => {
                     key='date added data'
                     className=' h-full items-center flex '
                   >
-                    {Number(stockData[0]['pe']).toFixed(2)}
+                    {Number(stockData[0]['pe']).toFixed(0)}
                   </li>
                   <li
                     key='mkt cap data '
@@ -164,13 +164,15 @@ export const StockMoreInfo = (props) => {
                     key='date first added data '
                     className='flex flex-wrap h-full  w-max items-center text-sm md:text-base'
                   >
-                    {companyProfile[findId(ticker)]?.dateFirstAdded || '-'}
+                    {formatTime(
+                      companyProfile[findId(ticker)]?.dateFirstAdded
+                    ) || '-'}
                   </li>
                 </ul>
               </div>
             </div>
             {/* Displays similar stocks */}
-            <section className='my-8 flex flex-col items-start md:w-full overflow-auto '>
+            <section className='my-4 flex flex-col items-start md:w-full overflow-auto '>
               <h4 className='text-xl mb-2 '>Similar Stocks</h4>
               <ul className='grid grid-cols-4 md:flex md:flex-row gap-4 w-full overflow-auto md:w-full text-white md:text-base justify-center items-center'>
                 {stockPeers[0].peersList.map((stock) => (
@@ -213,7 +215,7 @@ export const StockMoreInfo = (props) => {
                     {stockRatings[0]?.ratingScore}
                   </li>
                   <li key='stockRating' className='flex '>
-                    {stockRatings[0]?.date}
+                    {formatTime(stockRatings[0]?.date)}
                   </li>
                 </ul>
               </article>
@@ -226,7 +228,7 @@ export const StockMoreInfo = (props) => {
                       target='_blank'
                       href={newsArticle.url}
                       rel='noreferrer'
-                      className='hover:opacity-60  '
+                      className='hover:opacity-60 ease-in transition duration-75 '
                     >
                       <article
                         key={newsArticle.id}
@@ -294,7 +296,7 @@ export const StockMoreInfo = (props) => {
                 <p className=''>{companyDetails[0]['description']}</p>
               )}
               <button
-                className='border-b-2 border-lightBlue text-lightBlue text-sm mt-2 pb-1 '
+                className='border-b-2 border-lightBlue text-lightBlue text-sm mt-2 pb-1 hover:opacity-70 ease-in transition duration-75 '
                 onClick={() => setToggle(!toggle)}
               >
                 {!toggle ? 'Show more' : 'Show less'}

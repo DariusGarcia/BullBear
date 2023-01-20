@@ -7,7 +7,7 @@ const router = express.Router()
 
 // testing route
 router.get('/', (req, res) => {
-	res.json({ mssg: 'Welcome to the API!' })
+  res.json({ mssg: 'Welcome to the API!' })
 })
 
 // login route

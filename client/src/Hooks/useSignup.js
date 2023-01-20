@@ -6,7 +6,7 @@ export const useSignup = () => {
   const [isLoading, setIsLoading] = useState(null)
   const { dispatch } = useAuthContext()
 
-  const signup = async (email, password) => {
+  const signup = async (username, password) => {
     setIsLoading(true)
     setError(null)
     const response = await fetch(
@@ -19,7 +19,7 @@ export const useSignup = () => {
           'Access-Control-Allow-Origin': '*',
           'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
         },
-        body: JSON.stringify({ email, password }),
+        body: JSON.stringify({ username, password }),
       }
     )
 

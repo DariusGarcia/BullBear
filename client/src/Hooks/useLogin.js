@@ -6,7 +6,7 @@ export const useLogin = () => {
   const [isLoading, setIsLoading] = useState(null)
   const { dispatch } = useAuthContext()
 
-  const login = async (email, password) => {
+  const login = async (username, password) => {
     setIsLoading(true)
     setError(null)
     const response = await fetch(
@@ -19,7 +19,7 @@ export const useLogin = () => {
           'Access-Control-Allow-Origin': '*',
           'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH',
         },
-        body: JSON.stringify({ email, password }),
+        body: JSON.stringify({ username, password }),
       }
     )
 

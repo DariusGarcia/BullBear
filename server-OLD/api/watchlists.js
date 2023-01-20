@@ -1,9 +1,9 @@
 const express = require('express')
 const {
-	getAllStocks,
-	createStock,
-	getSingleStock,
-	deleteStock,
+  getAllStocks,
+  createStock,
+  getSingleStock,
+  deleteStock,
 } = require('../controllers/watchlistController')
 
 const requireAuth = require('../middleware/requireAuth')
