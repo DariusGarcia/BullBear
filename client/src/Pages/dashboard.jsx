@@ -2,7 +2,7 @@ import { Fragment, useState } from 'react'
 import { Dialog, Menu, Transition } from '@headlessui/react'
 import { useAuthContext } from '../Hooks/useAuthContext'
 import { MagnifyingGlassIcon } from '@heroicons/react/20/solid'
-import SearchStockContainer from '../Components/SearchStockContainer'
+import SearchStockContainer from '../Components/searchStockContainer'
 import { Watchlist } from '../Components/Watchlist/watchlist'
 import { useLogout } from '../Hooks/useLogout'
 import {
