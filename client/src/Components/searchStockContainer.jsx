@@ -1,5 +1,5 @@
 import { VscGraphLine } from 'react-icons/vsc'
-import FetchSingleStock from './fetchSingleStock'
+import FetchSingleStock from './StockCard/fetchSingleStock'
 
 export default function SearchStockContainer(props) {
   const { ticker } = props

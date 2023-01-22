@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { useSignup } from '../Hooks/useSignup'
 import { HiLockClosed } from 'react-icons/hi'
 import { Link } from 'react-router-dom'
-import Navbar from '../Components/navbar'
+import Navbar from '../Components/Layout/navbar'
 
 export default function Example() {
   const [username, setUsername] = useState('')
@@ -69,7 +69,7 @@ export default function Example() {
             </div>
             <div className='flex items-center justify-between'>
               <div className='flex items-center'>
-                <input
+                {/* <input
                   id='remember-me'
                   name='remember-me'
                   type='checkbox'
@@ -80,7 +80,7 @@ export default function Example() {
                   className='ml-2 block text-sm text-gray-900'
                 >
                   Remember me
-                </label>
+                </label> */}
               </div>
             </div>
             <div>

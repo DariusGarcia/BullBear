@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import time_ago from '../utils/timeSincePublished'
+import time_ago from '../../utils/timeSincePublished'
 export default function StockNews() {
   const [news, setNews] = useState([])
 

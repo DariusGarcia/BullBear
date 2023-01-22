@@ -1,7 +1,7 @@
 import { BsGithub } from 'react-icons/bs'
 import { Link } from 'react-router-dom'
-import { useAuthContext } from '../Hooks/useAuthContext'
-import { useLogout } from '../Hooks/useLogout'
+import { useAuthContext } from '../../Hooks/useAuthContext'
+import { useLogout } from '../../Hooks/useLogout'
 import { MdEmail } from 'react-icons/md'
 
 const navigation = {

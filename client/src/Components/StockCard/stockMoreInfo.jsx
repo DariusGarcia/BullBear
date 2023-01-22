@@ -1,6 +1,6 @@
 import { useState } from 'react'
-import formatTime from '../utils/formatTime'
-import time_ago from '../utils/timeSincePublished'
+import formatTime from '../../utils/formatTime'
+import time_ago from '../../utils/timeSincePublished'
 import StockChart from './stockChart'
 export const StockMoreInfo = (props) => {
   const {

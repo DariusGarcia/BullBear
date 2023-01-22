@@ -1,8 +1,8 @@
 import { Fragment } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
-import { useAuthContext } from '../Hooks/useAuthContext'
+import { useAuthContext } from '../../Hooks/useAuthContext'
 import { Link } from 'react-router-dom'
-import { useLogout } from '../Hooks/useLogout'
+import { useLogout } from '../../Hooks/useLogout'
 import { AiOutlineMenu } from 'react-icons/ai'
 import { VscChromeClose } from 'react-icons/vsc'
 

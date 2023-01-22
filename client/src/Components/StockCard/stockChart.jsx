@@ -10,8 +10,8 @@ import {
   Legend,
 } from 'chart.js'
 import { Line } from 'react-chartjs-2'
-import { UseFetchChartPriceData } from '../Hooks/UseFetchChartPriceData'
-import formatTime from '../utils/formatTime'
+import { UseFetchChartPriceData } from '../../Hooks/UseFetchChartPriceData'
+import formatTime from '../../utils/formatTime'
 
 ChartJS.register(
   CategoryScale,
