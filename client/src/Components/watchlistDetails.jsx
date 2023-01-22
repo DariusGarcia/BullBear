@@ -17,7 +17,7 @@ export const WatchlistDetails = ({ ticker, watchlistInfo }) => {
     }
 
     const response = await fetch(
-      'https://bullbear-backend.herokuapp.com/api/watchlist/' + watchlistInfo,
+      `${process.env.REACT_APP_BACKEND_API}api/watchlist/${watchlistInfo}`,
       {
         headers: {
           Authorization: `Bearer ${user.token}`,

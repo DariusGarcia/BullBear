@@ -43,9 +43,9 @@ const FetchSingleStock = (props) => {
     }
 
     const ticker = `${name}`
-    console.log('handleAdd called')
+    console.log('watchlist handleAddToWatchlist called')
     const response = await fetch(
-      'https://bullbear-backend.herokuapp.com/api/watchlist',
+      `${process.env.REACT_APP_BACKEND_API}api/watchlist`,
       {
         method: 'POST',
         body: JSON.stringify({ ticker: `${ticker}` }),

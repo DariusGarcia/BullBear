@@ -10,7 +10,7 @@ export const useSignup = () => {
     setIsLoading(true)
     setError(null)
     const response = await fetch(
-      'https://bullbear-backend.herokuapp.com/api/user/signup',
+      `${process.env.REACT_APP_BACKEND_API}api/user/signup`,
       {
         method: 'POST',
         headers: {
