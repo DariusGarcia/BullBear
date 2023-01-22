@@ -3,7 +3,7 @@ import { useAuthContext } from './useAuthContext'
 
 const endpoint = 'api/user/signup/'
 const API = `${process.env.REACT_APP_BACKEND_API}${endpoint}`
-const headerOptions = {
+const options = {
   'Content-Type': 'application/json',
   'Access-Control-Allow-Headers': 'Origin, Content-Type, X-Auth-Token',
   'Access-Control-Allow-Origin': '*',
@@ -22,17 +22,15 @@ export const useSignUp = () => {
     setError(null)
     const response = await fetch(API, {
       method: 'POST',
-      headers: headerOptions,
+      headers: options,
       body: JSON.stringify({ username, password }),
     })
-
     const json = await response.json()
 
     if (!response.ok) {
       setIsLoading(false)
       setError(json.error)
     }
-
     if (response.ok) {
       // save the user to local storage using the jwt token.
       localStorage.setItem('user', JSON.stringify(json))

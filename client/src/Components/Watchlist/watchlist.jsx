@@ -1,11 +1,17 @@
-import { useMemo, useEffect, useState } from 'react'
+import { useMemo, useEffect } from 'react'
 import { useWatchlistContext } from '../../Hooks/useWatchlistContext'
 import { WatchlistDetails } from './watchlistDetails'
 import { useAuthContext } from '../../Hooks/useAuthContext'
 import { IoMdListBox } from 'react-icons/io'
-import { FetchCompanyProfile } from '../../utils/fetchCompanyProfile'
-import { UseGetAPI } from '../../Hooks/useGetAPI'
+
 const endpoint = 'api/watchlist'
+const API = `${process.env.REACT_APP_BACKEND_API}${endpoint}`
+const headerOptions = {
+  'Content-Type': 'application/json',
+  'Access-Control-Allow-Headers': 'Origin, Content-Type, X-Auth-Token',
+  'Access-Control-Allow-Origin': '*',
+  'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH',
+}
 
 export const Watchlist = () => {
   const { user } = useAuthContext()
@@ -13,21 +19,12 @@ export const Watchlist = () => {
 
   const data = useMemo(() => watchlist, [])
 
-  // fetch user's watchlist that containers their added stocks from the backend server API.
+  // fetch user's watchlist that contains their added stocks from the backend server API.
   useEffect(() => {
     const fetchWatchlist = async () => {
-      const response = await fetch(
-        `${process.env.REACT_APP_BACKEND_API}${endpoint}`,
-        {
-          headers: {
-            Authorization: `Bearer ${user.token}`,
-            'Access-Control-Allow-Headers':
-              'Origin, Content-Type, X-Auth-Token',
-            'Access-Control-Allow-Origin': '*',
-            'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH',
-          },
-        }
-      )
+      const response = await fetch(API, {
+        headers: headerOptions,
+      })
       const json = await response.json()
       if (response.ok) {
         dispatch({ type: 'SET_WATCHLIST', payload: json.allStocks })
