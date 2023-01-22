@@ -10,7 +10,8 @@ I decided to build this web app since I enjoy investing and reading up on stocks
 
 <img src='https://media.giphy.com/media/y2MiRCRQREOGq16e7E/giphy.gif' title='BullBear Video Demo' width='800' height='auto' alt='Video demo' />
 
-![Screenshot of web app](./client/src/assets/bullbear-laptop.png)
+<!-- ![Screenshot of web app](./client/src/assets/bullbear-laptop.png) -->
+
 ![Screenshot of web app](./client/src/assets/phone.png)
 
 ## Usage

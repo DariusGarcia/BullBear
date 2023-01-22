@@ -11,6 +11,8 @@ import { FetchStockPeers } from '../utils/fetchStockPeers'
 import { FetchStockRatings } from '../utils/fetchStockRatings'
 import { FetchSingleStockNews } from '../utils/fetchStockNews'
 
+const endpoint = 'api/watchlist/'
+
 const FetchSingleStock = (props) => {
   let { name } = props
   const { user } = useAuthContext()
@@ -45,7 +47,7 @@ const FetchSingleStock = (props) => {
     const ticker = `${name}`
     console.log('watchlist handleAddToWatchlist called')
     const response = await fetch(
-      `${process.env.REACT_APP_BACKEND_API}api/watchlist`,
+      `${process.env.REACT_APP_BACKEND_API}${endpoint}`,
       {
         method: 'POST',
         body: JSON.stringify({ ticker: `${ticker}` }),

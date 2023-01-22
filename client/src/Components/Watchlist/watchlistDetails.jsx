@@ -1,9 +1,11 @@
 import { useState, useMemo } from 'react'
-import { UseGetAPI } from '../Hooks/useGetAPI'
+import { UseGetAPI } from '../../Hooks/useGetAPI'
 import { AiFillDelete } from 'react-icons/ai'
-import { FetchCompanyProfile } from '../utils/fetchCompanyProfile'
-import { useWatchlistContext } from '../Hooks/useWatchlistContext'
-import { useAuthContext } from '../Hooks/useAuthContext'
+import { FetchCompanyProfile } from '../../utils/fetchCompanyProfile'
+import { useWatchlistContext } from '../../Hooks/useWatchlistContext'
+import { useAuthContext } from '../../Hooks/useAuthContext'
+
+const endpoint = 'api/watchlist/'
 
 export const WatchlistDetails = ({ ticker, watchlistInfo }) => {
   const [stockData, setStockData] = useState({})
@@ -17,7 +19,7 @@ export const WatchlistDetails = ({ ticker, watchlistInfo }) => {
     }
 
     const response = await fetch(
-      `${process.env.REACT_APP_BACKEND_API}api/watchlist/${watchlistInfo}`,
+      `${process.env.REACT_APP_BACKEND_API}${endpoint}${watchlistInfo}`,
       {
         headers: {
           Authorization: `Bearer ${user.token}`,

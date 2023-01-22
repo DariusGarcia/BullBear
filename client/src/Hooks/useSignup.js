@@ -1,6 +1,16 @@
 import { useState } from 'react'
 import { useAuthContext } from './useAuthContext'
 
+const endpoint = 'api/user/signup/'
+const API = `${process.env.REACT_APP_BACKEND_API}${endpoint}`
+const headerOptions = [
+  {
+    'Content-Type': 'application/json',
+    'Access-Control-Allow-Headers': 'Origin, Content-Type, X-Auth-Token',
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH',
+  },
+]
 export const useSignup = () => {
   const [error, setError] = useState(null)
   const [isLoading, setIsLoading] = useState(null)
@@ -9,19 +19,13 @@ export const useSignup = () => {
   const signup = async (username, password) => {
     setIsLoading(true)
     setError(null)
-    const response = await fetch(
-      `${process.env.REACT_APP_BACKEND_API}api/user/signup`,
-      {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Access-Control-Allow-Headers': 'Origin, Content-Type, X-Auth-Token',
-          'Access-Control-Allow-Origin': '*',
-          'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
-        },
-        body: JSON.stringify({ username, password }),
-      }
-    )
+    setIsLoading(true)
+    setError(null)
+    const response = await fetch(API, {
+      method: 'POST',
+      headers: headerOptions,
+      body: JSON.stringify({ username, password }),
+    })
 
     const json = await response.json()
 

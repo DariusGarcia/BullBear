@@ -1,10 +1,11 @@
 import { useMemo, useEffect, useState } from 'react'
-import { useWatchlistContext } from '../Hooks/useWatchlistContext'
+import { useWatchlistContext } from '../../Hooks/useWatchlistContext'
 import { WatchlistDetails } from './watchlistDetails'
-import { useAuthContext } from '../Hooks/useAuthContext'
+import { useAuthContext } from '../../Hooks/useAuthContext'
 import { IoMdListBox } from 'react-icons/io'
-import { FetchCompanyProfile } from '../utils/fetchCompanyProfile'
-import { UseGetAPI } from '../Hooks/useGetAPI'
+import { FetchCompanyProfile } from '../../utils/fetchCompanyProfile'
+import { UseGetAPI } from '../../Hooks/useGetAPI'
+const endpoint = 'api/watchlist'
 
 export const Watchlist = () => {
   const { user } = useAuthContext()
@@ -16,7 +17,7 @@ export const Watchlist = () => {
   useEffect(() => {
     const fetchWatchlist = async () => {
       const response = await fetch(
-        `${process.env.REACT_APP_BACKEND_API}api/watchlist`,
+        `${process.env.REACT_APP_BACKEND_API}${endpoint}`,
         {
           headers: {
             Authorization: `Bearer ${user.token}`,

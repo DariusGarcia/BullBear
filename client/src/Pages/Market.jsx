@@ -2,7 +2,7 @@ import { Fragment, useState } from 'react'
 import { Dialog, Menu, Transition } from '@headlessui/react'
 
 import { useAuthContext } from '../Hooks/useAuthContext'
-import { Watchlist } from '../Components/watchlist'
+import { Watchlist } from '../Components/Watchlist/watchlist'
 import { BiNews } from 'react-icons/bi'
 import { BsFileEarmarkBarGraph } from 'react-icons/bs'
 import { useLogout } from '../Hooks/useLogout'
