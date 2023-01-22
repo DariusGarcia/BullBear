@@ -3,20 +3,19 @@ import { useAuthContext } from './useAuthContext'
 
 const endpoint = 'api/user/signup/'
 const API = `${process.env.REACT_APP_BACKEND_API}${endpoint}`
-const headerOptions = [
-  {
-    'Content-Type': 'application/json',
-    'Access-Control-Allow-Headers': 'Origin, Content-Type, X-Auth-Token',
-    'Access-Control-Allow-Origin': '*',
-    'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH',
-  },
-]
-export const useSignup = () => {
+const headerOptions = {
+  'Content-Type': 'application/json',
+  'Access-Control-Allow-Headers': 'Origin, Content-Type, X-Auth-Token',
+  'Access-Control-Allow-Origin': '*',
+  'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH',
+}
+
+export const useSignUp = () => {
   const [error, setError] = useState(null)
   const [isLoading, setIsLoading] = useState(null)
   const { dispatch } = useAuthContext()
 
-  const signup = async (username, password) => {
+  const signUp = async (username, password) => {
     setIsLoading(true)
     setError(null)
     setIsLoading(true)
@@ -44,5 +43,5 @@ export const useSignup = () => {
     }
   }
 
-  return { signup, isLoading, error }
+  return { signUp, isLoading, error }
 }
