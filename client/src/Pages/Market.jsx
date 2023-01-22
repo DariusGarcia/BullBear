@@ -1,23 +1,13 @@
 import { Fragment, useState } from 'react'
 import { Dialog, Menu, Transition } from '@headlessui/react'
-
 import { useAuthContext } from '../Hooks/useAuthContext'
 import { Watchlist } from '../Components/Watchlist/watchlist'
 import { BiNews } from 'react-icons/bi'
 import { BsFileEarmarkBarGraph } from 'react-icons/bs'
 import { useLogout } from '../Hooks/useLogout'
 import { useWatchlistContext } from '../Hooks/useWatchlistContext'
-import {
-  Bars3BottomLeftIcon,
-  CogIcon,
-  HomeIcon,
-  PhotoIcon,
-  PlusIcon,
-  RectangleStackIcon,
-  Squares2X2Icon,
-  UserGroupIcon,
-  XMarkIcon,
-} from '@heroicons/react/24/outline'
+// prettier-ignore
+import { Bars3BottomLeftIcon, CogIcon, HomeIcon, PhotoIcon, PlusIcon, RectangleStackIcon, Squares2X2Icon, UserGroupIcon, XMarkIcon} from '@heroicons/react/24/outline'
 import IndexPerformances from '../Components/BroadMarket/IndexPerformances'
 import StockNews from '../Components/StockCard/stockNews'
 import SectorPerformances from '../Components/BroadMarket/sectorPerformances'
@@ -90,10 +80,7 @@ export default function Market() {
               ))}
               <li
                 key='sign out'
-                className='
-									cursor-pointer
-										 text-grey3 hover:bg-lightBlue transition ease-in-out delay-35 hover:text-white
-										group w-full p-3 rounded-md flex flex-col items-center text-xs font-medium'
+                className='cursor-pointer text-grey3 hover:bg-lightBlue transition ease-in-out delay-35 hover:text-white group w-full p-3 rounded-md flex flex-col items-center text-xs font-medium'
                 aria-current='page'
               >
                 {user ? (
@@ -128,44 +115,21 @@ export default function Market() {
         </div>
 
         {/* Mobile menu */}
+        {/* prettier-ignore */}
         <Transition.Root show={mobileMenuOpen} as={Fragment}>
           <Dialog
             as='div'
             className='relative z-20 md:hidden '
             onClose={setMobileMenuOpen}
           >
-            <Transition.Child
-              as={Fragment}
-              enter='transition-opacity ease-linear duration-300'
-              enterFrom='opacity-0'
-              enterTo='opacity-100'
-              leave='transition-opacity ease-linear duration-300'
-              leaveFrom='opacity-100'
-              leaveTo='opacity-0'
-            >
+            <Transition.Child as={Fragment} enter='transition-opacity ease-linear duration-300' enterFrom='opacity-0' enterTo='opacity-100' leave='transition-opacity ease-linear duration-300' leaveFrom='opacity-100' leaveTo='opacity-0'>
               <div className='fixed inset-0 bg-grey bg-opacity-75' />
             </Transition.Child>
 
             <div className='fixed inset-0 z-40 flex'>
-              <Transition.Child
-                as={Fragment}
-                enter='transition ease-in-out duration-300 transform'
-                enterFrom='-translate-x-full'
-                enterTo='translate-x-0'
-                leave='transition ease-in-out duration-300 transform'
-                leaveFrom='translate-x-0'
-                leaveTo='-translate-x-full'
-              >
+              <Transition.Child as={Fragment} enter='transition ease-in-out duration-300 transform' enterFrom='-translate-x-full' enterTo='translate-x-0' leave='transition ease-in-out duration-300 transform' leaveFrom='translate-x-0' leaveTo='-translate-x-full'>
                 <Dialog.Panel className='relative flex w-full max-w-xs flex-1 flex-col bg-primary pt-5 pb-4'>
-                  <Transition.Child
-                    as={Fragment}
-                    enter='ease-in-out duration-300'
-                    enterFrom='opacity-0'
-                    enterTo='opacity-100'
-                    leave='ease-in-out duration-300'
-                    leaveFrom='opacity-100'
-                    leaveTo='opacity-0'
-                  >
+                  <Transition.Child as={Fragment} enter='ease-in-out duration-300' enterFrom='opacity-0' enterTo='opacity-100' leave='ease-in-out duration-300' leaveFrom='opacity-100' leaveTo='opacity-0'>
                     <div className='absolute top-1 right-0 -mr-14 p-1'>
                       <button
                         type='button'

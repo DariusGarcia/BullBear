@@ -22,7 +22,12 @@ export const useSignUp = () => {
     setError(null)
     const response = await fetch(API, {
       method: 'POST',
-      headers: options,
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Headers': 'Origin, Content-Type, X-Auth-Token',
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH',
+      },
       body: JSON.stringify({ username, password }),
     })
     const json = await response.json()
