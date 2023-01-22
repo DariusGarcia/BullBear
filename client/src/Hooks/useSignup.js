@@ -34,7 +34,7 @@ export const useSignUp = () => {
     }
 
     if (response.ok) {
-      // save the user to local storage using the jwt token
+      // save the user to local storage using the jwt token.
       localStorage.setItem('user', JSON.stringify(json))
 
       // update the auth context using useAuthContext hook
