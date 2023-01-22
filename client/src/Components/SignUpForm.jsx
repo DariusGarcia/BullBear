@@ -1,6 +1,6 @@
 import { HiLockClosed } from 'react-icons/hi'
 import { Link } from 'react-router-dom'
-import { useSignUp } from '../Hooks/useSignUp'
+import { useSignUp } from '../Hooks/useSignup'
 
 export default function SignUpForm(props) {
   const { userInfo, setUserInfo } = props
