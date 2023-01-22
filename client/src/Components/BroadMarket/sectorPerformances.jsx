@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { FetchSectorPerformance } from '../utils/fetchSectorPerformance'
+import { FetchSectorPerformance } from '../../utils/fetchSectorPerformance'
 
 export default function SectorPerformances() {
   const [sectors, setSectors] = useState([])

@@ -18,9 +18,9 @@ import {
   UserGroupIcon,
   XMarkIcon,
 } from '@heroicons/react/24/outline'
-import IndexPerformances from '../Components/IndexPerformances'
+import IndexPerformances from '../Components/BroadMarket/IndexPerformances'
 import StockNews from '../Components/stockNews'
-import SectorPerformances from '../Components/sectorPerformances'
+import SectorPerformances from '../Components/BroadMarket/sectorPerformances'
 
 const sidebarNavigation = [
   { name: 'Home', href: '/', icon: HomeIcon, current: false },
