@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { useAuthContext } from './useAuthContext'
 
 const endpoint = 'api/user/login'
-const API = `${process.env.REACT_APP_BACKEND_API}${endpoint}`
+const API = process.env.REACT_APP_BACKEND_API + endpoint
 const headerOptions = {
   'Content-Type': 'application/json',
   'Access-Control-Allow-Headers': 'Origin, Content-Type, X-Auth-Token',
