@@ -188,7 +188,7 @@ export default function Dashboard() {
         </Transition.Root>
 
         {/* Content area */}
-        <div className='flex  flex-1 h-full flex-col '>
+        <div className='flex  flex-1 h-full flex-col'>
           <header className='w-full'>
             <div className='relative z-10 flex h-16 flex-shrink-0  bg-grey  shadow-sm'>
               <button type='button' className=' px-4 text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500 md:hidden' onClick={() => setMobileMenuOpen(true)}>
