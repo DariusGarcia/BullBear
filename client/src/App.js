@@ -8,7 +8,7 @@ import Signup from './Pages/Signup'
 import Login from './Pages/Login'
 import Landing from './Pages/Landing'
 import Footer from './Components/Layout/footer'
-import Dashboard from './Pages/dashboard'
+import Dashboard from './Pages/Dashboard'
 import Market from './Pages/Market'
 
 function App() {

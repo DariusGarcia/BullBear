@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { UseFetchBroadMarketData } from '../Hooks/useFetchBroadMarketData'
+import { UseFetchBroadMarketData } from '../../Hooks/useFetchBroadMarketData'
 import { GoTriangleDown } from 'react-icons/go'
 
 export const TopLosers = () => {

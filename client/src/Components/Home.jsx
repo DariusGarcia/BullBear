@@ -1,11 +1,10 @@
 import { useState } from 'react'
 import { Watchlist } from './Watchlist/watchlist'
-import { TopGainers } from './topGainers'
+import { TopGainers } from './BroadMarket/topGainers'
+import { TopLosers } from './BroadMarket/topLosers'
 import { BiTrendingUp, BiTrendingDown } from 'react-icons/bi'
 import { BsGlobe } from 'react-icons/bs'
-import FetchSingleStock from './fetchSingleStock'
-
-import { TopLosers } from './topLosers'
+import FetchSingleStock from './StockCard/fetchSingleStock'
 
 export default function Home() {
   const [value, setValue] = useState('')

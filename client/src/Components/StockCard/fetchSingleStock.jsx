@@ -76,11 +76,11 @@ const FetchSingleStock = (props) => {
     }
   }
 
-  let info
-
   const handleOnClick = () => {
     setToggle(!toggle)
   }
+
+  let info
 
   if (!watchlist && !companyDetails) {
     info = (
