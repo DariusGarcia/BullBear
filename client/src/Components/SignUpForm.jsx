@@ -84,7 +84,7 @@ export default function SignUpForm(props) {
           </div>
           <div>
             {isLoading ? (
-              <Spinner />
+              <Spinner height={60} width={60} />
             ) : (
               <button
                 disabled={isLoading || false}

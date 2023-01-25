@@ -2,13 +2,13 @@ import { ColorRing } from 'react-loader-spinner'
 
 import React from 'react'
 
-const Spinner = () => {
+const Spinner = ({ height, width }) => {
   return (
     <div className='w-full flex justify-center items-center'>
       <ColorRing
         visible={true}
-        height='80'
-        width='80'
+        height={height}
+        width={width}
         ariaLabel='blocks-loading'
         wrapperStyle={{}}
         wrapperClass='blocks-wrapper'

@@ -7,23 +7,12 @@ import { Watchlist } from '../Components/Watchlist/watchlist'
 import { useLogout } from '../Hooks/useLogout'
 // prettier-ignore
 import {Bars3BottomLeftIcon, CogIcon, HomeIcon, PhotoIcon, PlusIcon, RectangleStackIcon, Squares2X2Icon, UserGroupIcon, XMarkIcon} from '@heroicons/react/24/outline'
-
+import Spinner from '../Components/Spinners/spinner'
+// prettier-ignore
 const sidebarNavigation = [
   { name: 'Home', href: '/', icon: HomeIcon, current: false },
-  {
-    name: 'Dashboard',
-    href: '/dashboard',
-    icon: Squares2X2Icon,
-    current: true,
-  },
+  { name: 'Dashboard', href: '/dashboard', icon: Squares2X2Icon, current: true},
   { name: 'Market', href: '/market', icon: PhotoIcon, current: false },
-  // { name: 'Portfolio', href: '#', icon: UserGroupIcon, current: false },
-  // { name: 'Profile', href: '#', icon: RectangleStackIcon, current: false },
-  // { name: 'Settings', href: '#', icon: CogIcon, current: false },
-]
-const userNavigation = [
-  { name: 'Your Profile', href: '#' },
-  { name: 'Sign out', href: '#' },
 ]
 
 function classNames(...classes) {
@@ -34,6 +23,7 @@ export default function Dashboard() {
   const { logout } = useLogout()
   const [value, setValue] = useState('')
   const [ticker, setTicker] = useState([])
+  const [isLoading, setLoading] = useState(false)
 
   const handleChange = (event) => {
     const stock = event.target.value.trim()
@@ -89,16 +79,26 @@ export default function Dashboard() {
               ))}
               <li key='sign out' className='cursor-pointer text-grey3 hover:bg-lightBlue transition ease-in-out delay-35 hover:text-white group w-full p-3 rounded-md flex flex-col items-center text-xs font-medium' aria-current='page'>
                 {user ? (
-                  <button onClick={logout} className='mt-2 gap-2 flex flex-row md:flex-col items-center'>
-                    <CogIcon
-                      className='hover:text-white text-grey3 group-hover:text-white h-6 w-6' aria-hidden='true'></CogIcon>
+                  <button onClick={() => {
+                    setLoading(true);
+                    setTimeout(function(){ 
+                       setLoading(false) 
+                       logout()
+                  }, 500)}} className='mt-2 gap-2 flex flex-row md:flex-col items-center'>
+                     {isLoading ? <Spinner height={30} width={30}/> : <CogIcon className='hover:text-white text-grey3 group-hover:text-white h-6 w-6' aria-hidden='true'></CogIcon>}
                     {user ? 'Sign out' : 'Log in'}
                   </button>
                 ) : (
-                  <a href='/login' key='login' className='gap-2 flex flex-row md:flex-col items-center mt-2'>
-                    <CogIcon className='hover:text-white text-grey3 group-hover:text-white h-6 w-6' aria-hidden='true'></CogIcon>
-                    {user ? 'Log in' : 'Log in'}
-                  </a>
+                  <button onClick={() => {
+                    setLoading(true);
+                    setTimeout(function(){ 
+                       setLoading(false);
+                       window.location.href='/login';
+                    }, 500);
+                }} className='gap-2 flex flex-row md:flex-col items-center mt-2'>    
+                   {isLoading ? <Spinner height={30} width={30}/> : <CogIcon className='hover:text-white text-grey3 group-hover:text-white h-6 w-6' aria-hidden='true'></CogIcon>}
+                    Login
+              </button>
                 )}
               </li>
             </div>
@@ -240,3 +240,12 @@ export default function Dashboard() {
     </>
   )
 }
+
+// const userNavigation = [
+//   { name: 'Your Profile', href: '#' },
+//   { name: 'Sign out', href: '#' },
+// ]
+
+// { name: 'Portfolio', href: '#', icon: UserGroupIcon, current: false },
+// { name: 'Profile', href: '#', icon: RectangleStackIcon, current: false },
+// { name: 'Settings', href: '#', icon: CogIcon, current: false },

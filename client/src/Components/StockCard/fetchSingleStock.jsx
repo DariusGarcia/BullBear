@@ -27,6 +27,7 @@ const FetchSingleStock = (props) => {
 
   const [toggle, setToggle] = useState(false)
   const [error, setError] = useState(null)
+  const [isLoading, setIsLoading] = useState(false)
 
   useEffect(() => {
     FetchSingleStockNews(name).then((name) => setStockNews(name))
@@ -40,11 +41,11 @@ const FetchSingleStock = (props) => {
   }, [name])
 
   const handleAdd = async () => {
+    setIsLoading(true)
     if (!user) {
       setError('You must be logged in to add a stock to your watchlist...')
       return
     }
-
     const ticker = `${name}`
     const response = await fetch(
       `${process.env.REACT_APP_BACKEND_API}${endpoint}`,
@@ -64,6 +65,10 @@ const FetchSingleStock = (props) => {
       return
     }
     if (response.ok) {
+      setTimeout(() => {
+        setIsLoading(false)
+      }, 5000)
+
       dispatch({ type: 'ADD_STOCK', payload: json })
       setError(null)
       console.log('New stock added to watchlist')
@@ -87,7 +92,7 @@ const FetchSingleStock = (props) => {
   } else {
     info = (
       <span className='flex flex-col w-full h-full justify-center items-start border-2 border-primary  hover:border-2 hover:border-lightBlue transition delay-25 ease-in-out hover:rounded-lg '>
-        <Spinner />
+        <Spinner height={60} width={60} />
       </span>
     )
   }
@@ -145,9 +150,9 @@ const FetchSingleStock = (props) => {
               </span>
               <span>
                 <AiOutlineArrowsAlt
-                  className='hover:scale-110 transition text-lightBlue ease-in-out delay-25 cursor-pointer '
+                  className='md:hover:scale-110 hover:opacity-70 transition text-lightBlue ease-in-out delay-25 cursor-pointer '
                   onClick={handleOnClick}
-                  size={30}
+                  size={25}
                 ></AiOutlineArrowsAlt>
               </span>
             </span>
@@ -225,9 +230,9 @@ const FetchSingleStock = (props) => {
           </span>
           <span className=''>
             <AiOutlineArrowsAlt
-              className='cursor-pointer hover:scale-110 transition text-lightBlue ease-in-out delay-25'
+              className='cursor-pointer md:hover:scale-110 transition text-lightBlue ease-in-out delay-25 hover:opacity-70 '
               onClick={handleOnClick}
-              size={30}
+              size={25}
             ></AiOutlineArrowsAlt>
           </span>
         </li>
