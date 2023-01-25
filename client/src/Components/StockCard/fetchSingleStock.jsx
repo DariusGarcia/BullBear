@@ -10,6 +10,7 @@ import { GoTriangleUp, GoTriangleDown } from 'react-icons/go'
 import { FetchStockPeers } from '../../utils/fetchStockPeers'
 import { FetchStockRatings } from '../../utils/fetchStockRatings'
 import { FetchSingleStockNews } from '../../utils/fetchStockNews'
+import Spinner from '../Spinners/spinner'
 
 const endpoint = 'api/watchlist/'
 
@@ -45,7 +46,6 @@ const FetchSingleStock = (props) => {
     }
 
     const ticker = `${name}`
-    console.log('watchlist handleAddToWatchlist called')
     const response = await fetch(
       `${process.env.REACT_APP_BACKEND_API}${endpoint}`,
       {
@@ -57,15 +57,12 @@ const FetchSingleStock = (props) => {
         },
       }
     )
-
     const json = await response.json()
-
     if (!response.ok) {
       name = ''
       setError(json.error)
       return
     }
-
     if (response.ok) {
       dispatch({ type: 'ADD_STOCK', payload: json })
       setError(null)
@@ -89,10 +86,8 @@ const FetchSingleStock = (props) => {
     )
   } else {
     info = (
-      <span className='flex w-full h-full justify-center items-center   border-2 border-primary  hover:border-2 hover:border-lightBlue transition delay-25 ease-in-out hover:rounded-lg '>
-        <p id='class-nf' className='w-full pl-2 py-4 text-grey3'>
-          Loading...
-        </p>
+      <span className='flex flex-col w-full h-full justify-center items-start border-2 border-primary  hover:border-2 hover:border-lightBlue transition delay-25 ease-in-out hover:rounded-lg '>
+        <Spinner />
       </span>
     )
   }
@@ -150,9 +145,9 @@ const FetchSingleStock = (props) => {
               </span>
               <span>
                 <AiOutlineArrowsAlt
-                  className='hover:scale-110 transition text-white ease-in-out delay-25 cursor-pointer '
+                  className='hover:scale-110 transition text-lightBlue ease-in-out delay-25 cursor-pointer '
                   onClick={handleOnClick}
-                  size={25}
+                  size={30}
                 ></AiOutlineArrowsAlt>
               </span>
             </span>
@@ -230,9 +225,9 @@ const FetchSingleStock = (props) => {
           </span>
           <span className=''>
             <AiOutlineArrowsAlt
-              className='cursor-pointer hover:scale-110 transition text-white ease-in-out delay-25'
+              className='cursor-pointer hover:scale-110 transition text-lightBlue ease-in-out delay-25'
               onClick={handleOnClick}
-              size={25}
+              size={30}
             ></AiOutlineArrowsAlt>
           </span>
         </li>

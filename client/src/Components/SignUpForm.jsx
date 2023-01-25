@@ -1,6 +1,7 @@
 import { HiLockClosed } from 'react-icons/hi'
 import { Link } from 'react-router-dom'
 import { useSignUp } from '../Hooks/useSignup'
+import Spinner from './Spinners/spinner'
 
 export default function SignUpForm(props) {
   const { userInfo, setUserInfo } = props
@@ -10,6 +11,7 @@ export default function SignUpForm(props) {
     e.preventDefault()
     await signUp(userInfo.username, userInfo.password)
   }
+
   return (
     <div className='flex min-h-full pb-56 items-center justify-center py-12 px-4 sm:px-6 lg:px-8 bg-primary'>
       <div className='w-full max-w-md space-y-8 text-white'>
@@ -81,16 +83,20 @@ export default function SignUpForm(props) {
             </div>
           </div>
           <div>
-            <button
-              disabled={isLoading}
-              type='submit'
-              className='group relative flex w-full justify-center rounded-md cursor-pointer  hover:scale-95 transition ease-in-out hover:bg-opacity-60 bg-lightBlue py-2 px-4  font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2'
-            >
-              <span className='absolute inset-y-0 left-0 flex items-center pl-3'>
-                <HiLockClosed size={25}></HiLockClosed>
-              </span>
-              Sign Up
-            </button>
+            {isLoading ? (
+              <Spinner />
+            ) : (
+              <button
+                disabled={isLoading || false}
+                type='submit'
+                className='group relative flex w-full justify-center rounded-md cursor-pointer  hover:scale-95 transition ease-in-out hover:bg-opacity-60 bg-lightBlue py-2 px-4  font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2'
+              >
+                <span className='absolute inset-y-0 left-0 flex items-center pl-3'>
+                  <HiLockClosed size={25}></HiLockClosed>
+                </span>
+                Sign Up
+              </button>
+            )}
           </div>
         </form>
         <section className='flex flex-row gap-8 items-center pt-12'>
