@@ -5,9 +5,6 @@ const endpoint = 'api/user/login'
 const API = process.env.REACT_APP_BACKEND_API + endpoint
 const headerOptions = {
   'Content-Type': 'application/json',
-  'Access-Control-Allow-Headers': 'Origin, Content-Type, X-Auth-Token',
-  'Access-Control-Allow-Origin': '*',
-  'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH',
 }
 
 export const useLogin = () => {

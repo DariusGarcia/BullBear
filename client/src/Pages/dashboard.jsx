@@ -5,18 +5,8 @@ import { MagnifyingGlassIcon } from '@heroicons/react/20/solid'
 import SearchStockContainer from '../Components/searchStockContainer'
 import { Watchlist } from '../Components/Watchlist/watchlist'
 import { useLogout } from '../Hooks/useLogout'
-import {
-  Bars3BottomLeftIcon,
-  CogIcon,
-  HomeIcon,
-  PhotoIcon,
-  PlusIcon,
-  RectangleStackIcon,
-  Squares2X2Icon,
-  UserGroupIcon,
-  XMarkIcon,
-} from '@heroicons/react/24/outline'
-import Home from '../Components/Home'
+// prettier-ignore
+import {Bars3BottomLeftIcon, CogIcon, HomeIcon, PhotoIcon, PlusIcon, RectangleStackIcon, Squares2X2Icon, UserGroupIcon, XMarkIcon} from '@heroicons/react/24/outline'
 
 const sidebarNavigation = [
   { name: 'Home', href: '/', icon: HomeIcon, current: false },
