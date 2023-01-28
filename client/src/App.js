@@ -21,7 +21,10 @@ function App() {
       <div>
         <Routes>
           <Route path='/' element={<Landing />} />
-          <Route path='/dashboard' element={<Dashboard />} />
+          <Route
+            path='/dashboard'
+            element={<Dashboard options={{ title: 'BullBear - Dashboard' }} />}
+          />
           <Route path='/market' element={<Market />} />
 
           <Route

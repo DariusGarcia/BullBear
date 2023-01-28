@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { useAuthContext } from '../Hooks/useAuthContext'
 import { Link } from 'react-router-dom'
 import screenshot from '../assets/laptop.png'
@@ -8,6 +9,11 @@ import Navbar from '../Components/Layout/navbar'
 
 export default function Landing() {
   const { user } = useAuthContext()
+
+  useEffect(() => {
+    document.title = 'BullBear Market'
+  }, [])
+
   return (
     <>
       <Navbar />
@@ -40,10 +46,7 @@ export default function Landing() {
                         add them to your watchlist.
                       </p>
                       <div className='mt-6 sm:mt-12'>
-                        <form
-                          action='#'
-                          className='sm:mx-auto sm:max-w-xl lg:mx-0'
-                        >
+                        <div className='sm:mx-auto sm:max-w-xl lg:mx-0'>
                           {user ? (
                             <div className='sm:mt-0 sm:ml-3'>
                               <Link to='/dashboard'>
@@ -79,11 +82,31 @@ export default function Landing() {
                               </div>
                             </div>
                           )}
-                        </form>
-                        <div className='flex items-center mt-8 space-x-3'>
-                          <div className='text-base font-medium text-white opacity-50 '>
+                        </div>
+                        <div className='flex flex-col items-center mt-8 space-x-3 gap-2'>
+                          {/* <div className='text-base font-medium text-white opacity-50 '>
                             Built by Darius Garcia
-                          </div>
+                          </div> */}
+                          <span className='w-full bg-neutral opacity-30 h-1'></span>
+                          <section className='flex flex-col h-full'>
+                            <p className='text-white text-sm letter mt-6'>
+                              "Fmp Cloud is composed of a team of dedicated
+                              engineers, financial analysts, accountants and
+                              data analysts to provide you the best data
+                              possible. Through our years of research and
+                              expertise we have developed this financial API for
+                              anyone to access financials data to perform
+                              outstanding analysis and have the best investments
+                              tool to improve their stock picking strategy and
+                              portfolio creation"
+                            </p>
+                            <a
+                              className='h-full flex justify-end md:pr-2 w-full text-blue text-sm hover:opacity-80'
+                              href='https://fmpcloud.io/'
+                            >
+                              - Fmp Cloud API
+                            </a>
+                          </section>
                         </div>
                       </div>
                     </div>

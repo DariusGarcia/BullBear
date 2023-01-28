@@ -19,6 +19,7 @@ export default function IndexPerformances() {
   ]
 
   useEffect(() => {
+    document.title = 'BullBear - Market Performance'
     const fetchIndexes = async () => {
       const response = await fetch(
         `${process.env.REACT_APP_INDEX_URL}${process.env.REACT_APP_API_KEY}`

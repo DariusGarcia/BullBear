@@ -11,10 +11,14 @@ import { FetchStockPeers } from '../../utils/fetchStockPeers'
 import { FetchStockRatings } from '../../utils/fetchStockRatings'
 import { FetchSingleStockNews } from '../../utils/fetchStockNews'
 import Spinner from '../Spinners/spinner'
+import Alert from '@mui/material/Alert'
+import IconButton from '@mui/material/IconButton'
+import Collapse from '@mui/material/Collapse'
+import Button from '@mui/material/Button'
+import { IoCloseOutline } from 'react-icons/io5'
+// import CloseIcon from '@mui/icons-material/Close'
 
-const endpoint = 'api/watchlist/'
-
-const FetchSingleStock = (props) => {
+export default function FetchSingleStock(props) {
   let { name } = props
   const { user } = useAuthContext()
   const { watchlist, dispatch } = useWatchlistContext()
@@ -24,10 +28,9 @@ const FetchSingleStock = (props) => {
   const [stockPeers, setStockPeers] = useState()
   const [stockRatings, setStockRatings] = useState()
   const [stockNews, setStockNews] = useState()
-
   const [toggle, setToggle] = useState(false)
   const [error, setError] = useState(null)
-  const [isLoading, setIsLoading] = useState(false)
+  const [open, setOpen] = useState(true)
 
   useEffect(() => {
     FetchSingleStockNews(name).then((name) => setStockNews(name))
@@ -40,13 +43,19 @@ const FetchSingleStock = (props) => {
       .catch((error) => console.log(error))
   }, [name])
 
+  // event handlers
+  const handleOnClick = () => {
+    setToggle(!toggle)
+  }
   const handleAdd = async () => {
-    setIsLoading(true)
     if (!user) {
       setError('You must be logged in to add a stock to your watchlist...')
       return
     }
+
+    // fetch watchlists
     const ticker = `${name}`
+    const endpoint = 'api/watchlist/'
     const response = await fetch(
       `${process.env.REACT_APP_BACKEND_API}${endpoint}`,
       {
@@ -65,18 +74,10 @@ const FetchSingleStock = (props) => {
       return
     }
     if (response.ok) {
-      setTimeout(() => {
-        setIsLoading(false)
-      }, 5000)
-
       dispatch({ type: 'ADD_STOCK', payload: json })
       setError(null)
       console.log('New stock added to watchlist')
     }
-  }
-
-  const handleOnClick = () => {
-    setToggle(!toggle)
   }
 
   let info
@@ -157,7 +158,28 @@ const FetchSingleStock = (props) => {
               </span>
             </span>
           </ul>
-          {error && <p className='p-4 text-xs text-red font-bold '>{error}</p>}
+          {error && (
+            <Collapse in={open}>
+              <Alert
+                severity='error'
+                action={
+                  <IconButton
+                    aria-label='close'
+                    color='inherit'
+                    size='small'
+                    onClick={() => {
+                      setOpen(false)
+                    }}
+                  >
+                    <IoCloseOutline />
+                  </IconButton>
+                }
+                sx={{ mb: 2 }}
+              >
+                {error}
+              </Alert>
+            </Collapse>
+          )}
           <div className='mt-4 ml-4 text-lg text-lightBlue'>
             {stockData[0]['name']}
           </div>
@@ -242,9 +264,28 @@ const FetchSingleStock = (props) => {
   return (
     <nav className='w-full h-full border-lightBlue hover:rounded-xl '>
       {info}
-      {error && <p className='p-4 text-xs text-red font-bold '>{error}</p>}
+      {error && (
+        <Collapse in={open}>
+          <Alert
+            severity='error'
+            action={
+              <IconButton
+                aria-label='close'
+                color='inherit'
+                size='small'
+                onClick={() => {
+                  setOpen(false)
+                }}
+              >
+                <IoCloseOutline />
+              </IconButton>
+            }
+            sx={{ mb: 2 }}
+          >
+            {error}
+          </Alert>
+        </Collapse>
+      )}
     </nav>
   )
 }
-
-export default FetchSingleStock

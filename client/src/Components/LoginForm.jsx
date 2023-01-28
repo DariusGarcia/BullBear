@@ -65,7 +65,7 @@ export default function LoginForm(props) {
             </div>
           </div>
           <div className='flex items-center justify-between'>
-            <div className='flex items-center'>
+            {/* <div className='flex items-center'>
               <input
                 id='remember-me'
                 name='remember-me'
@@ -78,7 +78,7 @@ export default function LoginForm(props) {
               >
                 Remember me
               </label>
-            </div>
+            </div> */}
           </div>
           <div>
             {isLoading ? (
@@ -87,7 +87,7 @@ export default function LoginForm(props) {
               <button
                 disabled={isLoading || false}
                 type='submit'
-                className='group relative flex w-full justify-center rounded-md cursor-pointer  hover:scale-95 transition ease-in-out hover:bg-opacity-60 bg-lightBlue py-2 px-4  font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2'
+                className='group relative flex w-full justify-center rounded-md cursor-pointer hover:scale-[.98] duration-150 transition ease-in-out hover:bg-opacity-75 bg-lightBlue py-2 px-4 font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2'
               >
                 <span className='absolute inset-y-0 left-0 flex items-center pl-3'>
                   <HiLockClosed size={25}></HiLockClosed>
@@ -100,7 +100,7 @@ export default function LoginForm(props) {
         <section className='flex flex-row gap-8 items-center pt-12'>
           <p className=''>Don't have an account yet?</p>
           <Link to='/signup'>
-            <p className='border-2 border-lightBlue rounded-lg hover:scale-105 transition ease-in-out delay-55 px-6 py-2'>
+            <p className='border-2 border-lightBlue rounded-lg hover:opacity-75 transition ease-in-out delay-55 px-6 py-2'>
               Sign up
             </p>
           </Link>

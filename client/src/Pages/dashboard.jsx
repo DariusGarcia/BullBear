@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { Fragment, useState } from 'react'
 import { Dialog, Menu, Transition } from '@headlessui/react'
 import { useAuthContext } from '../Hooks/useAuthContext'
@@ -7,12 +8,14 @@ import { Watchlist } from '../Components/Watchlist/watchlist'
 import { useLogout } from '../Hooks/useLogout'
 // prettier-ignore
 import {Bars3BottomLeftIcon, CogIcon, HomeIcon, PhotoIcon, PlusIcon, RectangleStackIcon, Squares2X2Icon, UserGroupIcon, XMarkIcon} from '@heroicons/react/24/outline'
+import { AiOutlineStock } from 'react-icons/ai'
+import { BsTextParagraph } from 'react-icons/bs'
 import Spinner from '../Components/Spinners/spinner'
 // prettier-ignore
 const sidebarNavigation = [
   { name: 'Home', href: '/', icon: HomeIcon, current: false },
-  { name: 'Dashboard', href: '/dashboard', icon: Squares2X2Icon, current: true},
-  { name: 'Market', href: '/market', icon: PhotoIcon, current: false },
+  { name: 'Dashboard', href: '/dashboard', icon: AiOutlineStock, current: true},
+  { name: 'Market', href: '/market', icon: BsTextParagraph, current: false },
 ]
 
 function classNames(...classes) {
@@ -25,6 +28,9 @@ export default function Dashboard() {
   const [ticker, setTicker] = useState([])
   const [isLoading, setLoading] = useState(false)
 
+  useEffect(() => {
+    document.title = 'BullBear - Dashboard'
+  }, [])
   const handleChange = (event) => {
     const stock = event.target.value.trim()
     setValue(stock)
@@ -201,7 +207,7 @@ export default function Dashboard() {
                         onInput={(e) => (e.target.value = ('' + e.target.value).toUpperCase())}
                         name='search-field'
                         id='search-field'
-                        className='h-full w-full rounded-r-lg md:rounded-lg focus-text-white focus-bg-white bg-grey  py-2 pl-10 pr-3 text-base text-white placeholder-grey3 focus:border-transparent focus:grey3 focus:outline-none focus:ring-0'
+                        className='h-full w-full rounded-r-lg md:rounded-lg focus-text-white focus-bg-white bg-grey py-2 pl-10 pr-3 text-base text-white placeholder-grey3 focus:border-transparent focus:grey3 focus:outline-none focus:ring-0'
                         placeholder='Search stock e.g. AAPL'
                         aria-label='search stock ticker input'
                       />
