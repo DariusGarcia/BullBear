@@ -43,7 +43,7 @@ export default function SectorPerformances() {
           {listOfSectors?.map((sectorDetails) => (
             <article
               key='sector details '
-              className='bg-grey rounded-md p-2 w-full overflow-x-auto md:overflow-hidden hover:border-[1px] hover:border-lightBlue border-[1px] border-primary '
+              className='flex justify-center items-center p-2 h-24 w-full bg-grey rounded-md overflow-x-auto md:overflow-hidden hover:border-[1px] hover:border-lightBlue border-[1px] border-primary '
             >
               {sectorDetails}
             </article>

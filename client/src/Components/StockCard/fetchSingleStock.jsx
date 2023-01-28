@@ -12,8 +12,6 @@ import { FetchStockRatings } from '../../utils/fetchStockRatings'
 import { FetchSingleStockNews } from '../../utils/fetchStockNews'
 import Spinner from '../Spinners/spinner'
 
-const endpoint = 'api/watchlist/'
-
 const FetchSingleStock = (props) => {
   let { name } = props
   const { user } = useAuthContext()
@@ -24,10 +22,8 @@ const FetchSingleStock = (props) => {
   const [stockPeers, setStockPeers] = useState()
   const [stockRatings, setStockRatings] = useState()
   const [stockNews, setStockNews] = useState()
-
   const [toggle, setToggle] = useState(false)
   const [error, setError] = useState(null)
-  const [isLoading, setIsLoading] = useState(false)
 
   useEffect(() => {
     FetchSingleStockNews(name).then((name) => setStockNews(name))
@@ -40,13 +36,19 @@ const FetchSingleStock = (props) => {
       .catch((error) => console.log(error))
   }, [name])
 
+  // event handlers
+  const handleOnClick = () => {
+    setToggle(!toggle)
+  }
   const handleAdd = async () => {
-    setIsLoading(true)
     if (!user) {
       setError('You must be logged in to add a stock to your watchlist...')
       return
     }
+
+    // fetch watchlists
     const ticker = `${name}`
+    const endpoint = 'api/watchlist/'
     const response = await fetch(
       `${process.env.REACT_APP_BACKEND_API}${endpoint}`,
       {
@@ -65,18 +67,10 @@ const FetchSingleStock = (props) => {
       return
     }
     if (response.ok) {
-      setTimeout(() => {
-        setIsLoading(false)
-      }, 5000)
-
       dispatch({ type: 'ADD_STOCK', payload: json })
       setError(null)
       console.log('New stock added to watchlist')
     }
-  }
-
-  const handleOnClick = () => {
-    setToggle(!toggle)
   }
 
   let info

@@ -23,9 +23,6 @@ export const WatchlistDetails = ({ ticker, watchlistInfo }) => {
       {
         headers: {
           Authorization: `Bearer ${user.token}`,
-          'Access-Control-Allow-Headers': 'Origin, Content-Type, X-Auth-Token',
-          'Access-Control-Allow-Origin': '*',
-          'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
         },
         method: 'DELETE',
       }
@@ -35,7 +32,7 @@ export const WatchlistDetails = ({ ticker, watchlistInfo }) => {
 
     if (response.ok) {
       dispatch({ type: 'DELETE_STOCK', payload: json })
-      console.log('Stock removed from watchlist')
+      alert(`$${ticker} removed from watchlist`)
     }
   }
 
