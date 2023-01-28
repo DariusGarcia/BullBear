@@ -207,7 +207,7 @@ export default function Dashboard() {
                         onInput={(e) => (e.target.value = ('' + e.target.value).toUpperCase())}
                         name='search-field'
                         id='search-field'
-                        className='h-full w-full rounded-r-lg md:rounded-lg focus-text-white focus-bg-white bg-grey  py-2 pl-10 pr-3 text-base text-white placeholder-grey3 focus:border-transparent focus:grey3 focus:outline-none focus:ring-0'
+                        className='h-full w-full rounded-r-lg md:rounded-lg focus-text-white focus-bg-white bg-grey py-2 pl-10 pr-3 text-base text-white placeholder-grey3 focus:border-transparent focus:grey3 focus:outline-none focus:ring-0'
                         placeholder='Search stock e.g. AAPL'
                         aria-label='search stock ticker input'
                       />
