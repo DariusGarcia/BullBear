@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Navbar from '../Components/Layout/navbar'
 import SignUpForm from '../Components/SignUpForm'
 
@@ -7,6 +7,10 @@ export default function Example() {
     username: '',
     password: '',
   })
+
+  useEffect(() => {
+    document.title = 'BullBear - Sign Up'
+  }, [])
 
   return (
     <>

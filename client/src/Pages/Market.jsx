@@ -3,28 +3,23 @@ import { Dialog, Menu, Transition } from '@headlessui/react'
 import { useAuthContext } from '../Hooks/useAuthContext'
 import { Watchlist } from '../Components/Watchlist/watchlist'
 import { BiNews } from 'react-icons/bi'
-import { BsFileEarmarkBarGraph } from 'react-icons/bs'
+import { SiMarketo } from 'react-icons/si'
 import { useLogout } from '../Hooks/useLogout'
 import { useWatchlistContext } from '../Hooks/useWatchlistContext'
-// prettier-ignore
-import { Bars3BottomLeftIcon, CogIcon, HomeIcon, PhotoIcon, PlusIcon, RectangleStackIcon, Squares2X2Icon, UserGroupIcon, XMarkIcon} from '@heroicons/react/24/outline'
 import IndexPerformances from '../Components/BroadMarket/IndexPerformances'
 import StockNews from '../Components/StockCard/stockNews'
 import SectorPerformances from '../Components/BroadMarket/sectorPerformances'
 
+// prettier-ignore
+import { Bars3BottomLeftIcon, CogIcon, HomeIcon, PhotoIcon, PlusIcon, RectangleStackIcon, Squares2X2Icon, UserGroupIcon, XMarkIcon} from '@heroicons/react/24/outline'
+import { AiOutlineStock } from 'react-icons/ai'
+import { BsTextParagraph } from 'react-icons/bs'
+import Spinner from '../Components/Spinners/spinner'
+// prettier-ignore
 const sidebarNavigation = [
   { name: 'Home', href: '/', icon: HomeIcon, current: false },
-  {
-    name: 'Dashboard',
-    href: '/dashboard',
-    icon: Squares2X2Icon,
-    current: false,
-  },
-  { name: 'Market', href: '/market', icon: PhotoIcon, current: true },
-  // { name: 'Portfolio', href: '#', icon: UserGroupIcon, current: false },
-  // { name: 'Profile', href: '#', icon: RectangleStackIcon, current: false },
-  // { name: 'Settings', href: '#', icon: CogIcon, current: false },
-]
+  { name: 'Dashboard', href: '/dashboard', icon: AiOutlineStock, current: false},
+  { name: 'Market', href: '/market', icon: BsTextParagraph, current: true },]
 const userNavigation = [
   { name: 'Your Profile', href: '#' },
   { name: 'Sign out', href: '#' },
@@ -257,17 +252,17 @@ export default function Market() {
                 <h1 id='primary-heading' className='sr-only'>
                   Broad Market Performance
                 </h1>
-                <h1 className='text-xl md:text-3xl mb-4 mt-2 flex flex-row gap-2 items-center'>
-                  Stock Market Performance <BsFileEarmarkBarGraph />
+                <h1 className='text-xl md:text-3xl mb-4 mt-2 flex flex-row gap-4 items-center'>
+                  Stock Market Performance <SiMarketo size={20} />
                 </h1>
-                <article className='mb-4'>
+                <article classNasi='mb-4'>
                   <h2 className='text-xl md:text-2xl mb-4 mt-2 flex flex-row gap-2 items-center opacity-70'>
                     Indexes
                   </h2>
                   <IndexPerformances />
                 </article>
                 <article>
-                  <h2 className='text-xl md:text-2xl mb-4 mt-2 flex flex-row gap-2 items-center opacity-70'>
+                  <h2 className='text-xl md:text-2xl mb-4 mt-4 flex flex-row gap-2 items-center opacity-70'>
                     Sectors
                   </h2>
                   <SectorPerformances />
