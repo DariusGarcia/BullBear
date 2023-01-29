@@ -1,7 +1,14 @@
+import { useState } from 'react'
 import SingleStockContainer from './StockCard/singleStockContainer'
+import ErrorBoundary from '../Components/ErrorBoundaries/errorBoundary'
+import Alert from '@mui/material/Alert'
+import { IoCloseOutline } from 'react-icons/io5'
+import IconButton from '@mui/material/IconButton'
 
 export default function SearchStockContainer(props) {
   const { ticker } = props
+  const [error, setError] = useState(null)
+  const [open, setOpen] = useState(true)
 
   return (
     // prettier-ignore
@@ -52,7 +59,16 @@ export default function SearchStockContainer(props) {
               (<div className='flex h-max mt-4 bg-opacity-20 rounded-lg flex-col-reverse'>
                   {ticker.map((searchedTicker) => (
                     <div id='searched-ticker' key={searchedTicker} className='overflow-auto flex md:w-full  mb-4 text-sm md:text-base shadow-lg bg-grey md:mx-0 rounded-lg'>
+                    <ErrorBoundary fallback={ <Alert severity='error' action={
+                      <IconButton aria-label='close' color='inherit' size='small' onClick={() => {setOpen(false)}}>
+                    <IoCloseOutline />
+                  </IconButton>
+                }
+              >
+                <p>Stock not found. Please try again.</p>
+              </Alert>}>
                       <SingleStockContainer name={searchedTicker} />
+                    </ErrorBoundary>
                     </div>
                   ))}
                 </div>

@@ -94,7 +94,10 @@ export default function PerformanceTableDisplay({ performance }) {
                     >
                       <StyledTableCell key={row.ticker} style={{ width: 300 }}>
                         <span class='flex flex-col gap-4'>
-                          {row?.ticker} {row.companyName}
+                          <span className='text-lightBlue font-bold'>
+                            ${row?.ticker}
+                          </span>{' '}
+                          {row.companyName}
                         </span>
                       </StyledTableCell>
 

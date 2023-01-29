@@ -20,6 +20,7 @@ import { IoCloseOutline } from 'react-icons/io5'
 import { AiOutlineArrowsAlt } from 'react-icons/ai'
 import { GoTriangleUp, GoTriangleDown } from 'react-icons/go'
 
+import ErrorBoundary from '../../Components/ErrorBoundaries/errorBoundary'
 /**
  * TODO:
  * - refactor fetch watchlist into own hook
@@ -169,7 +170,7 @@ export default function SingleStockContainer({ name }) {
           {error && (
             <Collapse in={open}>
               <Alert
-                severity='error'
+                severity='warning'
                 action={
                   <IconButton
                     aria-label='close'
@@ -272,10 +273,11 @@ export default function SingleStockContainer({ name }) {
   return (
     <nav className='w-full h-full border-lightBlue hover:rounded-xl '>
       {info}
+
       {error && (
         <Collapse in={open}>
           <Alert
-            severity='error'
+            severity='warning'
             action={
               <IconButton
                 aria-label='close'
