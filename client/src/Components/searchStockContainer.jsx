@@ -1,4 +1,4 @@
-import FetchSingleStock from './StockCard/fetchSingleStock'
+import SingleStockContainer from './StockCard/singleStockContainer'
 
 export default function SearchStockContainer(props) {
   const { ticker } = props
@@ -52,7 +52,7 @@ export default function SearchStockContainer(props) {
               (<div className='flex h-max mt-4 bg-opacity-20 rounded-lg flex-col-reverse'>
                   {ticker.map((searchedTicker) => (
                     <div id='searched-ticker' key={searchedTicker} className='overflow-auto flex md:w-full  mb-4 text-sm md:text-base shadow-lg bg-grey md:mx-0 rounded-lg'>
-                      <FetchSingleStock name={searchedTicker} />
+                      <SingleStockContainer name={searchedTicker} />
                     </div>
                   ))}
                 </div>
