@@ -1,25 +1,33 @@
 import { useState, useEffect } from 'react'
-import { useWatchlistContext } from '../../Hooks/useWatchlistContext'
-import { FetchCompanyProfile } from '../../utils/fetchCompanyProfile'
-import { FetchCompanyDetails } from '../../utils/fetchCompanyDetails'
-import { UseGetAPI } from '../../Hooks/useGetAPI'
+// import components
 import { StockMoreInfo } from './stockMoreInfo'
-import { AiOutlineArrowsAlt } from 'react-icons/ai'
-import { useAuthContext } from '../../Hooks/useAuthContext'
-import { GoTriangleUp, GoTriangleDown } from 'react-icons/go'
-import { FetchStockPeers } from '../../utils/fetchStockPeers'
-import { FetchStockRatings } from '../../utils/fetchStockRatings'
-import { FetchSingleStockNews } from '../../utils/fetchStockNews'
-import Spinner from '../Spinners/spinner'
 import Alert from '@mui/material/Alert'
 import IconButton from '@mui/material/IconButton'
 import Collapse from '@mui/material/Collapse'
-import Button from '@mui/material/Button'
+// import hooks
+import { useWatchlistContext } from '../../Hooks/useWatchlistContext'
+import { useAuthContext } from '../../Hooks/useAuthContext'
+import { UseGetAPI } from '../../Hooks/useGetAPI'
+// import utils
+import { FetchCompanyProfile } from '../../utils/fetchCompanyProfile'
+import { FetchCompanyDetails } from '../../utils/fetchCompanyDetails'
+import { FetchStockPeers } from '../../utils/fetchStockPeers'
+import { FetchStockRatings } from '../../utils/fetchStockRatings'
+import { FetchSingleStockNews } from '../../utils/fetchStockNews'
+// import icons and spinners
+import Spinner from '../Spinners/spinner'
 import { IoCloseOutline } from 'react-icons/io5'
-// import CloseIcon from '@mui/icons-material/Close'
+import { AiOutlineArrowsAlt } from 'react-icons/ai'
+import { GoTriangleUp, GoTriangleDown } from 'react-icons/go'
 
-export default function FetchSingleStock(props) {
-  let { name } = props
+/**
+ * TODO:
+ * - refactor fetch watchlist into own hook
+ * - refactor single stock card into own component instead of the if else conditional statement
+ * - refactor the many different useStates into one big useState that holds an object containing all the corresponding API fetch responses
+ *
+ */
+export default function SingleStockContainer({ name }) {
   const { user } = useAuthContext()
   const { watchlist, dispatch } = useWatchlistContext()
   const [stockData, setStockData] = useState([{}])

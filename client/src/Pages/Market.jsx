@@ -1,39 +1,32 @@
 import { Fragment, useState } from 'react'
-import { Dialog, Menu, Transition } from '@headlessui/react'
+import { Dialog, Transition } from '@headlessui/react'
 import { useAuthContext } from '../Hooks/useAuthContext'
 import { Watchlist } from '../Components/Watchlist/watchlist'
 import { BiNews } from 'react-icons/bi'
 import { SiMarketo } from 'react-icons/si'
 import { useLogout } from '../Hooks/useLogout'
-import { useWatchlistContext } from '../Hooks/useWatchlistContext'
 import IndexPerformances from '../Components/BroadMarket/IndexPerformances'
 import StockNews from '../Components/StockCard/stockNews'
 import SectorPerformances from '../Components/BroadMarket/sectorPerformances'
-
 // prettier-ignore
-import { Bars3BottomLeftIcon, CogIcon, HomeIcon, PhotoIcon, PlusIcon, RectangleStackIcon, Squares2X2Icon, UserGroupIcon, XMarkIcon} from '@heroicons/react/24/outline'
+import { Bars3BottomLeftIcon, CogIcon, HomeIcon, XMarkIcon} from '@heroicons/react/24/outline'
 import { AiOutlineStock } from 'react-icons/ai'
 import { BsTextParagraph } from 'react-icons/bs'
-import Spinner from '../Components/Spinners/spinner'
+import TopPerformances from '../Components/TopPerformances/topPerformances'
+
 // prettier-ignore
 const sidebarNavigation = [
   { name: 'Home', href: '/', icon: HomeIcon, current: false },
   { name: 'Dashboard', href: '/dashboard', icon: AiOutlineStock, current: false},
   { name: 'Market', href: '/market', icon: BsTextParagraph, current: true },]
-const userNavigation = [
-  { name: 'Your Profile', href: '#' },
-  { name: 'Sign out', href: '#' },
-]
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
+const queryList = ['gainers', 'losers', 'active']
 export default function Market() {
-  const { watchlist, dispatch } = useWatchlistContext()
   const { logout } = useLogout()
-  const [value, setValue] = useState('')
-  const [ticker, setTicker] = useState([])
   const { user } = useAuthContext()
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
@@ -171,10 +164,7 @@ export default function Market() {
                         ))}
                         <li
                           key='sign out'
-                          className='  
-													cursor-pointer
-														  hover:bg-grey h-max transition ease-in-out delay-35 text-white
-														group w-full rounded-md flex flex-row px-3 gap-3 py-2 items-center  text-sm font-medium'
+                          className='cursor-pointer hover:bg-grey h-max transition ease-in-out delay-35 text-white group w-full rounded-md flex flex-row px-3 gap-3 py-2 items-center text-sm font-medium'
                           aria-current='page'
                         >
                           {user ? (
@@ -182,10 +172,8 @@ export default function Market() {
                               onClick={logout}
                               className='mt-2 gap-2 flex flex-row md:flex-col items-center'
                             >
-                              <CogIcon
-                                className='text-white group-hover:text-white h-6 w-6'
-                                aria-hidden='true'
-                              ></CogIcon>
+                              <CogIcon className='text-white group-hover:text-white h-6 w-6' aria-hidden='true'>
+                              </CogIcon>
                               {user ? 'Sign out' : 'Log in'}
                             </button>
                           ) : (
@@ -253,18 +241,32 @@ export default function Market() {
                   Broad Market Performance
                 </h1>
                 <h1 className='text-xl md:text-3xl mb-4 mt-2 flex flex-row gap-4 items-center'>
-                  Stock Market Performance <SiMarketo size={20} />
+                  Market Performance <SiMarketo size={20} />
                 </h1>
-                <article classNasi='mb-4'>
+                <article className='mb-4'>
+                  {queryList.map((query) => {
+                    return (
+                      <section className='my-4'>
+                        <TopPerformances query={query} />
+                      </section>
+                    )
+                  })}
+
                   <h2 className='text-xl md:text-2xl mb-4 mt-2 flex flex-row gap-2 items-center opacity-70'>
                     Indexes
                   </h2>
+                  <h3 className='mb-2 flex flex-row gap-2 items-center opacity-70'>
+                    Daily
+                  </h3>
                   <IndexPerformances />
                 </article>
                 <article>
                   <h2 className='text-xl md:text-2xl mb-4 mt-4 flex flex-row gap-2 items-center opacity-70'>
                     Sectors
                   </h2>
+                  <h3 className='mb-2 flex flex-row gap-2 items-center opacity-70'>
+                    Daily
+                  </h3>
                   <SectorPerformances />
                 </article>
                 <article className=''>
@@ -290,3 +292,8 @@ export default function Market() {
     </>
   )
 }
+
+// const userNavigation = [
+//   { name: 'Your Profile', href: '#' },
+//   { name: 'Sign out', href: '#' },
+// ]
