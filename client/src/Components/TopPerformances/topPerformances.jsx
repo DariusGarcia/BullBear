@@ -4,7 +4,7 @@ import {
   UseFetchTopGainers,
 } from '../../Hooks/useFetchMarketPerformances'
 import PerformanceTableDisplay from './performanceTableDisplay'
-const json = require('./file.json')
+const json = require('./tableData.json')
 /**
  *
  * TODO: Incorporate MUI data table and
