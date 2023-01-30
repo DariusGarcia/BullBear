@@ -56,10 +56,11 @@ export default function SearchStockContainer(props) {
               {!ticker || null ? 
               (<div className='flex flex-col bg-red h-max mt-4 bg-opacity-20 rounded-lg'> Search </div>) 
               : 
+              // TODO: Can't exit out of fallback component when clicking on icon
               (<div className='flex h-max mt-4 bg-opacity-20 rounded-lg flex-col-reverse'>
                   {ticker.map((searchedTicker) => (
                     <div id='searched-ticker' key={searchedTicker} className='overflow-auto flex md:w-full  mb-4 text-sm md:text-base shadow-lg bg-grey md:mx-0 rounded-lg'>
-                    <ErrorBoundary fallback={ <Alert severity='error' action={
+                    <ErrorBoundary fallback={ <Alert severity='error' sx={{margin: "0.5rem"}} action={
                       <IconButton aria-label='close' color='inherit' size='small' onClick={() => {setOpen(false)}}>
                     <IoCloseOutline />
                   </IconButton>
