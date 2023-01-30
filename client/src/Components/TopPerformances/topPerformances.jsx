@@ -4,7 +4,7 @@ import {
   UseFetchTopGainers,
 } from '../../Hooks/useFetchMarketPerformances'
 import PerformanceTableDisplay from './performanceTableDisplay'
-import tableData from './tableData.json'
+const json = require('./file.json')
 /**
  *
  * TODO: Incorporate MUI data table and
@@ -24,7 +24,7 @@ export default function TopPerformances({ query }) {
   return (
     <>
       <h2 className='mb-2 text-lg text-white'>Top {query}</h2>
-      {performance && <PerformanceTableDisplay performance={tableData} />}
+      {performance && <PerformanceTableDisplay performance={json} />}
     </>
   )
 }
