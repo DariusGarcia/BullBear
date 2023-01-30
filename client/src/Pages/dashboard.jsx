@@ -11,6 +11,7 @@ import {Bars3BottomLeftIcon, CogIcon, HomeIcon, PhotoIcon, PlusIcon, RectangleSt
 import { AiOutlineStock } from 'react-icons/ai'
 import { BsTextParagraph } from 'react-icons/bs'
 import Spinner from '../Components/Spinners/spinner'
+
 // prettier-ignore
 const sidebarNavigation = [
   { name: 'Home', href: '/', icon: HomeIcon, current: false },
@@ -229,7 +230,10 @@ export default function Dashboard() {
                   Photos
                 </h1>
                 {/* Your content */}
-                <SearchStockContainer ticker={ticker} />
+                 
+                  <SearchStockContainer ticker={ticker} />
+
+
                 <div className='block my-36 py-8 bg-grey md:my-0 md:hidden'>
                   <Watchlist />
                 </div>

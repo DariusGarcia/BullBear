@@ -24,9 +24,7 @@ export default function TopPerformances({ query }) {
   return (
     <>
       <h2 className='mb-2 text-lg text-white'>Top {query}</h2>
-      {performance && (
-        <PerformanceTableDisplay performance={tableData.json()} />
-      )}
+      {performance && <PerformanceTableDisplay performance={tableData} />}
     </>
   )
 }

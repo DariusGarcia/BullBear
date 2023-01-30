@@ -3,6 +3,7 @@
     "@headlessui/react": "^1.7.0",
     "dayjs": "^1.11.7",
     "dotenv": "^16.0.1",
+    "json-loader": "^0.5.7",
     "react-icons": "^4.4.0"
   },
   "devDependencies": {
