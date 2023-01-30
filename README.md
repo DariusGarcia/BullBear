@@ -6,7 +6,7 @@
 
 ## Description
 
-I decided to build this web app since I enjoy investing and reading up on stocks, and what better way to keep track of my stocks than to build out my own stock tracking application. I got the inspiration for the name 'BullBear' because I realized that stocks go up and down; It's never a straight line. I think this applies to life, such that the best way to progress is to push through your failures and to ride the ups and downs of life.
+I decided to build this web app since I enjoy investing and reading up on stocks, and what better way to keep track of my stocks than to build out my own stock tracking application.
 
 <img src='https://media.giphy.com/media/y2MiRCRQREOGq16e7E/giphy.gif' title='BullBear Video Demo' width='800' height='auto' alt='Video demo' />
 
