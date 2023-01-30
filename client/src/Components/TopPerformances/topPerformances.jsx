@@ -16,10 +16,19 @@ export default function TopPerformances({ query }) {
   const [performance, setPerformance] = useState({})
 
   useEffect(() => {
-    UseFetchMarketPerformances(query)
-      .then((performanceData) => setPerformance(performanceData))
-      .catch((error) => console.log(error))
+    async function fetchJSONData(json) {
+      await fetch(json)
+        .then((data) => data.json)
+        .then((res) => setPerformance(res))
+        .catch((err) => console.log('Error fetching from JSON file: ' + err))
+    }
+    fetchJSONData(json)
   }, [])
+
+  //   UseFetchMarketPerformances(query)
+  //     .then((performanceData) => setPerformance(performanceData))
+  //     .catch((error) => console.log(error))
+  // }, [])
 
   return (
     <>
