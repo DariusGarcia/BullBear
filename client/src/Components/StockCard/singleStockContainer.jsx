@@ -1,9 +1,6 @@
 import { useState, useEffect } from 'react'
 // import components
 import { StockMoreInfo } from './stockMoreInfo'
-import Alert from '@mui/material/Alert'
-import IconButton from '@mui/material/IconButton'
-import Collapse from '@mui/material/Collapse'
 // import hooks
 import { useWatchlistContext } from '../../Hooks/useWatchlistContext'
 import { useAuthContext } from '../../Hooks/useAuthContext'
@@ -16,11 +13,13 @@ import { FetchStockRatings } from '../../utils/fetchStockRatings'
 import { FetchSingleStockNews } from '../../utils/fetchStockNews'
 // import icons and spinners
 import Spinner from '../Spinners/spinner'
+import Alert from '@mui/material/Alert'
+import IconButton from '@mui/material/IconButton'
+import Collapse from '@mui/material/Collapse'
 import { IoCloseOutline } from 'react-icons/io5'
 import { AiOutlineArrowsAlt } from 'react-icons/ai'
 import { GoTriangleUp, GoTriangleDown } from 'react-icons/go'
 
-import ErrorBoundary from '../../Components/ErrorBoundaries/errorBoundary'
 /**
  * TODO:
  * - refactor fetch watchlist into own hook
@@ -113,7 +112,7 @@ export default function SingleStockContainer({ name }) {
 
   if (toggle && companyDetails) {
     info = (
-      <div className='flex flex-col pt-2 md:pt-0 transition delay-25 ease-in-out rounded-lg  '>
+      <div className='flex flex-col w-full pt-2 md:pt-0 transition delay-25 ease-in-out rounded-lg'>
         <div className=' w-full py-2 h-full'>
           <ul className='h-full grid grid-cols-4 md:mr-0 content-center text-white px-2'>
             {/* display stock ticker */}
@@ -249,7 +248,6 @@ export default function SingleStockContainer({ name }) {
         <li className='text-xs md:text-base h-full items-center flex'>
           {stockData[0]['changesPercentage']?.toFixed(2)}%
         </li>
-
         <li className='text-md h-full md:gap-6 gap-4 items-center justify-around flex'>
           <span>
             <button
@@ -259,7 +257,7 @@ export default function SingleStockContainer({ name }) {
               Add
             </button>
           </span>
-          <span className=''>
+          <span>
             <AiOutlineArrowsAlt
               className='cursor-pointer md:hover:scale-110 transition text-lightBlue ease-in-out delay-25 hover:opacity-70 '
               onClick={handleOnClick}

@@ -1,0 +1,21 @@
+ [{
+    "ticker": "BZFD",
+    "changes": 1.78,
+    "price": "3.87",
+    "changesPercentage": "85.167465",
+    "companyName": "BuzzFeed, Inc."
+    },
+    {
+    "ticker": "AUVI",
+    "changes": 0.55,
+    "price": "1.59",
+    "changesPercentage": "-52.88463",
+    "companyName": "Applied UV, Inc."
+    },
+    {
+    "ticker": "LCID",
+    "changes": 3.87,
+    "price": "12.87",
+    "changesPercentage": "42.999996",
+    "companyName": "Lucid Group, Inc."
+    }]
