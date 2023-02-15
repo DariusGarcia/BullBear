@@ -4,6 +4,8 @@
 
 #### [link to BullBear app](https://bullbearmarket.net/)
 
+#### [link to BullBear server GitHub repo](https://github.com/DariusGarcia/bullbear-server)
+
 ## Description
 
 I decided to build this web app since I enjoy investing and reading up on stocks, and what better way to keep track of my stocks than to build out my own stock tracking application.
