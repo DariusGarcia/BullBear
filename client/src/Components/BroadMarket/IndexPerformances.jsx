@@ -39,8 +39,8 @@ export default function IndexPerformances() {
   )
 
   const listOfIndexes = indexValue?.map((key) => (
-    <ul className='list-none '>
-      <li className='flex md:w-full justify-center w-max text-xs md:text-base '>
+    <ul className='list-none flex flex-col items-center justify-center'>
+      <li className='flex md:w-full justify-center w-max text-xs md:text-base mb-1'>
         {indexes[key]?.name}
       </li>
       <li className='flex md:justify-center'>

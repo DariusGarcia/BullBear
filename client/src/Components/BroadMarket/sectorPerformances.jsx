@@ -16,7 +16,7 @@ export default function SectorPerformances() {
   }, [])
 
   const listOfSectors = sectors?.map((sectorData) => (
-    <ul className='list-none '>
+    <ul className='list-none flex flex-col items-center '>
       <li
         key={sectorData.sector}
         className='flex justify-center w-max md:w-full text-xs md:text-base '
