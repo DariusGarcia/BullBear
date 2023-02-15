@@ -10,7 +10,7 @@ var _db
 
 module.exports = {
   connectToServer: function (callback) {
-    client.connect(function (err, db) {
+    client.connect({ useNewUrlParser: true }, function (err, db) {
       // Verify we got a good "db" object
       if (db) {
         _db = db.db('bullbearDB')
