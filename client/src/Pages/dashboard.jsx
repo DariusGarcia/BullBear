@@ -130,7 +130,7 @@ export default function Dashboard() {
                       </button>
                     </div>
                   </Transition.Child>
-                  <div className='flex flex-shrink-0 capitalize text-sm text-red items-center px-4'>
+                  <div className='flex flex-shrink-0 capitalize text-sm text-white items-center px-4'>
                     {user && user.username}
                   </div>
                   <div className='mt-5 h-0 flex-1 overflow-y-auto bg-primary text-white px-2'>
