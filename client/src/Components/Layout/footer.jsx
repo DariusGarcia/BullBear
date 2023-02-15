@@ -1,24 +1,7 @@
-import { BsGithub } from 'react-icons/bs'
 import { Link } from 'react-router-dom'
 import { useAuthContext } from '../../Hooks/useAuthContext'
 import { useLogout } from '../../Hooks/useLogout'
-import { MdEmail } from 'react-icons/md'
-
-const navigation = {
-  main: [
-    { name: 'Home', href: '/' },
-    { name: 'Dashboard', href: '/dashboard' },
-    { name: 'Market', href: '/market' },
-    // { name: 'Profile', href: '/' },
-  ],
-  social: [
-    {
-      name: 'Github',
-      href: 'https://github.com/dariusgarcia/bullbear',
-      icon: <BsGithub size={25}></BsGithub>,
-    },
-  ],
-}
+import { BsGithub } from 'react-icons/bs'
 
 export default function Footer() {
   const { logout } = useLogout()
@@ -80,13 +63,26 @@ export default function Footer() {
             </a>
           ))}
         </div>
-        {/* <p className='flex flex-row justify-center mt-8 gap-4 hover:opacity-100 items-center text-base opacity-50'>
-					<MdEmail size={30} /> dariusgarcia@hotmail.com
-				</p> */}
-        <p className='mt-8 text-center text-base text-gray-400'>
-          &copy; 2022 Darius Garcia. All rights reserved.
+        <p className='mt-8 text-center text-base text-white opacity-75'>
+          &copy; 2023 Darius Garcia. All rights reserved.
         </p>
       </div>
     </footer>
   )
+}
+
+const navigation = {
+  main: [
+    { name: 'Home', href: '/' },
+    { name: 'Dashboard', href: '/dashboard' },
+    { name: 'Market', href: '/market' },
+    // { name: 'Profile', href: '/' },
+  ],
+  social: [
+    {
+      name: 'Github',
+      href: 'https://github.com/dariusgarcia/bullbear',
+      icon: <BsGithub size={25}></BsGithub>,
+    },
+  ],
 }
