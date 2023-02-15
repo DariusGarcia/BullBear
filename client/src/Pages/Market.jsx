@@ -13,6 +13,8 @@ import { Bars3BottomLeftIcon, CogIcon, HomeIcon, XMarkIcon} from '@heroicons/rea
 import { AiOutlineStock } from 'react-icons/ai'
 import { BsTextParagraph } from 'react-icons/bs'
 import TopPerformances from '../Components/TopPerformances/topPerformances'
+import ActiveMovers from '../Components/ActiveMovers/activeMovers'
+import activeMoversData from '../Components/ActiveMovers/tableData.json'
 
 // prettier-ignore
 const sidebarNavigation = [
@@ -25,6 +27,7 @@ function classNames(...classes) {
 }
 
 const queryList = ['gainers', 'losers', 'active']
+
 export default function Market() {
   const { logout } = useLogout()
   const { user } = useAuthContext()
@@ -240,18 +243,21 @@ export default function Market() {
                 <h1 id='primary-heading' className='sr-only'>
                   Broad Market Performance
                 </h1>
-                <h1 className='text-xl md:text-3xl mb-4 mt-2 flex flex-row gap-4 items-center'>
+                <h1 className='text-xl md:text-3xl mb-4 mt-2 pl-6 flex flex-row gap-4 items-center'>
                   Market Performance <SiMarketo size={20} />
                 </h1>
+                {/* Most active market movers */}
                 <article className='mb-4'>
                   {queryList.map((query) => {
                     return (
                       <section className='my-4'>
-                        <TopPerformances query={query} />
+                        <ActiveMovers
+                          activeMoversData={activeMoversData}
+                          query={query}
+                        />
                       </section>
                     )
                   })}
-
                   <h2 className='text-xl md:text-2xl mb-4 mt-2 flex flex-row gap-2 items-center opacity-70'>
                     Indexes
                   </h2>
