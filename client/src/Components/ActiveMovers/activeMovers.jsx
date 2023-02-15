@@ -3,11 +3,13 @@ export default function ActiveMovers({ activeMoversData, query }) {
     console.log(`active movers: ${activeMoversData[0]?.ticker}`)
   return (
     activeMoversData && (
-      <div className='w-full '>
+      <div className='w-full mb-12'>
         <div className='px-6 lg:px-8 '>
           <div className=''>
             <div className='w-full '>
-              <h1 className='text-xl text-white'>{query.toUpperCase()}</h1>
+              <h1 className='text-xl text-white underline'>
+                TOP {query.toUpperCase()}
+              </h1>
               {/* <p className='mt-2 text-sm text-gray-700'>
                 A list of all the users in your account including their name,
                 title, email and role.
@@ -15,7 +17,7 @@ export default function ActiveMovers({ activeMoversData, query }) {
             </div>
           </div>
           <div className='-mx-6 mt-8 sm:-mx-0'>
-            <table className='min-w-full divide-y divide-grey100 '>
+            <table className='min-w-full divide-y divide-grey3 '>
               <thead className='rounded-md bg-grey'>
                 <tr>
                   <th
@@ -44,9 +46,9 @@ export default function ActiveMovers({ activeMoversData, query }) {
                   </th>
                 </tr>
               </thead>
-              <tbody className='divide-y divide-grey100 bg-grey3 rounded-md '>
+              <tbody className='divide-y divide-grey3 bg-grey rounded-md '>
                 {activeMoversData.map((ticker) => (
-                  <tr key={ticker.ticker}>
+                  <tr key={ticker.ticker} className=' hover:bg-grey2'>
                     <td className='flex flex-col whitespace-nowrap py-4 pl-6 pr-3 text-sm font-medium text-white sm:pl-0'>
                       <div className='text-lightBlue font-bold'>
                         {' '}
@@ -67,10 +69,10 @@ export default function ActiveMovers({ activeMoversData, query }) {
                       </span>
                     </td>
                     <td className=' whitespace-nowrap px-3 py-4 text-sm text-white lg:table-cell'>
-                      {ticker.price}
+                      ${ticker.price}
                     </td>
                     <td className='whitespace-nowrap px-3 py-4 text-sm text-white'>
-                      {ticker.changes}
+                      ${ticker.changes}
                     </td>
                   </tr>
                 ))}

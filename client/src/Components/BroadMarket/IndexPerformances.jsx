@@ -61,9 +61,9 @@ export default function IndexPerformances() {
   return (
     <>
       {indexes && (
-        <section className='grid grid-cols-3 gap-4 list-none w-full '>
+        <section className='grid grid-cols-2 md:grid-cols-3 gap-2 md:gap-4 list-none w-full px-2 md:px-0 '>
           {listOfIndexes?.map((indexDetails) => (
-            <article className='bg-grey rounded-md p-2 w-full overflow-x-auto md:overflow-hidden hover:border-[1px] hover:border-lightBlue border-[1px] border-primary '>
+            <article className='bg-grey rounded-md p-2 w-full overflow-x-auto md:overflow-hidden hover:border-2 hover:border-lightBlue border-2 border-primary '>
               {indexDetails}
             </article>
           ))}

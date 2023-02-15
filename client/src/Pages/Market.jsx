@@ -12,7 +12,6 @@ import SectorPerformances from '../Components/BroadMarket/sectorPerformances'
 import { Bars3BottomLeftIcon, CogIcon, HomeIcon, XMarkIcon} from '@heroicons/react/24/outline'
 import { AiOutlineStock } from 'react-icons/ai'
 import { BsTextParagraph } from 'react-icons/bs'
-import TopPerformances from '../Components/TopPerformances/topPerformances'
 import ActiveMovers from '../Components/ActiveMovers/activeMovers'
 import activeMoversData from '../Components/ActiveMovers/tableData.json'
 
@@ -233,7 +232,7 @@ export default function Market() {
 
           {/* Main content */}
           <div className='flex flex-1 items-stretch overflow-hidden text-white '>
-            <main className='flex-1 min-h-screen justify-center md:px-4 bg-primary px-2 border-t-2 border-grey3 '>
+            <main className='flex-1 min-h-screen  justify-center md:px-4 bg-primary border-t-2 border-grey3 '>
               {/* Primary column */}
               <section
                 aria-labelledby='primary-heading'
@@ -247,7 +246,7 @@ export default function Market() {
                   Market Performance <SiMarketo size={20} />
                 </h1>
                 {/* Most active market movers */}
-                <article className='mb-4'>
+                <article className='mb-4 '>
                   {queryList.map((query) => {
                     return (
                       <section className='my-4'>
@@ -258,24 +257,28 @@ export default function Market() {
                       </section>
                     )
                   })}
-                  <h2 className='text-xl md:text-2xl mb-4 mt-2 flex flex-row gap-2 items-center opacity-70'>
-                    Indexes
-                  </h2>
-                  <h3 className='mb-2 flex flex-row gap-2 items-center opacity-70'>
-                    Daily
-                  </h3>
+                  <div className='flex flex-col items-center md:items-start mb-2 '>
+                    <h2 className='text-xl md:text-2xl  mt-2 flex flex-row gap-2 items-center'>
+                      Indexes
+                    </h2>
+                    <h3 className='mb-2 flex flex-row gap-2 items-center'>
+                      Daily
+                    </h3>
+                  </div>
                   <IndexPerformances />
                 </article>
                 <article>
-                  <h2 className='text-xl md:text-2xl mb-4 mt-4 flex flex-row gap-2 items-center opacity-70'>
-                    Sectors
-                  </h2>
-                  <h3 className='mb-2 flex flex-row gap-2 items-center opacity-70'>
-                    Daily
-                  </h3>
+                  <div className='flex flex-col items-center md:items-start mb-2'>
+                    <h2 className='text-xl md:text-2xl mb-2 mt-4 flex flex-row gap-2 items-center'>
+                      Sectors
+                    </h2>
+                    <h3 className='mb-2 flex flex-row gap-2 items-center'>
+                      Daily
+                    </h3>
+                  </div>
                   <SectorPerformances />
                 </article>
-                <article className=''>
+                <article className='mx-2'>
                   <h2 className='text-xl md:text-2xl mt-8 mb-4 flex flex-row gap-2 items-center '>
                     Stock News <BiNews />{' '}
                   </h2>
