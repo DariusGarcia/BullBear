@@ -13,7 +13,6 @@ import { Bars3BottomLeftIcon, CogIcon, HomeIcon, XMarkIcon} from '@heroicons/rea
 import { AiOutlineStock } from 'react-icons/ai'
 import { BsTextParagraph } from 'react-icons/bs'
 import ActiveMovers from '../Components/ActiveMovers/activeMovers'
-import activeMoversData from '../Components/ActiveMovers/tableData.json'
 import { UseFetchMarketPerformances } from '../Hooks/useFetchMarketPerformances'
 
 // prettier-ignore
@@ -213,7 +212,7 @@ export default function Market() {
         </Transition.Root>
 
         {/* Content area */}
-        <div className='flex  flex-1 h-full flex-col '>
+        <div className='w-full flex flex-1 h-full flex-col '>
           <header className='w-full'>
             <div className='relative z-10 flex h-16 flex-shrink-0  bg-grey shadow-sm'>
               <button
@@ -240,7 +239,7 @@ export default function Market() {
 
           {/* Main content */}
           <div className='flex flex-1 items-stretch overflow-hidden text-white '>
-            <main className='flex-1 min-h-screen  justify-center md:px-4 bg-primary border-t-2 border-grey3 '>
+            <main className='flex-1 min-h-screen justify-center md:px-4 bg-primary border-t-2 border-grey3 '>
               {/* Primary column */}
               <section
                 aria-labelledby='primary-heading'
@@ -255,7 +254,7 @@ export default function Market() {
                 </h1>
                 {/* Most active market movers */}
                 <div className='mb-4 '>
-                  <article className='my-4'>
+                  <article className='my-4 '>
                     <ActiveMovers topMovers={topGainers} query='gainers' />
                   </article>
                   <article className='my-4'>
