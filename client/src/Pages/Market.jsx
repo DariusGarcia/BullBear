@@ -30,14 +30,10 @@ export default function Market() {
   const { logout } = useLogout()
   const { user } = useAuthContext()
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-  const [topActive, setTopActive] = useState([])
   const [topGainers, setTopGainers] = useState([])
   const [topLosers, setTopLosers] = useState([])
 
   useEffect(() => {
-    UseFetchMarketPerformances('actives')
-      .then((activeStocks) => setTopActive(activeStocks))
-      .catch((err) => console.log(err))
     UseFetchMarketPerformances('gainers')
       .then((gainers) => setTopGainers(gainers))
       .catch((err) => console.log(err))
@@ -45,11 +41,10 @@ export default function Market() {
       .then((losers) => setTopLosers(losers))
       .catch((err) => console.log(err))
   }, [])
-  // console.log('active movers: ' + topGainers[0]?.ticker)
 
   return (
     <>
-      <div className='w-full flex h-full md:min-h-screen bg-grey'>
+      <div className='max-w-screen md:max-w-full w-full flex h-full md:min-h-screen bg-grey'>
         {/* Narrow sidebar */}
         <div className=' hidden w-28 overflow-y-auto md:block'>
           <div className='flex w-full flex-col items-center py-6'>
