@@ -13,7 +13,6 @@ import { Bars3BottomLeftIcon, CogIcon, HomeIcon, XMarkIcon} from '@heroicons/rea
 import { AiOutlineStock } from 'react-icons/ai'
 import { BsTextParagraph } from 'react-icons/bs'
 import ActiveMovers from '../Components/ActiveMovers/activeMovers'
-import activeMoversData from '../Components/ActiveMovers/tableData.json'
 import { UseFetchMarketPerformances } from '../Hooks/useFetchMarketPerformances'
 
 // prettier-ignore
@@ -30,14 +29,10 @@ export default function Market() {
   const { logout } = useLogout()
   const { user } = useAuthContext()
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-  const [topActive, setTopActive] = useState([])
   const [topGainers, setTopGainers] = useState([])
   const [topLosers, setTopLosers] = useState([])
 
   useEffect(() => {
-    UseFetchMarketPerformances('actives')
-      .then((activeStocks) => setTopActive(activeStocks))
-      .catch((err) => console.log(err))
     UseFetchMarketPerformances('gainers')
       .then((gainers) => setTopGainers(gainers))
       .catch((err) => console.log(err))
@@ -49,7 +44,7 @@ export default function Market() {
 
   return (
     <>
-      <div className='w-full flex h-full md:min-h-screen bg-grey'>
+      <div className='max-w-screen md:max-w-full w-full flex h-full md:min-h-screen bg-grey'>
         {/* Narrow sidebar */}
         <div className=' hidden w-28 overflow-y-auto md:block'>
           <div className='flex w-full flex-col items-center py-6'>
@@ -245,7 +240,7 @@ export default function Market() {
 
           {/* Main content */}
           <div className='flex flex-1 items-stretch overflow-hidden text-white '>
-            <main className='flex-1 min-h-screen  justify-center md:px-4 bg-primary border-t-2 border-grey3 '>
+            <main className='flex-1 min-h-screen justify-center md:px-4 bg-primary border-t-2 border-grey3 '>
               {/* Primary column */}
               <section
                 aria-labelledby='primary-heading'
