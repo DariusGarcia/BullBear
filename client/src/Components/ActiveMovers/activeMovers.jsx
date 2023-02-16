@@ -1,8 +1,7 @@
-export default function ActiveMovers({ activeMoversData, query }) {
-  activeMoversData &&
-    console.log(`active movers: ${activeMoversData[0]?.ticker}`)
+export default function ActiveMovers({ topMovers, query }) {
   return (
-    activeMoversData && (
+    topMovers &&
+    query && (
       <div className='w-full mb-12'>
         <div className='px-6 lg:px-8 '>
           <div className=''>
@@ -47,11 +46,10 @@ export default function ActiveMovers({ activeMoversData, query }) {
                 </tr>
               </thead>
               <tbody className='divide-y divide-grey3 bg-grey rounded-md '>
-                {activeMoversData.map((ticker) => (
+                {topMovers?.slice(0, 5)?.map((ticker) => (
                   <tr key={ticker.ticker} className=' hover:bg-grey2'>
                     <td className='flex flex-col whitespace-nowrap py-4 pl-6 pr-3 text-sm font-medium text-white sm:pl-0'>
                       <div className='text-lightBlue font-bold'>
-                        {' '}
                         ${ticker.ticker}
                       </div>
                       <div>{ticker.companyName}</div>

@@ -23,18 +23,15 @@ export default function StockNews() {
           key='stock-news-section'
           className='h-[550px] overflow-y-auto mb-12'
         >
-          {news.map((newsArticle) => (
-            <div key={newsArticle.id}>
+          {news.map((newsArticle, key) => (
+            <div key={key}>
               <a
                 target='_blank'
                 href={newsArticle.url}
                 rel='noreferrer'
                 className='hover:opacity-60'
               >
-                <article
-                  key={newsArticle.id}
-                  className='rounded-lg shadow-lg my-4 '
-                >
+                <article className='rounded-lg shadow-lg my-4 '>
                   <ul className='grid grid-cols-2  bg-grey my-2  p-2 gap-y-2  rounded-md '>
                     <div className='flex flex-col justify-evenly'>
                       <li className='text-lightBlue '>{newsArticle.site}</li>
@@ -43,24 +40,15 @@ export default function StockNews() {
                         {newsArticle.title}
                       </li>
 
-                      <li
-                        key='article text'
-                        className='hidden md:block italic text-sm opacity-70'
-                      >
+                      <li className='hidden md:block italic text-sm opacity-70'>
                         {newsArticle.text?.substring(0, 150)}...
                       </li>
-                      <li
-                        key='article site'
-                        className='text-xs md:text-sm opacity-50 flex flex-row'
-                      >
+                      <li className='text-xs md:text-sm opacity-50 flex flex-row'>
                         {time_ago(newsArticle.publishedDate)}
                       </li>
                     </div>
                     <div className=''>
-                      <li
-                        key='article image'
-                        className='flex justify-end  h-full items-center'
-                      >
+                      <li className='flex justify-end  h-full items-center'>
                         <img
                           className='w-32 h-32 md:w-60 md:h-48 p-4  rounded-md object-cover'
                           src={newsArticle.image}

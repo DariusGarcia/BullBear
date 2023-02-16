@@ -1,4 +1,4 @@
-import { Fragment, useState } from 'react'
+import { Fragment, useState, useEffect } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { useAuthContext } from '../Hooks/useAuthContext'
 import { Watchlist } from '../Components/Watchlist/watchlist'
@@ -14,6 +14,7 @@ import { AiOutlineStock } from 'react-icons/ai'
 import { BsTextParagraph } from 'react-icons/bs'
 import ActiveMovers from '../Components/ActiveMovers/activeMovers'
 import activeMoversData from '../Components/ActiveMovers/tableData.json'
+import { UseFetchMarketPerformances } from '../Hooks/useFetchMarketPerformances'
 
 // prettier-ignore
 const sidebarNavigation = [
@@ -31,6 +32,22 @@ export default function Market() {
   const { logout } = useLogout()
   const { user } = useAuthContext()
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [topActive, setTopActive] = useState([])
+  const [topGainers, setTopGainers] = useState([])
+  const [topLosers, setTopLosers] = useState([])
+
+  useEffect(() => {
+    UseFetchMarketPerformances('actives')
+      .then((activeStocks) => setTopActive(activeStocks))
+      .catch((err) => console.log(err))
+    UseFetchMarketPerformances('gainers')
+      .then((gainers) => setTopGainers(gainers))
+      .catch((err) => console.log(err))
+    UseFetchMarketPerformances('losers')
+      .then((losers) => setTopLosers(losers))
+      .catch((err) => console.log(err))
+  }, [])
+  // console.log('active movers: ' + topGainers[0]?.ticker)
 
   return (
     <>
@@ -44,9 +61,9 @@ export default function Market() {
               </h2>
             </div>
             <div className='mt-6 w-full flex-1 space-y-1 px-2 text-white'>
-              {sidebarNavigation.map((item) => (
+              {sidebarNavigation.map((item, key) => (
                 <a
-                  key={item.name}
+                  key={key}
                   href={item.href}
                   className={classNames(
                     item.current
@@ -69,7 +86,6 @@ export default function Market() {
                 </a>
               ))}
               <li
-                key='sign out'
                 className='cursor-pointer text-grey3 hover:bg-lightBlue transition ease-in-out delay-35 hover:text-white group w-full p-3 rounded-md flex flex-col items-center text-xs font-medium'
                 aria-current='page'
               >
@@ -88,7 +104,6 @@ export default function Market() {
                 ) : (
                   <a
                     href='/login'
-                    key='login'
                     className='gap-2 flex flex-row md:flex-col items-center mt-2'
                   >
                     <CogIcon
@@ -246,17 +261,18 @@ export default function Market() {
                   Market Performance <SiMarketo size={20} />
                 </h1>
                 {/* Most active market movers */}
-                <article className='mb-4 '>
-                  {queryList.map((query) => {
-                    return (
-                      <section className='my-4'>
-                        <ActiveMovers
-                          activeMoversData={activeMoversData}
-                          query={query}
-                        />
-                      </section>
-                    )
-                  })}
+                <div className='mb-4 '>
+                  <article className='my-4'>
+                    <ActiveMovers topMovers={topGainers} query='gainers' />
+                  </article>
+                  <article className='my-4'>
+                    <ActiveMovers topMovers={topLosers} query='losers' />
+                  </article>
+                </div>
+                {/**
+                 * Broad Index Performance
+                 */}
+                <section className='mb-4 '>
                   <div className='flex flex-col items-center md:items-start mb-2 '>
                     <h2 className='text-xl md:text-2xl  mt-2 flex flex-row gap-2 items-center'>
                       Indexes
@@ -266,7 +282,10 @@ export default function Market() {
                     </h3>
                   </div>
                   <IndexPerformances />
-                </article>
+                </section>
+                {/**
+                 * Broad Sector Performance
+                 */}
                 <article>
                   <div className='flex flex-col items-center md:items-start mb-2'>
                     <h2 className='text-xl md:text-2xl mb-2 mt-4 flex flex-row gap-2 items-center'>

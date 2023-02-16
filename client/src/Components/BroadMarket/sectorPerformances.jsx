@@ -40,9 +40,9 @@ export default function SectorPerformances() {
     <>
       {sectors && listOfSectors && (
         <section className='grid grid-cols-2 md:grid-cols-3 gap-2 md:gap-4 list-none w-full px-2 md:px-0 '>
-          {listOfSectors?.map((sectorDetails) => (
+          {listOfSectors?.map((sectorDetails, key) => (
             <article
-              key='sector details '
+              key={key}
               className='flex justify-center items-center p-2 h-24 w-full bg-grey rounded-md overflow-x-auto md:overflow-hidden hover:border-2 hover:border-lightBlue border-2 border-primary'
             >
               {sectorDetails}
