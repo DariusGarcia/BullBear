@@ -16,7 +16,7 @@ export default function SectorPerformances() {
   }, [])
 
   const listOfSectors = sectors?.map((sectorData) => (
-    <ul className='list-none flex flex-col items-center '>
+    <ul className='list-none flex flex-col items-center'>
       <li
         key={sectorData.sector}
         className='flex justify-center w-max md:w-full text-xs md:text-base '
@@ -27,8 +27,8 @@ export default function SectorPerformances() {
         key={`${sectorData.sector} percentage`}
         className={
           sectorData?.changesPercentage.includes('-')
-            ? 'md:flex justify-center text-red'
-            : 'md:flex justify-center text-green'
+            ? 'md:flex justify-center bg-red p-2 mt-2 rounded-md'
+            : 'md:flex justify-center bg-green p-2 mt-2 rounded-md'
         }
       >
         {sectorData?.changesPercentage.substring(0, 4)}%

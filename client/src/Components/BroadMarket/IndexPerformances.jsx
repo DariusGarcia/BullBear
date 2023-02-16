@@ -52,8 +52,8 @@ export default function IndexPerformances() {
       <li
         className={
           indexes[key]?.change >= 0
-            ? 'flex md:justify-center text-green'
-            : 'flex md:justify-center text-red'
+            ? 'flex md:justify-center bg-green p-2 mt-2 rounded-md'
+            : 'flex md:justify-center bg-red p-2 mt-2 rounded-md'
         }
       >
         {indexes[key]?.changesPercentage?.toFixed(2)}%

@@ -1,12 +1,14 @@
+import capitalizeFirstLetter from '../../utils/capitalizeFirstLetter'
+
 export default function ActiveMovers({ topMovers, query }) {
   return (
     topMovers && (
       <div className='w-full mb-12'>
-        <div className='px-6 lg:px-8 '>
+        <div className=' '>
           <div className=''>
-            <div className='w-full '>
-              <h1 className='text-xl text-white underline'>
-                TOP {query.toUpperCase()}
+            <div className='w-full ml-2 md:ml-0 '>
+              <h1 className='text-xl text-white bg-grey3 w-max p-2 rounded-md  '>
+                Top {capitalizeFirstLetter(query)}
               </h1>
               {/* <p className='mt-2 text-sm text-gray-700'>
                 A list of all the users in your account including their name,
@@ -14,7 +16,7 @@ export default function ActiveMovers({ topMovers, query }) {
               </p> */}
             </div>
           </div>
-          <div className='-mx-6 mt-8 sm:-mx-0'>
+          <div className='-mx-6 mt-4 sm:-mx-0 px-6 lg:px-8'>
             <table className='min-w-full divide-y divide-grey3 '>
               <thead className='rounded-md bg-grey'>
                 <tr>
@@ -55,7 +57,6 @@ export default function ActiveMovers({ topMovers, query }) {
                         {ticker.companyName}
                       </div>
                     </td>
-                    {/* <td className='whitespace-nowrap px-3 py-4 text-sm text-white sm:table-cell'> */}
                     <td className='whitespace-nowrap px-3 py-4 text-sm text-white sm:table-cell'>
                       <span
                         className={
