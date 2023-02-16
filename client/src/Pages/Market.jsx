@@ -32,12 +32,23 @@ export default function Market() {
   const { logout } = useLogout()
   const { user } = useAuthContext()
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-  const [activeMovers, setActiveMovers] = useState([])
+  const [topActive, setTopActive] = useState([])
+  const [topGainers, setTopGainers] = useState([])
+  const [topLosers, setTopLosers] = useState([])
 
   useEffect(() => {
-    UseFetchMarketPerformances('active').then((data) => setActiveMovers(data))
+    UseFetchMarketPerformances('actives')
+      .then((activeStocks) => setTopActive(activeStocks))
+      .catch((err) => console.log(err))
+    UseFetchMarketPerformances('gainers')
+      .then((gainers) => setTopGainers(gainers))
+      .catch((err) => console.log(err))
+    UseFetchMarketPerformances('losers')
+      .then((losers) => setTopLosers(losers))
+      .catch((err) => console.log(err))
   }, [])
-  console.log('active movers: ' + activeMovers[0])
+  // console.log('active movers: ' + topGainers[0]?.ticker)
+
   return (
     <>
       <div className='w-full flex h-full md:min-h-screen bg-grey'>
@@ -250,17 +261,18 @@ export default function Market() {
                   Market Performance <SiMarketo size={20} />
                 </h1>
                 {/* Most active market movers */}
-                <article className='mb-4 '>
-                  {queryList.map((query, key) => {
-                    return (
-                      <section className='my-4' key={key}>
-                        <ActiveMovers
-                          activeMoversData={activeMoversData}
-                          query={query}
-                        />
-                      </section>
-                    )
-                  })}
+                <div className='mb-4 '>
+                  <article className='my-4'>
+                    <ActiveMovers topMovers={topGainers} query='gainers' />
+                  </article>
+                  <article className='my-4'>
+                    <ActiveMovers topMovers={topLosers} query='losers' />
+                  </article>
+                </div>
+                {/**
+                 * Broad Index Performance
+                 */}
+                <section className='mb-4 '>
                   <div className='flex flex-col items-center md:items-start mb-2 '>
                     <h2 className='text-xl md:text-2xl  mt-2 flex flex-row gap-2 items-center'>
                       Indexes
@@ -270,7 +282,10 @@ export default function Market() {
                     </h3>
                   </div>
                   <IndexPerformances />
-                </article>
+                </section>
+                {/**
+                 * Broad Sector Performance
+                 */}
                 <article>
                   <div className='flex flex-col items-center md:items-start mb-2'>
                     <h2 className='text-xl md:text-2xl mb-2 mt-4 flex flex-row gap-2 items-center'>
