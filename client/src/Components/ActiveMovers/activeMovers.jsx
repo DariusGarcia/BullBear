@@ -1,7 +1,6 @@
 export default function ActiveMovers({ topMovers, query }) {
   return (
-    topMovers &&
-    query && (
+    topMovers && (
       <div className='w-full mb-12'>
         <div className='px-6 lg:px-8 '>
           <div className=''>
@@ -23,7 +22,7 @@ export default function ActiveMovers({ topMovers, query }) {
                     scope='col'
                     className='py-4 pl-6 pr-3 text-left text-sm text-white sm:pl-0'
                   >
-                    Name
+                    Ticker
                   </th>
                   <th
                     scope='col'
@@ -52,7 +51,9 @@ export default function ActiveMovers({ topMovers, query }) {
                       <div className='text-lightBlue font-bold'>
                         ${ticker.ticker}
                       </div>
-                      <div>{ticker.companyName}</div>
+                      <div className='hidden md:inline'>
+                        {ticker.companyName}
+                      </div>
                     </td>
                     {/* <td className='whitespace-nowrap px-3 py-4 text-sm text-white sm:table-cell'> */}
                     <td className='whitespace-nowrap px-3 py-4 text-sm text-white sm:table-cell'>

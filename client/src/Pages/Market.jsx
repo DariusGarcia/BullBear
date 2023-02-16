@@ -40,7 +40,6 @@ export default function Market() {
       .then((losers) => setTopLosers(losers))
       .catch((err) => console.log(err))
   }, [])
-  // console.log('active movers: ' + topGainers[0]?.ticker)
 
   return (
     <>
@@ -213,7 +212,7 @@ export default function Market() {
         </Transition.Root>
 
         {/* Content area */}
-        <div className='flex  flex-1 h-full flex-col '>
+        <div className='w-full flex flex-1 h-full flex-col '>
           <header className='w-full'>
             <div className='relative z-10 flex h-16 flex-shrink-0  bg-grey shadow-sm'>
               <button
@@ -255,7 +254,7 @@ export default function Market() {
                 </h1>
                 {/* Most active market movers */}
                 <div className='mb-4 '>
-                  <article className='my-4'>
+                  <article className='my-4 '>
                     <ActiveMovers topMovers={topGainers} query='gainers' />
                   </article>
                   <article className='my-4'>
