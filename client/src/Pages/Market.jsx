@@ -26,8 +26,6 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
-const queryList = ['gainers', 'losers', 'active']
-
 export default function Market() {
   const { logout } = useLogout()
   const { user } = useAuthContext()
