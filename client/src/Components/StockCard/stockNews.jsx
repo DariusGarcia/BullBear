@@ -31,8 +31,8 @@ export default function StockNews() {
                 rel='noreferrer'
                 className='hover:opacity-60'
               >
-                <article className='rounded-lg shadow-lg my-4 '>
-                  <ul className='grid grid-cols-2  bg-grey my-2  p-2 gap-y-2  rounded-md '>
+                <article className='rounded-md shadow-lg my-4 '>
+                  <ul className='grid grid-cols-2 bg-grey my-2 p-2 px-4 gap-y-2 rounded-md '>
                     <div className='flex flex-col justify-evenly'>
                       <li className='text-lightBlue '>{newsArticle.site}</li>
                       <li className=' md:text-base '>${newsArticle.symbol}</li>
@@ -50,10 +50,10 @@ export default function StockNews() {
                     <div className=''>
                       <li className='flex justify-end  h-full items-center'>
                         <img
-                          className='w-32 h-32 md:w-60 md:h-48 p-4  rounded-md object-cover'
+                          className='w-32 h-32 md:w-60 md:h-48 m-4 object-cover rounded-md shadow-md'
                           src={newsArticle.image}
                           alt={newsArticle.title}
-                        ></img>
+                        />
                       </li>
                     </div>
                   </ul>

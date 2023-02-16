@@ -249,7 +249,7 @@ export default function Market() {
                 <h1 id='primary-heading' className='sr-only'>
                   Broad Market Performance
                 </h1>
-                <h1 className='text-xl md:text-3xl mb-4 mt-2 pl-6 flex flex-row gap-4 items-center'>
+                <h1 className='text-2xl md:text-3xl mb-4 mt-2 ml-2 md:ml-0 flex flex-row gap-4 items-center'>
                   Market Performance <SiMarketo size={20} />
                 </h1>
                 {/* Most active market movers */}
@@ -264,34 +264,28 @@ export default function Market() {
                 {/**
                  * Broad Index Performance
                  */}
-                <section className='mb-4 '>
-                  <div className='flex flex-col items-center md:items-start mb-2 '>
-                    <h2 className='text-xl md:text-2xl  mt-2 flex flex-row gap-2 items-center'>
+                <article className='mb-16 '>
+                  <div className='flex flex-col items-center md:items-start mb-4 ml-2 md:ml-0 bg-grey3 w-max p-2 rounded-md'>
+                    <h2 className='text-xl md:text-2xl flex flex-row gap-2 items-center'>
                       Indexes
                     </h2>
-                    <h3 className='mb-2 flex flex-row gap-2 items-center'>
-                      Daily
-                    </h3>
                   </div>
                   <IndexPerformances />
-                </section>
+                </article>
                 {/**
                  * Broad Sector Performance
                  */}
-                <article>
-                  <div className='flex flex-col items-center md:items-start mb-2'>
-                    <h2 className='text-xl md:text-2xl mb-2 mt-4 flex flex-row gap-2 items-center'>
+                <article className='mb-6'>
+                  <div className='flex flex-col items-center md:items-start mb-4 ml-2 md:ml-0 bg-grey3 w-max p-2 rounded-md'>
+                    <h2 className='text-xl md:text-2xl flex flex-row gap-2 items-center'>
                       Sectors
                     </h2>
-                    <h3 className='mb-2 flex flex-row gap-2 items-center'>
-                      Daily
-                    </h3>
                   </div>
                   <SectorPerformances />
                 </article>
                 <article className='mx-2'>
-                  <h2 className='text-xl md:text-2xl mt-8 mb-4 flex flex-row gap-2 items-center '>
-                    Stock News <BiNews />{' '}
+                  <h2 className='text-xl md:text-2xl mt-8 mb-4 flex flex-row gap-2 items-center bg-grey3 w-max p-2 rounded-md'>
+                    Stock News <BiNews />
                   </h2>
                   <StockNews />
                 </article>
@@ -302,7 +296,7 @@ export default function Market() {
             </main>
 
             {/* Secondary column (hidden on smaller screens) */}
-            <aside className='hidden md:block w-96 px-4 lg:mx-40 pt-2 overflow-x-hidden rounded-md  bg-grey3 '>
+            <aside className='hidden md:block w-96 px-4 lg:mx-40 pt-2 overflow-x-hidden rounded-md bg-grey3'>
               {/* Your content */}
               <Watchlist />
             </aside>
@@ -312,8 +306,3 @@ export default function Market() {
     </>
   )
 }
-
-// const userNavigation = [
-//   { name: 'Your Profile', href: '#' },
-//   { name: 'Sign out', href: '#' },
-// ]

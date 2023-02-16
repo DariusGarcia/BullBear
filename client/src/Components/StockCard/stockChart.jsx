@@ -68,9 +68,11 @@ const StockLineChart = ({ stock }) => {
   }
 
   return (
-    <section id='stock-price-chart'>
-      <Line options={options} data={chartData} />
-    </section>
+    <article className='w-full h-full mb-4' id='stock-chart'>
+      <section id='stock-price-chart'>
+        <Line options={options} data={chartData} />
+      </section>
+    </article>
   )
 }
 
