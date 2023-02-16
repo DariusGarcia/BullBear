@@ -38,8 +38,11 @@ export default function IndexPerformances() {
     indexes.findIndex((x) => x.symbol === index)
   )
 
-  const listOfIndexes = indexValue?.map((key) => (
-    <ul className='list-none flex flex-col items-center justify-center'>
+  const listOfIndexes = indexValue?.map((key, keyId) => (
+    <ul
+      className='list-none flex flex-col items-center justify-center'
+      key={keyId}
+    >
       <li className='flex md:w-full justify-center w-max text-xs md:text-base mb-1'>
         {indexes[key]?.name}
       </li>
@@ -62,8 +65,11 @@ export default function IndexPerformances() {
     <>
       {indexes && (
         <section className='grid grid-cols-2 md:grid-cols-3 gap-2 md:gap-4 list-none w-full px-2 md:px-0 '>
-          {listOfIndexes?.map((indexDetails) => (
-            <article className='bg-grey rounded-md p-2 w-full overflow-x-auto md:overflow-hidden hover:border-2 hover:border-lightBlue border-2 border-primary '>
+          {listOfIndexes?.map((indexDetails, key) => (
+            <article
+              className='bg-grey rounded-md p-2 w-full overflow-x-auto md:overflow-hidden hover:border-2 hover:border-lightBlue border-2 border-primary'
+              key={key}
+            >
               {indexDetails}
             </article>
           ))}

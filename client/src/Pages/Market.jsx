@@ -1,4 +1,4 @@
-import { Fragment, useState } from 'react'
+import { Fragment, useState, useEffect } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { useAuthContext } from '../Hooks/useAuthContext'
 import { Watchlist } from '../Components/Watchlist/watchlist'
@@ -14,6 +14,7 @@ import { AiOutlineStock } from 'react-icons/ai'
 import { BsTextParagraph } from 'react-icons/bs'
 import ActiveMovers from '../Components/ActiveMovers/activeMovers'
 import activeMoversData from '../Components/ActiveMovers/tableData.json'
+import { UseFetchMarketPerformances } from '../Hooks/useFetchMarketPerformances'
 
 // prettier-ignore
 const sidebarNavigation = [
@@ -31,7 +32,12 @@ export default function Market() {
   const { logout } = useLogout()
   const { user } = useAuthContext()
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [activeMovers, setActiveMovers] = useState([])
 
+  useEffect(() => {
+    UseFetchMarketPerformances('active').then((data) => setActiveMovers(data))
+  }, [])
+  console.log('active movers: ' + activeMovers[0])
   return (
     <>
       <div className='w-full flex h-full md:min-h-screen bg-grey'>
@@ -44,9 +50,9 @@ export default function Market() {
               </h2>
             </div>
             <div className='mt-6 w-full flex-1 space-y-1 px-2 text-white'>
-              {sidebarNavigation.map((item) => (
+              {sidebarNavigation.map((item, key) => (
                 <a
-                  key={item.name}
+                  key={key}
                   href={item.href}
                   className={classNames(
                     item.current
@@ -69,7 +75,6 @@ export default function Market() {
                 </a>
               ))}
               <li
-                key='sign out'
                 className='cursor-pointer text-grey3 hover:bg-lightBlue transition ease-in-out delay-35 hover:text-white group w-full p-3 rounded-md flex flex-col items-center text-xs font-medium'
                 aria-current='page'
               >
@@ -88,7 +93,6 @@ export default function Market() {
                 ) : (
                   <a
                     href='/login'
-                    key='login'
                     className='gap-2 flex flex-row md:flex-col items-center mt-2'
                   >
                     <CogIcon
@@ -247,9 +251,9 @@ export default function Market() {
                 </h1>
                 {/* Most active market movers */}
                 <article className='mb-4 '>
-                  {queryList.map((query) => {
+                  {queryList.map((query, key) => {
                     return (
-                      <section className='my-4'>
+                      <section className='my-4' key={key}>
                         <ActiveMovers
                           activeMoversData={activeMoversData}
                           query={query}

@@ -1,6 +1,4 @@
 export default function ActiveMovers({ activeMoversData, query }) {
-  activeMoversData &&
-    console.log(`active movers: ${activeMoversData[0]?.ticker}`)
   return (
     activeMoversData && (
       <div className='w-full mb-12'>
