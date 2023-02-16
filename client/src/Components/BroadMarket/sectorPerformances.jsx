@@ -9,7 +9,6 @@ export default function SectorPerformances() {
       const response = FetchSectorPerformance()
         .then((data) => setSectors(data))
         .catch((err) => console.log(err))
-
       return response
     }
     fetchSectors()

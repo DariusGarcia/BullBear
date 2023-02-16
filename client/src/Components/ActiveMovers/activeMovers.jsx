@@ -1,6 +1,8 @@
 import capitalizeFirstLetter from '../../utils/capitalizeFirstLetter'
 
 export default function ActiveMovers({ topMovers, query }) {
+  const tableTitles = ['Change %', 'Price', 'Change']
+
   return (
     topMovers && (
       <div className='w-full mb-12'>
@@ -10,10 +12,6 @@ export default function ActiveMovers({ topMovers, query }) {
               <h1 className='text-xl text-white bg-grey3 w-max p-2 rounded-md  '>
                 Top {capitalizeFirstLetter(query)}
               </h1>
-              {/* <p className='mt-2 text-sm text-gray-700'>
-                A list of all the users in your account including their name,
-                title, email and role.
-              </p> */}
             </div>
           </div>
           <div className='-mx-6 mt-4 sm:-mx-0 px-6 lg:px-8'>
@@ -26,24 +24,14 @@ export default function ActiveMovers({ topMovers, query }) {
                   >
                     Ticker
                   </th>
-                  <th
-                    scope='col'
-                    className=' px-3 py-4 text-left text-sm text-white sm:table-cell'
-                  >
-                    Change %
-                  </th>
-                  <th
-                    scope='col'
-                    className=' px-3 py-4 text-left text-sm text-white lg:table-cell'
-                  >
-                    Price
-                  </th>
-                  <th
-                    scope='col'
-                    className='px-3 py-4 text-left text-sm text-white'
-                  >
-                    Change
-                  </th>
+                  {tableTitles.map((title) => (
+                    <th
+                      scope='col'
+                      className=' px-3 py-4 text-left text-sm text-white sm:table-cell'
+                    >
+                      {title}
+                    </th>
+                  ))}
                 </tr>
               </thead>
               <tbody className='divide-y divide-grey3 bg-grey rounded-md '>
