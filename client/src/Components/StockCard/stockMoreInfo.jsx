@@ -1,5 +1,6 @@
 import AnalystRating from '../AnalystRating/analystRating'
 import CompanyInfo from '../CompanyInfo/companyInfo'
+import CompanyStats from '../CompanyInfo/companyStats'
 import SimilarStocks from '../SimilarStocks/similarStocks'
 import SingleStockNews from '../SingleStockNews/singleStockNews'
 import StockAboutInfo from '../StockAboutInfo/stockAboutInfo'
@@ -26,8 +27,16 @@ export const StockMoreInfo = (props) => {
             {/* Stock Daily Chart */}
             <StockChart stock={ticker} />
 
-            {/* Company info and stock stats */}
+            {/* Company info */}
             <CompanyInfo
+              ticker={ticker}
+              companyDetails={companyDetails}
+              companyProfile={companyProfile}
+              stockData={stockData}
+            />
+
+            {/* Stock stats */}
+            <CompanyStats
               ticker={ticker}
               companyDetails={companyDetails}
               companyProfile={companyProfile}

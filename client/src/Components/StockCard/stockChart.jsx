@@ -12,7 +12,7 @@ import {
 import { Line } from 'react-chartjs-2'
 import { UseFetchChartPriceData } from '../../Hooks/UseFetchChartPriceData'
 import formatTime from '../../utils/formatTime'
-
+import { isMobile } from 'react-device-detect'
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -30,7 +30,9 @@ const StockLineChart = ({ stock }) => {
     plugins: {
       title: {
         display: true,
-        text: `Daily Chart ${formatTime(prices[0]?.date.slice(0, 11))}`,
+        text: `Daily Chart ${
+          isMobile ? '' : formatTime(prices[0]?.date.slice(0, 11))
+        }`,
       },
     },
   }
