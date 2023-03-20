@@ -2,6 +2,8 @@
 
 #### BullBear is a MERN stack web app that lets users create an account and add stocks from the S&P500 index to their own personal watch list.
 
+#### [LINK TO TYPESCRIPT REPO](https://github.com/DariusGarcia/bullbear-TYPESCRIPT)
+
 #### [link to BullBear app](https://bullbearmarket.net/)
 
 #### [link to BullBear server GitHub repo](https://github.com/DariusGarcia/bullbear-server)
